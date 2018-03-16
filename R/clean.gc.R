@@ -15,7 +15,7 @@
 #' 
 #' @export
 #' 
-#' @example 
+#' @examples 
 #' clean.gc(verbose = TRUE)
 #' 
 clean.gc <- function(num.gc    = 100,
