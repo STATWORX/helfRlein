@@ -1,17 +1,18 @@
 #' @title remove NA from list
 #'
-#' @details 
+#' @description 
 #'    This functions removes NA's from a list. With \code{recursive == TRUE} 
 #'    NA's within each listelements are removed as well.
 #'
 #' @param y a list
+#' @param recursive logical. Should NA within the list elements be removed too?
 #'
 #' @return returns the list without NA's
 #' @export
 #'
 #' @examples
 #' y <- list(c(1:3), letters[1:4], NA, c(1, NA), list(c(5:6, NA), NA, "A"))
-#' na.omit.list(y, recursive = TRUE)
+#' na_omitlist(y, recursive = TRUE)
 #' 
 #' # [[1]]
 #' # [1] 1 2 3
@@ -29,11 +30,12 @@
 #' # [[4]][[2]]
 #' # [1] "A"
 
-na.omit.list <- function(y = list(),
+na_omitlist <- function(y = list(),
                          recursive = FALSE) {
+  
   if (recursive && anyNA(y, recursive = TRUE)) {
     y <- y[!sapply(y, function(x) all(is.na(x)))]
-    y <- sapply(y, na.omit.list, recursive = TRUE)
+    y <- sapply(y, na_omitlist, recursive = TRUE)
   } else {
     y <- y[!sapply(y, function(x) all(is.na(x)))]
   }

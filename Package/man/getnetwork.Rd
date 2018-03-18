@@ -19,6 +19,11 @@ The default is c(" <- function", "<- function", "<-function").}
 Returns an object with the adjacency matrix \code{$matrix} and 
   and igraph object \code{$igraph}.
 }
-\examples{
-
+\description{
+With this function a network plot of the connections of the functions
+in a given path can be created.
+}
+\seealso{
+For more information see:
+ https://www.statworx.com/de/blog/flowcharts-of-functions/
 }

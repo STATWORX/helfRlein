@@ -1,12 +1,11 @@
-
-# DONE filter for internal functions and put them in an extra list
-# DONE add scripts
-# DONE maybe replace { } into sepereate lines
-# DONE folder structure
 # TODO list with exclude files
 # TODO '' in one line
 
 #' @title flowchart of R projects
+#' 
+#' @description
+#' With this function a network plot of the connections of the functions
+#' in a given path can be created.
 #'
 #' @param dir a path that includes the functions 
 #' @param variations a charachter vector with the functions definition string.
@@ -16,23 +15,18 @@
 #' @return
 #'   Returns an object with the adjacency matrix \code{$matrix} and 
 #'   and igraph object \code{$igraph}. 
+#'   
+#' @seealso For more information see:
+#'  https://www.statworx.com/de/blog/flowcharts-of-functions/
+#'  
 #' @export
-#'
-#' @examples
 #' 
 getnetwork <- function(dir,
                        variations = c(" <- function", "<- function", "<-function"),
                        pattern = "\\.R") {
-  # dir <- "~/Projekte/Lufthansa/Pele_git/PELE2/PELE/source/Agam_aggregation"
-  # rm(list = ls())
-  # recursive = TRUE
-  # variations = c(" <- function", "<- function", "<-function")
-  # pattern = "\\.R"
-  # dir <- "/Users/jakobgepp/Projekte/2018/Intern/R Network functions"
-  # dir <- "/Users/jakobgepp/Projekte/Lufthansa/Server-tmp/for_andre/PELE_AB/source/Boosting"
   
   # get files
-  files.path <- list.files(dir,
+  files.path <- list.files(file.path(dir),
                            pattern = pattern,
                            recursive = TRUE,
                            full.names = TRUE)
@@ -76,32 +70,34 @@ getnetwork <- function(dir,
   # NEEDS MORE THINKING                       all.scripts, comment_index)
   
   # split before {
-  all.scripts <- lapply(all.scripts,
+  all.scripts <- lapply(
+    all.scripts,
     function(y) {
       unlist(lapply(y,
-        function(x) { 
-          ind <- unlist(gregexpr(pattern = "\\{", x))
-          ind_start <- unique(c(1,ind))
-          ind_end   <- unique(c(ind_start[-1] - 1, nchar(x)))
-          return(substring(x, ind_start, ind_end))
-        })
+                    function(x) { 
+                      ind <- unlist(gregexpr(pattern = "\\{", x))
+                      ind_start <- unique(c(1,ind))
+                      ind_end   <- unique(c(ind_start[-1] - 1, nchar(x)))
+                      return(substring(x, ind_start, ind_end))
+                      })
       )
-    }
-  )
+      }
+    )
   
   # split before }
-  all.scripts <- lapply(all.scripts,
+  all.scripts <- lapply(
+    all.scripts,
     function(y) {
       unlist(lapply(y,
-        function(x) { 
-          ind <- unlist(gregexpr(pattern = "\\}", x))
-          ind_start <- unique(c(1,ind))
-          ind_end   <- unique(c(ind_start[-1] - 1, nchar(x)))
-          return(substring(x, ind_start, ind_end))
-        })
-      )
-    }
-  )
+                    function(x) { 
+                      ind <- unlist(gregexpr(pattern = "\\}", x))
+                      ind_start <- unique(c(1,ind))
+                      ind_end   <- unique(c(ind_start[-1] - 1, nchar(x)))
+                      return(substring(x, ind_start, ind_end))
+                      })
+             )
+      }
+    )
   
   # remove empty lines
   all.scripts <- lapply(all.scripts, function(x) x[x != ""])
@@ -117,7 +113,7 @@ getnetwork <- function(dir,
   #main_names <- sapply(main.functions,
   #  function(x) x[sort(unique(unlist(sapply(variations, grep, x))))][1])
   #names(main.functions) <- gsub(" ", "", sapply(strsplit(main_names, "<-"), "[[", 1))
-
+  
   # remove " <- functions" within strings in functions
   #all.functions <- lapply(all.functions,
   #                        function (x)  sub("\" <- function", "", x))
@@ -127,42 +123,42 @@ getnetwork <- function(dir,
                           variations) {
     def.function.index <- 
       lapply(funlist,
-             function(x) unique(unlist(lapply(variations,
-                                              function(y) which(grepl(pattern = y, x))))
-                                )
-             )
+             function(x) sort(unique(unlist(
+               lapply(variations,
+                      function(y) which(grepl(pattern = y, x))))
+             ))
+      )
     
     # get internal functions
-    # TODO fix error with {}
-    
     with_internal <- which(sapply(def.function.index, length) > 1)
     internal <- funlist[with_internal]
-    def_internal <- lapply(def.function.index[with_internal], function(x) sort(x)) # [-1]
+    def_internal <- lapply(def.function.index[with_internal], function(x) sort(x))
     
     open  <- lapply(internal, function(x) as.numeric(grepl("\\{", x)))
     close <- lapply(internal, function(x) as.numeric(grepl("\\}", x)))
     both <- mapply(function(x,y) cumsum(x - y), open, close, SIMPLIFY = FALSE)
-    #both <- lapply(both, function(x) cumsum(abs(diff(c(0, x)))))
-
-    # sub_index_end   <- mapply(function(x, y)
-    #   sapply(y, function(y) min(which(x == x[y[1]])[(which(x == x[y[1]]) > y[1])]) - 1),
-    #   both, def_internal, SIMPLIFY = FALSE)
-    # 
-        
-    sub_index_end <- mapply(function(x, y)
-      sapply(y, function(y) {
-        tmp <- which(x == x[y[1]])
-        min(tmp[tmp > y[1]][
-          c(FALSE, diff(tmp[tmp > y[1]]) > 1)],
-          na.rm = TRUE) - 1
+    
+    sub_index_end <- mapply(function(x, z)
+      sapply(z, function(y) {
+        tmp <- which(x == x[y])
+        tmp <- tmp[tmp > y]
+        if (length(tmp) == 1) {
+          tmp
+        } else {
+          if (all(diff(tmp) == 1)) {
+            suppressWarnings(min(tmp, na.rm = TRUE) - 1)
+          } else {
+            suppressWarnings(min(tmp[c(diff(c(y, tmp)) > 1)], na.rm = TRUE) - 1)
+          }
+        }
       }),
       both, def_internal, SIMPLIFY = FALSE)
-
+    
     # set Inf to max length
     max_length <- lapply(internal, length)
     sub_index_end <- mapply(function(x, y)
       ifelse(x == Inf, y, x),
-      sub_index_end, max_length)
+      sub_index_end, max_length, SIMPLIFY = FALSE)
     
     sub_index <- mapply(function(x, y) cbind(x, y),
                         def_internal, sub_index_end, SIMPLIFY = FALSE)
@@ -170,10 +166,8 @@ getnetwork <- function(dir,
     # remove row if it is from first to last
     sub_index <- mapply(
       function(x, y) matrix(x[!apply(x, 1, diff) >= c(y - 2),], ncol = 2),
-      sub_index, max_length)
+      sub_index, max_length, SIMPLIFY = FALSE)
     
-    #sub_index <- mapply(function(x, y) lapply(y, function(z) which(x == x[z])),
-    #                    both, def_internal)
     out <- list()
     out$sub_index <- sub_index
     out$internal <- internal
@@ -195,21 +189,14 @@ getnetwork <- function(dir,
   folder.index <- which(names(sub_index) %in% names(main.functions))
   folder.sub <- rep(folder.main[folder.index], sapply(sub_index, nrow))
   
-  # update sub_function definition
-  # def.sub_function.index <- 
-  #   lapply(sub_functions,
-  #          function(x) unique(unlist(lapply(variations,
-  #                                           function(y) which(grepl(pattern = y, x))))
-  #          )
-  #   )
-  
   def.sub_functions <- 
     unlist(lapply(seq_along(sub_functions),
                   function(x) sub_functions[[x]][1]))
   #def.sub_function.index[[x]]
   
   if (!is.null(def.sub_functions)) {
-    names(sub_functions) <- unlist(gsub(" ", "", lapply(strsplit(def.sub_functions, "<-"), "[[", 1))) 
+    names(sub_functions) <- 
+      unlist(gsub(" ", "", lapply(strsplit(def.sub_functions, "<-"), "[[", 1))) 
   }
   
   
@@ -225,9 +212,9 @@ getnetwork <- function(dir,
   dup_names <- duplicated(names(all.functions))
   if (any(dup_names)) {
     warning(paste0("multiple function: ",
-                         paste0(unique(names(all.functions)[dup_names]),
-                                collapse = ", "),
-                         " Using only the first!"))
+                   paste0(unique(names(all.functions)[dup_names]),
+                          collapse = ", "),
+                   " Using only the first!"))
     all.functions <- all.functions[!dup_names]
     all.folder    <- all.folder[!dup_names]
   }
@@ -260,11 +247,12 @@ getnetwork <- function(dir,
   # update function definition
   def.function.index <- 
     lapply(all.files,
-           function(x) unique(unlist(lapply(variations,
-             function(y) which(grepl(pattern = y, x))))
+           function(x) unique(unlist(
+             lapply(variations,
+                    function(y) which(grepl(pattern = y, x))))
            )
     )
-
+  
   def.functions <- 
     unlist(lapply(seq_along(all.files),
                   function(x) all.files[[x]][def.function.index[[x]]]))
@@ -273,15 +261,32 @@ getnetwork <- function(dir,
     unique(unlist(gsub(" ", "",
                        lapply(strsplit(def.functions, "<-"), "[[", 1))))
   
+  # used for later adjustments of the network matrix
+  def.functions2 <- 
+    lapply(seq_along(all.files),
+           function(x) all.files[[x]][def.function.index[[x]]])
+  
+  def.functions2 <- 
+    lapply(def.functions2,
+           function(x) gsub(" ", "", sapply(strsplit(x, "<-"), "[[", 1)))
+  
+  def.functions2 <- 
+    lapply(seq_along(def.functions2),
+           function(x) ifelse(length(def.functions2[[x]]) == 0,
+                              names(all.files)[x],
+                              def.functions2[[x]])
+    )
+  
+  # remove function definition
   keep_lines <- mapply(function(x, y) which(!1:y %in% x),
                        def.function.index, lapply(all.files, length),
                        SIMPLIFY = FALSE)
   
-  # remove function definition
+  
   clean.functions <- all.files
   clean.functions <- 
     lapply(seq_along(clean.functions),
-                  function(x) clean.functions[[x]][keep_lines[[x]]])
+           function(x) clean.functions[[x]][keep_lines[[x]]])
   names(clean.functions) <- names(all.files)
   
   # remove duplicated names
@@ -292,6 +297,7 @@ getnetwork <- function(dir,
     clean.functions <- clean.functions[dub_rows]
     lines <- lines[dub_rows]
     all.folder <- all.folder[dub_rows]
+    def.functions2 <- def.functions2[dub_rows]
   }
   
   # create adjacency matrix: network
@@ -299,8 +305,8 @@ getnetwork <- function(dir,
     lapply(clean.functions,
            function(z) {
              sapply(paste0(def.functions #, "\\("
-                           ),
-                    function(x, y = z) sum(grepl(x, y), na.rm = TRUE))
+             ),
+             function(x, y = z) sum(grepl(x, y), na.rm = TRUE))
            })
   
   network <- as.data.frame(do.call(rbind, network))
@@ -313,8 +319,23 @@ getnetwork <- function(dir,
   network[new_rows, ] <- 0
   network <- network[rownames(network)]
   
+  # adjust lines, folders
+  
+  old_names <- names(lines)
+  lines <- c(lines, rep(0, length(new_rows)))
+  names(lines) <- c(old_names, new_rows)
+  
+  tmp.index <- sapply(new_rows,
+                      function(y) which(lapply(def.functions2,
+                                               function(x) x == y) == TRUE))
+  if (length(tmp.index) == 0) {
+    tmp.index <- NULL
+  }
+  
+  all.folder <- c(all.folder, all.folder[tmp.index])
+  
   # create igraph
-  g1 <- graph_from_adjacency_matrix(
+  g1 <- igraph::graph_from_adjacency_matrix(
     as.matrix(network),
     mode = c("directed"),
     weighted = TRUE,
@@ -322,11 +343,11 @@ getnetwork <- function(dir,
     add.colnames = NULL,
     add.rownames = NA)
   
-  V(g1)$label <- names(lines)
-  V(g1)$size <- 10*lines/max(lines)
-  V(g1)$folder <- all.folder
-  V(g1)$color <- as.numeric(as.factor(all.folder))
-
+  igraph::V(g1)$label  <- names(lines)
+  igraph::V(g1)$size   <- 10*lines/max(lines)
+  igraph::V(g1)$folder <- all.folder
+  igraph::V(g1)$color  <- as.numeric(as.factor(all.folder))
+  
   # output
   out <- list()
   out$matrix <- network

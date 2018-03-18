@@ -7,13 +7,13 @@
 multiplot(..., plotlist = NULL, cols = 1, layout = NULL)
 }
 \arguments{
-\item{...}{multiple ggplots}
+\item{...}{multiple ggplots.}
 
-\item{plotlist}{a list with ggplots}
+\item{plotlist}{a list with ggplots.}
 
-\item{cols}{}
+\item{cols}{numeric. Number of columns in the output plot.}
 
-\item{layout}{}
+\item{layout}{a matrix with the layout of the plots.}
 }
 \description{
 Functions that allows to combine diffrent ggplots into one plot.
@@ -26,9 +26,6 @@ ggplot objects can be passed in ..., or to plotlist (as a list of ggplot objects
 If the layout is something like matrix(c(1,2,3,3), nrow=2, byrow=TRUE),
 then plot 1 will go in the upper left, 2 will go in the upper right, and
 3 will go all the way across the bottom.
-}
-\examples{
-
 }
 \seealso{
 http://www.cookbook-r.com/Graphs/Multiple_graphs_on_one_page_(ggplot2)/
