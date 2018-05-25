@@ -1,4 +1,4 @@
-#' @title improved strsplit
+#' @title improved strsplit function
 #'
 #' @description This functions uses \code{\link[base]{strsplit}} and adds the
 #' possibility to split and keep the delimiter after or before the given split.
@@ -35,6 +35,8 @@
 #' strsplit(x, "[/&]", type = "after")
 #' # [[1]]
 #' # [1] "3D/"  "MON&" "SUN"
+#' 
+#' @author Jakob Gepp
 #' 
 strsplit <- function(x,
                      split,

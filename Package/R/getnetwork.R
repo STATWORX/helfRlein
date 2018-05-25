@@ -1,6 +1,3 @@
-# TODO list with exclude files
-# TODO '' in one line
-
 #' @title flowchart of R projects
 #' 
 #' @description
@@ -8,7 +5,7 @@
 #' in a given path can be created.
 #'
 #' @param dir a path that includes the functions 
-#' @param variations a charachter vector with the functions definition string.
+#' @param variations a character vector with the function's definition string.
 #'   The default is c(" <- function", "<- function", "<-function").
 #' @param pattern a string with the file suffix - default is "\\.R".
 #'
@@ -16,11 +13,25 @@
 #'   Returns an object with the adjacency matrix \code{$matrix} and 
 #'   and igraph object \code{$igraph}. 
 #'   
-#' @seealso For more information see:
-#'  https://www.statworx.com/de/blog/flowcharts-of-functions/
+#' @seealso For more information see 
+#' [our blog](https://www.statworx.com/de/blog/flowcharts-of-functions/).
 #'  
 #' @export
+#' @author Jakob Gepp
 #' 
+#' @note
+#' TODO
+#' - list with exclude files
+#' - '' in one line
+#' 
+#' @examples 
+#' \dontrun{
+#' net <- getnetwork(dir = "R/")
+#' g1 <- net$igraph
+#' plot(g1)
+#' }
+#' 
+
 getnetwork <- function(dir,
                        variations = c(" <- function", "<- function", "<-function"),
                        pattern = "\\.R") {
@@ -36,12 +47,25 @@ getnetwork <- function(dir,
   # get all scripts
   all.scripts <- lapply(files.path, readLines, warn = FALSE)
   
+  
+  # remove variations with "
+  for (i.var in variations) {
+    # i.var <- variations[1]
+    all.scripts <- lapply(all.scripts,
+                          function(x) gsub(paste0("\"", i.var ), "", x))
+  }
+  
+  
+  # set names
   names(all.scripts) <- gsub(pattern, "", basename(files.path))
   
   # remove method / functions that start with [
   keep <- !startsWith(names(all.scripts), "[")
   all.scripts <- all.scripts[keep]
   folder <- folder[keep]
+  
+  
+  unique(unlist(sapply(variations, grep, all.scripts)))
   
   # leading spaces
   all.scripts <- lapply(all.scripts,
@@ -112,7 +136,7 @@ getnetwork <- function(dir,
   # adjust name with first definition - removed
   #main_names <- sapply(main.functions,
   #  function(x) x[sort(unique(unlist(sapply(variations, grep, x))))][1])
-  #names(main.functions) <- gsub(" ", "", sapply(strsplit(main_names, "<-"), "[[", 1))
+  #names(main.functions) <- gsub(" ", "", sapply(base::strsplit(main_names, "<-"), "[[", 1))
   
   # remove " <- functions" within strings in functions
   #all.functions <- lapply(all.functions,
@@ -196,7 +220,7 @@ getnetwork <- function(dir,
   
   if (!is.null(def.sub_functions)) {
     names(sub_functions) <- 
-      unlist(gsub(" ", "", lapply(strsplit(def.sub_functions, "<-"), "[[", 1))) 
+      unlist(gsub(" ", "", lapply(base::strsplit(def.sub_functions, "<-"), "[[", 1))) 
   }
   
   
@@ -259,7 +283,7 @@ getnetwork <- function(dir,
   
   def.functions <- 
     unique(unlist(gsub(" ", "",
-                       lapply(strsplit(def.functions, "<-"), "[[", 1))))
+                       lapply(base::strsplit(def.functions, "<-"), "[[", 1))))
   
   # used for later adjustments of the network matrix
   def.functions2 <- 
@@ -268,7 +292,7 @@ getnetwork <- function(dir,
   
   def.functions2 <- 
     lapply(def.functions2,
-           function(x) gsub(" ", "", sapply(strsplit(x, "<-"), "[[", 1)))
+           function(x) gsub(" ", "", sapply(base::strsplit(x, "<-"), "[[", 1)))
   
   def.functions2 <- 
     lapply(seq_along(def.functions2),
@@ -355,3 +379,6 @@ getnetwork <- function(dir,
   
   return(out)
 }
+
+
+

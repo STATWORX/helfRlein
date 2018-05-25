@@ -2,7 +2,7 @@
 % Please edit documentation in R/strsplit.R
 \name{strsplit}
 \alias{strsplit}
-\title{improved strsplit}
+\title{improved strsplit function}
 \usage{
 strsplit(x, split, type = "remove", perl = FALSE, ...)
 }
@@ -50,4 +50,7 @@ strsplit(x, "[/&]", type = "after")
 \seealso{
 \code{\link[base]{strsplit}} or
   \url{https://stackoverflow.com/questions/15575221} for more details.
+}
+\author{
+Jakob Gepp
 }

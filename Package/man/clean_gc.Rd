@@ -16,7 +16,7 @@ in memory size is lower than this, the function stops.}
 printed.}
 }
 \description{
-Function that cleans the memory by using gc() numerous times.
+Function that cleans the memory by using \code{gc()} numerous times.
 }
 \details{
 The function calls \code{gc()} a number of times till the difference of 
@@ -25,4 +25,7 @@ the memory size is below the \code{threshold}.
 \examples{
 clean_gc(verbose = TRUE)
 
+}
+\author{
+Jakob Gepp
 }

@@ -9,14 +9,15 @@ na_omitlist(y = list(), recursive = FALSE)
 \arguments{
 \item{y}{a list}
 
-\item{recursive}{logical. Should NA within the list elements be removed too?}
+\item{recursive}{logical. If \code{TRUE}, \code{NA}s within the list's
+elements aree removed too.}
 }
 \value{
-returns the list without NA's
+Returns the list without \code{NA}s.
 }
 \description{
-This functions removes NA's from a list. With \code{recursive == TRUE} 
-   NA's within each listelements are removed as well.
+This functions removes \code{NA}s from a list. With \code{recursive == TRUE} 
+   \code{NA}s within each list's elements are removed as well.
 }
 \examples{
 y <- list(c(1:3), letters[1:4], NA, c(1, NA), list(c(5:6, NA), NA, "A"))
@@ -37,4 +38,7 @@ na_omitlist(y, recursive = TRUE)
 #
 # [[4]][[2]]
 # [1] "A"
+}
+\author{
+Jakob Gepp
 }

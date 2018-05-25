@@ -13,9 +13,12 @@
 #' intersect2(c(1:3), c(1:4), c(1:2))
 #' # [1] 1 2
 #' 
+#' @author Jakob Gepp
+#' 
 intersect2 <- function(...) {
   args <- list(...)
   nargs <- length(args)
+  
   if(nargs <= 1) {
     if(nargs == 1 && is.list(args[[1]])) {
       do.call("intersect2", args[[1]])

@@ -10,7 +10,7 @@ getnetwork(dir, variations = c(" <- function", "<- function", "<-function"),
 \arguments{
 \item{dir}{a path that includes the functions}
 
-\item{variations}{a charachter vector with the functions definition string.
+\item{variations}{a character vector with the function's definition string.
 The default is c(" <- function", "<- function", "<-function").}
 
 \item{pattern}{a string with the file suffix - default is "\\.R".}
@@ -23,7 +23,23 @@ Returns an object with the adjacency matrix \code{$matrix} and
 With this function a network plot of the connections of the functions
 in a given path can be created.
 }
+\note{
+TODO
+- list with exclude files
+- '' in one line
+}
+\examples{
+\dontrun{
+net <- getnetwork(dir = "R/")
+g1 <- net$igraph
+plot(g1)
+}
+
+}
 \seealso{
-For more information see:
- https://www.statworx.com/de/blog/flowcharts-of-functions/
+For more information see 
+[our blog](https://www.statworx.com/de/blog/flowcharts-of-functions/).
+}
+\author{
+Jakob Gepp
 }

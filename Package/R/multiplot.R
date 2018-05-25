@@ -1,4 +1,3 @@
-#
 #' @title combine multiple ggplots
 #' 
 #' @description 
@@ -22,8 +21,10 @@
 #' 
 #' @import grid
 #' 
-#' @seealso http://www.cookbook-r.com/Graphs/Multiple_graphs_on_one_page_(ggplot2)/
-#' 
+#' @seealso This is copied from the 
+#' [Cookbook for R](http://www.cookbook-r.com/Graphs/Multiple_graphs_on_one_page_(ggplot2)/)
+#'  
+#' @author Cookbook for R
 #' 
 
 multiplot <- function(..., plotlist = NULL, cols = 1, layout = NULL) {
