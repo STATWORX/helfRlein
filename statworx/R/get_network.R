@@ -14,25 +14,23 @@
 #'   and igraph object \code{$igraph}. 
 #'   
 #' @seealso For more information see 
-#' [our blog](https://www.statworx.com/de/blog/flowcharts-of-functions/).
+#' \href{https://www.statworx.com/de/blog/flowcharts-of-functions/}{our blog}.
 #'  
 #' @export
 #' @author Jakob Gepp
 #' 
 #' @note
-#' TODO
-#' - list with exclude files
-#' - '' in one line
+#' TODO: list with exclude files and comments ' ' in one line
 #' 
 #' @examples 
 #' \dontrun{
-#' net <- getnetwork(dir = "R/")
+#' net <- get_network(dir = "R/")
 #' g1 <- net$igraph
 #' plot(g1)
 #' }
 #' 
 
-getnetwork <- function(dir,
+get_network <- function(dir,
                        variations = c(" <- function", "<- function", "<-function"),
                        pattern = "\\.R") {
   
