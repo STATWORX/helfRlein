@@ -48,8 +48,9 @@ strsplit(x, "[/&]", type = "after")
 
 }
 \seealso{
-\code{\link[base]{strsplit}} or
-  \url{https://stackoverflow.com/questions/15575221} for more details.
+\code{\link[base]{strsplit}} or 
+  \href{https://stackoverflow.com/questions/15575221}{stackoverflow}
+   for more details.
 }
 \author{
 Jakob Gepp

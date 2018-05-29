@@ -29,7 +29,7 @@ then plot 1 will go in the upper left, 2 will go in the upper right, and
 }
 \seealso{
 This is copied from the 
-[Cookbook for R](http://www.cookbook-r.com/Graphs/Multiple_graphs_on_one_page_(ggplot2)/)
+ \href{http://www.cookbook-r.com/Graphs/Multiple_graphs_on_one_page_(ggplot2)/}{Cookbook for R}
 }
 \author{
 Cookbook for R
