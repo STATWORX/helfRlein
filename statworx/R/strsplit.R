@@ -19,8 +19,9 @@
 #' @return A list of the same length as x, the i-th element of which contains
 #'   the vector of splits of x[i].
 #' @export
-#' @seealso \code{\link[base]{strsplit}} or
-#'   \url{https://stackoverflow.com/questions/15575221} for more details.
+#' @seealso \code{\link[base]{strsplit}} or 
+#'   \href{https://stackoverflow.com/questions/15575221}{stackoverflow}
+#'    for more details.
 #'   
 #' @examples
 #' x <- c("3D/MON&SUN")
