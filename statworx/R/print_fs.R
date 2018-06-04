@@ -19,6 +19,17 @@
 #' 
 print_fs <- function(path = ".", silent = FALSE) {
   
+  # check path
+  if (length(path) != 1) {
+    stop("path must have length one")
+  }
+  if (!is.character(path)) {
+    stop("path must be a character")
+  }
+  if (!dir.exists(path)) {
+    stop("path does not exist")
+  }
+  
   # get files
   files <- list.files(path = path, 
                       recursive = TRUE,
@@ -33,5 +44,6 @@ print_fs <- function(path = ".", silent = FALSE) {
     return(file_structure)
   } else {
     print(file_structure)
+    return(NULL)
   }
 }

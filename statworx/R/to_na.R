@@ -31,6 +31,12 @@
 #'   - nan, infinite, other defined values
 #'
 to_na <- function(x) {
+  # check input
+  if (!is.vector(x)) {
+    stop("input must be a vector")
+  }
+  
+  # convert input
   if (is.character(x)) {
     return(x)
   } else {

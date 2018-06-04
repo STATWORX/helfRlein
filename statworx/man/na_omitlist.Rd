@@ -38,6 +38,7 @@ na_omitlist(y, recursive = TRUE)
 #
 # [[4]][[2]]
 # [1] "A"
+
 }
 \author{
 Jakob Gepp

@@ -25,10 +25,13 @@
 #' 
 get_sequence <- function(x,
                          pattern,
-                         minsize = 2) {
+                         minsize = 2L) {
   # check minsize
-  if (minsize < 2) {
+  if (minsize < 2 | !is.numeric(minsize)) {
     stop("minsize must be an integer >= 2")
+  }
+  if (!is.integer(minsize)) {
+    warning(paste0("set minsize so next integer: ", ceiling(minsize)))
   }
   
   # get indices with the pattern

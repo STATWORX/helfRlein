@@ -4,7 +4,7 @@
 \alias{get_sequence}
 \title{get start and end indices of a given pattern within a vector}
 \usage{
-get_sequence(x, pattern, minsize = 2)
+get_sequence(x, pattern, minsize = 2L)
 }
 \arguments{
 \item{x}{a vector}

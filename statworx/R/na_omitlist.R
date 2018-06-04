@@ -30,16 +30,17 @@
 #' #
 #' # [[4]][[2]]
 #' # [1] "A"
+#' 
 #' @author Jakob Gepp
 
 na_omitlist <- function(y = list(),
-                         recursive = FALSE) {
+                        recursive = FALSE) {
   
   if (recursive && anyNA(y, recursive = TRUE)) {
     y <- y[!sapply(y, function(x) all(is.na(x)))]
-    y <- sapply(y, na_omitlist, recursive = TRUE)
+    y <- sapply(y, na_omitlist, recursive = TRUE, simplify = TRUE)
   } else {
-    y <- y[!sapply(y, function(x) all(is.na(x)))]
+    y <- y[!sapply(y, function(x) all(is.na(x)), simplify = TRUE)]
   }
   return(y)
 }
