@@ -38,12 +38,19 @@
 #' # [1] "3D/"  "MON&" "SUN"
 #' 
 #' @author Jakob Gepp
+#' @note
+#'  TODO fix problem for fixed == TRUE
 #' 
 strsplit <- function(x,
                      split,
                      type = "remove",
                      perl = FALSE,
                      ...) {
+  
+  if (!type %in% c("remove", "before", "after")) {
+    stop("type must be remove, after or before!")
+  }
+  
   if (type == "remove") {
     # use base::strsplit
     out <- base::strsplit(x = x, split = split, perl = perl, ...)
@@ -59,8 +66,6 @@ strsplit <- function(x,
                           split = paste0("(?<=", split, ")"),
                           perl = TRUE,
                           ...)
-  } else {
-    stop("type must be remove, after or before!")
   }
   
   return(out)

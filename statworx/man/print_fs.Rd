@@ -4,13 +4,15 @@
 \alias{print_fs}
 \title{print file structure}
 \usage{
-print_fs(path = ".", silent = FALSE)
+print_fs(path = ".", silent = FALSE, depth = 2L)
 }
 \arguments{
 \item{path}{a folder path.}
 
 \item{silent}{a logical value. If \code{TRUE} the return value is a data.tree
 with the file structure and nothing is printed.}
+
+\item{depth}{a positive integer with the depth of the folder structure.}
 }
 \value{
 Either the file structure gets printed or returned.

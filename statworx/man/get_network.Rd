@@ -25,6 +25,8 @@ in a given path can be created.
 }
 \note{
 TODO: list with exclude files and comments ' ' in one line
+
+TODO: maybe return plot
 }
 \examples{
 \dontrun{

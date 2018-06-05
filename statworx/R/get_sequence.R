@@ -32,6 +32,7 @@ get_sequence <- function(x,
   }
   if (!is.integer(minsize)) {
     warning(paste0("set minsize so next integer: ", ceiling(minsize)))
+    minsize <- ceiling(minsize)
   }
   
   # get indices with the pattern

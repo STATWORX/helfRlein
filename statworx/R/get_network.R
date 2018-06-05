@@ -22,6 +22,8 @@
 #' @note
 #' TODO: list with exclude files and comments ' ' in one line
 #' 
+#' TODO: maybe return plot
+#' 
 #' @examples 
 #' \dontrun{
 #' net <- get_network(dir = "R/")

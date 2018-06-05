@@ -32,6 +32,9 @@ A list of the same length as x, the i-th element of which contains
 This functions uses \code{\link[base]{strsplit}} and adds the
 possibility to split and keep the delimiter after or before the given split.
 }
+\note{
+TODO fix problem for fixed == TRUE
+}
 \examples{
 x <- c("3D/MON&SUN")
 strsplit(x, "[/&]")
