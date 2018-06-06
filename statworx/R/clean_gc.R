@@ -1,7 +1,7 @@
 #' @title Using gc multiple times
 #'
 #' @description
-#' Cleans the memory by using \code{gc()} numerous times.
+#' Cleans the memory by using \code{gc()} numerous times until.
 #' 
 #' @details
 #' The function calls \code{gc()} until the difference in 
@@ -9,7 +9,7 @@
 #'
 #' @param num.gc a numeric that indicates the maximum number of iterations.
 #' @param threshold a numeric with the percentage difference. If the change 
-#'        in memory size is lower than this, the function stops.
+#'        in memory size falls below the threshold, the function stops.
 #' @param verbose a boolean. If \code{TRUE} information about the run are 
 #'        printed.
 #' 
