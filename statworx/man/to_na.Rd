@@ -13,10 +13,10 @@ to_na(x)
 Returns vector with with replaced \code{NA}values.
 }
 \description{
-Function to take out \code{NaN} and \code{Inf} and replace them with \code{NA}
+Takes out \code{NaN} and \code{Inf} and replaces them with \code{NA}
 }
 \note{
---- Idea
+--- Idea for improvement
 Add args to flexible select which scenarios should be set NA
   - nan, infinite, other defined values
 }

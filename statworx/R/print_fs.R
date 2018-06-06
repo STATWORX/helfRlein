@@ -8,11 +8,10 @@
 #' @param depth a positive integer with the depth of the folder structure.
 #'
 #' @export
-#' 
-#' @return
-#'  Either the file structure gets printed or returned.
 #'
-#' @importFrom data.tree as.Node, Prune
+#' @return Either the file structure gets printed or returned.
+#'
+#' @importFrom data.tree Prune as.Node
 #' @author Jakob Gepp
 #' @examples
 #'
