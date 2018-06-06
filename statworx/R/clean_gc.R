@@ -1,11 +1,11 @@
 #' @title Using gc multiple times
 #'
 #' @description
-#' Function that cleans the memory by using \code{gc()} numerous times.
+#' Cleans the memory by using \code{gc()} numerous times.
 #' 
 #' @details
-#' The function calls \code{gc()} a number of times until the difference of 
-#' the memory size is below the \code{threshold}.
+#' The function calls \code{gc()} until the difference in 
+#'  memory size falls below the \code{threshold}.
 #'
 #' @param num.gc a numeric that indicates the maximum number of iterations.
 #' @param threshold a numeric with the percentage difference. If the change 
