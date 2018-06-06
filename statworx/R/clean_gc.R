@@ -4,7 +4,7 @@
 #' Function that cleans the memory by using \code{gc()} numerous times.
 #' 
 #' @details
-#' The function calls \code{gc()} a number of times till the difference of 
+#' The function calls \code{gc()} a number of times until the difference of 
 #' the memory size is below the \code{threshold}.
 #'
 #' @param num.gc a numeric that indicates the maximum number of iterations.
