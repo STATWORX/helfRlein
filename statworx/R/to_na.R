@@ -1,7 +1,7 @@
 #' @title replace NaN and Inf with NA
 #'
 #' @description 
-#' Function to take out \code{NaN} and \code{Inf} and replace them with \code{NA}
+#' Takes out \code{NaN} and \code{Inf} and replaces them with \code{NA}
 #'
 #' @param x vector
 #'
@@ -26,7 +26,7 @@
 #' # [1]  1  0 NA NA
 #' 
 #' @author Daniel Luettgau
-#' @note --- Idea
+#' @note --- Idea for improvement
 #' Add args to flexible select which scenarios should be set NA
 #'   - nan, infinite, other defined values
 #'
