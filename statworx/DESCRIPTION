@@ -2,7 +2,7 @@ Package: statworx
 Type: Package
 Date: 2018-05-28
 Title: R-Helper functions
-Version: 0.1
+Version: 0.0.0.9000
 Authors@R: c(
     person("Jakob", "Gepp", email = "jakob.gepp@statworx.com", role = "cre"),
     person("Daniel", "Luettgau", email = "daniel.luettgau@statworx.com", role = "aut"),
