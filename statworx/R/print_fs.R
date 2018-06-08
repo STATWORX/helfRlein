@@ -3,8 +3,6 @@
 #' @description Prints the directories and files of the given path.
 #'
 #' @param path a folder path.
-#' @param silent a logical value. If \code{TRUE} the return value is a data.tree
-#'   with the file structure and nothing is printed.
 #' @param depth a positive integer with the depth of the folder structure.
 #'
 #' @export
@@ -17,7 +15,7 @@
 #'
 #' print_fs(path = ".")
 #' 
-print_fs <- function(path = ".", silent = FALSE, depth = 2L) {
+print_fs <- function(path = ".", depth = 2L) {
   
   # check path
   if (length(path) != 1) {
@@ -57,10 +55,5 @@ print_fs <- function(path = ".", silent = FALSE, depth = 2L) {
   data.tree::Prune(file_structure, function(node)  node$depths <= depth)
   
   # return value
-  if (silent) {
-    return(file_structure)
-  } else {
-    print(file_structure)
-    return(NULL)
-  }
+  return(file_structure)
 }
