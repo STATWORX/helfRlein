@@ -47,3 +47,13 @@ test_that("result if minsize is a numeric", {
   expect_equal(tmp1, res1)
 })
 
+test_that("input is a character vector", {
+  x <- c(letters[c(1,1,2,3,1,1,1,1,2)])
+  tmp1 <- get_sequence(x, pattern = "a")
+  res1 <- matrix(c(1,2,5,8),
+                 ncol = 2,
+                 byrow = TRUE,
+                 dimnames = list(NULL, c("min", "max")))
+  
+  expect_equal(tmp1, res1)
+})

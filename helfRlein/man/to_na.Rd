@@ -17,7 +17,9 @@ Takes out \code{NaN} and \code{Inf} and replaces them with \code{NA}
 }
 \note{
 --- Idea for improvement
+
 Add args to flexible select which scenarios should be set NA
+
   - nan, infinite, other defined values
 }
 \examples{

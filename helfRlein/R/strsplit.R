@@ -39,7 +39,7 @@
 #' 
 #' @author Jakob Gepp
 #' @note
-#'  TODO fix problem for fixed == TRUE
+#'  TODO see issues for further advancements
 #' 
 strsplit <- function(x,
                      split,

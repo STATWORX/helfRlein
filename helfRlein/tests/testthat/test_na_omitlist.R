@@ -20,5 +20,16 @@ test_that("if all but one is NA and recursive == TURE, the result is not a list"
   expect_type(tmp2, "double")
   expect_type(tmp3, "list")
   expect_type(tmp4, "list")
+})
+
+test_that("example works as specified", {
+  y <- list(c(1:3), letters[1:4], NA, c(1, NA), list(c(5:6, NA), NA, "A"))
+  tmp1 <- na_omitlist(y, recursive = FALSE)
+  tmp2 <- na_omitlist(y, recursive = TRUE)
   
+  res1 <- list(c(1:3), letters[1:4], c(1, NA), list(c(5:6, NA), NA, "A"))
+  res2 <- list(c(1:3), letters[1:4], c(1), list(c(5:6), "A"))
+  
+  expect_equal(tmp1, res1)
+  expect_equal(tmp2, res2)
 })

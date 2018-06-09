@@ -33,7 +33,7 @@ This functions uses \code{\link[base]{strsplit}} and adds the
 possibility to split and keep the delimiter after or before the given split.
 }
 \note{
-TODO fix problem for fixed == TRUE
+TODO see issues for further advancements
 }
 \examples{
 x <- c("3D/MON&SUN")
