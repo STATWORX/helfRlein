@@ -10,19 +10,22 @@ clean_gc(num.gc = 100, threshold = 0.01, verbose = FALSE)
 \item{num.gc}{a numeric that indicates the maximum number of iterations.}
 
 \item{threshold}{a numeric with the percentage difference. If the change 
-in memory size is lower than this, the function stops.}
+in memory size falls below the threshold, the function stops.}
 
 \item{verbose}{a boolean. If \code{TRUE} information about the run are 
 printed.}
 }
 \description{
-Function that cleans the memory by using gc() numerous times.
+Cleans the memory by using \code{gc()} numerous times until.
 }
 \details{
-The function calls \code{gc()} a number of times till the difference of 
-the memory size is below the \code{threshold}.
+The function calls \code{gc()} until the difference in 
+ memory size falls below the \code{threshold}.
 }
 \examples{
 clean_gc(verbose = TRUE)
 
+}
+\author{
+Jakob Gepp
 }

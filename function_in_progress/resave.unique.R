@@ -1,7 +1,7 @@
 #' @title Save only unique data
 #' 
 #' @description
-#' Function to regoranize large unorganized filse into multiple new
+#' Function to regoranize large unorganized files into multiple new
 #' files based on categorical variable.
 #' 
 #' Function in its current state is generated for MS specific use,
@@ -16,7 +16,7 @@
 #' @export
 #'
 #' @examples
-#' 
+#' @author Daniel Luettgau
 #' 
 
 resave_unique <- function(dt,
@@ -30,7 +30,7 @@ resave_unique <- function(dt,
     stop("dt must be a data.table")
   }
   
-  # Search for files in desination folder
+  # Search for files in destination folder
   files2 <- list.files(path = path)
   
   # Find file relevant file 
