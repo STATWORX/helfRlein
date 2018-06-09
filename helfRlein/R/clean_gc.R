@@ -1,7 +1,7 @@
 #' @title Using gc multiple times
 #'
 #' @description
-#' Cleans the memory by using \code{gc()} numerous times until.
+#' Cleans the memory by using \code{gc()} numerous times.
 #' 
 #' @details
 #' The function calls \code{gc()} until the difference in 

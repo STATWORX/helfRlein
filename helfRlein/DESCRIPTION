@@ -2,7 +2,7 @@ Package: helfRlein
 Type: Package
 Date: 2018-06-09
 Title: R-Helper functions
-Version: 0.0.0.9000
+Version: 0.1.0
 Authors@R: c(
     person("Jakob", "Gepp", email = "jakob.gepp@statworx.com", role = c("cre", "aut")),
     person("Daniel", "Luettgau", email = "daniel.luettgau@statworx.com", role = c("aut")),
