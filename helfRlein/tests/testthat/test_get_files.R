@@ -9,10 +9,11 @@ test_that("Handles wrong Inputs", {
   
   # Arguments must be character stings
   expect_error(get_files(".", pattern = 0L),
-               "is.character(pattern) is not TRUE")
+               "'pattern' must be a character string")
   expect_error(get_files(0L, pattern = 0L),
-               "is.character(dir) is not TRUE")
+               "'dir' must be a character string")
   expect_error(get_files(0L, pattern = "0L"),
-               "is.character(dir) is not TRUE")
+               "'dir' must be a character string")
   
 })
+

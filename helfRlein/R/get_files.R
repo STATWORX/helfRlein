@@ -28,7 +28,8 @@
 #' }
 get_files <- function(dir, pattern = "") {
   
-  stopifnot(is.character(dir), is.character(pattern))
+  if (!is.character(dir)) stop("'dir' must be a character string")
+  if (!is.character(pattern)) stop("'pattern' must be a character string")
   if (!dir.exists(dir)) stop(sprintf("Directory '%s' doesn't exist.", dir))
   
   files <- list.files(dir, full.names = FALSE, recursive = TRUE, 
