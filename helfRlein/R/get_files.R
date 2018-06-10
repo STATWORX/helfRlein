@@ -17,7 +17,6 @@
 #' @importFrom magrittr %>%
 #' @importFrom purrr map_chr
 #' @importFrom readr read_file
-#' @importFrom glue glue
 #'
 #' @export
 #'
@@ -25,7 +24,7 @@
 get_files <- function(dir, pattern = "") {
   
   stopifnot(is.character(dir), is.character(pattern))
-  if (!dir.exists(dir)) stop(glue("Directory '{dir}' doesn't exist."))
+  if (!dir.exists(dir)) stop(paste0("Directory '", dir, "' doesn't exist."))
   
   files <- list.files(dir, full.names = TRUE, recursive = TRUE, 
                       pattern = "*.R", ignore.case = TRUE) 
