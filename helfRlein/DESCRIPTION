@@ -7,7 +7,7 @@ Authors@R: c(
     person("Jakob", "Gepp", email = "jakob.gepp@statworx.com", role = c("cre", "aut")),
     person("Daniel", "Luettgau", email = "daniel.luettgau@statworx.com", role = c("aut")),
     person("Andre", "Bleier", email = "andre.bleier@statworx.com", role = c("aut")),
-    person("Markus", "Berroth", email = "markus.berruth@statworx.com", role = c("ctb"))
+    person("Markus", "Berroth", email = "markus.berruth@statworx.com", role = c("ctb")),
     person("Tobias", "Krabel", email = "tobias.krabel@statworx.com", role = c("aut"))
     )
 Description: A usefull collection of R helper functions.
