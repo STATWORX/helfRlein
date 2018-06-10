@@ -15,22 +15,27 @@
 #'   pattern
 #'
 #' @importFrom magrittr %>%
-#' @importFrom purrr map_chr
 #' @importFrom readr read_file
 #'
 #' @export
 #'
 #' @author Tobias Krabel
+#' 
+#' @examples
+#' \dontrun{
+#' # Find all files in . that load packages through library
+#' get_files(dir = ".", pattern = "library")
+#' }
 get_files <- function(dir, pattern = "") {
   
   stopifnot(is.character(dir), is.character(pattern))
-  if (!dir.exists(dir)) stop(paste0("Directory '", dir, "' doesn't exist."))
+  if (!dir.exists(dir)) stop(sprintf("Directory '%s' doesn't exist.", dir))
   
-  files <- list.files(dir, full.names = TRUE, recursive = TRUE, 
-                      pattern = "*.R", ignore.case = TRUE) 
+  files <- list.files(dir, full.names = FALSE, recursive = TRUE, 
+                      pattern = "*.R$", ignore.case = TRUE) 
   
   is_found <- files %>%
-    map_chr(., read_file) %>%
+    vapply(., readr::read_file, "character") %>%
     grepl(x = ., pattern = pattern)
   
   files[is_found]
