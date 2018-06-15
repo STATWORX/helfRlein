@@ -13,3 +13,4 @@ Weitere Infos befinden sich im Trelloboard: STATWORX package
 Auf dem *master*-Branch sollen nur vollständige package Versionen liegen (gilt ab der ersten Version) und alle aktiven Arbeiten finden auf dem *dev*-Branch statt.
 
 
+
