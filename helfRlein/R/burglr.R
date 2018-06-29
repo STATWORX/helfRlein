@@ -14,7 +14,7 @@
 #' @export
 #'
 #' @examples
-#' burglr(urls = "https://github.com/andrebleier/Xy/master/Xy.R")
+#' burglr(urls = "https://github.com/andrebleier/dive/master/dive.R")
 #' 
 #' @seealso For more information and updates see
 #' \href{https://github.com/andrebleier/burglr}{here}.

@@ -36,8 +36,8 @@ get_files <- function(dir, pattern = "") {
                       pattern = "*.R$", ignore.case = TRUE) 
   
   is_found <- files %>%
-    vapply(., readr::read_file, "character") %>%
-    grepl(x = ., pattern = pattern)
+    vapply(readr::read_file, "character") %>%
+    grepl(pattern = pattern)
   
   files[is_found]
   
