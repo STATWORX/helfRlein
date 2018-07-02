@@ -1,11 +1,11 @@
 #'  Palette for STATWORX Corporate Identity
 #'
-#' @return
+#' @return 
 #' @export
 #'
-#' @examples
+#' @author Martin Albers
+#' @usage 
 sci_palette <- function() {
-  
   hauptfarbe <- rgb(1, 56, 72, maxColorValue = 255)
   akzent_1 <- rgb(0, 133, 175, maxColorValue = 255)
   akzent_2 <- rgb(0, 163, 120, maxColorValue = 255)

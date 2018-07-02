@@ -1,2 +1,6 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^\img
+^.RData
+^.Rhistory
+^README.md
