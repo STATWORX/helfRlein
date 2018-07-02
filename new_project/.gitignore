@@ -1,0 +1,16 @@
+# Folder
+00_input/*
+01_data/*
+03_outputs/*
+ 
+# Data
+*.csv
+*.RData
+*.npy
+*.png
+*.jpeg
+*.xlsx
+*.xlx
+ 
+# Others
+
