@@ -16,7 +16,7 @@ in memory size falls below the threshold, the function stops.}
 printed.}
 }
 \description{
-Cleans the memory by using \code{gc()} numerous times until.
+Cleans the memory by using \code{gc()} numerous times.
 }
 \details{
 The function calls \code{gc()} until the difference in 
