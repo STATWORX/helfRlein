@@ -5,7 +5,10 @@
 #' @author Martin Albers
 #' @usage sci_palette()
 #' 
-#' @example plot(c(1,2,3),c(1,2,3), col=sci_palette()[3], pch=16)
+#' @export
+#' @examples 
+#' plot(c(1,2,3), c(1,2,3), col = sci_palette()[3], pch = 16)
+#' 
 sci_palette <- function() {
   hauptfarbe <- rgb(1, 56, 72, maxColorValue = 255)
   akzent_1 <- rgb(0, 133, 175, maxColorValue = 255)
