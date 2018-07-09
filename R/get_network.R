@@ -290,6 +290,17 @@ get_network <- function(dir,
     lapply(seq_along(all.files),
            function(x) all.files[[x]][def.function.index[[x]]])
   
+  # check for non characters
+  def.functions2 <- 
+    lapply(def.functions2, function(x) {
+      if (is.character(x)) {
+        x
+      } else {
+        character(0)
+      }
+    }) 
+  
+  
   def.functions2 <- 
     lapply(def.functions2,
            function(x) gsub(" ", "", sapply(base::strsplit(x, "<-"), "[[", 1)))
