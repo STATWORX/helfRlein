@@ -27,8 +27,13 @@ sci_palette <- function(number = 9) {
            grau_2     = rgb(217, 217, 217, maxColorValue = 255),
            hellgrau   = rgb(248, 248, 248, maxColorValue = 255))
   
+  # check input number
+  if (!is.numeric(number)) {
+    stop("number needs to be numeric")
+  }
+  
   if (number > length(out)) {
-    stop(paste0("there are only ", number, " colors set!"))
+    stop(paste0("there are only ", length(out), " colors set!"))
   }
   
   out <- out[seq_len(number)]
