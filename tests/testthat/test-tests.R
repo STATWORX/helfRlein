@@ -11,10 +11,11 @@ test_that("if for each function there is an testfile namend 'test_xxx'", {
   
   # remove exceptions from tests
   package_files <- c("tests.R", "helfRlein.R")
-  exceptions <- c("burglr.R", "clean_gc.R", "get_network.R",
+  exceptions <- c("burglr.R", "get_network.R",
                   "multiplot.R", "dive.R")
   if (length(intersect(exceptions, test_files)) != 0) {
-    warning("there are exceptions for files that have a test")
+    warning("there are exceptions for files that have a test: ", 
+            paste0(intersect(exceptions, test_files), collapse = ", "))
   }
   
   function_files <- setdiff(function_files, c(exceptions, package_files))
