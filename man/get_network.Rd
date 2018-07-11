@@ -4,8 +4,8 @@
 \alias{get_network}
 \title{flowchart of R projects}
 \usage{
-get_network(dir, variations = c(" <- function", "<- function", "<-function"),
-  pattern = "\\\\.R")
+get_network(dir, variations = c("<- function", "<-function"),
+  pattern = "\\\\.R$", simplify = FALSE)
 }
 \arguments{
 \item{dir}{a path that includes the functions}
@@ -13,7 +13,10 @@ get_network(dir, variations = c(" <- function", "<- function", "<-function"),
 \item{variations}{a character vector with the function's definition string.
 The default is c(" <- function", "<- function", "<-function").}
 
-\item{pattern}{a string with the file suffix - default is "\\.R".}
+\item{pattern}{a string with the file suffix - default is "\\.R$".}
+
+\item{simplify}{a boolean, if \code{TRUE} function with no connections are
+removed from the plot.}
 }
 \value{
 Returns an object with the adjacency matrix \code{$matrix} and 
@@ -30,7 +33,7 @@ TODO: maybe return plot
 }
 \examples{
 \dontrun{
-net <- get_network(dir = "R/")
+net <- get_network(dir = "R/", simplify = TRUE)
 g1 <- net$igraph
 plot(g1)
 }
