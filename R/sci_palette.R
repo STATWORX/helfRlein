@@ -1,33 +1,38 @@
 #'  Palette for STATWORX Corporate Identity
 #'
-#' @description Palette for Statworx´s Corporate Identity colors. 
+#' @description Palette for Statworx's Corporate Identity colors. 
 #' 
 #' @details
 #' The \code{plot} function gives an example of the colors.
 #'
-#' @author Martin Albers, Jakob Gepp
-#' @usage sci_palette()
 #' 
 #' @param number a numeric \code{(1-9)} with the number of colors
 #' 
-#' @export
-#' @examples 
-#' # plotting three colors
-#' plot(sci_palette(3))
+#' @importFrom grDevices rgb
+#' @importFrom graphics plot title text
 #' 
-sci_palette <- function(number = 9) {
+#' @author Martin Albers, Jakob Gepp
+#' @export
+#' @examples
+#' sci_palette(3) # plotting three colors
+#' 
+sci_palette <- function(number = NULL) {
   
-  out <- c(hauptfarbe = rgb(1, 56, 72, maxColorValue = 255),
-           akzent_1   = rgb(0, 133, 175, maxColorValue = 255),
-           akzent_2   = rgb(0, 163, 120, maxColorValue = 255),
-           akzent_3   = rgb(9, 85, 127, maxColorValue = 255),
-           highlight  = rgb(255, 128, 0, maxColorValue = 255),
-           schwarz    = rgb(0, 0, 0, maxColorValue = 255),
-           fließtext  = rgb(105, 105, 105, maxColorValue = 255),
-           grau_2     = rgb(217, 217, 217, maxColorValue = 255),
-           hellgrau   = rgb(248, 248, 248, maxColorValue = 255))
+  out <- c(hauptfarbe = grDevices::rgb(1, 56, 72, maxColorValue = 255),
+           akzent_1   = grDevices::rgb(0, 133, 175, maxColorValue = 255),
+           akzent_2   = grDevices::rgb(0, 163, 120, maxColorValue = 255),
+           akzent_3   = grDevices::rgb(9, 85, 127, maxColorValue = 255),
+           highlight  = grDevices::rgb(255, 128, 0, maxColorValue = 255),
+           schwarz    = grDevices::rgb(0, 0, 0, maxColorValue = 255),
+           fliestext  = grDevices::rgb(105, 105, 105, maxColorValue = 255),
+           grau_2     = grDevices::rgb(217, 217, 217, maxColorValue = 255),
+           hellgrau   = grDevices::rgb(248, 248, 248, maxColorValue = 255))
   
   # check input number
+  if (is.null(number)) {
+    number <- length(out)
+  }
+  
   if (!is.numeric(number)) {
     stop("number needs to be numeric")
   }
@@ -44,7 +49,7 @@ sci_palette <- function(number = 9) {
 }
 
 plot.sci <- function(sci, ...) {
-  plot(x = seq_along(sci),
+  graphics::plot(x = seq_along(sci),
        y = rep(1, length(sci)),
        col = sci,
        pch = 16,
@@ -52,7 +57,8 @@ plot.sci <- function(sci, ...) {
        xlim = c(0, length(sci) + 1),
        ann = FALSE,
        xaxt = "n",
-       yaxt = "n" , ... = ...)
-  text(seq_along(sci), rep(1.2, length(sci)) , sci, srt = 90)
-  title("STATWORX´s colors")
+       yaxt = "n" ,
+       ...)
+  graphics::text(seq_along(sci), rep(1.2, length(sci)) , sci, srt = 90)
+  graphics::title("STATWORX's colors")
 }
