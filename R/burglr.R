@@ -14,7 +14,10 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' # this needs internet connection
 #' burglr(urls = "https://github.com/andrebleier/dive/master/dive.R")
+#' } 
 #' 
 #' @seealso For more information and updates see
 #' \href{https://github.com/andrebleier/burglr}{here}.

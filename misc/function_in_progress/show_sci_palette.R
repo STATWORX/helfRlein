@@ -1,6 +1,6 @@
 #' show_sci_palette
 #'
-#' @description \code{show_sci_palette()} plots a graphic with Statworx´s Corporate Identity colors.
+#' @description \code{show_sci_palette()} plots a graphic with STATWORX´s Corporate Identity colors.
 #'
 #' @return Returns a plot 
 #'

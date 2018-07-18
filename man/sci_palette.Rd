@@ -4,15 +4,21 @@
 \alias{sci_palette}
 \title{Palette for STATWORX Corporate Identity}
 \usage{
-sci_palette()
+sci_palette(number = NULL)
+}
+\arguments{
+\item{number}{a numeric \code{(1-9)} with the number of colors}
 }
 \description{
-Palette for Statworx´s Corporate Identity colors.
+Palette for Statworx's Corporate Identity colors.
+}
+\details{
+The \code{plot} function gives an example of the colors.
 }
 \examples{
-plot(c(1,2,3), c(1,2,3), col = sci_palette()[3], pch = 16)
+sci_palette(3) # plotting three colors
 
 }
 \author{
-Martin Albers
+Martin Albers, Jakob Gepp
 }

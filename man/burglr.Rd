@@ -23,7 +23,10 @@ Well, it is as easy as it sounds. The function takes web URL(s) as input
 Version 1.0 - f871288d8eae25bcd1dd2bf506f5c47a7cbbc6e4
 }
 \examples{
+\dontrun{
+# this needs internet connection
 burglr(urls = "https://github.com/andrebleier/dive/master/dive.R")
+} 
 
 }
 \seealso{

@@ -1,25 +1,74 @@
-## version 0.1.2 in progress
+## version 0.1.2
 
-----
+---
 
+- added automated creation for DESCRIPTION and NEWS.md
+- added tests for functions
 
 ## version 0.1.1
 
-----
+---
 
-### functions
+- restructure folder structure within the git
+- added tests for functions
 
-- added `get_files`, `show_sci_palette`
+## version 0.1.0.9000
+
+---
+
 
 ### setup
 
-- added `NEWS.md`
-- updated `.gitignore`
 - changed folder structure within git
+- updated `.gitignore`
+
+
+### added functions
+
+- get_files
+- sci_palette.R
 
 
 ## version 0.1.0
 
-----
+---
 
-- first stable version
+- made available for first testing
+
+## version 0.0.0.9002
+
+---
+
+
+### added functions
+
+- burglr.R
+- dive.R
+- get_network.R
+- get_sequence.R
+- print_fs.R
+
+
+## version 0.0.0.9001
+
+---
+
+
+### initial functions
+
+- clean_gc.R
+- intersect2.R
+- multiplot.R
+- na_omitlist.R
+- strsplit.R
+- to_na.R
+
+
+## version 0.0.0.9000
+
+---
+
+### setup
+
+- added NEWS.md
+

@@ -7,7 +7,9 @@
 #' @param dir a path that includes the functions 
 #' @param variations a character vector with the function's definition string.
 #'   The default is c(" <- function", "<- function", "<-function").
-#' @param pattern a string with the file suffix - default is "\\.R".
+#' @param pattern a string with the file suffix - default is "\\.R$".
+#' @param simplify a boolean, if \code{TRUE} function with no connections are
+#'   removed from the plot.
 #'
 #' @return
 #'   Returns an object with the adjacency matrix \code{$matrix} and 
@@ -26,21 +28,32 @@
 #' 
 #' @examples 
 #' \dontrun{
-#' net <- get_network(dir = "R/")
+#' net <- get_network(dir = "R/", simplify = TRUE)
 #' g1 <- net$igraph
 #' plot(g1)
 #' }
 #' 
 
 get_network <- function(dir,
-                       variations = c(" <- function", "<- function", "<-function"),
-                       pattern = "\\.R") {
+                        variations = c("<- function",
+                                       "<-function"),
+                        pattern = "\\.R$",
+                        simplify = FALSE) {
+  
+  # check dir
+  if (!dir.exists(dir)) {
+    stop(paste0(dir, " does not exists"))
+  }
   
   # get files
   files.path <- list.files(file.path(dir),
                            pattern = pattern,
                            recursive = TRUE,
                            full.names = TRUE)
+  
+  if (length(files.path) == 0) {
+    stop("no files with the given pattern")
+  }
   
   folder <- dirname(gsub(paste0(dir, "/"), "", files.path))
   
@@ -65,7 +78,7 @@ get_network <- function(dir,
   folder <- folder[keep]
   
   
-  unique(unlist(sapply(variations, grep, all.scripts)))
+  # unique(unlist(sapply(variations, grep, all.scripts)))
   
   # leading spaces
   all.scripts <- lapply(all.scripts,
@@ -290,6 +303,17 @@ get_network <- function(dir,
     lapply(seq_along(all.files),
            function(x) all.files[[x]][def.function.index[[x]]])
   
+  # check for non characters
+  def.functions2 <- 
+    lapply(def.functions2, function(x) {
+      if (is.character(x)) {
+        x
+      } else {
+        character(0)
+      }
+    }) 
+  
+  
   def.functions2 <- 
     lapply(def.functions2,
            function(x) gsub(" ", "", sapply(base::strsplit(x, "<-"), "[[", 1)))
@@ -344,7 +368,6 @@ get_network <- function(dir,
   network <- network[rownames(network)]
   
   # adjust lines, folders
-  
   old_names <- names(lines)
   lines <- c(lines, rep(0, length(new_rows)))
   names(lines) <- c(old_names, new_rows)
@@ -357,6 +380,16 @@ get_network <- function(dir,
   }
   
   all.folder <- c(all.folder, all.folder[tmp.index])
+  
+  # simplify - removing functions with no connections
+  if (simplify) {
+    calls <- apply(1, X = network, FUN = sum) + apply(2, X = network, FUN = sum)
+    keep <- which(calls != 0)
+    network <- network[keep, keep]
+    all.folder <- all.folder[keep]
+    lines <- lines[keep]
+  }
+  
   
   # create igraph
   g1 <- igraph::graph_from_adjacency_matrix(
