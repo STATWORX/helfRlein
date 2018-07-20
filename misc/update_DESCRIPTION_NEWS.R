@@ -133,6 +133,15 @@ my_news$add_bullet(c("added automated creation for DESCRIPTION and NEWS.md",
                      "added tests for functions"))
 
 
+# bug fix plot.sci --------------------------------------------------------
+
+my_desc$bump_version("dev")
+my_news$add_version(my_desc$get_version())
+
+my_news$add_subtitle("Bugfixes")
+my_news$add_bullet(c("fix plot.sci into own method script"))
+
+
 
 # save everything ---------------------------------------------------------
 
