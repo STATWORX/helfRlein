@@ -1,5 +1,5 @@
 # helfRlein <img src="img/helfRlein.png" width=170 align="right" />
-
+[![CircleCI](https://circleci.com/gh/STATWORX/helfRlein.svg?style=svg)](https://circleci.com/gh/STATWORX/helfRlein)
 ----
 
 ## Overview

@@ -1,6 +1,6 @@
 # PLOT --------------------------------------------------------------------
 
-#' @param sci an object of class \code{sci}.
+#' @param x an object of class \code{sci}.
 #' @param ... arguments to be passed to method
 #' @rdname sci_palette
 #' 
@@ -14,17 +14,17 @@
 #' plot(sci_palette())
 #' 
 
-plot.sci <- function(sci, ...) {
-  graphics::plot(x = seq_along(sci),
-                 y = rep(1, length(sci)),
-                 col = sci,
+plot.sci <- function(x, ...) {
+  graphics::plot(x = seq_along(x),
+                 y = rep(1, length(x)),
+                 col = x,
                  pch = 16,
                  cex = 8,
-                 xlim = c(0, length(sci) + 1),
+                 xlim = c(0, length(x) + 1),
                  ann = FALSE,
                  xaxt = "n",
                  yaxt = "n" ,
                  ...)
-  graphics::text(seq_along(sci), rep(1.2, length(sci)) , sci, srt = 90)
+  graphics::text(seq_along(x), rep(1.2, length(x)) , x, srt = 90)
   graphics::title("STATWORX's colors")
 }

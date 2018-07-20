@@ -5,12 +5,12 @@
 \alias{sci_palette}
 \title{Palette for STATWORX Corporate Identity}
 \usage{
-\method{plot}{sci}(sci, ...)
+\method{plot}{sci}(x, ...)
 
 sci_palette(number = NULL)
 }
 \arguments{
-\item{sci}{an object of class \code{sci}.}
+\item{x}{an object of class \code{sci}.}
 
 \item{...}{arguments to be passed to method}
 
