@@ -5,14 +5,15 @@
 #' @details
 #' The \code{plot} function gives an example of the colors.
 #'
-#' 
 #' @param number a numeric \code{(1-9)} with the number of colors
 #' 
 #' @importFrom grDevices rgb
-#' @importFrom graphics plot title text
 #' 
 #' @author Martin Albers, Jakob Gepp
+#' 
+#' @exportClass sci
 #' @export
+#' 
 #' @examples
 #' sci_palette(3) # plotting three colors
 #' 
@@ -46,19 +47,4 @@ sci_palette <- function(number = NULL) {
   class(out) <- "sci"
   
   return(out)
-}
-
-plot.sci <- function(sci, ...) {
-  graphics::plot(x = seq_along(sci),
-       y = rep(1, length(sci)),
-       col = sci,
-       pch = 16,
-       cex = 8,
-       xlim = c(0, length(sci) + 1),
-       ann = FALSE,
-       xaxt = "n",
-       yaxt = "n" ,
-       ...)
-  graphics::text(seq_along(sci), rep(1.2, length(sci)) , sci, srt = 90)
-  graphics::title("STATWORX's colors")
 }
