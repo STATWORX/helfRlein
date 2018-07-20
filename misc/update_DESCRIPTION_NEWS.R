@@ -139,7 +139,8 @@ my_desc$bump_version("dev")
 my_news$add_version(my_desc$get_version())
 
 my_news$add_subtitle("Bugfixes")
-my_news$add_bullet(c("fix plot.sci into own method script"))
+my_news$add_bullet(c("fix plot.sci into own method script",
+                     "added cirlceCI"))
 
 
 
