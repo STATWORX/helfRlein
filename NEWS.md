@@ -81,5 +81,5 @@
 
 ### setup
 
-- added NEWS.md
+- added NEWS.md creation
 

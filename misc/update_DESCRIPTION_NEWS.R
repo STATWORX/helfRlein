@@ -1,7 +1,8 @@
 # script to create the DESCRIPTION file
 
 # get news class
-source("misc/News.R")
+# devtools::install_github("Dschaykib/newsmd")
+library(newsmd)
 
 # Remove default DESC and NEWS.md
 unlink("DESCRIPTION")
@@ -12,7 +13,7 @@ unlink("NEWS.md")
 
 # Create a new description object
 my_desc <- desc::description$new("!new")
-my_news <- News$new()
+my_news <- newsmd()
 
 # Set your package name
 my_desc$set("Package", "helfRlein")
@@ -137,6 +138,9 @@ my_news$add_bullet(c("added automated creation for DESCRIPTION and NEWS.md",
 
 my_desc$bump_version("dev")
 my_news$add_version(my_desc$get_version())
+
+my_desc$set_dep("newsmd", type = desc::dep_types[3], version = "*")
+my_desc$del_dep("R6")
 
 my_news$add_subtitle("Bugfixes")
 my_news$add_bullet(c("fix plot.sci into own method script",
