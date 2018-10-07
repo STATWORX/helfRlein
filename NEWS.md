@@ -1,3 +1,13 @@
+## version 0.1.2.9001
+
+---
+
+
+### added functionality
+
+- strstplit can now split between two splits
+
+
 ## version 0.1.2.9000
 
 ---

@@ -2,6 +2,7 @@
 
 # get news class
 # devtools::install_github("Dschaykib/newsmd")
+# install.packages("desc")
 library(newsmd)
 
 # Remove default DESC and NEWS.md
@@ -145,6 +146,15 @@ my_desc$del_dep("R6")
 my_news$add_subtitle("Bugfixes")
 my_news$add_bullet(c("fix plot.sci into own method script",
                      "added cirlceCI"))
+
+
+
+# add function to strsplit ------------------------------------------------
+
+my_desc$bump_version("dev")
+my_news$add_version(my_desc$get_version())
+my_news$add_subtitle("added functionality")
+my_news$add_bullet(c("strstplit can now split between two splits"))
 
 
 
