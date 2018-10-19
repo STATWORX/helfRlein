@@ -5,3 +5,4 @@
 ^.RData
 ^.Rhistory
 ^README.md
+^\.circleci

@@ -2,6 +2,7 @@
 #'
 #' @description This functions uses \code{\link[base]{strsplit}} and adds the
 #' possibility to split and keep the delimiter after or before the given split.
+#' Or you can split between to given splits and keep both.
 #'
 #' @param x character vector, each element of which is to be split. Other
 #'   inputs, including a factor, will give an error.
@@ -11,9 +12,9 @@
 #'   is split into single characters. If split has length greater than 1, it is
 #'   re-cycled along x.
 #' @param type a charachter. Either to \code{"remove"} or keep the delimiter
-#'   \code{"before"} or \code{"remove"} the split.
+#'   \code{"before"}, \code{"between"} or \code{"remove"} the split.
 #' @param perl logical. Should Perl-compatible regexps be used? Is \code{TRUE}
-#'   for \code{"before"} and \code{"remove"}.
+#'   for all but \code{"remove"}.
 #' @param ... other inouts for base::strsplit
 #'
 #' @return A list of the same length as x, the i-th element of which contains
@@ -37,6 +38,11 @@
 #' # [[1]]
 #' # [1] "3D/"  "MON&" "SUN"
 #' 
+#' x <- c("3D/MON&SUN 2D/MON&SUN")
+#' strsplit(x, split("/", "M"))
+#' # [[1]]
+#' # [1] "3D"         "MON&SUN 2D" "MON&SUN" 
+#' 
 #' @author Jakob Gepp
 #' @note
 #'  TODO see issues for further advancements
@@ -47,8 +53,16 @@ strsplit <- function(x,
                      perl = FALSE,
                      ...) {
   
-  if (!type %in% c("remove", "before", "after")) {
-    stop("type must be remove, after or before!")
+  if (!type %in% c("remove", "before", "after", "between")) {
+    stop("type must be remove, after, before or between!")
+  }
+  
+  if (type == "between" & length(split) != 2) {
+    stop("split need no have length two!")
+  }
+  if (length(split) != 1 & type != "between") {
+    split <- split[1]
+    warning("there are multiple splits - taking only the first one")
   }
   
   if (type == "remove") {
@@ -66,9 +80,27 @@ strsplit <- function(x,
                           split = paste0("(?<=", split, ")"),
                           perl = TRUE,
                           ...)
+  } else if (type == "between") {
+    # split between the two given delimiter and keep both
+    out <- base::strsplit(x = x,
+                          split = paste0("(?<=", paste0(split, collapse = ""), ")"),
+                          perl = TRUE,
+                          ...)
+    # split after ab
+    index <- lapply(out, endsWith, suffix = paste0(split, collapse = ""))
+    index <- lapply(index, function(i) which(i == TRUE) + 1)
+    # end with -> gusb ab with a
+    out <- lapply(out, function(i) gsub(paste0(split, collapse = ""), split[1], i))
+    
+    # next after endwith add b
+    out <- mapply(FUN = function(o, i) {
+      o[i] <- paste0( split[2], o[i])
+      return(o)
+      },
+      out, index,
+      SIMPLIFY = FALSE)
   }
   
   return(out)
 }
-
 
