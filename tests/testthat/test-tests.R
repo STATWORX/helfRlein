@@ -1,9 +1,9 @@
 context("check existence of test files")
 
-test_that("if for each function there is an testfile namend 'test_xxx'", {
+test_that("if for each function there is an testfile namend 'test-xxx'", {
   # for debugging since now .. does not work
   # function_files <- list.files("R/")
-  # test_files <- gsub("test_", "", list.files("tests/testthat/"))
+  # test_files <- gsub("test-", "", list.files("tests/testthat/"))
   
   # get functions and tests
   function_files <- list.files("../../R/")
@@ -11,7 +11,7 @@ test_that("if for each function there is an testfile namend 'test_xxx'", {
   
   # remove exceptions from tests
   package_files <- c("tests.R", "helfRlein.R")
-  exceptions <- c("burglr.R", "multiplot.R", "dive.R")
+  exceptions <- c("burglr.R", "multiplot.R", "dive.R", "methods.sci.R")
   if (length(intersect(exceptions, test_files)) != 0) {
     warning("there are exceptions for files that have a test: ", 
             paste0(intersect(exceptions, test_files), collapse = ", "))

@@ -1,3 +1,13 @@
+## version 0.1.3
+
+---
+
+
+### added functions
+
+- statworx_palette uses sci_palette to create a color palette
+
+
 ## version 0.1.2.9001
 
 ---
@@ -5,7 +15,7 @@
 
 ### added functionality
 
-- strstplit can now split between two splits
+- strstplit can now split between two delimiters
 
 
 ## version 0.1.2.9000

@@ -149,14 +149,20 @@ my_news$add_bullet(c("fix plot.sci into own method script",
 
 
 
-# add function to strsplit ------------------------------------------------
+# add functionality to strsplit --------------------------------------------
 
 my_desc$bump_version("dev")
 my_news$add_version(my_desc$get_version())
 my_news$add_subtitle("added functionality")
-my_news$add_bullet(c("strstplit can now split between two splits"))
+my_news$add_bullet(c("strstplit can now split between two delimiters"))
 
 
+# add statworx_palette ----------------------------------------------------
+
+my_desc$bump_version("patch")
+my_news$add_version(my_desc$get_version())
+my_news$add_subtitle("added functions")
+my_news$add_bullet(c("statworx_palette uses sci_palette to create a color palette"))
 
 # save everything ---------------------------------------------------------
 
