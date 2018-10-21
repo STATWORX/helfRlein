@@ -10,13 +10,17 @@
 #' @param pattern a string with the file suffix - default is "\\.R$".
 #' @param simplify a boolean, if \code{TRUE} function with no connections are
 #'   removed from the plot.
+#' @param all_scripts a named list with script. The given path is dominant. This
+#'   is mainly used for debugging purposes.
 #'
 #' @return
 #'   Returns an object with the adjacency matrix \code{$matrix} and 
 #'   and igraph object \code{$igraph}. 
 #'   
-#' @seealso For more information see 
+#' @seealso For more information check out 
 #' \href{https://www.statworx.com/de/blog/flowcharts-of-functions/}{our blog}.
+#' Also there is a README on how to use this function 
+#'  \href{https://github.com/STATWORX/blog/tree/master/flowchart}{here}.
 #'  
 #' @export
 #' @author Jakob Gepp
@@ -34,61 +38,77 @@
 #' }
 #' 
 
-get_network <- function(dir,
+get_network <- function(dir = NULL,
                         variations = c("<- function",
                                        "<-function"),
                         pattern = "\\.R$",
-                        simplify = FALSE) {
+                        simplify = FALSE,
+                        all_scripts = NULL) {
   
-  # check dir
-  if (!dir.exists(dir)) {
+  # check if dir exists
+  if (!is.null(dir) && !dir.exists(dir)) {
     stop(paste0(dir, " does not exists"))
   }
   
-  # get files
-  files.path <- list.files(file.path(dir),
-                           pattern = pattern,
-                           recursive = TRUE,
-                           full.names = TRUE)
-  
-  if (length(files.path) == 0) {
-    stop("no files with the given pattern")
+  if (is.null(all_scripts)) {
+    # get files and folder within dir
+    files.path <- list.files(file.path(dir),
+                             pattern = pattern,
+                             recursive = TRUE,
+                             full.names = TRUE)
+    
+    if (length(files.path) == 0) {
+      stop("no files with the given pattern")
+    }
+    
+    folder <- dirname(gsub(paste0(dir, "/"), "", files.path))
+    
+    # get all scripts
+    all_scripts <- lapply(files.path, readLines, warn = FALSE)
+    
+    # set names of scripts
+    names(all_scripts) <- gsub(pattern, "", basename(files.path))
+    
+  } else {
+    # case were a list of scripts and functions is given
+    # check names if 
+    if (is.null(names(all_scripts))) {
+      stop("given scripts needs to have names to indicate folders")
+    }
+    folder <- rep(".", length(all_scripts))
   }
-  
-  folder <- dirname(gsub(paste0(dir, "/"), "", files.path))
-  
-  # get all scripts
-  all.scripts <- lapply(files.path, readLines, warn = FALSE)
   
   
   # remove variations with "
+  # this is done so that strings like "<- function" will not be counted
   for (i.var in variations) {
     # i.var <- variations[1]
-    all.scripts <- lapply(all.scripts,
+    all_scripts <- lapply(all_scripts,
                           function(x) gsub(paste0("\"", i.var ), "", x))
   }
   
-  
-  # set names
-  names(all.scripts) <- gsub(pattern, "", basename(files.path))
-  
   # remove method / functions that start with [
-  keep <- !startsWith(names(all.scripts), "[")
-  all.scripts <- all.scripts[keep]
+  # otherwise the regex will be messed up later
+  keep <- !startsWith(names(all_scripts), "[")
+  all_scripts <- all_scripts[keep]
   folder <- folder[keep]
   
   
-  # unique(unlist(sapply(variations, grep, all.scripts)))
+  # unique(unlist(sapply(variations, grep, all_scripts)))
   
-  # leading spaces
-  all.scripts <- lapply(all.scripts,
-                        function (x)  sub("^\\s+", "", x))
+  # remove leading spaces
+  all_scripts <- lapply(all_scripts, function (x)  sub("^\\s+", "", x))
+  
+  # split before #
+  all_scripts <- 
+    lapply(all_scripts,
+           function(x) unlist(strsplit(x = x, split = "#", type = "before")))
   # remove comments #
-  all.scripts <- lapply(all.scripts,
-                        function(x) subset(x, !startsWith(x, "#")))
+  all_scripts <- lapply(all_scripts, function(x) subset(x, !startsWith(x, "#")))
   
+  # comment blocks with `` will still be counted
   # NEEDS MORE THINKING # remove comment block by ''
-  # NEEDS MORE THINKING comment_index <- lapply(all.scripts, 
+  # NEEDS MORE THINKING comment_index <- lapply(all_scripts, 
   # NEEDS MORE THINKING   function(x) {
   # NEEDS MORE THINKING     startsWith(x, "'")
   # NEEDS MORE THINKING     endsWith(x, "'")
@@ -103,47 +123,28 @@ get_network <- function(dir,
   
   # NEEDS MORE THINKING comment_index <- lapply(comment_index, unlist)
   
-  # NEEDS MORE THINKING all.scripts <- mapply(function(x, y) subset(x, !seq_along(x) %in% y),
-  # NEEDS MORE THINKING                       all.scripts, comment_index)
+  # NEEDS MORE THINKING all_scripts <- mapply(function(x, y) subset(x, !seq_along(x) %in% y),
+  # NEEDS MORE THINKING                       all_scripts, comment_index)
   
-  # split before {
-  all.scripts <- lapply(
-    all.scripts,
-    function(y) {
-      unlist(lapply(y,
-                    function(x) { 
-                      ind <- unlist(gregexpr(pattern = "\\{", x))
-                      ind_start <- unique(c(1,ind))
-                      ind_end   <- unique(c(ind_start[-1] - 1, nchar(x)))
-                      return(substring(x, ind_start, ind_end))
-                      })
-      )
-      }
-    )
+  # split before { and }
+  all_scripts <- 
+    lapply(all_scripts,
+    function(x) unlist(strsplit(x = x, split = "[\\{\\}]", type = "before")))
   
-  # split before }
-  all.scripts <- lapply(
-    all.scripts,
-    function(y) {
-      unlist(lapply(y,
-                    function(x) { 
-                      ind <- unlist(gregexpr(pattern = "\\}", x))
-                      ind_start <- unique(c(1,ind))
-                      ind_end   <- unique(c(ind_start[-1] - 1, nchar(x)))
-                      return(substring(x, ind_start, ind_end))
-                      })
-             )
-      }
-    )
+  # split after { and }
+  all_scripts <- 
+    lapply(all_scripts,
+    function(x) unlist(strsplit(x = x, split = "[\\{\\}]", type = "after")))
+  
   
   # remove empty lines
-  all.scripts <- lapply(all.scripts, function(x) x[x != ""])
+  all_scripts <- lapply(all_scripts, function(x) x[x != ""])
   
   # filter only those with functions (variations) in it
-  index_functions <- unique(unlist(sapply(variations, grep, all.scripts)))
-  main.functions  <- all.scripts[index_functions]
+  index_functions <- unique(unlist(sapply(variations, grep, all_scripts)))
+  main.functions  <- all_scripts[index_functions]
   folder.main     <- folder[index_functions]
-  scripts         <- all.scripts[-index_functions]
+  scripts         <- all_scripts[-index_functions]
   folder.scripts  <- folder[-index_functions]
   
   # adjust name with first definition - removed
@@ -278,6 +279,12 @@ get_network <- function(dir,
   all.files  <- c(all.functions, scripts)
   all.folder <- c(all.folder, folder.scripts)
   
+  # check if there are functions
+  if (length(all.files) == 0) {
+    warning("no functions found")
+    return(list(matrix = NULL, igraph = NULL))
+  }
+  
   # get number of line per function
   lines <- sapply(all.files, length)
   
@@ -293,7 +300,7 @@ get_network <- function(dir,
   def.functions <- 
     unlist(lapply(seq_along(all.files),
                   function(x) all.files[[x]][def.function.index[[x]]]))
-  
+
   def.functions <- 
     unique(unlist(gsub(" ", "",
                        lapply(base::strsplit(def.functions, "<-"), "[[", 1))))
@@ -389,7 +396,6 @@ get_network <- function(dir,
     all.folder <- all.folder[keep]
     lines <- lines[keep]
   }
-  
   
   # create igraph
   g1 <- igraph::graph_from_adjacency_matrix(
