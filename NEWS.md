@@ -1,3 +1,13 @@
+## version 0.1.4
+
+---
+
+
+### added functionality
+
+- added tests and documentation for get_network
+
+
 ## version 0.1.3
 
 ---
