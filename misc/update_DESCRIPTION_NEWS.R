@@ -164,8 +164,16 @@ my_news$add_version(my_desc$get_version())
 my_news$add_subtitle("added functions")
 my_news$add_bullet(c("statworx_palette uses sci_palette to create a color palette"))
 
-# save everything ---------------------------------------------------------
 
+# update get_network ------------------------------------------------------
+
+my_desc$bump_version("patch")
+my_news$add_version(my_desc$get_version())
+my_news$add_subtitle("added functionality")
+my_news$add_bullet(c("added tests and documentation for get_network"))
+
+
+# save everything ---------------------------------------------------------
 
 my_desc$set("Date", Sys.Date())
 my_desc$write(file = "DESCRIPTION")
