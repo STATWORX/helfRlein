@@ -48,3 +48,4 @@ Imports:
     grDevices,
     graphics
 Date: 2018-10-21
+RoxygenNote: 6.1.0
