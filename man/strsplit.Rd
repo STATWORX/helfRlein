@@ -17,12 +17,12 @@ is split into single characters. If split has length greater than 1, it is
 re-cycled along x.}
 
 \item{type}{a charachter. Either to \code{"remove"} or keep the delimiter
-\code{"before"} or \code{"remove"} the split.}
+\code{"before"}, \code{"between"} or \code{"remove"} the split.}
 
 \item{perl}{logical. Should Perl-compatible regexps be used? Is \code{TRUE}
-for \code{"before"} and \code{"remove"}.}
+for all but \code{"remove"}.}
 
-\item{...}{other inouts for base::strsplit}
+\item{...}{other inputs for base::strsplit}
 }
 \value{
 A list of the same length as x, the i-th element of which contains
@@ -31,6 +31,7 @@ A list of the same length as x, the i-th element of which contains
 \description{
 This functions uses \code{\link[base]{strsplit}} and adds the
 possibility to split and keep the delimiter after or before the given split.
+Or you can split between to given splits and keep both.
 }
 \note{
 TODO see issues for further advancements
@@ -48,6 +49,11 @@ strsplit(x, "[/&]", type = "before")
 strsplit(x, "[/&]", type = "after")
 # [[1]]
 # [1] "3D/"  "MON&" "SUN"
+
+x <- c("3D/MON&SUN 2D/MON&SUN")
+strsplit(x, split("/", "M"))
+# [[1]]
+# [1] "3D"         "MON&SUN 2D" "MON&SUN" 
 
 }
 \seealso{

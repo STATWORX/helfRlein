@@ -1,3 +1,20 @@
+## version 0.1.4.9000
+
+---
+
+
+### Bugfixes
+
+- fix typos
+- adjust tests
+
+
+### added functions
+
+- checkdir - checks and creates a folder
+- update get_sequence for longer pattern
+
+
 ## version 0.1.4
 
 ---

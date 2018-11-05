@@ -173,6 +173,19 @@ my_news$add_subtitle("added functionality")
 my_news$add_bullet(c("added tests and documentation for get_network"))
 
 
+
+# add checkdir and minor fixes --------------------------------------------
+
+my_desc$bump_version("dev")
+my_news$add_version(my_desc$get_version())
+my_news$add_subtitle("added functions")
+my_news$add_bullet(c("checkdir - checks and creates a folder",
+                     "update get_sequence for longer pattern"))
+my_news$add_subtitle("Bugfixes")
+my_news$add_bullet(c("fix typos",
+                     "adjust tests"))
+
+
 # save everything ---------------------------------------------------------
 
 my_desc$set("Date", Sys.Date())

@@ -4,8 +4,8 @@
 \alias{get_network}
 \title{flowchart of R projects}
 \usage{
-get_network(dir, variations = c("<- function", "<-function"),
-  pattern = "\\\\.R$", simplify = FALSE)
+get_network(dir = NULL, variations = c("<- function", "<-function"),
+  pattern = "\\\\.R$", simplify = FALSE, all_scripts = NULL)
 }
 \arguments{
 \item{dir}{a path that includes the functions}
@@ -17,6 +17,9 @@ The default is c(" <- function", "<- function", "<-function").}
 
 \item{simplify}{a boolean, if \code{TRUE} function with no connections are
 removed from the plot.}
+
+\item{all_scripts}{a named list with script. The given path is dominant. This
+is mainly used for debugging purposes.}
 }
 \value{
 Returns an object with the adjacency matrix \code{$matrix} and 
@@ -40,8 +43,10 @@ plot(g1)
 
 }
 \seealso{
-For more information see 
+For more information check out 
 \href{https://www.statworx.com/de/blog/flowcharts-of-functions/}{our blog}.
+Also there is a README on how to use this function 
+ \href{https://github.com/STATWORX/blog/tree/master/flowchart}{here}.
 }
 \author{
 Jakob Gepp
