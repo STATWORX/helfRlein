@@ -12,6 +12,25 @@ test_that("the output is right", {
                  dimnames = list(NULL, c("min", "max")))
   
   expect_equal(tmp1, res1)
+  
+  x <- c(1,2,4,
+         0,0,1,2,0,
+         1,2,4,1,2,4,
+         0,1,1,1,
+         1,2,4,
+         0,0,0,
+         1,2,4,
+         1,2,0,1,1,1,1,1,1,1,1,1,
+         1,2,4,1,2,4,
+         0)
+  tmp2 <- get_sequence(x = x, pattern = c(1,2,4),  minsize = 2)
+  res2 <- matrix(c(9,14,40,45),
+                 ncol = 2,
+                 byrow = TRUE,
+                 dimnames = list(NULL, c("min", "max")))
+  
+  expect_equal(tmp2, res2)
+  
 })
 
 

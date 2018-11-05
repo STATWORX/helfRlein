@@ -1,4 +1,4 @@
-context("test-get_network.R")
+context("check get_network.R")
 
 
 # error -------------------------------------------------------------------

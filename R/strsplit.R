@@ -15,7 +15,7 @@
 #'   \code{"before"}, \code{"between"} or \code{"remove"} the split.
 #' @param perl logical. Should Perl-compatible regexps be used? Is \code{TRUE}
 #'   for all but \code{"remove"}.
-#' @param ... other inouts for base::strsplit
+#' @param ... other inputs for base::strsplit
 #'
 #' @return A list of the same length as x, the i-th element of which contains
 #'   the vector of splits of x[i].

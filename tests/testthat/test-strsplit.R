@@ -35,6 +35,8 @@ test_that("examples give correct output with type", {
                list(c("3D",  "/MON", "&SUN")))
   expect_equal(strsplit(x, "[/&]", type = "after"),
                list(c("3D/",  "MON&", "SUN")))
+  expect_equal(strsplit(x, c("N", "&"), type = "between"),
+               list(c("3D/MON", "&SUN")))
   
 })
 

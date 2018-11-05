@@ -32,32 +32,57 @@ get_sequence <- function(x,
   if (minsize < 2 | !is.numeric(minsize)) {
     stop("minsize must be an integer >= 2")
   }
-  if (!is.integer(minsize)) {
+  if (!is.integer(minsize) && (ceiling(minsize) - minsize != 0)) {
     warning(paste0("set minsize so next integer: ", ceiling(minsize)))
     minsize <- ceiling(minsize)
   }
   
-  # get indices with the pattern
-  x0 <- which(x == pattern)
+  # recursive for pattern with length > 1
+  if (length(pattern) == 1) {
+    # get indices with the pattern
+    x0 <- which(x == pattern)
+    
+    
+    # which indices are continous
+    seq_index <- which(diff(x0) == 1)
+    y <- diff(c(seq_index[1] - 1, seq_index))
+    y <- cumsum(ifelse(y == 1, 0, y))
+    
+    # get the real x back
+    split_pattern <- lapply(split(seq_index, y), function(x) x0[x])
+    
+    # add one, which was lost because of diff()
+    split_pattern <- lapply(split_pattern, function(x) c(x, max(x)+1))
+    
+    # keep only those respect to the minsize
+    split_pattern <- split_pattern[sapply(split_pattern, function(x) length(x) >= minsize)]
+    
+    # output format
+    out <- t(sapply(split_pattern, range))
+    rownames(out) <- NULL
+    colnames(out) <- c("min", "max")
+  } else {
+    # replace pattern by it's index
+    tmp <- Reduce("+", sapply(seq_along(pattern),
+                              function(p) {
+                                (x == pattern[p]) * p
+                              },
+                              simplify = FALSE))
+    
+    # remove second to last pattern parts if the first pattern is repeated
+    rm_i <- get_sequence(x = tmp, pattern = 1,  minsize = 2)[,2] - 1
+    tmp[rm_i] <- 0
+    
+    # buidling increasing sequences
+    y <- diff(c(0,tmp)) * (tmp != 0)
+    
+    # change cases for repeating patterns
+    y[y == -(length(pattern) - 1)] <- 1
+    
+    # getting the indices
+    out <- get_sequence(x = y, pattern = 1,  minsize = (length(pattern) * minsize))
+  }
   
-  # which indices are continous
-  seq_index <- which(diff(x0) == 1)
-  y <- diff(c(seq_index[1] - 1, seq_index))
-  y <- cumsum(ifelse(y == 1, 0, y))
-  
-  # get the real x back
-  split_pattern <- lapply(split(seq_index, y), function(x) x0[x])
-  
-  # add one, which was lost because of diff()
-  split_pattern <- lapply(split_pattern, function(x) c(x, max(x)+1))
-  
-  # keep only those respect to the minsize
-  split_pattern <- split_pattern[sapply(split_pattern, function(x) length(x) >= minsize)]
-  
-  # output format
-  out <- t(sapply(split_pattern, range))
-  rownames(out) <- NULL
-  colnames(out) <- c("min", "max")
   
   return(out)
 }
