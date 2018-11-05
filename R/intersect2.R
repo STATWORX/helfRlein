@@ -9,6 +9,9 @@
 #'  Returns the intersect of all given input vectors.
 #' @export
 #'
+#' @seealso I found this function on this post 
+#' \href{https://stat.ethz.ch/pipermail/r-help/2006-July/109758.html}{here}.
+#' 
 #' @examples
 #' intersect2(c(1:3), c(1:4), c(1:2))
 #' # [1] 1 2
