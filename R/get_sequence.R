@@ -29,7 +29,7 @@ get_sequence <- function(x,
                          pattern,
                          minsize = 2L) {
   # check minsize
-  if (minsize < 2 | !is.numeric(minsize)) {
+  if (length(pattern) == 1 & (minsize < 2 | !is.numeric(minsize))) {
     stop("minsize must be an integer >= 2")
   }
   if (!is.integer(minsize) && (ceiling(minsize) - minsize != 0)) {
@@ -48,6 +48,12 @@ get_sequence <- function(x,
     y <- diff(c(seq_index[1] - 1, seq_index))
     y <- cumsum(ifelse(y == 1, 0, y))
     
+    # check length of y
+    if (length(y) == 0) {
+      warning("no repeating pattern found")
+      return(NULL)
+    }
+    
     # get the real x back
     split_pattern <- lapply(split(seq_index, y), function(x) x0[x])
     
@@ -57,35 +63,44 @@ get_sequence <- function(x,
     # keep only those respect to the minsize
     split_pattern <- split_pattern[sapply(split_pattern, function(x) length(x) >= minsize)]
     
+    # check length of y
+    if (length(split_pattern) == 0) {
+      warning("no repeating pattern found")
+      return(NULL)
+    }
+    
     # output format
     out <- t(sapply(split_pattern, range))
-    rownames(out) <- NULL
-    colnames(out) <- c("min", "max")
+    
   } else {
-    # replace pattern by it's index
-    tmp <- Reduce("+", sapply(seq_along(pattern),
-                              function(p) {
-                                (x == pattern[p]) * p
-                              },
-                              simplify = FALSE))
+    # find first pattern
+    idx <- which(x == pattern[1])
+    # check following patterns
+    start <- idx[sapply(idx, function(i) all(x[i:(i+(length(pattern) - 1))] == pattern))]
+    start <- start[!is.na(start)]
+    end <- start + length(pattern) - 1
     
-    # remove second to last pattern parts if the first pattern is repeated
-    rm_i <- get_sequence(x = tmp, pattern = 1,  minsize = 2)[,2] - 1
-    tmp[rm_i] <- 0
+    # combine start and end for longer patterns
+    used <- !(start[-1] - end[-length(end)] <= 1)
+    out <- matrix(c(start[c(TRUE, used)], end[c(used, TRUE)]), ncol = 2)
     
-    # buidling increasing sequences
-    y <- diff(c(0,tmp)) * (tmp != 0)
+    # check minsize
+    idx <- apply(X = out, MARGIN = 1, FUN = diff) >= minsize * length(pattern) - 1
+    out <- out[idx, , drop = FALSE]
     
-    # change cases for repeating patterns
-    y[y == -(length(pattern) - 1)] <- 1
-    
-    # getting the indices
-    out <- get_sequence(x = y, pattern = 1,  minsize = (length(pattern) * minsize))
+    # check length of y
+    if (nrow(out) == 0) {
+      warning("no repeating pattern found")
+      return(NULL)
+    }
   }
   
+  rownames(out) <- NULL
+  colnames(out) <- c("min", "max")
   
   return(out)
 }
+
 
 
 
