@@ -1,47 +1,120 @@
-#' Title
+#' @title Replacement of non-standard characters
 #'
-#' @param input 
-#' @param tolower 
-#' @param space_remove 
+#' @description This function replaces non-standard characters (such as the
+#' German Umlaut 'ä') with their standard equivalents (in this case 'ae').
+#' Arguments enable the user to force all characters to lower-case or remove 
+#' all whitespace characters within the string.
 #'
-#' @return
+#' @param x character vector, contains special characters needing to be replaced.
+#' @param to_lower logical, forces all characters to lower-case
+#' @param rm_space logical, removes all whitespace characters within 
+#' the string. 
+#' @param rm_dash logical, removes all dash-characters within the string. 
+#' @param to_underscore logical, replaces all whitespace and dash-characters
+#' with underscores.
+#' 
+#' 
+#' @return a character vector with all on-standard characters replaced by their
+#' standard counterparts
 #' @export
 #'
+#' @importFrom stringr str_replace_all
+#' @importFrom magrittr %>% 
+#' 
 #' @examples
 #' x <- "Élizàldë-González Strasse"
 #' str_even(x)
-#' 
-str_even <- function(input, tolower = TRUE, space_remove = FALSE){
+#' str_even(x, to_lower = TRUE)
+#' str_even(x, to_lower = TRUE, to_underscore = TRUE)
+#' str_even(x, to_lower = TRUE, rm_space = TRUE, rm_dash = TRUE)
+
+str_even <- function(x,
+                     to_lower = FALSE,
+                     rm_space = FALSE,
+                     rm_dash = FALSE,
+                     to_underscore = FALSE) {
   
-  input_processed <- input %>% 
+  input_processed <- x %>% 
     str_replace_all(
       c("ä" = "ae",
-        "ö" = "oe",
-        "ü" = "ue",
         "Ä" = "A",
-        "Ö" = "O",
-        "Ü" = "U",
-        "é" = "e",
-        "è" = "e",
-        "É" = "E",
-        "È" = "E",
-        "ë" = "e",
-        "Ë" = "E",
         "á" = "a",
         "à" = "a",
+        "â" = "Â",
+        "ã" = "a", 
+        "å" = "a", 
+        "æ" = "ae",
         "Á" = "A",
         "À" = "A",
-        " " = "_",
-        "-" = "_")
+        "Â" = "A", 
+        "Ã" = "A",
+        "Å" = "A", 
+        "Æ" = "Ae",
+        "ç" = "c",
+        "ð" = "d", 
+        "é" = "e",
+        "è" = "e",
+        "ë" = "e",
+        "ê" = "e",
+        "É" = "E",
+        "È" = "E",
+        "Ë" = "E",
+        "Ê" = "E",
+        "ﬁ" = "fi", 
+        "ﬂ" = "fl", 
+        "ğ" = "g", 
+        "Ğ" = "G", 
+        "ì" = "i", 
+        "í" = "i", 
+        "î" = "i", 
+        "ï" = "i", 
+        "ñ" = "n", 
+        "ö" = "oe",
+        "ò" = "o", 
+        "ó" = "o", 
+        "ô" = "o", 
+        "õ" = "o",
+        "œ" = "oe",
+        "ø" = "oe", 
+        "Ö" = "O",
+        "Õ" = "O",
+        "Œ" = "Oe",
+        "Ø" = "Oe",
+        "š" = "s",
+        "Š" = "S",
+        "ß" = "ss",
+        "ü" = "ue",
+        "ù" = "u", 
+        "ú" = "u", 
+        "Ü" = "U",
+        "Ú" = "U",
+        "Ù" = "U",
+        "ý" = "y", 
+        "ÿ" = "y", 
+        "þ" = "th", 
+        "ž" = "z", 
+        "Ž" = "Z")
+
     )
   
-  if(tolower == TRUE){
+  if (to_lower == TRUE) {
     input_processed <- tolower(input_processed)
   }
   
-  if(space_remove == TRUE){
+  if (rm_space == TRUE) {
     input_processed <- input_processed %>% 
-      str_replace_all(pattern = "_", replacement = "")
+      str_replace_all(pattern = " ", replacement = "")
+  }
+  
+  if (rm_dash == TRUE) {
+    input_processed <- input_processed %>% 
+      str_replace_all(pattern = "-", replacement = "")
+  }
+  
+  if (to_underscore == TRUE) {
+    input_processed <- input_processed %>% 
+      str_replace_all(pattern = c(" " = "_", 
+                                  "-" = "_"))
   }
   
   return(input_processed)
