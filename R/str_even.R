@@ -8,6 +8,9 @@
 #' @export
 #'
 #' @examples
+#' x <- "Élizàldë-González Strasse"
+#' str_even(x)
+#' 
 str_even <- function(input, tolower = TRUE, space_remove = FALSE){
   
   input_processed <- input %>% 
