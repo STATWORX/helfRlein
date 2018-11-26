@@ -14,7 +14,7 @@
 #' with underscores.
 #' 
 #' 
-#' @return a character vector with all on-standard characters replaced by their
+#' @return a character vector with all non-standard characters replaced by their
 #' standard counterparts
 #' @export
 #'
@@ -116,6 +116,9 @@ str_even <- function(x,
       str_replace_all(pattern = c(" " = "_", 
                                   "-" = "_"))
   }
+  
+  input_processed <- input_processed %>% 
+    str_trim( side = "both")
   
   return(input_processed)
   
