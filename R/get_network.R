@@ -78,6 +78,14 @@ get_network <- function(dir = NULL,
     folder <- rep(".", length(all_scripts))
   }
   
+  # check for emtpy scripts
+  indx <- sapply(all_scripts, length) == 0
+  if (any(indx)) {
+    warning(paste0("removing empty scritps: ",
+                   paste0(names(all_scripts)[indx], collapse = ", ")))
+    all_scripts <- all_scripts[!indx]
+    folder <- folder[!indx]
+  }
   
   # remove variations with "
   # this is done so that strings like "<- function" will not be counted
