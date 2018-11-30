@@ -23,16 +23,16 @@
 #' 
 #' @examples
 #' x <- "Élizàldë-González Strasse"
-#' str_even(x)
-#' str_even(x, to_lower = TRUE)
-#' str_even(x, to_lower = TRUE, to_underscore = TRUE)
-#' str_even(x, to_lower = TRUE, rm_space = TRUE, rm_dash = TRUE)
+#' char_replace(x)
+#' char_replace(x, to_lower = TRUE)
+#' char_replace(x, to_lower = TRUE, to_underscore = TRUE)
+#' char_replace(x, to_lower = TRUE, rm_space = TRUE, rm_dash = TRUE)
 
-str_even <- function(x,
-                     to_lower = FALSE,
-                     rm_space = FALSE,
-                     rm_dash = FALSE,
-                     to_underscore = FALSE) {
+char_replace <- function(x,
+                         to_lower = FALSE,
+                         rm_space = FALSE,
+                         rm_dash = FALSE,
+                         to_underscore = FALSE) {
   
   input_processed <- x %>% 
     str_replace_all(
@@ -76,7 +76,7 @@ str_even <- function(x,
         "õ" = "o",
         "œ" = "oe",
         "ø" = "oe", 
-        "Ö" = "O",
+        "Ö" = "Oe",
         "Õ" = "O",
         "Œ" = "Oe",
         "Ø" = "Oe",
@@ -93,9 +93,7 @@ str_even <- function(x,
         "ÿ" = "y", 
         "þ" = "th", 
         "ž" = "z", 
-        "Ž" = "Z")
-
-    )
+        "Ž" = "Z"))
   
   if (to_lower == TRUE) {
     input_processed <- tolower(input_processed)
@@ -118,7 +116,7 @@ str_even <- function(x,
   }
   
   input_processed <- input_processed %>% 
-    str_trim( side = "both")
+    trim()
   
   return(input_processed)
   
