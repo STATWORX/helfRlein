@@ -59,4 +59,6 @@ Imports:
     magrittr (>= 1.1.1),
     grDevices,
     graphics
+Date: 2018-10-21
+RoxygenNote: 6.1.0
 Date: 2018-11-30
