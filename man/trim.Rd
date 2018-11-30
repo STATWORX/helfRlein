@@ -25,3 +25,6 @@ trim(x)
 # [1] "Hello world!" "Hello world!" "Hello world!"
 
 }
+\seealso{
+Since R 3.5.1 there is \code{\link[base]{trimws}} in the base package.
+}

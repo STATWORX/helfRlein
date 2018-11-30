@@ -5,6 +5,9 @@
 # install.packages("desc")
 library(newsmd)
 
+# update roxygen
+roxygen2::roxygenise()
+
 # Remove default DESC and NEWS.md
 unlink("DESCRIPTION")
 unlink("NEWS.md")
@@ -184,6 +187,38 @@ my_news$add_bullet(c("checkdir - checks and creates a folder",
 my_news$add_subtitle("Bugfixes")
 my_news$add_bullet(c("fix typos",
                      "adjust tests"))
+
+my_desc$add_author('Robin', 'Kraft',
+                   email = 'robin.kraft@statworx.com',
+                   role = c('ctb'))
+
+
+# add functions to fil up to 24 -------------------------------------------
+
+my_desc$bump_version("minor")
+my_news$add_version(my_desc$get_version())
+my_news$add_subtitle("added functions")
+my_news$add_bullet(c(
+  "statusbar - progress bar for for loops",
+  "evenstrings - split string to given max length",
+  "trim - remove leading and / or trailing whitespaces",
+  "count_na - counts NAs wihtin a variable",
+  "read_files - reads multiple files into one data.table",
+  "%nin% - 'not in' operator",
+  "object_size_in_env - shows objects ordered by their size",
+  "char_replace - replaces non-standard characters with their standard equivalents"))
+
+my_news$add_subtitle("Bugfixes")
+my_news$add_bullet(c("fix empty scripts get_network()",
+                     "adjust intersect2 for lists"))
+
+
+my_desc$add_author('David', 'Schlepps',
+                   email = 'david.schlepps@statworx.com',
+                   role = c('ctb'))
+my_desc$add_author('Oliver', 'Guggenbuehl',
+                   email = 'oliver.guggenbuehl@statworx.com',
+                   role = c('ctb'))
 
 
 # save everything ---------------------------------------------------------

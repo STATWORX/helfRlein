@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_sequence.R
 \name{get_sequence}
 \alias{get_sequence}
-\title{get start and end indices of sequnces of patterns}
+\title{get start and end indices of sequences of patterns}
 \usage{
 get_sequence(x, pattern, minsize = 2L)
 }
@@ -11,7 +11,8 @@ get_sequence(x, pattern, minsize = 2L)
 
 \item{pattern}{the pattern to look for}
 
-\item{minsize}{the minimum length of the repeating pattern}
+\item{minsize}{the minimum length of the repeating pattern.
+Must be higher than 2 for single pattern.}
 }
 \value{
 Returns a matrix with the range of the sequence. Each row representes a
@@ -33,5 +34,5 @@ get_sequence(x = c(0,1,1,0,0,0,0,3,0,0,1,0,423,0,0,0,0,0,1,0),
  
 }
 \author{
-Jakob Gepp
+Jakob Gepp, Robin Kraft
 }

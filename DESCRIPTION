@@ -1,6 +1,6 @@
 Package: helfRlein
 Title: R-Helper functions
-Version: 0.1.4.9000
+Version: 0.2.0
 Authors@R: 
     c(person(given = "Jakob",
              family = "Gepp",
@@ -25,7 +25,19 @@ Authors@R:
       person(given = "Martin",
              family = "Albers",
              role = "aut",
-             email = "martin.albers@statworx.com"))
+             email = "martin.albers@statworx.com"),
+      person(given = "Robin",
+             family = "Kraft",
+             role = "ctb",
+             email = "robin.kraft@statworx.com"),
+      person(given = "David",
+             family = "Schlepps",
+             role = "ctb",
+             email = "david.schlepps@statworx.com"),
+      person(given = "Oliver",
+             family = "Guggenbuehl",
+             role = "ctb",
+             email = "oliver.guggenbuehl@statworx.com"))
 Description: A usefull collection of R helper functions.
 License: MIT + file LICENSE
 LazyData: true
@@ -47,4 +59,4 @@ Imports:
     magrittr (>= 1.1.1),
     grDevices,
     graphics
-Date: 2018-11-05
+Date: 2018-11-30

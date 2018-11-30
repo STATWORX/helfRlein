@@ -2,27 +2,28 @@
 % Please edit documentation in R/intersect2.R
 \name{intersect2}
 \alias{intersect2}
-\title{intersect for multiple input vectors}
+\title{intersect for multiple input vectors or lists}
 \usage{
 intersect2(...)
 }
 \arguments{
-\item{...}{vectors to check for intersect}
+\item{...}{vectors to check for intersect or lists.}
 }
 \value{
-Returns the intersect of all given input vectors.
+Returns the intersect of all given inputs.
 }
 \description{
-Function to check the intersect within multiple vectors.
+Function to check the intersect within multiple vectors or lists.
 }
 \examples{
-intersect2(c(1:3), c(1:4), c(1:2))
+intersect2(list(c(1:3), c(1:4)), list(c(1:2),c(1:3)), c(1:2))
 # [1] 1 2
 
 }
 \seealso{
 I found this function on this post 
-\href{https://stat.ethz.ch/pipermail/r-help/2006-July/109758.html}{here}.
+\href{https://stat.ethz.ch/pipermail/r-help/2006-July/109758.html}{here} 
+and adjusted it a bit.
 }
 \author{
 Jakob Gepp

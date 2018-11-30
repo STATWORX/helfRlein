@@ -1,3 +1,26 @@
+## version 0.2.0
+
+---
+
+
+### Bugfixes
+
+- fix empty scripts get_network()
+- adjust intersect2 for lists
+
+
+### added functions
+
+- statusbar - progress bar for for loops
+- evenstrings - split string to given max length
+- trim - remove leading and / or trailing whitespaces
+- count_na - counts NAs wihtin a variable
+- read_files - reads multiple files into one data.table
+- %nin% - 'not in' operator
+- object_size_in_env - shows objects ordered by their size
+- char_replace - replaces non-standard characters with their standard equivalents
+
+
 ## version 0.1.4.9000
 
 ---
