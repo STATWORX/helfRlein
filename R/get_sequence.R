@@ -1,4 +1,4 @@
-#' @title get start and end indices of sequnces of patterns
+#' @title get start and end indices of sequences of patterns
 #' 
 #' @description 
 #'   Given a vector \code{x} and a \code{pattern}, the functions returns the
@@ -7,7 +7,8 @@
 #' 
 #' @param x a vector
 #' @param pattern the pattern to look for
-#' @param minsize the minimum length of the repeating pattern
+#' @param minsize the minimum length of the repeating pattern.
+#'  Must be higher than 2 for single pattern.
 #'
 #' @return
 #'   Returns a matrix with the range of the sequence. Each row representes a
@@ -23,7 +24,7 @@
 #' # [1,]   4   7
 #' # [2,]  14  18
 #'  
-#' @author Jakob Gepp
+#' @author Jakob Gepp, Robin Kraft
 #' 
 get_sequence <- function(x,
                          pattern,
@@ -100,8 +101,3 @@ get_sequence <- function(x,
   
   return(out)
 }
-
-
-
-
-
