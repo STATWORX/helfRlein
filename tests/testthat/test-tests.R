@@ -1,7 +1,7 @@
 context("check existence of test files")
 
 test_that("if for each function there is an testfile namend 'test-xxx'", {
-  # for debugging since now .. does not work
+  # for debugging since .. does not work here
   # function_files <- list.files("R/")
   # test_files <- gsub("test-", "", list.files("tests/testthat/"))
   
@@ -25,6 +25,19 @@ test_that("if for each function there is an testfile namend 'test-xxx'", {
                    " test exceptions: ",
                    paste0(exceptions, collapse = ", ")))
   }
-  expect_equal(all(function_files %in% test_files), TRUE)
+  
+  indx <- !function_files %in% test_files
+  if (sum(indx) > 1) {
+    warning(paste0("there are still ", sum(indx),
+                   " tests missing: ",
+                   paste0(function_files[indx], collapse = ", ")))
+  }
+  if (sum(indx) == 1) {
+    warning(paste0("there is still ", sum(indx),
+                   " test missing: ",
+                   paste0(function_files[indx], collapse = ", ")))
+  }
+  
+  expect_equal(sum(indx), 0)
   
 })

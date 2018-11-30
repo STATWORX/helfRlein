@@ -1,4 +1,4 @@
-context("test-get_network.R")
+context("check get_network.R")
 
 
 # error -------------------------------------------------------------------
@@ -71,7 +71,14 @@ test_that("example script works", {
 
 test_that("special cases work", {
   
-  # empty scripts / no functions
+  # empty scripts 
+  test_scripts <- list(
+    foo_01 = c('foo_01 <- function(){}'),
+    foo_02 = c()
+  )
+  expect_warning(get_network(all_scripts = test_scripts),
+                 "removing empty scritps: foo_02")
+  # no functions
   test_scripts <- list(
     foo_01 = c('print("over 100")'),
     foo_02 = c("print(x)")

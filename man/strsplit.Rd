@@ -22,7 +22,7 @@ re-cycled along x.}
 \item{perl}{logical. Should Perl-compatible regexps be used? Is \code{TRUE}
 for all but \code{"remove"}.}
 
-\item{...}{other inouts for base::strsplit}
+\item{...}{other inputs for base::strsplit}
 }
 \value{
 A list of the same length as x, the i-th element of which contains

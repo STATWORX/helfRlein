@@ -12,10 +12,55 @@ test_that("the output is right", {
                  dimnames = list(NULL, c("min", "max")))
   
   expect_equal(tmp1, res1)
+  
+  x <- c(1,2,4,
+         0,0,1,2,0,
+         1,2,4,1,2,4,
+         0,1,1,1,
+         1,2,4,
+         0,0,0,
+         1,2,4,
+         1,2,0,1,1,1,1,1,1,1,1,1,
+         1,2,4,1,2,4,
+         0)
+  tmp2 <- get_sequence(x = x, pattern = c(1,2,4),  minsize = 2)
+  res2 <- matrix(c(9,14,40,45),
+                 ncol = 2,
+                 byrow = TRUE,
+                 dimnames = list(NULL, c("min", "max")))
+  
+  expect_equal(tmp2, res2)
+})
+
+test_that("repeatting pattern", {
+  
+  tmp1 <- get_sequence(x = c(0,1,1,0,1,1,0,0),
+                       pattern = c(0,1,1),
+                       minsize = 2L)
+  
+  res1 <- matrix(c(1,6),
+                 ncol = 2,
+                 byrow = TRUE,
+                 dimnames = list(NULL, c("min", "max")))
+  
+  expect_equal(tmp1, res1)
+  
+  tmp2 <- get_sequence(x = c(0,1,1,0,1,1,0,1,0),
+                       pattern = c(1,1),
+                       minsize = 1L)
+  
+  res2 <- matrix(c(2,3,5,6),
+                 ncol = 2,
+                 byrow = TRUE,
+                 dimnames = list(NULL, c("min", "max")))
+  
+  expect_equal(tmp2, res2)
+  
+  
 })
 
 
-test_that("minsize is an integer greater than 2", {
+test_that("minsize is right for single pattern", {
   
   expect_error(get_sequence(x = c(0,1,1,0,0,0,0,3,0,0,1,0,423,0,0,0,0,0,1,0),
                             pattern = 0,
@@ -54,6 +99,26 @@ test_that("input is a character vector", {
                  ncol = 2,
                  byrow = TRUE,
                  dimnames = list(NULL, c("min", "max")))
-  
   expect_equal(tmp1, res1)
+  
+  tmp2<- get_sequence(x, pattern = c("a", "a"))
+  res2 <- matrix(c(5,8),
+                 ncol = 2,
+                 byrow = TRUE,
+                 dimnames = list(NULL, c("min", "max")))
+  
+  expect_equal(tmp2, res2)
+})
+
+test_that("no pattern ocours", {
+  x <- c(2,1,2,1,3)
+  expect_warning(res1 <- get_sequence(x, pattern = 1, minsize = 2),
+                 "no repeating pattern found")
+  expect_equal(res1, NULL)
+  
+  x <- c(2,1,2,1,3)
+  expect_warning(res1 <- get_sequence(x, pattern = c(1,3), minsize = 2),
+                 "no repeating pattern found")
+  expect_equal(res1, NULL)
+  
 })
