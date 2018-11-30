@@ -6,13 +6,12 @@
 
 This package contains a collection of R helper functions. There are three main topics:
 
-- independant and stand alone functions (eg. [burglr](https://www.statworx.com/de/blog/burglr-stealing-code-from-the-web/) or [dive](http://www.statworx.com/de/blog/dive-the-debugging-function-you-deserve/))
+- independent and stand alone functions (eg. [burglr](https://www.statworx.com/de/blog/burglr-stealing-code-from-the-web/) or [dive](http://www.statworx.com/de/blog/dive-the-debugging-function-you-deserve/))
 
 - general helper functions that ease our programing life
 
 - functions that ease our daily work and projects
 
-  ​
 
 
 ## Installation
@@ -34,7 +33,6 @@ devtools::install_github("STATWORX/helfRlein")
 - `dive()`
   A debugging function for that will sort out the parameters for you. You can use it for example with Sublime. You can find a detailed introduction to this function [here](https://www.statworx.com/de/blog/dive-the-debugging-function-you-deserve/).
 
-  ​
 
 
 ### general helper functions
