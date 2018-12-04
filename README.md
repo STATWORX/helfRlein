@@ -25,7 +25,7 @@ devtools::install_github("STATWORX/helfRlein")
 
 ## List of functions
 
-###stand alone functions
+### stand alone functions
 
 - `burglr()` 
   A functions to source code from the web. You can find a detailed introduction to this function [here](https://www.statworx.com/de/blog/burglr-stealing-code-from-the-web/).
