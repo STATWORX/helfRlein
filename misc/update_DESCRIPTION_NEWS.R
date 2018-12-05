@@ -221,6 +221,14 @@ my_desc$add_author('Oliver', 'Guggenbuehl',
                    role = c('ctb'))
 
 
+# minor changes -----------------------------------------------------------
+
+my_desc$bump_version("patch")
+my_news$add_version(my_desc$get_version())
+my_news$add_subtitle("Bugfixes")
+my_news$add_bullet(c("rename prop to mean in count_na"))
+
+
 # save everything ---------------------------------------------------------
 
 my_desc$set("Date", Sys.Date())

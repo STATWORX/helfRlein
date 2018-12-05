@@ -1,7 +1,7 @@
 #' @title counts NA values in a vector
 #'
 #' @param x a vector with data
-#' @param prop a boolean, if \code{TRUE} instead of the sum the mean of NA's
+#' @param mean a boolean, if \code{TRUE} instead of the sum the mean of NA's
 #'  is calculated.
 #'
 #' @return returns either the sum or the mean of NA values.
@@ -16,10 +16,10 @@
 #' count_na(x)
 #' # [1] 2
 
-count_na <- function(x, prop = FALSE) {
+count_na <- function(x, mean = FALSE) {
   out <- sum(is.na(x))
   
-  if (prop) {
+  if (mean) {
     out <- mean(is.na(x))
   }
   
