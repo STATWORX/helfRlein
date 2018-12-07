@@ -11,7 +11,7 @@
 #' @examples 
 #' test <- list(a = c("a", "b", NA),
 #'              b = c(NaN, 1,2, -Inf),
-#'              c = c(TRUE, FALSE, NaN, Inf))
+#'              c = c(TRUE, FALSE, NA))
 #' 
 #' lapply(test, to_na)
 #' 
@@ -23,7 +23,7 @@
 #' # [1] NA  1  2 NA
 #' 
 #' # $c
-#' # [1]  1  0 NA NA
+#' # [1] TRUE FALSE NA
 #' 
 #' @author Daniel Luettgau
 #' @note --- Idea for improvement
