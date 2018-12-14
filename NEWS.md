@@ -1,3 +1,13 @@
+## version 0.2.2
+
+---
+
+
+### Bugfixes
+
+- rename prop to mean in count_na
+
+
 ## version 0.2.1
 
 ---

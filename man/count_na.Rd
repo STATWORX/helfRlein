@@ -4,12 +4,12 @@
 \alias{count_na}
 \title{counts NA values in a vector}
 \usage{
-count_na(x, prop = FALSE)
+count_na(x, mean = FALSE)
 }
 \arguments{
 \item{x}{a vector with data}
 
-\item{prop}{a boolean, if \code{TRUE} instead of the sum the mean of NA's
+\item{mean}{a boolean, if \code{TRUE} instead of the sum the mean of NA's
 is calculated.}
 }
 \value{

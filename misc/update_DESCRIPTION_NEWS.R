@@ -228,6 +228,14 @@ my_news$add_subtitle("update function")
 my_news$add_bullet(c("changed color names and added a red color to the palette",
                      "removed 'number' form sci_palette()"))
 
+# minor changes -----------------------------------------------------------
+
+my_desc$bump_version("patch")
+my_news$add_version(my_desc$get_version())
+my_news$add_subtitle("Bugfixes")
+my_news$add_bullet(c("rename prop to mean in count_na"))
+
+
 # save everything ---------------------------------------------------------
 
 my_desc$set("Date", Sys.Date())
