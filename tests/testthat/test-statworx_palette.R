@@ -21,7 +21,8 @@ test_that("input has right format", {
 
 test_that("default values", {
   
-  res_colors <- c("#013848", "#0085AF", "#00A378", "#FF8000")
+  basecolors <- c(1, 2, 3, 5, 10)
+  res_colors <- as.character(sci_palette()[basecolors])
   expect_equal(statworx_palette(), res_colors)
   
   # test length of output

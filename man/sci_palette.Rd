@@ -7,14 +7,12 @@
 \usage{
 \method{plot}{sci}(x, ...)
 
-sci_palette(number = NULL)
+sci_palette()
 }
 \arguments{
 \item{x}{an object of class \code{sci}.}
 
 \item{...}{arguments to be passed to method}
-
-\item{number}{a numeric \code{(1-9)} with the number of colors}
 }
 \description{
 Palette for Statworx's Corporate Identity colors.
@@ -26,7 +24,7 @@ The \code{plot} function gives an example of the colors.
 # Plotting the true underlying effects
 plot(sci_palette())
 
-sci_palette(3) # plotting three colors
+plot(sci_palette())
 
 }
 \author{

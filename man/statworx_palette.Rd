@@ -4,13 +4,18 @@
 \alias{statworx_palette}
 \title{a palette based on STATWORX's CI colors}
 \usage{
-statworx_palette(number = 4, reorder = FALSE)
+statworx_palette(number = length(basecolors), reorder = FALSE,
+  basecolors = c(1, 2, 3, 5, 10))
 }
 \arguments{
-\item{number}{a numeric \code{(1-9)} with the number of colors}
+\item{number}{a numeric with the number of colors.
+The default is the length of \code{basecolors}.}
 
 \item{reorder}{a boolean if \code{TRUE} the order will be sampled,
 which can make groups next to each other a little bit more separable.}
+
+\item{basecolors}{a numeric vector with the used color indices of 
+\code{\link{sci_palette()}}.}
 }
 \description{
 A palette based on STATWORX's CI colors.
@@ -18,7 +23,7 @@ A palette based on STATWORX's CI colors.
 \examples{
 number <- 16
 plot(data.frame(x =  1:number, y = 1), 
-     col = statworx_palette(number, TRUE),
+     col = statworx_palette(number, FALSE),
      pch = 16, cex = 5)
 
 }
