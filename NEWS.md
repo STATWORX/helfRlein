@@ -1,3 +1,14 @@
+## version 0.2.1
+
+---
+
+
+### update function
+
+- changed color names and added a red color to the palette
+- removed 'number' form sci_palette()
+
+
 ## version 0.2.0
 
 ---

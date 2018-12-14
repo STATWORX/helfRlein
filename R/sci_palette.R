@@ -4,8 +4,6 @@
 #' 
 #' @details
 #' The \code{plot} function gives an example of the colors.
-#'
-#' @param number a numeric \code{(1-9)} with the number of colors
 #' 
 #' @importFrom grDevices rgb
 #' 
@@ -15,9 +13,9 @@
 #' @export
 #' 
 #' @examples
-#' sci_palette(3) # plotting three colors
+#' plot(sci_palette())
 #' 
-sci_palette <- function(number = NULL) {
+sci_palette <- function() {
   
   out <- c(main_color = grDevices::rgb(1, 56, 72, maxColorValue = 255),
            accent_color_1   = grDevices::rgb(0, 133, 175, maxColorValue = 255),
@@ -29,21 +27,6 @@ sci_palette <- function(number = NULL) {
            grey_2     = grDevices::rgb(217, 217, 217, maxColorValue = 255),
            light_gray   = grDevices::rgb(248, 248, 248, maxColorValue = 255),
            special = grDevices::rgb(198, 47, 75, maxColorValue = 255))
-  
-  # check input number
-  if (is.null(number)) {
-    number <- length(out)
-  }
-  
-  if (!is.numeric(number)) {
-    stop("number needs to be numeric")
-  }
-  
-  if (number > length(out)) {
-    stop(paste0("there are only ", length(out), " colors set!"))
-  }
-  
-  out <- out[seq_len(number)]
   
   class(out) <- "sci"
   

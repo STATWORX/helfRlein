@@ -220,6 +220,13 @@ my_desc$add_author('Oliver', 'Guggenbuehl',
                    email = 'oliver.guggenbuehl@statworx.com',
                    role = c('ctb'))
 
+# update paletten __------------------------------------------------------
+
+my_desc$bump_version("patch")
+my_news$add_version(my_desc$get_version())
+my_news$add_subtitle("update function")
+my_news$add_bullet(c("changed color names and added a red color to the palette",
+                     "removed 'number' form sci_palette()"))
 
 # save everything ---------------------------------------------------------
 
