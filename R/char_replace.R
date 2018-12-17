@@ -2,8 +2,9 @@
 #'
 #' @description This function replaces non-standard characters (such as the
 #' German Umlaut 'ä') with their standard equivalents (in this case 'ae').
-#' Arguments enable the user to force all characters to lower-case or remove 
-#' all whitespace characters within the string.
+#' Arguments enable the user to force all characters to lower-case, trim leading 
+#' and trailing whitespace characters or replace all whitespace characters 
+#' and dashes with underscores or remove all whitespace characters within the string.
 #'
 #' @param x character vector, contains special characters needing to be replaced.
 #' @param to_lower logical, forces all characters to lower-case
