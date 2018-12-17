@@ -60,5 +60,13 @@ test_that("existing warning", {
                    )
                  )
   
+  expect_warning(char_replace(x,
+                              to_lower = FALSE,
+                              trim = FALSE,
+                              rm_space = TRUE,
+                              rm_dash = FALSE,
+                              to_underscore = FALSE),
+                 "trim = FALSE is ignored because of rm_sapce = TRUE")
+  
   
 })

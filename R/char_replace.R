@@ -25,7 +25,7 @@
 #' @examples
 #' x <- "Élizàldë-González Strasse"
 #' char_replace(x)
-#' char_replace(x, to_lower = TRUE)
+#' char_replace
 #' char_replace(x, to_lower = TRUE, to_underscore = TRUE)
 #' char_replace(x, to_lower = TRUE, rm_space = TRUE, rm_dash = TRUE)
 
@@ -35,6 +35,10 @@ char_replace <- function(x,
                          rm_space = FALSE,
                          rm_dash = FALSE,
                          to_underscore = FALSE) {
+  
+  if (trim == FALSE & rm_space == TRUE) {
+    warning("trim = FALSE is ignored because of rm_sapce = TRUE")
+  }
   
   if (trim == FALSE & to_underscore == TRUE) {
     warning(
