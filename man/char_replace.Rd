@@ -4,8 +4,8 @@
 \alias{char_replace}
 \title{Replacement of non-standard characters}
 \usage{
-char_replace(x, to_lower = FALSE, rm_space = FALSE, rm_dash = FALSE,
-  to_underscore = FALSE)
+char_replace(x, to_lower = FALSE, trim = TRUE, rm_space = FALSE,
+  rm_dash = FALSE, to_underscore = FALSE)
 }
 \arguments{
 \item{x}{character vector, contains special characters needing to be replaced.}
@@ -27,13 +27,14 @@ standard counterparts
 \description{
 This function replaces non-standard characters (such as the
 German Umlaut 'ä') with their standard equivalents (in this case 'ae').
-Arguments enable the user to force all characters to lower-case or remove 
-all whitespace characters within the string.
+Arguments enable the user to force all characters to lower-case, trim leading 
+and trailing whitespace characters or replace all whitespace characters 
+and dashes with underscores or remove all whitespace characters within the string.
 }
 \examples{
 x <- "Élizàldë-González Strasse"
 char_replace(x)
-char_replace(x, to_lower = TRUE)
+char_replace
 char_replace(x, to_lower = TRUE, to_underscore = TRUE)
 char_replace(x, to_lower = TRUE, rm_space = TRUE, rm_dash = TRUE)
 }

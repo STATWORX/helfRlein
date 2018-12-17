@@ -2,8 +2,9 @@
 #'
 #' @description This function replaces non-standard characters (such as the
 #' German Umlaut 'ä') with their standard equivalents (in this case 'ae').
-#' Arguments enable the user to force all characters to lower-case or remove 
-#' all whitespace characters within the string.
+#' Arguments enable the user to force all characters to lower-case, trim leading 
+#' and trailing whitespace characters or replace all whitespace characters 
+#' and dashes with underscores or remove all whitespace characters within the string.
 #'
 #' @param x character vector, contains special characters needing to be replaced.
 #' @param to_lower logical, forces all characters to lower-case
@@ -24,15 +25,30 @@
 #' @examples
 #' x <- "Élizàldë-González Strasse"
 #' char_replace(x)
-#' char_replace(x, to_lower = TRUE)
+#' char_replace
 #' char_replace(x, to_lower = TRUE, to_underscore = TRUE)
 #' char_replace(x, to_lower = TRUE, rm_space = TRUE, rm_dash = TRUE)
 
 char_replace <- function(x,
                          to_lower = FALSE,
+                         trim = TRUE,
                          rm_space = FALSE,
                          rm_dash = FALSE,
                          to_underscore = FALSE) {
+  
+  if (trim == FALSE & rm_space == TRUE) {
+    warning("trim = FALSE is ignored because of rm_sapce = TRUE")
+  }
+  
+  if (trim == FALSE & to_underscore == TRUE) {
+    warning(
+      paste(
+      "Trimming is strongly recommended when using to_underscore.",
+      "Otherwise any leading or trailing whitespace characters will be",
+      "replaced with underscores as well."
+      )
+    )
+  }
   
   input_processed <- x %>% 
     str_replace_all(
@@ -95,6 +111,11 @@ char_replace <- function(x,
         "ž" = "z", 
         "Ž" = "Z"))
   
+  if (trim == TRUE) {
+    input_processed <- input_processed %>% 
+      trim()
+  }
+  
   if (to_lower == TRUE) {
     input_processed <- tolower(input_processed)
   }
@@ -114,9 +135,6 @@ char_replace <- function(x,
       str_replace_all(pattern = c(" " = "_", 
                                   "-" = "_"))
   }
-  
-  input_processed <- input_processed %>% 
-    trim()
   
   return(input_processed)
   

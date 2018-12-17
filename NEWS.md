@@ -1,3 +1,13 @@
+## version 0.2.2.9000
+
+---
+
+
+### Bugfixes
+
+- moved trim before underscore replacement
+
+
 ## version 0.2.2
 
 ---
