@@ -30,9 +30,20 @@
 
 char_replace <- function(x,
                          to_lower = FALSE,
+                         trim = TRUE,
                          rm_space = FALSE,
                          rm_dash = FALSE,
                          to_underscore = FALSE) {
+  
+  if (trim == FALSE & to_underscore == TRUE) {
+    warning(
+      paste(
+      "Trimming is strongly recommended when using to_underscore.",
+      "Otherwise any leading or trailing whitespace characters will be",
+      "replaced with underscores as well."
+      )
+    )
+  }
   
   input_processed <- x %>% 
     str_replace_all(
@@ -95,6 +106,11 @@ char_replace <- function(x,
         "ž" = "z", 
         "Ž" = "Z"))
   
+  if (trim == TRUE) {
+    input_processed <- input_processed %>% 
+      trim()
+  }
+  
   if (to_lower == TRUE) {
     input_processed <- tolower(input_processed)
   }
@@ -114,9 +130,6 @@ char_replace <- function(x,
       str_replace_all(pattern = c(" " = "_", 
                                   "-" = "_"))
   }
-  
-  input_processed <- input_processed %>% 
-    trim()
   
   return(input_processed)
   

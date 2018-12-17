@@ -33,11 +33,32 @@ test_that("example right output", {
                         rm_space = FALSE,
                         rm_dash = FALSE,
                         to_underscore = TRUE),
-               "_Elizalde_Gonzalez_Strasse_")
+               "Elizalde_Gonzalez_Strasse")
   expect_equal(char_replace(x,
                         to_lower = TRUE,
                         rm_space = TRUE,
                         rm_dash = TRUE,
                         to_underscore = TRUE),
                "elizaldegonzalezstrasse")
+})
+
+test_that("existing warning", {
+  
+  x <- " Élizàldë-González Strasse "
+  
+  # Wanring for leading whitespaces
+  expect_warning(char_replace(x,
+                              to_lower = FALSE,
+                              trim = FALSE,
+                              rm_space = FALSE,
+                              rm_dash = FALSE,
+                              to_underscore = TRUE),
+                 paste(
+                   "Trimming is strongly recommended when using to_underscore.",
+                   "Otherwise any leading or trailing whitespace characters will be",
+                   "replaced with underscores as well."
+                   )
+                 )
+  
+  
 })
