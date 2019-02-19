@@ -109,7 +109,8 @@ char_replace <- function(x,
         "ÿ" = "y", 
         "þ" = "th", 
         "ž" = "z", 
-        "Ž" = "Z"))
+        "Ž" = "Z",
+        " " = " "))
   
   if (trim == TRUE) {
     input_processed <- input_processed %>% 

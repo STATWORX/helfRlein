@@ -1,7 +1,7 @@
 context("check char_replace")
 
 test_that("example right output", {
-  x <- " Élizàldë-González Strasse "
+  x <- " Élizàldë-González Strasse  "
   # y <- c("äöü", "ÄÖÜ", "éè")
   
   expect_equal(char_replace(x,

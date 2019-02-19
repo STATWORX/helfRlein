@@ -1,3 +1,13 @@
+## version 0.2.2.9001
+
+---
+
+
+### added functionality
+
+- char_replace changes ALT+SPACE to a normal SPACE
+
+
 ## version 0.2.2.9000
 
 ---

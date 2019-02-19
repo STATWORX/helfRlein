@@ -242,6 +242,12 @@ my_news$add_version(my_desc$get_version())
 my_news$add_subtitle("Bugfixes")
 my_news$add_bullet(c("moved trim before underscore replacement"))
 
+# minor changes -----------------------------------------------------------
+
+my_desc$bump_version("dev")
+my_news$add_version(my_desc$get_version())
+my_news$add_subtitle("added functionality")
+my_news$add_bullet(c("char_replace changes ALT+SPACE to a normal SPACE"))
 
 # save everything ---------------------------------------------------------
 
