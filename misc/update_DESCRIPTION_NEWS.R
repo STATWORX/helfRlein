@@ -249,6 +249,13 @@ my_news$add_version(my_desc$get_version())
 my_news$add_subtitle("added functionality")
 my_news$add_bullet(c("char_replace changes ALT+SPACE to a normal SPACE"))
 
+# fix statusbar -----------------------------------------------------------
+
+my_desc$bump_version("patch")
+my_news$add_version(my_desc$get_version())
+my_news$add_subtitle("Bugfixes")
+my_news$add_bullet(c("statusbar now can handle character max.run with length one"))
+
 # save everything ---------------------------------------------------------
 
 my_desc$set("Date", Sys.Date())

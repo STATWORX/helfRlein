@@ -1,3 +1,13 @@
+## version 0.2.3
+
+---
+
+
+### Bugfixes
+
+- statusbar now can handle character max.run with length one
+
+
 ## version 0.2.2.9001
 
 ---
