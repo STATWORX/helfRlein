@@ -10,9 +10,6 @@ test_that("error message", {
   
 })
 
-test_that("no error is produced", {
-  statusbar(run = "b", max.run = letters[2], percent.max = 10L)
-})
 
 test_that("example output is right", {
   expect_output(statusbar(run = 2, max.run = 20, percent.max = 10L),
@@ -20,4 +17,7 @@ test_that("example output is right", {
   
   expect_output(statusbar(run = "b", max.run = letters[1:3], percent.max = 10L),
                 "\\n \\[=======   \\]   66\\.67% - b")
+  
+  expect_output(statusbar(run = "b", max.run = letters[2], percent.max = 10L),
+                "\\n \\[==========\\]  100\\.00% - b")
 })
