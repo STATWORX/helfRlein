@@ -15,7 +15,7 @@ The default is the length of \code{basecolors}.}
 which can make groups next to each other a little bit more separable.}
 
 \item{basecolors}{a numeric vector with the used color indices of 
-\code{\link{sci_palette()}}.}
+\code{\link{sci_palette}}.}
 }
 \description{
 A palette based on STATWORX's CI colors.

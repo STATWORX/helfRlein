@@ -14,11 +14,14 @@ last be created?}
 
 \item{...}{additional options for \link[base]{dir.create}.}
 }
+\value{
+returns TRUE if a new folder is created, FALSE if not
+}
 \description{
 Checks if the given path exists, if not it creates it.
 }
 \examples{
-#' \dontrun{
+\dontrun{
 checkdir("testfolder/subfolder")
 } 
 

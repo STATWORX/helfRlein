@@ -1,3 +1,14 @@
+## version 0.2.3.9000
+
+---
+
+
+### Bugfixes
+
+- object_size_in_env is now exported
+- added test for exporting functions
+
+
 ## version 0.2.3
 
 ---

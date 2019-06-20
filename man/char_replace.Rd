@@ -12,6 +12,9 @@ char_replace(x, to_lower = FALSE, trim = TRUE, rm_space = FALSE,
 
 \item{to_lower}{logical, forces all characters to lower-case}
 
+\item{trim}{logical, if whitespaces are trimmed from the start and end.
+Is ignored with \code{rm_space == TRUE}.}
+
 \item{rm_space}{logical, removes all whitespace characters within 
 the string.}
 

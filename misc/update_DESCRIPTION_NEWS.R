@@ -256,6 +256,15 @@ my_news$add_version(my_desc$get_version())
 my_news$add_subtitle("Bugfixes")
 my_news$add_bullet(c("statusbar now can handle character max.run with length one"))
 
+# fix statusbar -----------------------------------------------------------
+
+my_desc$bump_version("dev")
+my_news$add_version(my_desc$get_version())
+my_news$add_subtitle("Bugfixes")
+my_news$add_bullet(c("object_size_in_env is now exported",
+                     "added test for exporting functions"))
+
+
 # save everything ---------------------------------------------------------
 
 my_desc$set("Date", Sys.Date())

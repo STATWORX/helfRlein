@@ -13,7 +13,8 @@
 #' @param rm_dash logical, removes all dash-characters within the string. 
 #' @param to_underscore logical, replaces all whitespace and dash-characters
 #' with underscores.
-#' 
+#' @param trim logical, if whitespaces are trimmed from the start and end.
+#' Is ignored with \code{rm_space == TRUE}.
 #' 
 #' @return a character vector with all non-standard characters replaced by their
 #' standard counterparts

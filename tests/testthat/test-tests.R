@@ -44,11 +44,10 @@ test_that("if for each function there is an testfile namend 'test-xxx'", {
 
 test_that("exports of funcitons", {
   # for debugging since .. does not work here
-  function_files <- list.files("R/", full.names = TRUE)
+  # function_files <- list.files("R/", full.names = TRUE)
   
   # get functions and tests
-  function_files <- list.files("../../R/")
-  
+  function_files <- list.files("../../R/", full.names = TRUE)
   # read files
   
   package_files <- c("tests.R", "helfRlein.R")
