@@ -16,7 +16,7 @@
 #' @export
 #'
 #' @examples
-#' #' \dontrun{
+#' \dontrun{
 #' checkdir("testfolder/subfolder")
 #' } 
 #' 
