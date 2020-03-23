@@ -12,21 +12,27 @@
 #' @seealso 
 #'  Internaly the function \link[base]{dir.create} is called.
 #'
-#' @return
+#' @return returns TRUE if a new folder is created, FALSE if not
+#' 
 #' @export
 #'
 #' @examples
-#' #' \dontrun{
+#' \dontrun{
 #' checkdir("testfolder/subfolder")
 #' } 
 #' 
-checkdir <- function(path, recursive = TRUE, ...) {
+checkdir <- function(path, recursive = TRUE, verbose = FALSE, ...) {
   
   # check if dir exists, if not, create it
   if (!file.exists(path)) {
     dir.create(path = path, recursive = recursive, ...)
+    out <- TRUE
   } else {
-    warning(paste0(path, " - already exists"))
+    if (verbose) {
+      warning(paste0(path, " - already exists"))
+    }
+    out <- FALSE
   }
   
+  return(out)
 }

@@ -1,3 +1,44 @@
+## version 0.3.0
+
+---
+
+
+### update function
+
+- get_network has now a exclude list and can ignore internal functions
+
+
+## version 0.2.3.9000
+
+---
+
+
+### Bugfixes
+
+- object_size_in_env is now exported
+- added test for exporting functions
+
+
+## version 0.2.3
+
+---
+
+
+### Bugfixes
+
+- statusbar now can handle character max.run with length one
+
+
+## version 0.2.2.9001
+
+---
+
+
+### added functionality
+
+- char_replace changes ALT+SPACE to a normal SPACE
+
+
 ## version 0.2.2.9000
 
 ---

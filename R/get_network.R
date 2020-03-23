@@ -12,6 +12,12 @@
 #'   removed from the plot.
 #' @param all_scripts a named list with script. The given path is dominant. This
 #'   is mainly used for debugging purposes.
+#' @param use_internals a boolean, if \code{FALSE} than only functions
+#'   that are also a file's name are used. This should respond to internal
+#'   functions. The default is \code{TRUE}.
+#' @param exclude a vector with folder's or function's names, that are excluded
+#'   from the network creation. This is done by a regex, so it will remove
+#'   everything that contains these words.
 #'
 #' @return
 #'   Returns an object with the adjacency matrix \code{$matrix} and 
@@ -40,10 +46,14 @@
 
 get_network <- function(dir = NULL,
                         variations = c("<- function",
-                                       "<-function"),
+                                       " <- function",
+                                       "<-function",
+                                       " <-function"),
                         pattern = "\\.R$",
                         simplify = FALSE,
-                        all_scripts = NULL) {
+                        all_scripts = NULL,
+                        use_internals = TRUE,
+                        exclude = NULL) {
   
   # check if dir exists
   if (!is.null(dir) && !dir.exists(dir)) {
@@ -56,6 +66,16 @@ get_network <- function(dir = NULL,
                              pattern = pattern,
                              recursive = TRUE,
                              full.names = TRUE)
+    
+    
+    # removing files with exlude input
+    if (!is.null(exclude)) {
+      keep <- !grepl(pattern = paste0("(",
+                                      paste0(exclude, collapse = ")|("),
+                                      ")"),
+                     x = files.path)
+      files.path <- files.path[keep]
+    }
     
     if (length(files.path) == 0) {
       stop("no files with the given pattern")
@@ -247,8 +267,14 @@ get_network <- function(dir = NULL,
   
   
   # combine sub to all functions
-  all.functions <- c(main.functions, sub_functions)
-  all.folder    <- c(folder.main, folder.sub)
+  if (use_internals) {
+    all.functions <- c(main.functions, sub_functions)
+    all.folder    <- c(folder.main, folder.sub)
+  } else {
+    all.functions <- main.functions
+    all.folder    <- folder.main
+  }
+  
   
   # remove duplicates
   index <- !duplicated(all.functions)
@@ -367,9 +393,9 @@ get_network <- function(dir = NULL,
   network <-
     lapply(clean.functions,
            function(z) {
-             sapply(paste0(def.functions #, "\\("
-             ),
-             function(x, y = z) sum(grepl(x, y), na.rm = TRUE))
+             # z <- clean.functions[[1]]
+             sapply(paste0(def.functions), #, "\\("
+                    function(x, y = z) sum(grepl(x, y), na.rm = TRUE))
            })
   
   network <- as.data.frame(do.call(rbind, network))

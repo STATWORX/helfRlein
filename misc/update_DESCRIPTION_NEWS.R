@@ -242,6 +242,37 @@ my_news$add_version(my_desc$get_version())
 my_news$add_subtitle("Bugfixes")
 my_news$add_bullet(c("moved trim before underscore replacement"))
 
+# minor changes -----------------------------------------------------------
+
+my_desc$bump_version("dev")
+my_news$add_version(my_desc$get_version())
+my_news$add_subtitle("added functionality")
+my_news$add_bullet(c("char_replace changes ALT+SPACE to a normal SPACE"))
+
+# fix statusbar -----------------------------------------------------------
+
+my_desc$bump_version("patch")
+my_news$add_version(my_desc$get_version())
+my_news$add_subtitle("Bugfixes")
+my_news$add_bullet(c("statusbar now can handle character max.run with length one"))
+
+# fix statusbar -----------------------------------------------------------
+
+my_desc$bump_version("dev")
+my_news$add_version(my_desc$get_version())
+my_news$add_subtitle("Bugfixes")
+my_news$add_bullet(c("object_size_in_env is now exported",
+                     "added test for exporting functions"))
+
+
+# adding new function and testall -----------------------------------------
+
+my_desc$bump_version("minor")
+my_desc$set_dep("testthat", type = desc::dep_types[3], version = "*")
+my_news$add_version(my_desc$get_version())
+my_news$add_subtitle("update function")
+my_news$add_bullet(c("get_network has now a exclude list and can ignore internal functions"))
+
 
 # save everything ---------------------------------------------------------
 

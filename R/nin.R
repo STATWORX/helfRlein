@@ -2,9 +2,6 @@
 #'
 #' @description 
 #'   This negates the '%in%' operator.
-#' 
-#' @param x a vector
-#' @param y a vector
 #'
 #' @return a boolean vector
 #' @export

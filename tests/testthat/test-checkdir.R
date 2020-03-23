@@ -13,8 +13,11 @@ test_that("existing warning", {
   
   testfile <- "temp_folder1_test/"
   expect_equal(checkdir(testfile), TRUE)
-  expect_warning(checkdir(testfile),
+  expect_equal(checkdir(testfile, verbose = FALSE), FALSE)
+  expect_warning(checkdir(testfile, verbose = TRUE),
                  paste0(testfile, " - already exists"))
+  
+  
   # clean up
   if (file.exists(testfile)) {
     unlink(dirname(testfile), recursive = TRUE)

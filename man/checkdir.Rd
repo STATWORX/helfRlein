@@ -4,7 +4,7 @@
 \alias{checkdir}
 \title{Check and create path}
 \usage{
-checkdir(path, recursive = TRUE, ...)
+checkdir(path, recursive = TRUE, verbose = FALSE, ...)
 }
 \arguments{
 \item{path}{a character vector containing a single path name.}
@@ -14,11 +14,14 @@ last be created?}
 
 \item{...}{additional options for \link[base]{dir.create}.}
 }
+\value{
+returns TRUE if a new folder is created, FALSE if not
+}
 \description{
 Checks if the given path exists, if not it creates it.
 }
 \examples{
-#' \dontrun{
+\dontrun{
 checkdir("testfolder/subfolder")
 } 
 

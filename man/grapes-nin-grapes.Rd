@@ -6,11 +6,6 @@
 \usage{
 ... \%nin\% NA
 }
-\arguments{
-\item{x}{a vector}
-
-\item{y}{a vector}
-}
 \value{
 a boolean vector
 }

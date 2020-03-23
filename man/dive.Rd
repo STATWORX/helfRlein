@@ -65,7 +65,7 @@ dive(my.apply.debug, return = "cons")
 
 # Try dive with a character argument
 # Escape strings
-my.string.debug <- "lapply(c(1,3,5), FUN = foo, y = 2, z = 1, type = \\"vec\\")"
+my.string.debug <- "lapply(c(1,3,5), FUN = foo, y = 2, z = 1, type = \"vec\")"
 dive(my.string.debug, return = "cons")
 
 }

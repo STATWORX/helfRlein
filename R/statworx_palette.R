@@ -8,7 +8,7 @@
 #' @param reorder a boolean if \code{TRUE} the order will be sampled,
 #'  which can make groups next to each other a little bit more separable.
 #' @param basecolors a numeric vector with the used color indices of 
-#' \code{\link{sci_palette()}}.
+#' \code{\link{sci_palette}}.
 #' 
 #' @importFrom grDevices rgb colorRampPalette
 #' 

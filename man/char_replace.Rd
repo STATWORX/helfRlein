@@ -4,13 +4,22 @@
 \alias{char_replace}
 \title{Replacement of non-standard characters}
 \usage{
-char_replace(x, to_lower = FALSE, trim = TRUE, rm_space = FALSE,
-  rm_dash = FALSE, to_underscore = FALSE)
+char_replace(
+  x,
+  to_lower = FALSE,
+  trim = TRUE,
+  rm_space = FALSE,
+  rm_dash = FALSE,
+  to_underscore = FALSE
+)
 }
 \arguments{
 \item{x}{character vector, contains special characters needing to be replaced.}
 
 \item{to_lower}{logical, forces all characters to lower-case}
+
+\item{trim}{logical, if whitespaces are trimmed from the start and end.
+Is ignored with \code{rm_space == TRUE}.}
 
 \item{rm_space}{logical, removes all whitespace characters within 
 the string.}
