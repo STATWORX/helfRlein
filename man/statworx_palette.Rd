@@ -4,8 +4,11 @@
 \alias{statworx_palette}
 \title{a palette based on STATWORX's CI colors}
 \usage{
-statworx_palette(number = length(basecolors), reorder = FALSE,
-  basecolors = c(1, 2, 3, 5, 10))
+statworx_palette(
+  number = length(basecolors),
+  reorder = FALSE,
+  basecolors = c(1, 2, 3, 5, 10)
+)
 }
 \arguments{
 \item{number}{a numeric with the number of colors.

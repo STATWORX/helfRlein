@@ -4,8 +4,15 @@
 \alias{get_network}
 \title{flowchart of R projects}
 \usage{
-get_network(dir = NULL, variations = c("<- function", "<-function"),
-  pattern = "\\\\.R$", simplify = FALSE, all_scripts = NULL)
+get_network(
+  dir = NULL,
+  variations = c("<- function", " <- function", "<-function", " <-function"),
+  pattern = "\\\\.R$",
+  simplify = FALSE,
+  all_scripts = NULL,
+  use_internals = TRUE,
+  exclude = NULL
+)
 }
 \arguments{
 \item{dir}{a path that includes the functions}
@@ -20,6 +27,14 @@ removed from the plot.}
 
 \item{all_scripts}{a named list with script. The given path is dominant. This
 is mainly used for debugging purposes.}
+
+\item{use_internals}{a boolean, if \code{FALSE} than only functions
+that are also a file's name are used. This should respond to internal
+functions. The default is \code{TRUE}.}
+
+\item{exclude}{a vector with folder's or function's names, that are excluded
+from the network creation. This is done by a regex, so it will remove
+everything that contains these words.}
 }
 \value{
 Returns an object with the adjacency matrix \code{$matrix} and 

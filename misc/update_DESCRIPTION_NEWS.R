@@ -265,6 +265,15 @@ my_news$add_bullet(c("object_size_in_env is now exported",
                      "added test for exporting functions"))
 
 
+# adding new function and testall -----------------------------------------
+
+my_desc$bump_version("minor")
+my_desc$set_dep("testthat", type = desc::dep_types[3], version = "*")
+my_news$add_version(my_desc$get_version())
+my_news$add_subtitle("update function")
+my_news$add_bullet(c("get_network has now a exclude list and can ignore internal functions"))
+
+
 # save everything ---------------------------------------------------------
 
 my_desc$set("Date", Sys.Date())

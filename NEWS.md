@@ -1,3 +1,13 @@
+## version 0.3.0
+
+---
+
+
+### update function
+
+- get_network has now a exclude list and can ignore internal functions
+
+
 ## version 0.2.3.9000
 
 ---

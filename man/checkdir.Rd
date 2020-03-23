@@ -4,7 +4,7 @@
 \alias{checkdir}
 \title{Check and create path}
 \usage{
-checkdir(path, recursive = TRUE, ...)
+checkdir(path, recursive = TRUE, verbose = FALSE, ...)
 }
 \arguments{
 \item{path}{a character vector containing a single path name.}
