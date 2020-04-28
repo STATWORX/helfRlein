@@ -14,15 +14,15 @@ char_replace(
 )
 }
 \arguments{
-\item{x}{character vector, contains special characters needing to be replaced.}
+\item{x}{character vector, contains special characters needing to be
+replaced.}
 
 \item{to_lower}{logical, forces all characters to lower-case}
 
-\item{trim}{logical, if whitespaces are trimmed from the start and end.
-Is ignored with \code{rm_space == TRUE}.}
+\item{trim}{logical, if whitespaces are trimmed from the start and end. Is
+ignored with \code{rm_space == TRUE}.}
 
-\item{rm_space}{logical, removes all whitespace characters within 
-the string.}
+\item{rm_space}{logical, removes all whitespace characters within the string.}
 
 \item{rm_dash}{logical, removes all dash-characters within the string.}
 
@@ -31,14 +31,15 @@ with underscores.}
 }
 \value{
 a character vector with all non-standard characters replaced by their
-standard counterparts
+  standard counterparts
 }
 \description{
 This function replaces non-standard characters (such as the
-German Umlaut 'ä') with their standard equivalents (in this case 'ae').
-Arguments enable the user to force all characters to lower-case, trim leading 
-and trailing whitespace characters or replace all whitespace characters 
-and dashes with underscores or remove all whitespace characters within the string.
+  German Umlaut 'ä') with their standard equivalents (in this case 'ae').
+  Arguments enable the user to force all characters to lower-case, trim
+  leading and trailing whitespace characters or replace all whitespace
+  characters and dashes with underscores or remove all whitespace characters
+  within the string.
 }
 \examples{
 x <- "Élizàldë-González Strasse"

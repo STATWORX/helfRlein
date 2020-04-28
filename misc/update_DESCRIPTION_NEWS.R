@@ -268,10 +268,21 @@ my_news$add_bullet(c("object_size_in_env is now exported",
 # adding new function and testall -----------------------------------------
 
 my_desc$bump_version("minor")
-my_desc$set_dep("testthat", type = desc::dep_types[3], version = "*")
 my_news$add_version(my_desc$get_version())
 my_news$add_subtitle("update function")
 my_news$add_bullet(c("get_network has now a exclude list and can ignore internal functions"))
+
+
+
+# testing R 4.0.0 ---------------------------------------------------------
+
+my_desc$bump_version("patch")
+my_news$add_version(my_desc$get_version())
+my_news$add_subtitle("internal changes")
+my_news$add_bullet(c("adjusting tests for R 4.0.0",
+                     "cleaning code"))
+my_news$add_subtitle("Bugfixes")
+my_news$add_bullet(c("removing ASCII characters"))
 
 
 # save everything ---------------------------------------------------------

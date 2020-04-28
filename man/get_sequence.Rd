@@ -31,7 +31,7 @@ get_sequence(x = c(0,1,1,0,0,0,0,3,0,0,1,0,423,0,0,0,0,0,1,0),
 #      min max
 # [1,]   4   7
 # [2,]  14  18
- 
+
 }
 \author{
 Jakob Gepp, Robin Kraft

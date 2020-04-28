@@ -21,8 +21,8 @@ intersect2(list(c(1:3), c(1:4)), list(c(1:2),c(1:3)), c(1:2))
 
 }
 \seealso{
-I found this function on this post 
-\href{https://stat.ethz.ch/pipermail/r-help/2006-July/109758.html}{here} 
+I found this function on this post
+\href{https://stat.ethz.ch/pipermail/r-help/2006-July/109758.html}{here}
 and adjusted it a bit.
 }
 \author{

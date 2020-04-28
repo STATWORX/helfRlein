@@ -16,7 +16,7 @@ dive(x, return = "cons")
 The function has several return options:
 \itemize{
 \item \code{"cons"} prints the arguments into the console
-\item \code{"env"} evaluates the arguments in the global 
+\item \code{"env"} evaluates the arguments in the global
 \item \code{"list"} returns a list with the arguments.
 }
 When using *apply debugging only the return \code{"cons"} and \code{"list"}
@@ -29,8 +29,8 @@ of a function into a user-specified output. This output can either be the
 global environment, a list or a console print.
 }
 \details{
-A word of caution: If you have string arguments in functions 
-         like in the \code{\link{paste}}, you have to escape the quotation 
+A word of caution: If you have string arguments in functions
+         like in the \code{\link{paste}}, you have to escape the quotation
          marks. Suppose we want to debug the \code{\link{paste}} function
          with \code{\link{dive}}. Then specifying the argument \code{x} won't
          be work with \code{x = "paste("Hello World")"}, since there will be
@@ -70,7 +70,7 @@ dive(my.string.debug, return = "cons")
 
 }
 \seealso{
-For more information and updates see 
+For more information and updates see
 \href{https://github.com/andrebleier/dive}{here}.
 }
 \author{

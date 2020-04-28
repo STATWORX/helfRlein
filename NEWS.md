@@ -1,3 +1,19 @@
+## version 0.3.1
+
+---
+
+
+### Bugfixes
+
+- removing ASCII characters
+
+
+### internal changes
+
+- adjusting tests for R 4.0.0
+- cleaning code
+
+
 ## version 0.3.0
 
 ---
@@ -221,7 +237,7 @@
 
 ---
 
-### setup
+### NEWS.md setup
 
-- added NEWS.md creation
+- added NEWS.md creation with newsmd
 
