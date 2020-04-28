@@ -12,7 +12,7 @@
 #' x <- c("  Hello world!", "  Hello world! ", "Hello world! ")
 #' trim(x)
 #' # [1] "Hello world!" "Hello world!" "Hello world!"
-#' 
+#'
 trim <- function(x, lead = TRUE, trail = TRUE) {
   if (!is.character(x)) {
     stop("x is not a character vector.")
@@ -21,11 +21,11 @@ trim <- function(x, lead = TRUE, trail = TRUE) {
   if (lead == TRUE) {
      x <- sub("^\\s+", "", x)
   }
-  
+
   # check trailing spaces
   if (trail == TRUE) {
     x <- sub("\\s+$", "", x)
   }
-  
+
   return(x)
 }

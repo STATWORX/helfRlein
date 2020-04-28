@@ -20,43 +20,43 @@
 #' @return A list of the same length as x, the i-th element of which contains
 #'   the vector of splits of x[i].
 #' @export
-#' @seealso \code{\link[base]{strsplit}} or 
+#' @seealso \code{\link[base]{strsplit}} or
 #'   \href{https://stackoverflow.com/questions/15575221}{stackoverflow}
 #'    for more details.
-#'   
+#'
 #' @examples
 #' x <- c("3D/MON&SUN")
 #' strsplit(x, "[/&]")
 #' # [[1]]
 #' # [1] "3D"  "MON" "SUN"
-#' 
+#'
 #' strsplit(x, "[/&]", type = "before")
 #' # [[1]]
 #' # [1] "3D"  "/MON" "&SUN"
-#' 
+#'
 #' strsplit(x, "[/&]", type = "after")
 #' # [[1]]
 #' # [1] "3D/"  "MON&" "SUN"
-#' 
+#'
 #' x <- c("3D/MON&SUN 2D/MON&SUN")
 #' strsplit(x, split("/", "M"))
 #' # [[1]]
-#' # [1] "3D"         "MON&SUN 2D" "MON&SUN" 
-#' 
+#' # [1] "3D"         "MON&SUN 2D" "MON&SUN"
+#'
 #' @author Jakob Gepp
 #' @note
 #'  TODO see issues for further advancements
-#' 
+#'
 strsplit <- function(x,
                      split,
                      type = "remove",
                      perl = FALSE,
                      ...) {
-  
+
   if (!type %in% c("remove", "before", "after", "between")) {
     stop("type must be remove, after, before or between!")
   }
-  
+
   if (type == "between" & length(split) != 2) {
     stop("split need no have length two!")
   }
@@ -64,7 +64,7 @@ strsplit <- function(x,
     split <- split[1]
     warning("there are multiple splits - taking only the first one")
   }
-  
+
   if (type == "remove") {
     # use base::strsplit
     out <- base::strsplit(x = x, split = split, perl = perl, ...)
@@ -91,7 +91,7 @@ strsplit <- function(x,
     index <- lapply(index, function(i) which(i == TRUE) + 1)
     # end with -> gusb ab with a
     out <- lapply(out, function(i) gsub(paste0(split, collapse = ""), split[1], i))
-    
+
     # next after endwith add b
     out <- mapply(FUN = function(o, i) {
       o[i] <- paste0( split[2], o[i])
@@ -100,7 +100,7 @@ strsplit <- function(x,
       out, index,
       SIMPLIFY = FALSE)
   }
-  
+
   return(out)
 }
 

@@ -5,7 +5,7 @@
 #'
 #' @details
 #'   The splitting is done with \code{\link{strsplit}} with
-#'   \code{type = "after"}. 
+#'   \code{type = "after"}.
 #'
 #' @param x a string
 #' @param split a pattern with the splitting symbol. The default is " ".
@@ -20,14 +20,13 @@
 #' x <- "Hello world, this is a test sequence."
 #' evenstrings(x, split = ",", char = 30, newlines = FALSE)
 #' # [1] "Hello world,"              " this is a test sequence."
-#' 
+#'
 #' @author Jakob Gepp
-#' 
+#'
 evenstrings <- function(x = c(),
                         split = " ",
                         char = 80,
-                        newlines = FALSE)
-{
+                        newlines = FALSE) {
   # error checks and warnings
   if (length(x) > 1) {
     x <- x[[1]]
@@ -36,17 +35,17 @@ evenstrings <- function(x = c(),
     # if x is emmtpy return list()
     return(list())
   }
-  
+
   if (is.na(x)) {
     return(list())
   }
-  
+
   # splitting
   x1 <- strsplit(x, split, type = "after")[[1]]
-  
+
   # get number of character
   charsum <- nchar(x1)
-  
+
   bits <- as.list(rep(as.numeric(NA), length(charsum)))
   last_i <- 1
   for (i in seq_along(charsum)) {
@@ -57,22 +56,22 @@ evenstrings <- function(x = c(),
     }
     bits[[last_i]] <- last_i:i
   }
-  
+
   # check length
   # b <- bits[[4]]
   check <- sapply(bits, function(b) sum(nchar(x1[b]), na.rm = TRUE))
-  
+
   if (any(check > char)) {
     warning("There are longer lines because of the chosen split pattern.")
   }
-  
+
   # collapse new bits
   bits <- na_omitlist(bits)
   out <- sapply(bits, function(b) paste(x1[b], collapse = ""))
-  
+
   if (newlines == TRUE) {
     out <- paste0(out, collapse = "\n")
   }
-  
+
   return(out)
 }
