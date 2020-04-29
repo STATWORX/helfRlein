@@ -16,7 +16,7 @@ elements aree removed too.}
 Returns the list without \code{NA}s.
 }
 \description{
-This functions removes \code{NA}s from a list. With \code{recursive == TRUE} 
+This functions removes \code{NA}s from a list. With \code{recursive == TRUE}
    \code{NA}s within each list's elements are removed as well.
 }
 \examples{
@@ -25,7 +25,7 @@ na_omitlist(y, recursive = TRUE)
 
 # [[1]]
 # [1] 1 2 3
-# 
+#
 # [[2]]
 # [1] "a" "b" "c" "d"
 #
@@ -34,7 +34,7 @@ na_omitlist(y, recursive = TRUE)
 #
 # [[4]]
 # [[4]][[1]]
-# [1] 5 6 
+# [1] 5 6
 #
 # [[4]][[2]]
 # [1] "A"

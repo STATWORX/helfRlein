@@ -11,17 +11,17 @@
 #' x <- c(NA, NA, 1, NaN, 0)
 #' count_na(x)
 #' # [1] 3
-#' 
+#'
 #' x <- c(NA, NA, 1, NaN, "0")
 #' count_na(x)
 #' # [1] 2
 
 count_na <- function(x, mean = FALSE) {
   out <- sum(is.na(x))
-  
+
   if (mean) {
     out <- mean(is.na(x))
   }
-  
+
   return(out)
 }

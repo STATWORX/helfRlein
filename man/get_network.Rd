@@ -37,7 +37,7 @@ from the network creation. This is done by a regex, so it will remove
 everything that contains these words.}
 }
 \value{
-Returns an object with the adjacency matrix \code{$matrix} and 
+Returns an object with the adjacency matrix \code{$matrix} and
   and igraph object \code{$igraph}.
 }
 \description{
@@ -58,9 +58,9 @@ plot(g1)
 
 }
 \seealso{
-For more information check out 
+For more information check out
 \href{https://www.statworx.com/de/blog/flowcharts-of-functions/}{our blog}.
-Also there is a README on how to use this function 
+Also there is a README on how to use this function
  \href{https://github.com/STATWORX/blog/tree/master/flowchart}{here}.
 }
 \author{

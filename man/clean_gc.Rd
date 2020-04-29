@@ -4,22 +4,22 @@
 \alias{clean_gc}
 \title{Using gc multiple times}
 \usage{
-clean_gc(num.gc = 100, threshold = 0.01, verbose = FALSE)
+clean_gc(num_gc = 100, threshold = 0.01, verbose = FALSE)
 }
 \arguments{
-\item{num.gc}{a numeric that indicates the maximum number of iterations.}
+\item{num_gc}{a numeric that indicates the maximum number of iterations.}
 
-\item{threshold}{a numeric with the percentage difference. If the change 
+\item{threshold}{a numeric with the percentage difference. If the change
 in memory size falls below the threshold, the function stops.}
 
-\item{verbose}{a boolean. If \code{TRUE} information about the run are 
+\item{verbose}{a boolean. If \code{TRUE} information about the run are
 printed.}
 }
 \description{
 Cleans the memory by using \code{gc()} numerous times.
 }
 \details{
-The function calls \code{gc()} until the difference in 
+The function calls \code{gc()} until the difference in
  memory size falls below the \code{threshold}.
 }
 \examples{

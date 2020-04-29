@@ -53,11 +53,11 @@ strsplit(x, "[/&]", type = "after")
 x <- c("3D/MON&SUN 2D/MON&SUN")
 strsplit(x, split("/", "M"))
 # [[1]]
-# [1] "3D"         "MON&SUN 2D" "MON&SUN" 
+# [1] "3D"         "MON&SUN 2D" "MON&SUN"
 
 }
 \seealso{
-\code{\link[base]{strsplit}} or 
+\code{\link[base]{strsplit}} or
   \href{https://stackoverflow.com/questions/15575221}{stackoverflow}
    for more details.
 }

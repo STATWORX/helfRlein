@@ -2,53 +2,54 @@
 #'
 #' @description
 #' Cleans the memory by using \code{gc()} numerous times.
-#' 
+#'
 #' @details
-#' The function calls \code{gc()} until the difference in 
+#' The function calls \code{gc()} until the difference in
 #'  memory size falls below the \code{threshold}.
 #'
-#' @param num.gc a numeric that indicates the maximum number of iterations.
-#' @param threshold a numeric with the percentage difference. If the change 
+#' @param num_gc a numeric that indicates the maximum number of iterations.
+#' @param threshold a numeric with the percentage difference. If the change
 #'        in memory size falls below the threshold, the function stops.
-#' @param verbose a boolean. If \code{TRUE} information about the run are 
+#' @param verbose a boolean. If \code{TRUE} information about the run are
 #'        printed.
-#' 
+#'
 #' @export
-#' 
-#' @examples 
+#' @importFrom data.table last
+#'
+#' @examples
 #' clean_gc(verbose = TRUE)
-#' 
+#'
 #' @author Jakob Gepp
-#' 
-clean_gc <- function(num.gc    = 100,
+#'
+clean_gc <- function(num_gc    = 100,
                      threshold = 0.01,
                      verbose   = FALSE) {
-  mb.size <- c()
-  for (i.gc in c(1:num.gc)) {
-    # i.gc <- 1
-    tmp.gc <- gc()
-    mb.size[i.gc] <- tmp.gc[2,4]
-    if (i.gc != 1) {
-      if (mb.size[i.gc-1] > mb.size[i.gc] * (1 + threshold)) {
+  mb_size <- c()
+  for (i_gc in c(1:num_gc)) {
+    # i_gc <- 1
+    tmp_gc <- gc()
+    mb_size[i_gc] <- tmp_gc[2, 4]
+    if (i_gc != 1) {
+      if (mb_size[i_gc - 1] > mb_size[i_gc] * (1 + threshold)) {
         if (verbose) {
-          print(paste0("run: ", i.gc, " more (", mb.size[i.gc], ")"))
+          print(paste0("run: ", i_gc, " more (", mb_size[i_gc], ")"))
         }
       } else {
         if (verbose) {
           print("no more")
         }
-        break()
+        break
       }
     } else {
       if (verbose) {
-        print(paste0("run: ", i.gc, " (Mb size: ", mb.size[i.gc], ")"))
+        print(paste0("run: ", i_gc, " (Mb size: ", mb_size[i_gc], ")"))
       }
     }
   }
-  if (length(mb.size) > 2) {
+  if (length(mb_size) > 2) {
     if (verbose) {
-      print(paste0("Total change in mb after ", length(mb.size),
-                   " runs: ", mb.size[1] - data.table::last(mb.size)))
+      print(paste0("Total change in mb after ", length(mb_size),
+                   " runs: ", mb_size[1] - data.table::last(mb_size)))
     }
   } else {
     if (verbose) {
@@ -56,7 +57,7 @@ clean_gc <- function(num.gc    = 100,
     }
   }
   # removing used variables
-  rm(num.gc, mb.size, tmp.gc, i.gc)
+  rm(num_gc, mb_size, tmp_gc, i_gc)
 }
 
 

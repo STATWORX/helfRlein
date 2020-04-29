@@ -14,9 +14,9 @@
 #' @examples
 #'
 #' print_fs(path = ".")
-#' 
+#'
 print_fs <- function(path = ".", depth = 2L) {
-  
+
   # check path
   if (length(path) != 1) {
     stop("path must have length one")
@@ -27,7 +27,7 @@ print_fs <- function(path = ".", depth = 2L) {
   if (!dir.exists(path)) {
     stop("path does not exist")
   }
-  
+
   # check depth
   if (!is.numeric(depth)) {
     stop("depth must be a positive integer")
@@ -39,21 +39,21 @@ print_fs <- function(path = ".", depth = 2L) {
     warning("depth was negative, set to 2")
     depth <- 2L
   }
-  
-  
+
+
   # get files
-  files <- list.files(path = path, 
+  files <- list.files(path = path,
                       recursive = TRUE,
-                      include.dirs = FALSE) 
-  
+                      include.dirs = FALSE)
+
   # transform to data.tree
   df <- data.frame(filename = paste0(basename(path), "/", files))
   file_structure <- data.tree::as.Node(df, pathName = "filename")
-  
+
   # pruning
   file_structure$Do(function(node) node$depths <- min(node$Get("level")))
   data.tree::Prune(file_structure, function(node)  node$depths <= depth)
-  
+
   # return value
   return(file_structure)
 }

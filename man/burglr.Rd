@@ -26,7 +26,7 @@ Version 1.0 - f871288d8eae25bcd1dd2bf506f5c47a7cbbc6e4
 \dontrun{
 # this needs internet connection
 burglr(urls = "https://github.com/andrebleier/dive/master/dive.R")
-} 
+}
 
 }
 \seealso{

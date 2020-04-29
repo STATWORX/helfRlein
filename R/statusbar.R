@@ -1,6 +1,6 @@
 #' @title a statusbar for for loops
 #'
-#' @description 
+#' @description
 #'  This functions prints a progess of a for loop at the console.
 #'
 #' @param run the iterator of the for loop or an integer with the current
@@ -14,16 +14,17 @@
 #'
 #' @return
 #'  Has no return value, but prints the progress to the console.
-#'  
+#'
+#' @importFrom utils flush.console
 #' @export
 #'
 #' @examples
-#' 
+#'
 #' for (i in 1:20) {
 #'   Sys.sleep(0.1)
 #'   statusbar(run = i, max.run = 200, percent.max = 60L)
 #' }
-#' 
+#'
 #' for (i in letters[1:16]) {
 #'   Sys.sleep(0.1)
 #'   statusbar(run = i, max.run = letters[1:16], percent.max = 60L)
@@ -32,8 +33,7 @@
 statusbar <- function (run,
                        max.run,
                        percent.max = 20L,
-                       info = run)
-{
+                       info = run) {
   # check run
   if (length(run) > 1) {
     stop("run needs to be of length one!")
@@ -42,13 +42,13 @@ statusbar <- function (run,
   if (length(max.run) == 0) {
     stop("max.run has length 0")
   }
-  
+
   if (length(max.run) > 1 | is.character(max.run)) {
     percent <- which(run == max.run) / length(max.run)
   } else {
     percent <- run / max.run
   }
-  
+
   percent.step <- round(percent * percent.max, 0)
   progress <- paste0("[",
                       paste0(rep("=", percent.step), collapse = ""),
