@@ -6,3 +6,4 @@
 ^.Rhistory
 ^README.md
 ^\.circleci
+^\.github$
