@@ -1,4 +1,4 @@
-context("Test save_rds_archive")
+context("check save_rds_archive")
 
 test_that("'file' must be a non-empty character", {
 
