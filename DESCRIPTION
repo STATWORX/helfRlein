@@ -1,6 +1,6 @@
 Package: helfRlein
 Title: R-Helper functions
-Version: 0.3.1
+Version: 1.0.0
 Authors@R: 
     c(person(given = "Jakob",
              family = "Gepp",
@@ -59,4 +59,4 @@ Imports:
     magrittr (>= 1.1.1),
     grDevices,
     graphics
-Date: 2020-04-28
+Date: 2020-05-04

@@ -1,3 +1,24 @@
+## version 1.0.0
+
+---
+
+
+### styling
+
+- fixing lints
+
+
+### internal changes
+
+- including github actions
+- removing other CI
+
+
+### update function
+
+- removing dive and burglr
+
+
 ## version 0.3.1
 
 ---

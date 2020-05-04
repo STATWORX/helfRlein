@@ -285,6 +285,19 @@ my_news$add_subtitle("Bugfixes")
 my_news$add_bullet(c("removing ASCII characters"))
 
 
+# refactoring package -----------------------------------------------------
+
+my_desc$bump_version("major")
+my_news$add_version(my_desc$get_version())
+my_news$add_subtitle("update function")
+my_news$add_bullet(c("removing dive and burglr"))
+
+my_news$add_subtitle("internal changes")
+my_news$add_bullet(c("including github actions",
+                     "removing other CI"))
+my_news$add_subtitle("styling")
+my_news$add_bullet(c("fixing lints"))
+
 # save everything ---------------------------------------------------------
 
 my_desc$set("Date", Sys.Date())
