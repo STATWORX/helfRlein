@@ -26,5 +26,6 @@ trim(x)
 
 }
 \seealso{
-Since R 3.5.1 there is \code{\link[base]{trimws}} in the base package.
+Since R 3.5.1 there is \code{\link[base]{trimws}} in the base
+  package.
 }

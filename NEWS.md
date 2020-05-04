@@ -17,6 +17,7 @@
 ### update function
 
 - removing dive and burglr
+- adding new function 'save_rds_archive'
 
 
 ## version 0.3.1

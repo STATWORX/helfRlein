@@ -37,7 +37,11 @@ Authors@R:
       person(given = "Oliver",
              family = "Guggenbuehl",
              role = "ctb",
-             email = "oliver.guggenbuehl@statworx.com"))
+             email = "oliver.guggenbuehl@statworx.com"),
+      person(given = "Lukas",
+             family = "Feick",
+             role = "aut",
+             email = "lukas.feick@statworx.com"))
 Description: A usefull collection of R helper functions.
 License: MIT + file LICENSE
 LazyData: true

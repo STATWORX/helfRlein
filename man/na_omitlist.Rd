@@ -16,8 +16,8 @@ elements aree removed too.}
 Returns the list without \code{NA}s.
 }
 \description{
-This functions removes \code{NA}s from a list. With \code{recursive == TRUE}
-   \code{NA}s within each list's elements are removed as well.
+This functions removes \code{NA}s from a list. With \code{recursive ==
+   TRUE} \code{NA}s within each list's elements are removed as well.
 }
 \examples{
 y <- list(c(1:3), letters[1:4], NA, c(1, NA), list(c(5:6, NA), NA, "A"))
