@@ -10,8 +10,10 @@ dev-branch: ![dev-branch](https://github.com/STATWORX/helfRlein/workflows/R-CMD-
 ![dev-lints](https://github.com/STATWORX/helfRlein/workflows/lints/badge.svg?branch=dev)
 
 # test coverage
-![master-test-coverage](https://github.com/STATWORX/helfRlein/workflows/test-coverage/badge.svg?branch=master)
-![dev-test-coverage](https://github.com/STATWORX/helfRlein/workflows/test-coverage/badge.svg?branch=dev)
+![master-test-coverage](https://img.shields.io/codecov/c/github/STATWORX/helfRlein/master.svg)](https://codecov.io/gh/STATWORX/helfRlein/branch/master)
+![dev-test-coverage](https://img.shields.io/codecov/c/github/STATWORX/helfRlein/dev.svg)](https://codecov.io/gh/STATWORX/helfRlein/branch/dev)
+
+
 ----
 
 ## Overview
