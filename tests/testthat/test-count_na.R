@@ -8,4 +8,3 @@ test_that("example is correct", {
 test_that("mean is correct", {
   expect_equal(count_na(c(NA, NA, 1, NaN, 0), mean = TRUE), 0.6)
 })
-

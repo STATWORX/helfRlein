@@ -30,10 +30,10 @@
 #'   statusbar(run = i, max.run = letters[1:16], percent.max = 60L)
 #' }
 
-statusbar <- function (run,
-                       max.run,
-                       percent.max = 20L,
-                       info = run) {
+statusbar <- function(run,
+                      max.run,
+                      percent.max = 20L,
+                      info = run) {
   # check run
   if (length(run) > 1) {
     stop("run needs to be of length one!")
@@ -49,10 +49,10 @@ statusbar <- function (run,
     percent <- run / max.run
   }
 
-  percent.step <- round(percent * percent.max, 0)
+  percent_step <- round(percent * percent.max, 0)
   progress <- paste0("[",
-                      paste0(rep("=", percent.step), collapse = ""),
-                      paste0(rep(" ", percent.max - percent.step), collapse = ""),
+                      paste0(rep("=", percent_step), collapse = ""),
+                      paste0(rep(" ", percent.max - percent_step), collapse = ""),
                       "] ",
                       sprintf("%7.2f", percent * 100, 2),
                       "% - ",

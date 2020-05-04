@@ -7,7 +7,8 @@
 #' @return a character vector
 #' @export
 #'
-#' @seealso Since R 3.5.1 there is \code{\link[base]{trimws}} in the base package.
+#' @seealso Since R 3.5.1 there is \code{\link[base]{trimws}} in the base
+#'   package.
 #' @examples
 #' x <- c("  Hello world!", "  Hello world! ", "Hello world! ")
 #' trim(x)

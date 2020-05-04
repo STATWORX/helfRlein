@@ -1,17 +1,11 @@
 # helfRlein <img src="img/helfRlein.png" width=170 align="right" />
-[![CircleCI](https://circleci.com/gh/STATWORX/helfRlein.svg?style=svg)](https://circleci.com/gh/STATWORX/helfRlein)
 
-# r cmd check
-master-brach: ![master-brach](https://github.com/STATWORX/helfRlein/workflows/R-CMD-check/badge.svg?branch=master)
-dev-branch: ![dev-branch](https://github.com/STATWORX/helfRlein/workflows/R-CMD-check/badge.svg?branch=dev)
+| branch        | master | dev  |
+| ------------- | ------ | ---- |
+| R CMD check   | ![master-brach](https://github.com/STATWORX/helfRlein/workflows/R-CMD-check/badge.svg?branch=master) | ![dev-branch](https://github.com/STATWORX/helfRlein/workflows/R-CMD-check/badge.svg?branch=dev) |
+| test coverage | [![master-test-coverage](https://img.shields.io/codecov/c/github/STATWORX/helfRlein/master.svg)](https://codecov.io/gh/STATWORX/helfRlein/branch/master) | [![dev-test-coverage](https://img.shields.io/codecov/c/github/STATWORX/helfRlein/dev.svg)](https://codecov.io/gh/STATWORX/helfRlein/branch/dev) |
+| lints         | ![master-lints](https://github.com/STATWORX/helfRlein/workflows/lints/badge.svg?branch=master) | ![dev-lints](https://github.com/STATWORX/helfRlein/workflows/lints/badge.svg?branch=dev) |
 
-# lints
-![master-lints](https://github.com/STATWORX/helfRlein/workflows/lints/badge.svg?branch=master)
-![dev-lints](https://github.com/STATWORX/helfRlein/workflows/lints/badge.svg?branch=dev)
-
-# test coverage
-![master-test-coverage](https://github.com/STATWORX/helfRlein/workflows/test-coverage/badge.svg?branch=master)
-![dev-test-coverage](https://github.com/STATWORX/helfRlein/workflows/test-coverage/badge.svg?branch=dev)
 ----
 
 ## Overview
