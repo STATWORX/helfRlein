@@ -39,4 +39,3 @@ intersect2 <- function(...) {
     intersect(intersect2(args[[1]]), intersect2(args[-1]))
   }
 }
-

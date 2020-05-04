@@ -21,12 +21,11 @@ plot.sci <- function(x, ...) {
                  pch = 16,
                  cex = 8,
                  xlim = c(0, length(x) + 1),
-                 ylim = c(0.8,2),
+                 ylim = c(0.8, 2),
                  ann = FALSE,
                  xaxt = "n",
                  yaxt = "n")
-                 #,
-                 #...)
+
   graphics::text(seq_along(x) - 0.2, rep(1.2, length(x)), x,
                  srt = 90, pos = 4)
   graphics::text(seq_along(x) + 0.1, rep(1.2, length(x)), names(x),

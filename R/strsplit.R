@@ -82,15 +82,18 @@ strsplit <- function(x,
                           ...)
   } else if (type == "between") {
     # split between the two given delimiter and keep both
-    out <- base::strsplit(x = x,
-                          split = paste0("(?<=", paste0(split, collapse = ""), ")"),
-                          perl = TRUE,
-                          ...)
+    out <- base::strsplit(
+      x = x,
+      split = paste0("(?<=", paste0(split, collapse = ""), ")"),
+      perl = TRUE,
+      ...)
+
     # split after ab
     index <- lapply(out, endsWith, suffix = paste0(split, collapse = ""))
     index <- lapply(index, function(i) which(i == TRUE) + 1)
     # end with -> gusb ab with a
-    out <- lapply(out, function(i) gsub(paste0(split, collapse = ""), split[1], i))
+    out <- lapply(out, function(i) gsub(paste0(split, collapse = ""),
+                                        split[1], i))
 
     # next after endwith add b
     out <- mapply(FUN = function(o, i) {
@@ -103,4 +106,3 @@ strsplit <- function(x,
 
   return(out)
 }
-

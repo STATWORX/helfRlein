@@ -1,8 +1,8 @@
 #' @title remove NA from list
 #'
 #' @description
-#'    This functions removes \code{NA}s from a list. With \code{recursive == TRUE}
-#'    \code{NA}s within each list's elements are removed as well.
+#'    This functions removes \code{NA}s from a list. With \code{recursive ==
+#'    TRUE} \code{NA}s within each list's elements are removed as well.
 #'
 #' @param y a list
 #' @param recursive logical. If \code{TRUE}, \code{NA}s within the list's

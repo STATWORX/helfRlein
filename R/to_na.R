@@ -45,5 +45,3 @@ to_na <- function(x) {
     ifelse(is.infinite(x) | is.nan(x),  NA, x)
   }
 }
-
-

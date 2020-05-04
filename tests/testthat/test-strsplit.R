@@ -28,7 +28,7 @@ test_that("length of split is right", {
 
 test_that("examples give correct output with type", {
   x <- c("3D/MON&SUN")
-  
+
   expect_equal(strsplit(x, "[/&]"),
                list(c("3D",  "MON", "SUN")))
   expect_equal(strsplit(x, "[/&]", type = "before"),
@@ -37,17 +37,16 @@ test_that("examples give correct output with type", {
                list(c("3D/",  "MON&", "SUN")))
   expect_equal(strsplit(x, c("N", "&"), type = "between"),
                list(c("3D/MON", "&SUN")))
-  
+
 })
 
 test_that("examples for between are correct", {
   x <- c("3D/MON&SUN 2D/MON&SUN")
   expect_equal(strsplit(x, split("/", "M")),
                list(c("3D", "MON&SUN 2D", "MON&SUN")))
-  
+
   x <- c("3D/MON&SUN", "2D/MON&SUN")
   expect_equal(strsplit(x, split("/", "M")),
                list(c("3D", "MON&SUN"), c("2D", "MON&SUN")))
-  
-})
 
+})

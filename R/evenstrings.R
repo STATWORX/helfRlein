@@ -49,7 +49,6 @@ evenstrings <- function(x = c(),
   bits <- as.list(rep(as.numeric(NA), length(charsum)))
   last_i <- 1
   for (i in seq_along(charsum)) {
-    # i <- 1
     tmp_sum <- sum(charsum[last_i:i])
     if (tmp_sum > char) {
       last_i <- i
@@ -58,7 +57,6 @@ evenstrings <- function(x = c(),
   }
 
   # check length
-  # b <- bits[[4]]
   check <- sapply(bits, function(b) sum(nchar(x1[b]), na.rm = TRUE))
 
   if (any(check > char)) {

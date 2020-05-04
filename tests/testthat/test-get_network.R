@@ -6,7 +6,6 @@ context("check get_network.R")
 test_that("path and files exists", {
   expect_error(get_network(dir = "/this/does/not/exists"),
                "/this/does/not/exists does not exists")
-  #print(getwd())
   expect_error(get_network(dir = ".", pattern = "notexistingpattern"),
                "no files with the given pattern")
 })
@@ -15,7 +14,7 @@ test_that("path and files exists", {
 # test scripts with functions ---------------------------------------------
 
 test_that("example script works", {
-  
+
   # this test includes the fact, that the print("foo_01") is counted as a function
   test_scripts <- list(
     foo_01 = c("",
@@ -36,19 +35,21 @@ test_that("example script works", {
     foo_04 = c("foo_04<-function(x){print(x)}"),
     foo_05 = c("foo_05<-function(x){NULL}")
   )
-  
+
   test <- get_network(all_scripts = test_scripts)
-  
+
   # functions then subfunctions
   res_names <- c("foo_01", "foo_04", "foo_05", "foo_02", "foo_03")
-  res_matrix <- matrix(c(1,1,0,1,0,
-                         0,0,0,0,0,
-                         0,0,0,0,0,
-                         0,0,0,0,1,
-                         0,0,0,0,0), ncol = 5, byrow = TRUE,
+  res_matrix <- matrix(c(1, 1, 0, 1, 0,
+                         0, 0, 0, 0, 0,
+                         0, 0, 0, 0, 0,
+                         0, 0, 0, 0, 1,
+                         0, 0, 0, 0, 0),
+                       ncol = 5,
+                       byrow = TRUE,
                        dimnames = list(res_names, res_names))
   res_data <- data.frame(res_matrix)
-  
+
   res_g1 <- igraph::graph_from_adjacency_matrix(
     res_matrix,
     mode = c("directed"),
@@ -56,36 +57,36 @@ test_that("example script works", {
     diag = TRUE,
     add.colnames = NULL,
     add.rownames = NA)
-  
+
   igraph::V(res_g1)$label  <- res_names
-  igraph::V(res_g1)$size   <- 10 * c(7/12, 1/3, 1/3, 1, 1/4)
+  igraph::V(res_g1)$size   <- 10 * c(7 / 12, 1 / 3, 1 / 3, 1, 1 / 4)
   igraph::V(res_g1)$folder <- c(".", ".", ".", ".", ".")
-  igraph::V(res_g1)$color  <- c(1,1,1,1,1)
-  
+  igraph::V(res_g1)$color  <- c(1, 1, 1, 1, 1)
+
   res <- list(matrix = res_data, igraph = res_g1)
-  
+
   expect_equal(res$matrix, test$matrix)
-  
-  
+
+
 })
 
 test_that("special cases work", {
-  
-  # empty scripts 
+
+  # empty scripts
   test_scripts <- list(
-    foo_01 = c('foo_01 <- function(){}'),
+    foo_01 = c("foo_01 <- function(){}"),
     foo_02 = c()
   )
   expect_warning(get_network(all_scripts = test_scripts),
                  "removing empty scritps: foo_02")
   # no functions
   test_scripts <- list(
-    foo_01 = c('print("over 100")'),
+    foo_01 = c("print(\"over 100\")"),
     foo_02 = c("print(x)")
   )
   expect_warning(test <- get_network(all_scripts = test_scripts),
                  "no functions found")
-  
+
   res <- list(matrix = NULL, igraph = NULL)
   expect_equal(res, test)
 
@@ -95,12 +96,12 @@ test_that("special cases work", {
                                   "#foo_01(x)",
                                   "}"))
   test <- get_network(all_scripts = test_scripts)
-  
+
   res_names <- c("foo_01", "foo_02")
-  res_matrix <- matrix(c(0,0,0,0), ncol = 2,
+  res_matrix <- matrix(c(0, 0, 0, 0), ncol = 2,
                        dimnames = list(res_names, res_names))
   res_data <- data.frame(res_matrix)
-  
+
   res_g1 <- igraph::graph_from_adjacency_matrix(
     res_matrix,
     mode = c("directed"),
@@ -108,15 +109,13 @@ test_that("special cases work", {
     diag = TRUE,
     add.colnames = NULL,
     add.rownames = NA)
-  
+
   igraph::V(res_g1)$label  <- res_names
-  igraph::V(res_g1)$size   <- 10 * c(2/3, 1)
+  igraph::V(res_g1)$size   <- 10 * c(2 / 3, 1)
   igraph::V(res_g1)$folder <- c(".", ".")
-  igraph::V(res_g1)$color  <- c(1,1)
-  
+  igraph::V(res_g1)$color  <- c(1, 1)
+
   res <- list(matrix = res_data, igraph = res_g1)
-              
+
   expect_equal(res$matrix, test$matrix)
 })
-
-

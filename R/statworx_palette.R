@@ -24,7 +24,7 @@
 #'
 statworx_palette <- function(number = length(basecolors),
                              reorder = FALSE,
-                             basecolors = c(1,2,3,5,10)) {
+                             basecolors = c(1, 2, 3, 5, 10)) {
   # check input format
   if (!is.numeric(number)) {
     stop("number needs to be numeric")
@@ -43,9 +43,8 @@ statworx_palette <- function(number = length(basecolors),
     warning("number was NA - set to default (4)")
   }
 
-  #number <- 20
-  getPalette <- grDevices::colorRampPalette(as.vector(sci_palette())[basecolors])
-  out <- getPalette(number)
+  getpalette <- grDevices::colorRampPalette(as.vector(sci_palette())[basecolors])
+  out <- getpalette(number)
 
   if (reorder) {
     out <- out[sample(number)]
@@ -53,4 +52,3 @@ statworx_palette <- function(number = length(basecolors),
 
   return(out)
 }
-
