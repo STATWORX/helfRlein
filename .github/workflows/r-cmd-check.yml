@@ -113,7 +113,7 @@ jobs:
   lint:
     runs-on: macOS-latest
     env:
-     LINTR_COMMENT_BOT=true
+     LINTR_COMMENT_BOT: true
     steps:
       - uses: actions/checkout@v2
 
