@@ -42,7 +42,7 @@ Authors@R:
              family = "Feick",
              role = "aut",
              email = "lukas.feick@statworx.com"))
-Description: A usefull collection of R helper functions.
+Description: A useful collection of R helper functions.
 License: MIT + file LICENSE
 LazyData: true
 URL: https://github.com/STATWORX/helfRlein
@@ -62,4 +62,4 @@ Imports:
     magrittr (>= 1.1.1),
     grDevices,
     graphics
-Date: 2020-05-04
+Date: 2020-05-05

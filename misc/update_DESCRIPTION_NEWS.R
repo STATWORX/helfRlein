@@ -31,7 +31,7 @@ my_desc$set_version("0.0.0.9000")
 # The title of your package
 my_desc$set(Title = "R-Helper functions")
 # The description of your package
-my_desc$set(Description = "A usefull collection of R helper functions.")
+my_desc$set(Description = "A useful collection of R helper functions.")
 # The urls
 my_desc$set("URL", "https://github.com/STATWORX/helfRlein")
 my_desc$set("BugReports",
@@ -72,7 +72,6 @@ my_news$add_version(my_desc$get_version())
 my_desc$set_dep("igraph", type = desc::dep_types[1], version = ">= 1.1.2")
 my_desc$set_dep("data.tree", type = desc::dep_types[1], version = ">= 0.7.0")
 my_desc$set_dep("stringr", type = desc::dep_types[1], version = ">= 1.2.0")
-my_desc$set_dep("RCurl", type = desc::dep_types[1], version = "*")
 
 my_desc$add_author('Andre', 'Bleier',
                    email = 'andre.bleier@statworx.com',

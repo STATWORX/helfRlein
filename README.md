@@ -74,19 +74,19 @@ devtools::install_github("STATWORX/helfRlein")
   Reads in a list of files and combines them into one *data.table*.
   
 - `save_rds_archive()`
-  Archives existing `.RDS` files (with a time stamp) instead of silently overwriting them.
+  Archives existing identically named `.RDS` files (with a time stamp) instead of silently overwriting them.
 
 - `statusbar()`
   A progress bar for for-loops.
 
 - `strsplit()`
-  This functions uses adds the possibility to keep the delimiter after, before or between a given split.
+  This functions adds the possibility to keep the delimiter after, before or between a given split.
 
 - `to_na()`
   Takes out `NaN` and `Inf` values and replaces them with `NA`.
 
 - `trim()`
-  Removes leading and or trailing whitespaces.
+  Removes leading and / or trailing whitespaces.
 
 ### project functions
 
