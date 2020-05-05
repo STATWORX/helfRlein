@@ -58,7 +58,6 @@ Imports:
     igraph (>= 1.1.2),
     data.tree (>= 0.7.0),
     stringr (>= 1.2.0),
-    RCurl,
     readr (>= 1.1.1),
     magrittr (>= 1.1.1),
     grDevices,
