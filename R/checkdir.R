@@ -26,7 +26,7 @@
 checkdir <- function(path, recursive = TRUE, verbose = FALSE, ...) {
 
   # check if dir exists, if not, create it
-  if (!file.exists(path)) {
+  if (!file.exists(file.path(path))) {
     dir.create(path = path, recursive = recursive, ...)
     out <- TRUE
   } else {

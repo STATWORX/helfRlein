@@ -295,7 +295,8 @@ my_news$add_bullet(c("removing dive and burglr",
 
 my_news$add_subtitle("internal changes")
 my_news$add_bullet(c("including github actions",
-                     "removing other CI"))
+                     "removing other CI",
+                     "adjusting tests for windows"))
 my_news$add_subtitle("styling")
 my_news$add_bullet(c("fixing lints"))
 

@@ -17,6 +17,7 @@
 
 - including github actions
 - removing other CI
+- adjusting tests for windows
 
 
 ### update function
