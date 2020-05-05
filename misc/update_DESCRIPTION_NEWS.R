@@ -305,8 +305,9 @@ my_desc$add_author('Lukas', 'Feick',
                    role = c('aut'))
 
 my_news$add_subtitle("removing dependencies")
-my_news$add_bullet("RCurl")
+my_news$add_bullet("RCurl, stringr")
 my_desc$del_dep("RCurl", type = desc::dep_types[1])
+my_desc$del_dep("stringr", type = desc::dep_types[1])
 
 # save everything ---------------------------------------------------------
 

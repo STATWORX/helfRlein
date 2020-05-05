@@ -21,7 +21,6 @@
 #'   standard counterparts
 #' @export
 #'
-#' @importFrom stringr str_replace_all
 #' @importFrom magrittr %>%
 #'
 #' @examples
@@ -37,6 +36,7 @@ char_replace <- function(x,
                          rm_space = FALSE,
                          rm_dash = FALSE,
                          to_underscore = FALSE) {
+
 
   if (trim == FALSE & rm_space == TRUE) {
     warning("trim = FALSE is ignored because of rm_sapce = TRUE")
@@ -138,7 +138,14 @@ char_replace <- function(x,
     intToUtf8(381),
     intToUtf8(160)
   )
-  input_processed <- str_replace_all(string = x, char_result)
+
+  input_processed <- x
+  for (i_char in seq_along(char_result)) {
+    input_processed <-
+      gsub(pattern = names(char_result)[i_char],
+           replacement = char_result[i_char],
+           x = input_processed)
+  }
 
 
   if (trim == TRUE) {
@@ -151,19 +158,21 @@ char_replace <- function(x,
   }
 
   if (rm_space == TRUE) {
-    input_processed <- input_processed %>%
-      str_replace_all(pattern = " ", replacement = "")
+    input_processed <- gsub(pattern = " ",
+                            replacement = "",
+                            x = input_processed)
   }
 
   if (rm_dash == TRUE) {
-    input_processed <- input_processed %>%
-      str_replace_all(pattern = "-", replacement = "")
+    input_processed <- gsub(pattern = "-",
+                            replacement = "",
+                            x = input_processed)
   }
 
   if (to_underscore == TRUE) {
-    input_processed <- input_processed %>%
-      str_replace_all(pattern = c(" " = "_",
-                                  "-" = "_"))
+    input_processed <- gsub(pattern = " |-",
+                            replacement = "_",
+                            x = input_processed)
   }
 
   return(input_processed)

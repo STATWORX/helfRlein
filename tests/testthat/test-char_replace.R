@@ -67,5 +67,4 @@ test_that("existing warning", {
                               to_underscore = FALSE),
                  "trim = FALSE is ignored because of rm_sapce = TRUE")
 
-
 })

@@ -5,7 +5,7 @@
 
 ### removing dependencies
 
-- RCurl
+- RCurl, stringr
 
 
 ### styling
