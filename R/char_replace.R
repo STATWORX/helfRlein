@@ -56,7 +56,7 @@ char_replace <- function(x,
 
   char_result <- c(
     # a
-    "ae", "A", "a", "a", "a", "a", "a", "ae",
+    "ae", "Ae", "a", "a", "a", "a", "a", "ae",
     # A
     "A", "A", "A", "A", "A", "Ae", "c", "d",
     # e
