@@ -3,6 +3,11 @@
 ---
 
 
+### removing dependencies
+
+- RCurl
+
+
 ### styling
 
 - fixing lints

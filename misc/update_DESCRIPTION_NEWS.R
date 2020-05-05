@@ -72,6 +72,7 @@ my_news$add_version(my_desc$get_version())
 my_desc$set_dep("igraph", type = desc::dep_types[1], version = ">= 1.1.2")
 my_desc$set_dep("data.tree", type = desc::dep_types[1], version = ">= 0.7.0")
 my_desc$set_dep("stringr", type = desc::dep_types[1], version = ">= 1.2.0")
+my_desc$set_dep("RCurl", type = desc::dep_types[1], version = "*")
 
 my_desc$add_author('Andre', 'Bleier',
                    email = 'andre.bleier@statworx.com',
@@ -301,6 +302,10 @@ my_news$add_bullet(c("fixing lints"))
 my_desc$add_author('Lukas', 'Feick',
                    email = 'lukas.feick@statworx.com',
                    role = c('aut'))
+
+my_news$add_subtitle("removing dependencies")
+my_news$add_bullet("RCurl")
+my_desc$del_dep("RCurl", type = desc::dep_types[1])
 
 # save everything ---------------------------------------------------------
 
