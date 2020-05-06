@@ -18,7 +18,10 @@ jobs:
           - {os: macOS-latest, r: 'devel'}
           - {os: ubuntu-latest, r: 'oldrel', rspm: "https://demo.rstudiopm.com/all/__linux__/xenial/latest"}
           - {os: ubuntu-latest, r: 'release', rspm: "https://demo.rstudiopm.com/all/__linux__/xenial/latest"}
-          - {os: ubuntu-latest, r: 'devel', rspm: "https://demo.rstudiopm.com/all/__linux__/xenial/latest"}
+
+          # remove ubuntu with devel R, see here why:
+          # https://github.com/r-lib/actions/issues/49
+          #- {os: ubuntu-latest, r: 'devel', rspm: "https://demo.rstudiopm.com/all/__linux__/xenial/latest"}
 
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
@@ -61,7 +64,7 @@ jobs:
           remotes::install_deps(dependencies = TRUE)
           remotes::install_cran("rcmdcheck")
         shell: Rscript {0}
-        
+
         # newer source versions are available for rlang and pillar,
         # but compilation fails on Windows-oldrel (RTools is missing).
         # therefore, force installation of binaries for these packages.
@@ -69,7 +72,7 @@ jobs:
         if: runner.os == 'Windows' && matrix.config.r == 'oldrel'
         run: install.packages(c('rlang', 'pillar'), type = 'binary')
         shell: Rscript {0}
-        
+
       - name: Fix stringi source installation in ubuntu-oldrel
         if: runner.os == 'Linux' && matrix.config.r == 'oldrel'
         run: install.packages(c('stringi', 'lintr'), dep = TRUE, type = 'source')
