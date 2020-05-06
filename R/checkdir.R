@@ -15,7 +15,7 @@
 #'  Internaly the function \link[base]{dir.create} is called.
 #'
 #' @return returns TRUE if a new folder is created, FALSE if not
-#'
+#' @author Jakob Gepp
 #' @export
 #'
 #' @examples

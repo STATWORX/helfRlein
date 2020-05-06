@@ -24,13 +24,13 @@ this wrapper function does currently not support \code{connection}s.}
 (default), or should it be overwritten (regular saveRDS behavior)?}
 
 \item{last_modified}{Logical - should the file name of the archived file be
-appended with the \emph{"last modified"} date/time of the original RDS instead of
-the \emph{current} date/time? Defaults to \code{FALSE}.}
+appended with the \emph{"last modified"} date/time of the original RDS
+instead of the \emph{current} date/time? Defaults to \code{FALSE}.}
 
 \item{with_time}{Logical - should the file be archived with just a date
 suffix (default) or with a date \bold{and} time suffix? Applies to both
-archiving and modification date. Set to \code{TRUE} if you want to keep several
-versions of files archived on a single day. See details.}
+archiving and modification date. Set to \code{TRUE} if you want to keep
+several versions of files archived on a single day. See details.}
 
 \item{archive_dir_path}{Character - if desired, path to a dedicated archive
 (sub-)directory (relative to the directory of \code{file}) where the
@@ -51,10 +51,10 @@ This wrapper around base R \code{saveRDS()} checks if the file
   scripts) will continue to work while an archived copy of the - otherwise
   overwritten - file will be kept.
 
-  Please note: If the file does \emph{not} already exist (i.e., if there is nothing to
-  overwrite or archive), regular \code{\link[base]{saveRDS}} behavior will be invoked.
-  In such a case, all arguments except \code{object} and \code{file} will be
-  ignored!
+  Please note: If the file does \emph{not} already exist (i.e., if there is
+  nothing to overwrite or archive), regular \code{\link[base]{saveRDS}}
+  behavior will be invoked. In such a case, all arguments except
+  \code{object} and \code{file} will be ignored!
 }
 \details{
 CAUTION: Note that existing \emph{archived versions} of files will
@@ -94,4 +94,7 @@ readRDS("./test_ARCHIVED_on_2020-03-30.RDS")
 }
 \seealso{
 \code{\link[base]{saveRDS}}
+}
+\author{
+Lukas Feick
 }

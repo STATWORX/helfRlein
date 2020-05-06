@@ -15,6 +15,7 @@
 #'
 #' @return returns a vector with the shortend and cutted input string
 #' @export
+#' @author Jakob Gepp
 #'
 #' @examples
 #' x <- "Hello world, this is a test sequence."

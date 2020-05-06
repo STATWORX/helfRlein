@@ -28,5 +28,9 @@ plot(sci_palette())
 
 }
 \author{
+Jakob Gepp
+
 Martin Albers, Jakob Gepp
+
+Jakob Gepp
 }

@@ -81,7 +81,8 @@ test_that("warning if minsize is a numeric", {
 
 test_that("result if minsize is a numeric", {
 
-  # there would be a warning because of the numeric 4.2, but this is tested above
+  # there would be a warning because of the numeric 4.2
+  # but this is tested above
   capture_warnings(tmp1 <- get_sequence(x = test_sequence,
                                         pattern = 0,
                                         minsize = 4.2))

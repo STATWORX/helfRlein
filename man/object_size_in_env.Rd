@@ -24,3 +24,6 @@ environment.
 DT <- object_size_in_env(env = environment())
 
 }
+\author{
+Jakob Gepp
+}

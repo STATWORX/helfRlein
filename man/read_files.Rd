@@ -4,14 +4,14 @@
 \alias{read_files}
 \title{read multiple files into one data.table}
 \usage{
-read_files(files, FUN = readLines, ...)
+read_files(files, fun = readLines, ...)
 }
 \arguments{
 \item{files}{pathes to files to be read in}
 
-\item{FUN}{function to load files in}
+\item{fun}{function to load files in}
 
-\item{...}{additional arguments to be passed to \code{FUN}}
+\item{...}{additional arguments to be passed to \code{fun}}
 }
 \value{
 combined data.table of the input files
@@ -19,13 +19,13 @@ combined data.table of the input files
 \description{
 read multiple files into one data.table
 }
-\examples{
+\author{
+Jakob Gepp
 
 \dontrun{
 # this needs files
-read_files(files, FUN = readRDS)
-read_files(files, FUN = readLines)
-read_files(files, FUN = read.csv, sep = ";")
+read_files(files, fun = readRDS)
+read_files(files, fun = readLines)
+read_files(files, fun = read.csv, sep = ";")
 }
-
 }

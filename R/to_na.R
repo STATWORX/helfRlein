@@ -7,6 +7,7 @@
 #'
 #' @return Returns vector with with replaced \code{NA}values.
 #' @export
+#' @author Daniel Luettgau
 #'
 #' @examples
 #' test <- list(a = c("a", "b", NA),

@@ -291,7 +291,9 @@ my_desc$bump_version("major")
 my_news$add_version(my_desc$get_version())
 my_news$add_subtitle("update function")
 my_news$add_bullet(c("removing dive and burglr",
-                     "adding new function 'save_rds_archive'"))
+                     "adding new function 'save_rds_archive'",
+                     "adding shoRtcut addin",
+                     "read_files now as 'fun' instead of 'FUN' parameter"))
 
 my_news$add_subtitle("internal changes")
 my_news$add_bullet(c("including github actions",
@@ -304,6 +306,7 @@ my_desc$add_author('Lukas', 'Feick',
                    email = 'lukas.feick@statworx.com',
                    role = c('aut'))
 
+my_desc$set_dep("rstudioapi", type = desc::dep_types[3])
 my_news$add_subtitle("removing dependencies")
 my_news$add_bullet("RCurl, stringr")
 my_desc$del_dep("RCurl", type = desc::dep_types[1])

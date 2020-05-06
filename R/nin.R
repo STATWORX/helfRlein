@@ -7,6 +7,7 @@
 #'    supported.
 #' @param table vector or NULL: the values to be matched against. Long vectors
 #'    are not supported.
+#' @author Jakob Gepp
 #'
 #' @return a boolean vector
 #' @export

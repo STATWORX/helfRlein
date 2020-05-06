@@ -8,6 +8,7 @@
 #'
 #' @method plot sci
 #' @export
+#' @author Jakob Gepp
 #'
 #' @examples
 #' # Plotting the true underlying effects
