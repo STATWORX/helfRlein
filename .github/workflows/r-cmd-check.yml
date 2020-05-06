@@ -70,10 +70,9 @@ jobs:
         run: install.packages(c('rlang', 'pillar'), type = 'binary')
         shell: Rscript {0}
         
-      - name: Fix stringi source installation in ubuntu-oldrel
+      - name: Install missing system deps
         if: runner.os == 'Linux' && matrix.config.r == 'oldrel'
-        run: install.packages("stringi", dep = TRUE, type = 'source')
-        shell: Rscript {0}
+        run: sudo apt install libicu55
 
       - name: Check
         env:
