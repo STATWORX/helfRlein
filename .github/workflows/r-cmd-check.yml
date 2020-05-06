@@ -72,8 +72,7 @@ jobs:
         
       - name: Fix stringi source installation in ubuntu-oldrel
         if: runner.os == 'Linux' && matrix.config.r == 'oldrel'
-        run: install.packages(c('stringi', 'lintr'), dep = TRUE, type = 'source')
-        shell: Rscript {0}
+        run: sudo apt-get install r-cran-stringi
 
       - name: Check
         env:
