@@ -2,7 +2,7 @@
 #install.packages("network")
 #install.packages("sna")
 
-# install.packages("igraph") 
+# install.packages("igraph")
 # install.packages("visNetwork")
 # install.packages("threejs")
 # install.packages("networkD3")
@@ -12,7 +12,7 @@ rm(list = ls())
 #  settings ---------------------------------------------------------------
 
 library(ggplot2)
-library(stringr)
+#library(stringr)
 
 library(GGally)
 library(network)
@@ -28,10 +28,10 @@ library(igraph)
 source("/Users/jakobgepp/Projekte/Lufthansa/Pele_git/getnetwork.R")
 # load network ------------------------------------------------------------
 
-dir <- "/Users/jakobgepp/Projekte/2018/Intern/tsbox" 
+dir <- "/Users/jakobgepp/Projekte/2018/Intern/tsbox"
 dir <- "/Users/jakobgepp/Projekte/Lufthansa/Server-tmp/for_andre/PELE_AB/source/Boosting"
 dir <- "/Users/jakobgepp/Projekte/Lufthansa/Server-tmp/for_andre/PELE_AB/source/Agam_aggregation"
-dir <- "/Users/jakobgepp/Projekte/2018/Intern/R Network functions" 
+dir <- "/Users/jakobgepp/Projekte/2018/Intern/R Network functions"
 
 net <- getnetwork(dir = dir)
 g1 <- net$igraph
@@ -49,7 +49,7 @@ plot(g1,
      vertex.shape="rectangle",
      vertex.size = (sapply(V(g1)$label, nchar))*2,
      vertex.size2 = 5,
-     #vertex.label=V(g1)$label, 
+     #vertex.label=V(g1)$label,
      #vertex.label.font=2,
      #vertex.label.color=V(g1)$color,
      vertex.label.color="black",
