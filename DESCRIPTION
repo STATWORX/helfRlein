@@ -52,8 +52,7 @@ Depends:
     R (>= 3.3.3)
 Suggests: 
     testthat,
-    newsmd,
-    rstudioapi
+    newsmd
 Imports: 
     data.table (>= 1.9),
     igraph (>= 1.1.2),
@@ -61,5 +60,6 @@ Imports:
     readr (>= 1.1.1),
     magrittr (>= 1.1.1),
     grDevices,
-    graphics
+    graphics,
+    rstudioapi
 Date: 2020-05-06

@@ -306,7 +306,7 @@ my_desc$add_author('Lukas', 'Feick',
                    email = 'lukas.feick@statworx.com',
                    role = c('aut'))
 
-my_desc$set_dep("rstudioapi", type = desc::dep_types[3])
+my_desc$set_dep("rstudioapi", type = desc::dep_types[1])
 my_news$add_subtitle("removing dependencies")
 my_news$add_bullet("RCurl, stringr")
 my_desc$del_dep("RCurl", type = desc::dep_types[1])
