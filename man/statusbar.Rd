@@ -4,7 +4,7 @@
 \alias{statusbar}
 \title{a statusbar for for loops}
 \usage{
-statusbar(run, max.run, percent.max = 20L, info = run)
+statusbar(run, max.run, width = 20L, info = run)
 }
 \arguments{
 \item{run}{the iterator of the for loop or an integer with the current
@@ -13,7 +13,7 @@ loop number.}
 \item{max.run}{either an integer with the maximum number of loops if run is
 also a number or a vector with all possible iterations in the right order.}
 
-\item{percent.max}{an integer that indicates how wide the progress
+\item{width}{an integer that indicates how wide the progress
 bar is printed.}
 
 \item{info}{a string with additionaly information to be printed at
@@ -29,12 +29,12 @@ This functions prints a progess of a for loop at the console.
 
 for (i in 1:20) {
   Sys.sleep(0.1)
-  statusbar(run = i, max.run = 200, percent.max = 60L)
+  statusbar(run = i, max.run = 200, width = 60L)
 }
 
 for (i in letters[1:16]) {
   Sys.sleep(0.1)
-  statusbar(run = i, max.run = letters[1:16], percent.max = 60L)
+  statusbar(run = i, max.run = letters[1:16], width = 60L)
 }
 }
 \author{

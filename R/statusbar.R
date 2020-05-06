@@ -7,7 +7,7 @@
 #'   loop number.
 #' @param max.run either an integer with the maximum number of loops if run is
 #'   also a number or a vector with all possible iterations in the right order.
-#' @param percent.max an integer that indicates how wide the progress
+#' @param width an integer that indicates how wide the progress
 #'   bar is printed.
 #' @param info a string with additionaly information to be printed at
 #'   the end of the line. The default is \code{run}.
@@ -23,17 +23,17 @@
 #'
 #' for (i in 1:20) {
 #'   Sys.sleep(0.1)
-#'   statusbar(run = i, max.run = 200, percent.max = 60L)
+#'   statusbar(run = i, max.run = 200, width = 60L)
 #' }
 #'
 #' for (i in letters[1:16]) {
 #'   Sys.sleep(0.1)
-#'   statusbar(run = i, max.run = letters[1:16], percent.max = 60L)
+#'   statusbar(run = i, max.run = letters[1:16], width = 60L)
 #' }
 
 statusbar <- function(run,
                       max.run,
-                      percent.max = 20L,
+                      width = 20L,
                       info = run) {
   # check run
   if (length(run) > 1) {
@@ -50,10 +50,11 @@ statusbar <- function(run,
     percent <- run / max.run
   }
 
-  percent_step <- round(percent * percent.max, 0)
+  percent_step <- round(percent * width, 0)
   progress <- paste0("[",
                       paste0(rep("=", percent_step), collapse = ""),
-                      paste0(rep(" ", percent.max - percent_step), collapse = ""),
+                      paste0(rep(" ", width - percent_step),
+                             collapse = ""),
                       "] ",
                       sprintf("%7.2f", percent * 100, 2),
                       "% - ",

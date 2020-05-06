@@ -1,21 +1,21 @@
 #' @title Create File Name of Archived File
 #'
-#' @description This is an internal helper function to create and return the archived file
-#' name depending on the parameters chosen by the user
+#' @description This is an internal helper function to create and return the
+#'   archived file name depending on the parameters chosen by the user
 #'
 #' @param file The current file, passed from parent function
 #' @param last_modified Logical - passed from parent function
 #' @param with_time Logical - passed from parent function
 #' @author Lukas Feick
 
-create_archived_file <- function(file, last_modified, with_time){
+create_archived_file <- function(file, last_modified, with_time) {
 
   # create main suffix depending on type
   suffix_main <- ifelse(last_modified,
                         as.character(file.info(file)$mtime),
                         as.character(Sys.time()))
 
-  if (with_time){
+  if (with_time) {
 
     # create clean date-time suffix
     suffix <- gsub(pattern = " ", replacement = "_", x = suffix_main)

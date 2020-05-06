@@ -98,7 +98,7 @@ strsplit <- function(x,
 
     # next after endwith add b
     out <- mapply(FUN = function(o, i) {
-      o[i] <- paste0( split[2], o[i])
+      o[i] <- paste0(split[2], o[i])
       return(o)
       },
       out, index,

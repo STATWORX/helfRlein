@@ -9,8 +9,7 @@ test_that("recursive is done correctly", {
   expect_equal(tmp1, 1)
   expect_equal(tmp2, list(c(1, NA)))
 })
-
-test_that("if all but one is NA and recursive == TURE, the result is not a list", {
+test_that("if all but one is NA and recursive == TURE, result is not a list", {
   tmp1 <- na_omitlist(list(NA, c(1, NA)), recursive = TRUE)
   tmp2 <- na_omitlist(list(NA, 1), recursive = TRUE)
   tmp3 <- na_omitlist(list(NA, c(1, NA)), recursive = FALSE)

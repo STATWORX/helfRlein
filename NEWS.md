@@ -24,6 +24,8 @@
 
 - removing dive and burglr
 - adding new function 'save_rds_archive'
+- adding shoRtcut addin
+- read_files now as 'fun' instead of 'FUN' parameter
 
 
 ## version 0.3.1

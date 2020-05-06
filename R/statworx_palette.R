@@ -43,7 +43,9 @@ statworx_palette <- function(number = length(basecolors),
     warning("number was NA - set to default (4)")
   }
 
-  getpalette <- grDevices::colorRampPalette(as.vector(sci_palette())[basecolors])
+  getpalette <-
+    grDevices::colorRampPalette(as.vector(sci_palette())[basecolors])
+
   out <- getpalette(number)
 
   if (reorder) {

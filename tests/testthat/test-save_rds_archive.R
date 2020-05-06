@@ -37,7 +37,8 @@ test_that("'archive' and 'with_time' must be bools", {
 })
 
 
-test_that("if file name contains multiple 'RDS', only the last one is replaced with suffix", {
+test_that(paste0("if file name contains multiple 'RDS',
+                 only the last one is replaced with suffix"), {
 
   temp <- "temp_rds_Rds.rds"
 
@@ -59,7 +60,9 @@ test_that("creation of archive dir works as expected", {
 
   saveRDS(10, file = temp)
 
-  expect_message(save_rds_archive(object = 20, file = temp, archive_dir_path = my_path),
+  expect_message(save_rds_archive(object = 20,
+                                  file = temp,
+                                  archive_dir_path = my_path),
                  "Created missing archive directory")
 
   archived_version <- readRDS(paste0(my_path, "/",
@@ -111,6 +114,4 @@ test_that("everything goes as expected if file does not exist", {
   expect_warning(save_rds_archive(500, temp2, archive = FALSE),
                  NULL)
 
-
 })
-
