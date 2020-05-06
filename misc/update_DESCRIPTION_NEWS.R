@@ -291,7 +291,8 @@ my_desc$bump_version("major")
 my_news$add_version(my_desc$get_version())
 my_news$add_subtitle("update function")
 my_news$add_bullet(c("removing dive and burglr",
-                     "adding new function 'save_rds_archive'"))
+                     "adding new function 'save_rds_archive'",
+                     "adding shoRtcut addin"))
 
 my_news$add_subtitle("internal changes")
 my_news$add_bullet(c("including github actions",
