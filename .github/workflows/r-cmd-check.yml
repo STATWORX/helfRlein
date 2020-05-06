@@ -64,7 +64,7 @@ jobs:
         
       - name: Hot-fix Windows-oldrel build fail
         if: runner.os == 'Windows' && matrix.config.r == 'oldrel'
-        run: install.packages('rlang')
+        run: install.packages('rlang', type = "binary")
         shell: Rscript {0}
 
       - name: Check
