@@ -61,6 +61,11 @@ jobs:
           remotes::install_deps(dependencies = TRUE)
           remotes::install_cran("rcmdcheck")
         shell: Rscript {0}
+        
+      - name: Hot-fix Windows-oldrel build fail
+        if: runner.os == 'Windows' && matrix.config.r == 'oldrel'
+        run: install.packages('rlang')
+        shell: Rscript {0}
 
       - name: Check
         env:
