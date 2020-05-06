@@ -28,6 +28,8 @@ jobs:
         with:
           r-version: ${{ matrix.config.r }}
       - uses: r-lib/actions/setup-pandoc@master
+      - uses: s-weigand/setup-conda@v1
+
 
       - name: Query dependencies
         run: |
@@ -70,7 +72,7 @@ jobs:
 
       - name: Fix stringi source installation in ubuntu-oldrel
         if: runner.os == 'Linux' && matrix.config.r == 'oldrel'
-        run: sudo apt-get install r-cran-stringi
+        run: conda install -c r r-stringi
 
       - name: Check
         env:
