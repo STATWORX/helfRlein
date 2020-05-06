@@ -62,9 +62,17 @@ jobs:
           remotes::install_cran("rcmdcheck")
         shell: Rscript {0}
         
-      - name: Hot-fix Windows-oldrel build fail
+        # newer source versions are available for rlang and pillar,
+        # but compilation fails on Windows-oldrel (RTools is missing).
+        # therefore, force installation of binaries for these packages.
+      - name: Fix Windows-oldrel build fail (RTools missing)
         if: runner.os == 'Windows' && matrix.config.r == 'oldrel'
         run: install.packages(c('rlang', 'pillar'), type = 'binary')
+        shell: Rscript {0}
+        
+      - name: Fix stringi source installation in ubuntu-oldrel
+        if: runner.os == 'Linux' && matrix.config.r == 'oldrel'
+        run: install.packages("stringi", dep = TRUE, type = 'source')
         shell: Rscript {0}
 
       - name: Check
