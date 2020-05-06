@@ -8,8 +8,8 @@
 #' @export
 #'
 #' @importFrom data.table as.data.table rbindlist
-#' @examples
 #' @author Jakob Gepp
+#' @examples
 #'
 #' \dontrun{
 #' # this needs files
