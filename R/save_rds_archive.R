@@ -43,6 +43,7 @@
 #' @return \code{NULL} (invisibly)
 #'
 #' @seealso \code{\link[base]{saveRDS}}
+#' @author Lukas Feick
 #'
 #' @examples \dontrun{
 #' x <- 5

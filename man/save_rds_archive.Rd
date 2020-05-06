@@ -95,3 +95,6 @@ readRDS("./test_ARCHIVED_on_2020-03-30.RDS")
 \seealso{
 \code{\link[base]{saveRDS}}
 }
+\author{
+Lukas Feick
+}

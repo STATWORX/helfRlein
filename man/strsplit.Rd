@@ -63,4 +63,6 @@ strsplit(x, split("/", "M"))
 }
 \author{
 Jakob Gepp
+
+Jakob Gepp
 }

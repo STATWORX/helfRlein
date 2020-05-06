@@ -29,3 +29,6 @@ trim(x)
 Since R 3.5.1 there is \code{\link[base]{trimws}} in the base
   package.
 }
+\author{
+Jakob Gepp
+}

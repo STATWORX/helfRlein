@@ -42,4 +42,6 @@ lapply(test, to_na)
 }
 \author{
 Daniel Luettgau
+
+Daniel Luettgau
 }

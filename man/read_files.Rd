@@ -19,7 +19,8 @@ combined data.table of the input files
 \description{
 read multiple files into one data.table
 }
-\examples{
+\author{
+Jakob Gepp
 
 \dontrun{
 # this needs files
@@ -27,5 +28,4 @@ read_files(files, FUN = readRDS)
 read_files(files, FUN = readLines)
 read_files(files, FUN = read.csv, sep = ";")
 }
-
 }

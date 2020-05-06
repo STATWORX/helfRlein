@@ -6,6 +6,7 @@
 #' @param file The current file, passed from parent function
 #' @param last_modified Logical - passed from parent function
 #' @param with_time Logical - passed from parent function
+#' @author Lukas Feick
 
 create_archived_file <- function(file, last_modified, with_time){
 

@@ -9,6 +9,7 @@
 #'
 #' @importFrom data.table as.data.table rbindlist
 #' @examples
+#' @author Jakob Gepp
 #'
 #' \dontrun{
 #' # this needs files

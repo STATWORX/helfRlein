@@ -20,7 +20,7 @@
 #' @return a character vector with all non-standard characters replaced by their
 #'   standard counterparts
 #' @export
-#'
+#' @author Oliver Guggenbuehl
 #' @importFrom magrittr %>%
 #'
 #' @examples

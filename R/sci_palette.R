@@ -11,6 +11,7 @@
 #'
 #' @exportClass sci
 #' @export
+#' @author Jakob Gepp
 #'
 #' @examples
 #' plot(sci_palette())

@@ -37,3 +37,6 @@ for (i in letters[1:16]) {
   statusbar(run = i, max.run = letters[1:16], percent.max = 60L)
 }
 }
+\author{
+Jakob Gepp
+}

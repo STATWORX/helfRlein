@@ -27,3 +27,6 @@ x <- c(NA, NA, 1, NaN, "0")
 count_na(x)
 # [1] 2
 }
+\author{
+Jakob Gepp
+}

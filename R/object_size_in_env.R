@@ -14,6 +14,7 @@
 #' @importFrom data.table data.table
 #' @importFrom utils object.size
 #' @export
+#' @author Jakob Gepp
 #'
 #' @examples
 #' DT <- object_size_in_env(env = environment())

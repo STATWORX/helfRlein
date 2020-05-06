@@ -17,6 +17,7 @@
 #'
 #' @importFrom utils flush.console
 #' @export
+#' @author Jakob Gepp
 #'
 #' @examples
 #'

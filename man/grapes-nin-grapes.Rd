@@ -27,3 +27,6 @@ c(1,2,3,4) \%nin\% c(1,2,5)
 \seealso{
 \link[base]{match}
 }
+\author{
+Jakob Gepp
+}

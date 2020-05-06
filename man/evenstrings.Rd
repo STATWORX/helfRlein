@@ -34,4 +34,6 @@ evenstrings(x, split = ",", char = 30, newlines = FALSE)
 }
 \author{
 Jakob Gepp
+
+Jakob Gepp
 }

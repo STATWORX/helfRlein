@@ -17,3 +17,6 @@ create_archived_file(file, last_modified, with_time)
 This is an internal helper function to create and return the archived file
 name depending on the parameters chosen by the user
 }
+\author{
+Lukas Feick
+}

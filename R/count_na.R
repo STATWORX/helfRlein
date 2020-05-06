@@ -6,6 +6,7 @@
 #'
 #' @return returns either the sum or the mean of NA values.
 #' @export
+#' @author Jakob Gepp
 #'
 #' @examples
 #' x <- c(NA, NA, 1, NaN, 0)

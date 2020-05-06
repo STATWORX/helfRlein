@@ -32,3 +32,6 @@ checkdir("testfolder/subfolder")
 \seealso{
 Internaly the function \link[base]{dir.create} is called.
 }
+\author{
+Jakob Gepp
+}

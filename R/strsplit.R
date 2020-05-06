@@ -20,6 +20,7 @@
 #' @return A list of the same length as x, the i-th element of which contains
 #'   the vector of splits of x[i].
 #' @export
+#' @author Jakob Gepp
 #' @seealso \code{\link[base]{strsplit}} or
 #'   \href{https://stackoverflow.com/questions/15575221}{stackoverflow}
 #'    for more details.

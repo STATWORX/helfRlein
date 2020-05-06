@@ -6,6 +6,7 @@
 #'
 #' @return a character vector
 #' @export
+#' @author Jakob Gepp
 #'
 #' @seealso Since R 3.5.1 there is \code{\link[base]{trimws}} in the base
 #'   package.
