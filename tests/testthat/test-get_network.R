@@ -15,7 +15,8 @@ test_that("path and files exists", {
 
 test_that("example script works", {
 
-  # this test includes the fact, that the print("foo_01") is counted as a function
+  # this test includes the fact, that the print("foo_01") is counted
+  # as a function
   test_scripts <- list(
     foo_01 = c("",
                "foo_01 <- function(y) {",
