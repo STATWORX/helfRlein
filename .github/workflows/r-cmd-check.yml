@@ -59,7 +59,7 @@ jobs:
           remotes::install_github("Dschaykib/newsmd")
           remotes::install_deps(dependencies = TRUE)
           remotes::install_cran("rcmdcheck")
-          remove.packages("stringi")
+          remove.packages(c("stringi", "igraph"))
         shell: Rscript {0}
 
         # newer source versions are available for rlang and pillar,
@@ -70,9 +70,11 @@ jobs:
         run: install.packages(c('rlang', 'pillar'), type = 'binary')
         shell: Rscript {0}
 
-      - name: Fix stringi source installation in ubuntu-oldrel
+      - name: Fix stringi and igraph source installation in ubuntu-oldrel
         if: runner.os == 'Linux' && matrix.config.r == 'oldrel'
-        run: conda install -c r r-stringi
+        run: |
+          conda install -c r r-stringi
+          conda install -c r r-igraph 
 
       - name: Check
         env:
