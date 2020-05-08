@@ -11,12 +11,7 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - {os: windows-latest, r: '3.6.2'}
-          - {os: windows-latest, r: 'oldrel'}
-          - {os: windows-latest, r: 'release'}
-          - {os: macOS-latest, r: '3.6.2'}
-          - {os: macOS-latest, r: 'oldrel'}
-          - {os: macOS-latest, r: 'release'}
+
           - {os: ubuntu-latest, r: '3.6.2', rspm: "https://demo.rstudiopm.com/all/__linux__/xenial/latest"}
           - {os: ubuntu-latest, r: 'oldrel', rspm: "https://demo.rstudiopm.com/all/__linux__/xenial/latest"}
           - {os: ubuntu-latest, r: 'release', rspm: "https://demo.rstudiopm.com/all/__linux__/xenial/latest"}
@@ -77,8 +72,8 @@ jobs:
           remotes::install_cran("rcmdcheck")
         shell: Rscript {0}
 
-      - name: Fix stringi and igraph source installation in ubuntu
-        if: runner.os == 'Linux'
+      - name: Fix stringi and igraph source installation in ubuntu-oldrel
+        if: runner.os == 'Linux' && matrix.config.r == 'oldrel|3.6.2'
         run: |
           Rscript -e "remove.packages(c('stringi', 'igraph'))"
           conda install -c r r-stringi
