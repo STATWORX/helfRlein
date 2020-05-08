@@ -81,10 +81,10 @@ jobs:
           conda install -c r r-stringi
           conda install -c r r-igraph 
 
-      - name: Check
+      - name: Check 
         env:
           _R_CHECK_CRAN_INCOMING_REMOTE_: false
-        run: rcmdcheck::rcmdcheck(args = c("--no-manual", "--no-build-vignettes"), error_on = "warning", check_dir = "check")
+        run: rcmdcheck::rcmdcheck(args = c("--as-cran, --no-manual", "--no-build-vignettes"), error_on = "warning", check_dir = "check")
         shell: Rscript {0}
 
       - name: Upload check results
