@@ -60,11 +60,20 @@ jobs:
           Rscript -e "remotes::install_github('r-hub/sysreqs')"
           sysreqs=$(Rscript -e "cat(sysreqs::sysreq_commands('DESCRIPTION'))")
           sudo -s eval "$sysreqs"
-          
+        
       - name: Install dependencies
-        # newer source versions are available for some packages,
-        # but compilation fails on Windows machines (RTools is missing).
-        # therefore, force installation of binaries for *all* packages.
+        if: runner.os != 'Windows'
+        run: |
+          remotes::install_github("Dschaykib/newsmd")
+          remotes::install_deps(dependencies = TRUE)
+          remotes::install_cran("rcmdcheck")
+        shell: Rscript {0}
+
+      # newer source versions are available for some packages,
+      # but compilation fails on Windows machines (RTools is missing).
+      # therefore, force installation of binaries for *all* packages on Windows.
+      - name: Install only binaries on Windows (RTools missing)
+        if: runner.os == 'Windows'
         run: |
           remotes::install_github("Dschaykib/newsmd")
           remotes::install_deps(dependencies = TRUE, type = 'binary')
