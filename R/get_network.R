@@ -235,10 +235,10 @@ get_network <- function(dir = NULL,
                   function(x) sub_functions[[x]][1]))
 
 
-  if (!is.null(def_function_index)) {
+  if (!is.null(def_sub_functions)) {
     names(sub_functions) <-
       unlist(gsub(" ", "",
-                  lapply(base::strsplit(def_function_index, "<-"), "[[", 1)))
+                  lapply(base::strsplit(def_sub_functions, "<-"), "[[", 1)))
   }
 
 
