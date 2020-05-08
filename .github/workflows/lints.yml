@@ -35,5 +35,8 @@ jobs:
         shell: Rscript {0}
 
       - name: Lint
-        run: if (length(lintr::lint_package()) > 0) stop("There are still lints present")
+        run: |
+          lint_check <- lintr::lint_package()
+          print(lint_check)
+          if (length(lint_check) > 0) stop("There are still lints present")
         shell: Rscript {0}
