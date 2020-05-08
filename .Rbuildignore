@@ -7,3 +7,4 @@
 ^README.md
 ^\.circleci
 ^\.github$
+^\.lintr$
