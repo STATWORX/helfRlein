@@ -298,7 +298,12 @@ my_news$add_bullet(c("removing dive and burglr",
 my_news$add_subtitle("internal changes")
 my_news$add_bullet(c("including github actions",
                      "removing other CI",
-                     "adjusting tests for windows"))
+                     "adjusting tests for windows",
+                     "adjusting needed R version"))
+
+# set R version
+my_desc$set_dep("R", type = desc::dep_types[2], version = ">= 3.5")
+
 my_news$add_subtitle("styling")
 my_news$add_bullet(c("fixing lints"))
 

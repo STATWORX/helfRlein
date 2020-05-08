@@ -18,6 +18,7 @@
 - including github actions
 - removing other CI
 - adjusting tests for windows
+- adjusting needed R version
 
 
 ### update function

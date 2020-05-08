@@ -11,13 +11,13 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - {os: windows-latest, r: '3.6.2'}
+          - {os: windows-latest, r: '3.5'}
           - {os: windows-latest, r: 'oldrel'}
           - {os: windows-latest, r: 'release'}
-          - {os: macOS-latest, r: '3.6.2'}
+          - {os: macOS-latest, r: '3.5'}
           - {os: macOS-latest, r: 'oldrel'}
           - {os: macOS-latest, r: 'release'}
-          - {os: ubuntu-latest, r: '3.6.2', rspm: "https://demo.rstudiopm.com/all/__linux__/xenial/latest"}
+          - {os: ubuntu-latest, r: '3.5', rspm: "https://demo.rstudiopm.com/all/__linux__/xenial/latest"}
           - {os: ubuntu-latest, r: 'oldrel', rspm: "https://demo.rstudiopm.com/all/__linux__/xenial/latest"}
           - {os: ubuntu-latest, r: 'release', rspm: "https://demo.rstudiopm.com/all/__linux__/xenial/latest"}
 
@@ -57,7 +57,7 @@ jobs:
           Rscript -e "remotes::install_github('r-hub/sysreqs')"
           sysreqs=$(Rscript -e "cat(sysreqs::sysreq_commands('DESCRIPTION'))")
           sudo -s eval "$sysreqs"
-        
+
       - name: Install dependencies
         if: runner.os != 'Windows'
         run: |
@@ -82,9 +82,9 @@ jobs:
         run: |
           Rscript -e "remove.packages(c('stringi', 'igraph'))"
           conda install -c r r-stringi
-          conda install -c r r-igraph 
+          conda install -c r r-igraph
 
-      - name: Check 
+      - name: Check
         env:
           _R_CHECK_CRAN_INCOMING_: FALSE
         run: rcmdcheck::rcmdcheck(args = c("--as-cran", "--no-manual", "--no-build-vignettes"), error_on = "warning", check_dir = "check")
