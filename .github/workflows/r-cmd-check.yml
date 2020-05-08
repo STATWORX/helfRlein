@@ -60,19 +60,15 @@ jobs:
           Rscript -e "remotes::install_github('r-hub/sysreqs')"
           sysreqs=$(Rscript -e "cat(sysreqs::sysreq_commands('DESCRIPTION'))")
           sudo -s eval "$sysreqs"
+          
       - name: Install dependencies
+        # newer source versions are available for some packages,
+        # but compilation fails on Windows machines (RTools is missing).
+        # therefore, force installation of binaries for *all* packages.
         run: |
           remotes::install_github("Dschaykib/newsmd")
-          remotes::install_deps(dependencies = TRUE)
+          remotes::install_deps(dependencies = TRUE, type = 'binary')
           remotes::install_cran("rcmdcheck")
-        shell: Rscript {0}
-
-        # newer source versions are available for rlang and pillar,
-        # but compilation fails on Windows-oldrel (RTools is missing).
-        # therefore, force installation of binaries for these packages.
-      - name: Fix Windows-oldrel build fail (RTools missing)
-        if: runner.os == 'Windows' && matrix.config.r == 'oldrel'
-        run: install.packages(c('rlang', 'pillar'), type = 'binary')
         shell: Rscript {0}
 
       - name: Fix stringi and igraph source installation in ubuntu-oldrel
