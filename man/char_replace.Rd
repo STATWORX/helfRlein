@@ -42,7 +42,7 @@ This function replaces non-standard characters (such as the
   within the string.
 }
 \examples{
-x <- "Ã‰lizÃ ldÃ«-GonzÃ¡lez Strasse"
+x <- "Élizàldë-González Strasse"
 char_replace(x)
 char_replace
 char_replace(x, to_lower = TRUE, to_underscore = TRUE)

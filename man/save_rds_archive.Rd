@@ -33,7 +33,7 @@ archiving and modification date. Set to \code{TRUE} if you want to keep
 several versions of files archived on a single day. See details.}
 
 \item{archive_dir_path}{Character - if desired, path to a dedicated archive
-(sub-)directory (relative to the directory of \code{file}) where the
+(sub-)directory (\emph{relative} to the directory of \code{file}!) where the
 archived file will be saved. Will be created if it does not yet exist.
 Defaults to \code{NULL}.}
 
