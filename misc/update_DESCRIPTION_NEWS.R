@@ -29,7 +29,7 @@ my_desc$del("Maintainer")
 # Set the version
 my_desc$set_version("0.0.0.9000")
 # The title of your package
-my_desc$set(Title = "R-Helper functions")
+my_desc$set(Title = "R Helper Functions")
 # The description of your package
 my_desc$set(Description = "A useful collection of R helper functions.")
 # The urls

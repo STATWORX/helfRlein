@@ -14,7 +14,7 @@ This package contains a collection of R helper functions. There are three main t
 
 - independent and stand alone functions (eg. [burglr](https://www.statworx.com/de/blog/burglr-stealing-code-from-the-web/) or [dive](http://www.statworx.com/de/blog/dive-the-debugging-function-you-deserve/))
 
-- general helper functions that ease our programing life
+- general helper functions that ease our programming life
 
 - functions that ease our daily work and projects
 

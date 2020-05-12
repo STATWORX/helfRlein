@@ -1,5 +1,5 @@
 Package: helfRlein
-Title: R-Helper functions
+Title: R Helper Functions
 Version: 1.0.0
 Authors@R: 
     c(person(given = "Jakob",
