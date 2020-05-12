@@ -2,7 +2,7 @@
 % Please edit documentation in R/create_archived_file.R
 \name{create_archived_file}
 \alias{create_archived_file}
-\title{Create File Name of Archived File}
+\title{[Internal: Create File Name of Archived File]}
 \usage{
 create_archived_file(file, last_modified, with_time)
 }

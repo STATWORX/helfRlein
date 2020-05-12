@@ -1,4 +1,4 @@
-#' @title Create File Name of Archived File
+#' @title [Internal: Create File Name of Archived File]
 #'
 #' @description This is an internal helper function to create and return the
 #'   archived file name depending on the parameters chosen by the user
