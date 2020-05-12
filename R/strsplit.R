@@ -45,8 +45,6 @@
 #' # [1] "3D"         "MON&SUN 2D" "MON&SUN"
 #'
 #' @author Jakob Gepp
-#' @note
-#'  TODO see issues for further advancements
 #'
 strsplit <- function(x,
                      split,

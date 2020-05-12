@@ -27,11 +27,6 @@
 #' # [1] TRUE FALSE NA
 #'
 #' @author Daniel Luettgau
-#' @note --- Idea for improvement
-#'
-#' Add args to flexible select which scenarios should be set NA
-#'
-#'   - nan, infinite, other defined values
 #'
 to_na <- function(x) {
   # check input
