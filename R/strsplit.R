@@ -20,7 +20,6 @@
 #' @return A list of the same length as \code{x}, the i-th element of which contains
 #'   the vector of splits of \code{x[i]}.
 #' @export
-#' @author Jakob Gepp
 #' @seealso \code{\link[base]{strsplit}} or
 #'   \href{https://stackoverflow.com/questions/15575221}{stackoverflow}
 #'    for more details.
@@ -44,8 +43,7 @@
 #' # [[1]]
 #' # [1] "3D"         "MON&SUN 2D" "MON&SUN"
 #'
-#' @note
-#'  TODO see issues for further advancements
+#' @author Jakob Gepp
 #'
 strsplit <- function(x,
                      split,

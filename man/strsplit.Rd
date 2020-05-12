@@ -33,9 +33,6 @@ This functions uses \code{\link[base]{strsplit}} and adds the
 possibility to split and keep the delimiter after or before the given split.
 Or you can split between two given splits and keep both.
 }
-\note{
-TODO see issues for further advancements
-}
 \examples{
 x <- c("3D/MON&SUN")
 strsplit(x, "[/&]")

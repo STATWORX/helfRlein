@@ -7,7 +7,6 @@
 #'
 #' @return Returns vector with replaced \code{NA} values.
 #' @export
-#' @author Daniel Luettgau
 #'
 #' @examples
 #' test <- list(a = c("a", "b", NA),
@@ -26,11 +25,7 @@
 #' # $c
 #' # [1] TRUE FALSE NA
 #'
-#' @note --- Idea for improvement
-#'
-#' Add args to flexible select which scenarios should be set NA
-#'
-#'   - nan, infinite, other defined values
+#' @author Daniel Luettgau
 #'
 
 to_na <- function(x) {
