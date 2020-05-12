@@ -51,20 +51,20 @@
 #' z <- 20
 #'
 #' ## save to RDS
-#' saveRDS(x, "./test.RDS")
-#' saveRDS(y, "./test.RDS")
+#' saveRDS(x, "temp.RDS")
+#' saveRDS(y, "temp.RDS")
 #'
-#' ## "test.RDS" is silently overwritten with y
+#' ## "temp.RDS" is silently overwritten with y
 #' ## previous version is lost
-#' readRDS("./test.RDS")
+#' readRDS("temp.RDS")
 #' #> [1] 10
 #'
-#' save_rds_archive(z, "./test.RDS")
-#' readRDS("./test.RDS")
+#' save_rds_archive(z, "temp.RDS")
+#' readRDS("temp.RDS")
 #' #> [1] 20
 #'
 #' ## previous version is archived
-#' readRDS("./test_ARCHIVED_on_2020-03-30.RDS")
+#' readRDS("temp_ARCHIVED_on_2020-03-30.RDS")
 #' #> [1] 10
 #'
 #' }
