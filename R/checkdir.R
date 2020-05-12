@@ -7,7 +7,7 @@
 #' @param path a character vector containing a single path name.
 #' @param recursive a logical. Should elements of the path other than the
 #'  last be created?
-#' @param verbose a boolean if TRUE a warning is shown when the folder already
+#' @param verbose a logical. If \code{TRUE} a warning is shown when the folder already
 #'   exists.
 #' @param ... additional options for \link[base]{dir.create}.
 #'

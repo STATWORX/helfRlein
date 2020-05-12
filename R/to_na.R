@@ -1,11 +1,11 @@
-#' @title replace NaN and Inf with NA
+#' @title Replace NaN and Inf with NA
 #'
 #' @description
 #' Takes out \code{NaN} and \code{Inf} and replaces them with \code{NA}
 #'
-#' @param x vector
+#' @param x a vector
 #'
-#' @return Returns vector with with replaced \code{NA}values.
+#' @return Returns vector with replaced \code{NA} values.
 #' @export
 #' @author Daniel Luettgau
 #'
@@ -26,13 +26,13 @@
 #' # $c
 #' # [1] TRUE FALSE NA
 #'
-#' @author Daniel Luettgau
 #' @note --- Idea for improvement
 #'
 #' Add args to flexible select which scenarios should be set NA
 #'
 #'   - nan, infinite, other defined values
 #'
+
 to_na <- function(x) {
   # check input
   if (!is.vector(x)) {
@@ -43,6 +43,6 @@ to_na <- function(x) {
   if (is.character(x)) {
     return(x)
   } else {
-    ifelse(is.infinite(x) | is.nan(x),  NA, x)
+    ifelse(is.infinite(x) | is.nan(x), NA, x)
   }
 }

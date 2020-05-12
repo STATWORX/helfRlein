@@ -1,7 +1,7 @@
-#' @title get start and end indices of sequences of patterns
+#' @title Get start and end indices of sequences of patterns
 #'
 #' @description
-#'   Given a vector \code{x} and a \code{pattern}, the functions returns the
+#'   Given a vector \code{x} and a \code{pattern}, the function returns the
 #'   start and end indices of the sequences with at least \code{minsize}
 #'   repetitions of the \code{pattern}.
 #'

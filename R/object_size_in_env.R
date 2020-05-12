@@ -1,14 +1,14 @@
 #' @title Get size of objects in environment
 #'
 #' @description
-#' Creates a sorted data.table with the size of objects in a specified
+#' Creates a sorted \code{data.table} with the size of objects in a specified
 #' environment.
 #'
 #' @param env an environment, the default is the \code{.GlobalEnv}.
 #' @param unit the units to be used in formatting and printing the size:
 #'   "b", "Kb", "Mb", "Gb", "Tb", "Pb", "B", "KB", "MB", "GB", "TB" and "PB".
 #'
-#' @return Returns a data.table with the size of objects in the given
+#' @return Returns a \code{data.table} with the size of objects in the given
 #' environment
 #'
 #' @importFrom data.table data.table

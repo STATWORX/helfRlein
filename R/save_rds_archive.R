@@ -78,73 +78,74 @@ save_rds_archive <- function(object,
                              with_time = FALSE,
                              archive_dir_path = NULL,
                              ...) {
-  
+
   if (file == "" | !"character" %in% class(file)) {
     stop("'file' must be a non-empty character string")
   }
-  
+
   if (!is.null(archive_dir_path) && archive_dir_path == "") {
     stop("must supply a directory name to 'archive_dir_path' if not NULL")
   }
-  
+
   if (!is.logical(archive)) {
     archive <- TRUE
     warning("'archive' is not set to a boolean - will use default: ", archive)
   }
-  
+
   if (!is.logical(with_time)) {
     with_time <- FALSE
     warning("'with_time' is not set to a boolean - will use default: ",
             with_time)
   }
-  
+
   # IF ARCHIVE == TRUE --------------------------------------------------------
-  
+
   if (archive) {
-    
+
     # check if file exists
     if (file.exists(file)) {
-      
+
       archived_file <- create_archived_file(file = file,
                                             last_modified = last_modified,
                                             with_time = with_time)
-      
+
       if (!is.null(archive_dir_path)) {
-        
+
         # get parent directory
         dname <- dirname(file)
-        
+
         # create archive dir if it does not already exist
         if (!dir.exists(file.path(dname, archive_dir_path))) {
           dir.create(file.path(dname, archive_dir_path), recursive = TRUE)
           message("Created missing archive directory ",
                   sQuote(archive_dir_path))
         }
-        
+
         # change path of archived file into 'archive' folder
         archived_file <- file.path(dirname(archived_file),
                                    archive_dir_path,
                                    basename(archived_file))
-        
+
         # copy (rather than rename) file
         # rename sometimes does not work if the directory itself is changed
         # save return value of the file.copy function and wrap in tryCatch
         # set "overwrite" to T so an existing copy is overwritten (see details)
-        
+
         if (file.exists(archived_file)) {
           warning("Archived copy already exists - will overwrite!")
         }
-        
-        temp <- tryCatch({file.copy(from = file,
-                                    to = archived_file,
-                                    overwrite = TRUE)
+
+        temp <- tryCatch({
+          file.copy(from = file,
+                    to = archived_file,
+                    overwrite = TRUE)
         },
         warning = function(e) {
           stop(e)
         })
-        
+
       } else {
-        
+
         if (file.exists(archived_file)) {
           warning("Archived copy already exists - will overwrite!")
         }
@@ -152,42 +153,43 @@ save_rds_archive <- function(object,
         # rename existing file with the new name
         # save return value of the file.rename function
         # (returns TRUE if successful) and wrap in tryCatch
-        temp <- tryCatch({file.rename(from = file,
-                                      to = archived_file)
+        temp <- tryCatch({
+          file.rename(from = file,
+                      to = archived_file)
         },
         warning = function(e) {
           stop(e)
         })
-        
+
       }
-      
+
       # check return value and if archived file exists
       if (temp & file.exists(archived_file)) {
         # then save new file under specified name
         saveRDS(object = object, file = file, ...)
       }
-      
-      
+
+
     } else {
-      
+
       warning("Nothing to overwrite - will use default saveRDS() behavior. ",
               "Additional arguments will be ignored!")
-      
+
       # if file does not exist (but archive is set to TRUE anyways),
       # save new file under specified name
       saveRDS(object = object, file = file, ...)
-      
+
     }
-    
+
   } else {
-    
+
     # OTHERWISE USE DEFAULT RDS -----------------------------------------------
-    
+
     warning("'archive' is set to FALSE - will use default saveRDS() behavior. ",
             "Additional arguments will be ignored!")
-    
+
     saveRDS(object = object, file = file, ...)
-    
+
   }
-  
+
 }

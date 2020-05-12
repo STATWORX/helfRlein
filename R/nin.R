@@ -1,11 +1,11 @@
 #' @title 'not in' operator
 #'
 #' @description
-#'   This negates the '%in%' operator.
+#'   This negates the '\%in\%' operator.
 #'
-#' @param x vector or NULL: the values to be matched. Long vectors are
+#' @param x vector or \code{NULL}: the values to be matched. Long vectors are
 #'    supported.
-#' @param table vector or NULL: the values to be matched against. Long vectors
+#' @param table vector or \code{NULL}: the values to be matched against. Long vectors
 #'    are not supported.
 #' @author Jakob Gepp
 #'

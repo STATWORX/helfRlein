@@ -1,4 +1,4 @@
-#' @title print file structure
+#' @title Print file structure
 #'
 #' @description Prints the directories and files of the given path.
 #'

@@ -12,7 +12,7 @@ checkdir(path, recursive = TRUE, verbose = FALSE, ...)
 \item{recursive}{a logical. Should elements of the path other than the
 last be created?}
 
-\item{verbose}{a boolean if TRUE a warning is shown when the folder already
+\item{verbose}{a logical. If \code{TRUE} a warning is shown when the folder already
 exists.}
 
 \item{...}{additional options for \link[base]{dir.create}.}

@@ -2,21 +2,21 @@
 % Please edit documentation in R/count_na.R
 \name{count_na}
 \alias{count_na}
-\title{counts NA values in a vector}
+\title{Count NA values in a vector}
 \usage{
 count_na(x, mean = FALSE)
 }
 \arguments{
 \item{x}{a vector with data}
 
-\item{mean}{a boolean, if \code{TRUE} instead of the sum the mean of NA's
+\item{mean}{a boolean, if \code{TRUE} instead of the sum the mean of \code{NA}s
 is calculated.}
 }
 \value{
 returns either the sum or the mean of NA values.
 }
 \description{
-counts NA values in a vector
+Count NA values in a vector
 }
 \examples{
 x <- c(NA, NA, 1, NaN, 0)

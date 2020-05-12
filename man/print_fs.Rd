@@ -2,7 +2,7 @@
 % Please edit documentation in R/print_fs.R
 \name{print_fs}
 \alias{print_fs}
-\title{print file structure}
+\title{Print file structure}
 \usage{
 print_fs(path = ".", depth = 2L)
 }

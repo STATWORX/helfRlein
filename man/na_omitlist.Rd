@@ -2,7 +2,7 @@
 % Please edit documentation in R/na_omitlist.R
 \name{na_omitlist}
 \alias{na_omitlist}
-\title{remove NA from list}
+\title{Remove NA from list}
 \usage{
 na_omitlist(y = list(), recursive = FALSE)
 }
@@ -10,14 +10,14 @@ na_omitlist(y = list(), recursive = FALSE)
 \item{y}{a list}
 
 \item{recursive}{logical. If \code{TRUE}, \code{NA}s within the list's
-elements aree removed too.}
+elements are removed too.}
 }
 \value{
 Returns the list without \code{NA}s.
 }
 \description{
-This functions removes \code{NA}s from a list. With \code{recursive ==
-   TRUE} \code{NA}s within each list's elements are removed as well.
+This functions removes \code{NA}s from a list. With \code{recursive =
+   TRUE}, \code{NA}s within each list's elements are removed as well.
 }
 \examples{
 y <- list(c(1:3), letters[1:4], NA, c(1, NA), list(c(5:6, NA), NA, "A"))

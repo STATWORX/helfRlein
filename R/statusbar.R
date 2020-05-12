@@ -1,15 +1,15 @@
-#' @title a statusbar for for loops
+#' @title A statusbar for for loops
 #'
 #' @description
-#'  This functions prints a progess of a for loop at the console.
+#'  This functions prints the progess of a \code{for} loop to the console.
 #'
-#' @param run the iterator of the for loop or an integer with the current
+#' @param run the iterator of the \code{for} loop or an integer with the current
 #'   loop number.
-#' @param max.run either an integer with the maximum number of loops if run is
-#'   also a number or a vector with all possible iterations in the right order.
+#' @param max.run either an integer with the maximum number of loops if \code{run} is
+#'   also a number, or a vector with all possible iterations in the correct order.
 #' @param width an integer that indicates how wide the progress
 #'   bar is printed.
-#' @param info a string with additionaly information to be printed at
+#' @param info a string with additional information to be printed at
 #'   the end of the line. The default is \code{run}.
 #'
 #' @return

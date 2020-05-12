@@ -2,7 +2,7 @@
 % Please edit documentation in R/set_new_chapter.R
 \name{set_new_chapter}
 \alias{set_new_chapter}
-\title{Insert dashes from courser position up to 80 characters}
+\title{Insert dashes from current cursor position up to 80 characters}
 \usage{
 set_new_chapter()
 }
@@ -10,10 +10,11 @@ set_new_chapter()
 Hyphens inside RStudio
 }
 \description{
-Insert dashes from courser position up to 80 characters
-}
-\examples{
-## NOT RUN
+This function inserts dashes from the current cursor position up
+  to 80 characters. It can be used for chapter headings for easier
+  structuring of your code. You can also assign a shortcut to this function
+  in RStudio: Go to "Tools" --> "Modify Keyboard Shortcuts..." and search for
+  "Insert Hyphens (---)".
 }
 \author{
 Matthias Nistler

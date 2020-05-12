@@ -1,10 +1,12 @@
-#' @title read multiple files into one data.table
+#' @title Read multiple files into one \code{data.table}
 #'
-#' @param files pathes to files to be read in
+#' @description This function reads multiple files into one \code{data.table}
+#'
+#' @param files paths to files to be read in
 #' @param fun function to load files in
 #' @param ... additional arguments to be passed to \code{fun}
 #'
-#' @return combined data.table of the input files
+#' @return combined \code{data.table} of the input files
 #' @export
 #'
 #' @importFrom data.table as.data.table rbindlist

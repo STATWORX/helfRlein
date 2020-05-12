@@ -1,11 +1,11 @@
-#'  a palette based on STATWORX's CI colors
+#'  A palette based on STATWORX's CI colors
 #'
 #' @description
 #'  A palette based on STATWORX's CI colors.
 #'
 #' @param number a numeric with the number of colors.
 #'  The default is the length of \code{basecolors}.
-#' @param reorder a boolean if \code{TRUE} the order will be sampled,
+#' @param reorder a boolean, if \code{TRUE} the order will be sampled,
 #'  which can make groups next to each other a little bit more separable.
 #' @param basecolors a numeric vector with the used color indices of
 #' \code{\link{sci_palette}}.

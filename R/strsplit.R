@@ -1,24 +1,24 @@
-#' @title improved strsplit function
+#' @title Improved strsplit function
 #'
 #' @description This functions uses \code{\link[base]{strsplit}} and adds the
 #' possibility to split and keep the delimiter after or before the given split.
-#' Or you can split between to given splits and keep both.
+#' Or you can split between two given splits and keep both.
 #'
 #' @param x character vector, each element of which is to be split. Other
 #'   inputs, including a factor, will give an error.
 #' @param split character vector (or object which can be coerced to such)
-#'   containing regular expression(s) (unless fixed = TRUE) to use for
-#'   splitting. If empty matches occur, in particular if split has length 0, x
-#'   is split into single characters. If split has length greater than 1, it is
-#'   re-cycled along x.
+#'   containing regular expression(s) (unless \code{fixed = TRUE}) to use for
+#'   splitting. If empty matches occur, in particular if \code{split} has length
+#'   0, \code{x} is split into single characters. If \code{split} has length
+#'   greater than 1, it is recycled along \code{x}.
 #' @param type a charachter. Either to \code{"remove"} or keep the delimiter
 #'   \code{"before"}, \code{"between"} or \code{"remove"} the split.
 #' @param perl logical. Should Perl-compatible regexps be used? Is \code{TRUE}
 #'   for all but \code{"remove"}.
-#' @param ... other inputs for base::strsplit
+#' @param ... other inputs passed along to \code{\link[base]{strsplit}}
 #'
-#' @return A list of the same length as x, the i-th element of which contains
-#'   the vector of splits of x[i].
+#' @return A list of the same length as \code{x}, the i-th element of which contains
+#'   the vector of splits of \code{x[i]}.
 #' @export
 #' @author Jakob Gepp
 #' @seealso \code{\link[base]{strsplit}} or
@@ -44,7 +44,6 @@
 #' # [[1]]
 #' # [1] "3D"         "MON&SUN 2D" "MON&SUN"
 #'
-#' @author Jakob Gepp
 #' @note
 #'  TODO see issues for further advancements
 #'

@@ -12,7 +12,7 @@ clean_gc(num_gc = 100, threshold = 0.01, verbose = FALSE)
 \item{threshold}{a numeric with the percentage difference. If the change
 in memory size falls below the threshold, the function stops.}
 
-\item{verbose}{a boolean. If \code{TRUE} information about the run are
+\item{verbose}{a boolean. If \code{TRUE}, information about the run is
 printed.}
 }
 \description{

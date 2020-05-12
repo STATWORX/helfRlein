@@ -2,7 +2,7 @@
 % Please edit documentation in R/statworx_palette.R
 \name{statworx_palette}
 \alias{statworx_palette}
-\title{a palette based on STATWORX's CI colors}
+\title{A palette based on STATWORX's CI colors}
 \usage{
 statworx_palette(
   number = length(basecolors),
@@ -14,7 +14,7 @@ statworx_palette(
 \item{number}{a numeric with the number of colors.
 The default is the length of \code{basecolors}.}
 
-\item{reorder}{a boolean if \code{TRUE} the order will be sampled,
+\item{reorder}{a boolean, if \code{TRUE} the order will be sampled,
 which can make groups next to each other a little bit more separable.}
 
 \item{basecolors}{a numeric vector with the used color indices of

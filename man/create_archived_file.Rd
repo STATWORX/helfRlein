@@ -14,8 +14,12 @@ create_archived_file(file, last_modified, with_time)
 \item{with_time}{Logical - passed from parent function}
 }
 \description{
-This is an internal helper function to create and return the
-  archived file name depending on the parameters chosen by the user
+This is an internal helper function of
+  \code{\link[helfRlein]{save_rds_archive}} to create and return the archived
+  file name depending on the parameters chosen by the user
+}
+\seealso{
+\code{\link[helfRlein]{save_rds_archive}}
 }
 \author{
 Lukas Feick
