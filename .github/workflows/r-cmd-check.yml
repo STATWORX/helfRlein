@@ -77,8 +77,8 @@ jobs:
           remotes::install_cran("rcmdcheck")
         shell: Rscript {0}
 
-      - name: Fix stringi and igraph source installation in ubuntu-oldrel
-        if: (runner.os == 'Linux' && matrix.config.r != 'release')
+      - name: Fix stringi and igraph source installation in ubuntu
+        if: (runner.os == 'Linux')
         run: |
           Rscript -e "remove.packages(c('stringi', 'igraph'))"
           conda install -c r r-stringi
