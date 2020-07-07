@@ -15,9 +15,9 @@
 
 ### internal changes
 
-- including github actions
-- removing other CI
-- adjusting tests for windows
+- including GitHub Actions
+- removing other CI services
+- adjusting tests for Windows
 - adjusting needed R version
 
 

@@ -296,9 +296,9 @@ my_news$add_bullet(c("removing dive and burglr",
                      "read_files now as 'fun' instead of 'FUN' parameter"))
 
 my_news$add_subtitle("internal changes")
-my_news$add_bullet(c("including github actions",
-                     "removing other CI",
-                     "adjusting tests for windows",
+my_news$add_bullet(c("including GitHub Actions",
+                     "removing other CI services",
+                     "adjusting tests for Windows",
                      "adjusting needed R version"))
 
 # set R version

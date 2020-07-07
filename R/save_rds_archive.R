@@ -60,6 +60,8 @@
 #' #> [1] 10
 #'
 #' save_rds_archive(z, "temp.RDS")
+#'
+#' ## current version is updated
 #' readRDS("temp.RDS")
 #' #> [1] 20
 #'
