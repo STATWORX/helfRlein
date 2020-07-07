@@ -10,14 +10,12 @@
 
 ## Overview
 
-This package contains a collection of R helper functions. There are three main topics:
-
-- independent and stand alone functions (eg. [burglr](https://www.statworx.com/de/blog/burglr-stealing-code-from-the-web/) or [dive](http://www.statworx.com/de/blog/dive-the-debugging-function-you-deserve/))
+This package contains a collection of R helper functions. There are two main topics:
 
 - general helper functions that ease our programing life
-
 - functions that ease our daily work and projects
 
+With version 1.0.0. stand alone functions like [burglr](https://www.statworx.com/de/blog/burglr-stealing-code-from-the-web/) and [dive](http://www.statworx.com/de/blog/dive-the-debugging-function-you-deserve/) have been removed. See the [NEWS](NEWS.md) for more details.
 
 
 ## Installation
@@ -31,17 +29,11 @@ devtools::install_github("STATWORX/helfRlein")
 
 ## List of functions
 
-### stand alone functions
-
-- `burglr()` 
-  A functions to source code from the web. You can find a detailed introduction to this function [here](https://www.statworx.com/de/blog/burglr-stealing-code-from-the-web/).
-
-- `dive()`
-  A debugging function for that will sort out the parameters for you. You can use it for example with Sublime. You can find a detailed introduction to this function [here](https://www.statworx.com/de/blog/dive-the-debugging-function-you-deserve/).
-
-
 
 ### general helper functions
+
+- `char_replace()`
+  A function that replaces special characters within strings.
 
 - `checkdir()`
   Combines `file.exists()` and `dir.create()`.
@@ -51,7 +43,7 @@ devtools::install_github("STATWORX/helfRlein")
 
 - `count_na()`
   A functions that returns the number of missing values.
-
+  
 - `evenstrings()`
   This function reduces and cuts a given string into parts with a fixed length.
 
@@ -100,6 +92,8 @@ devtools::install_github("STATWORX/helfRlein")
   This function prints the folder and file structure of a given path.
 - `sci_palette()`
   A functions that shows STATWORX's CI colours. 
+- `set_new_chapter()`
+  An addin to insert dashes from the courser position up to 80 characters.
 - `statworx_palette()`
   This functions creates a colour palette based on our CI colours.
 

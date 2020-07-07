@@ -25,7 +25,7 @@
 
 - removing dive and burglr
 - adding new function 'save_rds_archive'
-- adding shoRtcut addin
+- adding shoRtcut (set_new_chapter()) addin
 - read_files now as 'fun' instead of 'FUN' parameter
 
 
