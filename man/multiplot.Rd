@@ -2,7 +2,7 @@
 % Please edit documentation in R/multiplot.R
 \name{multiplot}
 \alias{multiplot}
-\title{combine multiple ggplots}
+\title{Combine multiple ggplots}
 \usage{
 multiplot(..., plotlist = NULL, cols = 1, layout = NULL)
 }
@@ -13,24 +13,23 @@ multiplot(..., plotlist = NULL, cols = 1, layout = NULL)
 
 \item{cols}{numeric. Number of columns in the output plot.}
 
-\item{layout}{a matrix with the layout of the plots.}
+\item{layout}{a matrix with the layout of the plots. If present, \code{cols}
+is ignored.}
 }
 \description{
-Functions that allows to combine diffrent ggplots into one plot.
+This function allows to combine different ggplots into one plot.
 }
 \details{
-ggplot objects can be passed in ..., or to plotlist (as a list of
-ggplot objects) - cols: Number of columns in layout - layout: A matrix
-specifying the layout. If present, 'cols' is ignored.
+ggplot objects can be passed in \code{...}, or to \code{plotlist}
+  (as a list of ggplot objects)
 
-If the layout is something like matrix(c(1,2,3,3), nrow=2, byrow=TRUE), then
-plot 1 will go in the upper left, 2 will go in the upper right, and 3 will go
+If the layout is something like \code{matrix(c(1,2,3,3), nrow = 2, byrow = TRUE)},
+then plot 1 will go in the upper left, 2 will go in the upper right, and 3 will go
 all the way across the bottom.
 }
 \seealso{
 This is copied from the
-  \href{http://www.cookbook-r.com/Graphs/Multiple_graphs_on_one_page_(ggplot2)/}{Cookbook
-  for R}
+  \href{http://www.cookbook-r.com/Graphs/}{Cookbook for R}
 }
 \author{
 Cookbook for R

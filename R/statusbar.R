@@ -1,15 +1,15 @@
-#' @title a statusbar for for loops
+#' @title A statusbar for for loops
 #'
 #' @description
-#'  This functions prints a progess of a for loop at the console.
+#'  This functions prints the progess of a \code{for} loop to the console.
 #'
-#' @param run the iterator of the for loop or an integer with the current
+#' @param run the iterator of the \code{for} loop or an integer with the current
 #'   loop number.
-#' @param max.run either an integer with the maximum number of loops if run is
-#'   also a number or a vector with all possible iterations in the right order.
-#' @param percent.max an integer that indicates how wide the progress
+#' @param max.run either an integer with the maximum number of loops if \code{run} is
+#'   also a number, or a vector with all possible iterations in the correct order.
+#' @param width an integer that indicates how wide the progress
 #'   bar is printed.
-#' @param info a string with additionaly information to be printed at
+#' @param info a string with additional information to be printed at
 #'   the end of the line. The default is \code{run}.
 #'
 #' @return
@@ -17,23 +17,24 @@
 #'
 #' @importFrom utils flush.console
 #' @export
+#' @author Jakob Gepp
 #'
 #' @examples
 #'
 #' for (i in 1:20) {
 #'   Sys.sleep(0.1)
-#'   statusbar(run = i, max.run = 200, percent.max = 60L)
+#'   statusbar(run = i, max.run = 200, width = 60L)
 #' }
 #'
 #' for (i in letters[1:16]) {
 #'   Sys.sleep(0.1)
-#'   statusbar(run = i, max.run = letters[1:16], percent.max = 60L)
+#'   statusbar(run = i, max.run = letters[1:16], width = 60L)
 #' }
 
-statusbar <- function (run,
-                       max.run,
-                       percent.max = 20L,
-                       info = run) {
+statusbar <- function(run,
+                      max.run,
+                      width = 20L,
+                      info = run) {
   # check run
   if (length(run) > 1) {
     stop("run needs to be of length one!")
@@ -49,10 +50,11 @@ statusbar <- function (run,
     percent <- run / max.run
   }
 
-  percent.step <- round(percent * percent.max, 0)
+  percent_step <- round(percent * width, 0)
   progress <- paste0("[",
-                      paste0(rep("=", percent.step), collapse = ""),
-                      paste0(rep(" ", percent.max - percent.step), collapse = ""),
+                      paste0(rep("=", percent_step), collapse = ""),
+                      paste0(rep(" ", width - percent_step),
+                             collapse = ""),
                       "] ",
                       sprintf("%7.2f", percent * 100, 2),
                       "% - ",

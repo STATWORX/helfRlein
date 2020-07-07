@@ -7,7 +7,7 @@ test_that("examples works for .csv, .rds and .txt", {
   # .csv
   testfiles <- list.files(datapath, pattern = ".csv", full.names = TRUE)
 
-  tmp1 <- read_files(testfiles, FUN = read.csv2, stringsAsFactors = FALSE)
+  tmp1 <- read_files(testfiles, fun = read.csv2, stringsAsFactors = FALSE)
   res1 <- data.table::data.table(x = 1:20,
                                  y = letters[1:20],
                                  z = rep(c(NA, 1), each = 10))
@@ -16,7 +16,7 @@ test_that("examples works for .csv, .rds and .txt", {
   # .rds
   testfiles <- list.files(datapath, pattern = ".rds", full.names = TRUE)
 
-  tmp2 <- read_files(testfiles, FUN = readRDS)
+  tmp2 <- read_files(testfiles, fun = readRDS)
   res2 <- data.table::data.table(x = 1:20,
                                  y = letters[1:20],
                                  z = rep(c(NA, 1), each = 10))

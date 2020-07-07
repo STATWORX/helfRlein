@@ -29,9 +29,9 @@ my_desc$del("Maintainer")
 # Set the version
 my_desc$set_version("0.0.0.9000")
 # The title of your package
-my_desc$set(Title = "R-Helper functions")
+my_desc$set(Title = "R Helper Functions")
 # The description of your package
-my_desc$set(Description = "A usefull collection of R helper functions.")
+my_desc$set(Description = "A useful collection of R helper functions.")
 # The urls
 my_desc$set("URL", "https://github.com/STATWORX/helfRlein")
 my_desc$set("BugReports",
@@ -284,6 +284,38 @@ my_news$add_bullet(c("adjusting tests for R 4.0.0",
 my_news$add_subtitle("Bugfixes")
 my_news$add_bullet(c("removing ASCII characters"))
 
+
+# refactoring package -----------------------------------------------------
+
+my_desc$bump_version("major")
+my_news$add_version(my_desc$get_version())
+my_news$add_subtitle("update function")
+my_news$add_bullet(c("removing dive and burglr",
+                     "adding new function 'save_rds_archive'",
+                     "adding shoRtcut (set_new_chapter()) addin",
+                     "read_files now as 'fun' instead of 'FUN' parameter"))
+
+my_news$add_subtitle("internal changes")
+my_news$add_bullet(c("including github actions",
+                     "removing other CI",
+                     "adjusting tests for windows",
+                     "adjusting needed R version"))
+
+# set R version
+my_desc$set_dep("R", type = desc::dep_types[2], version = ">= 3.5")
+
+my_news$add_subtitle("styling")
+my_news$add_bullet(c("fixing lints"))
+
+my_desc$add_author('Lukas', 'Feick',
+                   email = 'lukas.feick@statworx.com',
+                   role = c('aut'))
+
+my_desc$set_dep("rstudioapi", type = desc::dep_types[1])
+my_news$add_subtitle("removing dependencies")
+my_news$add_bullet("RCurl, stringr")
+my_desc$del_dep("RCurl", type = desc::dep_types[1])
+my_desc$del_dep("stringr", type = desc::dep_types[1])
 
 # save everything ---------------------------------------------------------
 

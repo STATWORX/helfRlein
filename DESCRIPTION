@@ -1,6 +1,6 @@
 Package: helfRlein
-Title: R-Helper functions
-Version: 0.3.1
+Title: R Helper Functions
+Version: 1.0.0
 Authors@R: 
     c(person(given = "Jakob",
              family = "Gepp",
@@ -37,15 +37,19 @@ Authors@R:
       person(given = "Oliver",
              family = "Guggenbuehl",
              role = "ctb",
-             email = "oliver.guggenbuehl@statworx.com"))
-Description: A usefull collection of R helper functions.
+             email = "oliver.guggenbuehl@statworx.com"),
+      person(given = "Lukas",
+             family = "Feick",
+             role = "aut",
+             email = "lukas.feick@statworx.com"))
+Description: A useful collection of R helper functions.
 License: MIT + file LICENSE
 LazyData: true
 URL: https://github.com/STATWORX/helfRlein
 BugReports: https://github.com/STATWORX/helfRlein/issues
 Encoding: UTF-8
 Depends: 
-    R (>= 3.3.3)
+    R (>= 3.5)
 Suggests: 
     testthat,
     newsmd
@@ -53,10 +57,9 @@ Imports:
     data.table (>= 1.9),
     igraph (>= 1.1.2),
     data.tree (>= 0.7.0),
-    stringr (>= 1.2.0),
-    RCurl,
     readr (>= 1.1.1),
     magrittr (>= 1.1.1),
     grDevices,
-    graphics
-Date: 2020-04-28
+    graphics,
+    rstudioapi
+Date: 2020-07-07

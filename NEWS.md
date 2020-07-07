@@ -1,3 +1,34 @@
+## version 1.0.0
+
+---
+
+
+### removing dependencies
+
+- RCurl, stringr
+
+
+### styling
+
+- fixing lints
+
+
+### internal changes
+
+- including github actions
+- removing other CI
+- adjusting tests for windows
+- adjusting needed R version
+
+
+### update function
+
+- removing dive and burglr
+- adding new function 'save_rds_archive'
+- adding shoRtcut (set_new_chapter()) addin
+- read_files now as 'fun' instead of 'FUN' parameter
+
+
 ## version 0.3.1
 
 ---

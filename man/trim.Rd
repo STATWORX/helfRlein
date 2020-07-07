@@ -2,7 +2,7 @@
 % Please edit documentation in R/trim.R
 \name{trim}
 \alias{trim}
-\title{trim leading or trailing whitespaces}
+\title{Trim leading or trailing whitespaces}
 \usage{
 trim(x, lead = TRUE, trail = TRUE)
 }
@@ -17,7 +17,7 @@ trim(x, lead = TRUE, trail = TRUE)
 a character vector
 }
 \description{
-trim leading or trailing whitespaces
+Trim leading or trailing whitespaces
 }
 \examples{
 x <- c("  Hello world!", "  Hello world! ", "Hello world! ")
@@ -26,5 +26,9 @@ trim(x)
 
 }
 \seealso{
-Since R 3.5.1 there is \code{\link[base]{trimws}} in the base package.
+Since R 3.5.1 there is \code{\link[base]{trimws}} in the base
+  package.
+}
+\author{
+Jakob Gepp
 }

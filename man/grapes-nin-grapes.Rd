@@ -7,17 +7,17 @@
 x \%nin\% table
 }
 \arguments{
-\item{x}{vector or NULL: the values to be matched. Long vectors are
+\item{x}{vector or \code{NULL}: the values to be matched. Long vectors are
 supported.}
 
-\item{table}{vector or NULL: the values to be matched against. Long vectors
+\item{table}{vector or \code{NULL}: the values to be matched against. Long vectors
 are not supported.}
 }
 \value{
 a boolean vector
 }
 \description{
-This negates the '%in%' operator.
+This negates the '\%in\%' operator.
 }
 \examples{
 c(1,2,3,4) \%nin\% c(1,2,5)
@@ -26,4 +26,7 @@ c(1,2,3,4) \%nin\% c(1,2,5)
 }
 \seealso{
 \link[base]{match}
+}
+\author{
+Jakob Gepp
 }

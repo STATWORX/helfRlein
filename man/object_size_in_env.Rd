@@ -13,14 +13,17 @@ object_size_in_env(env = .GlobalEnv, unit = "Mb")
 "b", "Kb", "Mb", "Gb", "Tb", "Pb", "B", "KB", "MB", "GB", "TB" and "PB".}
 }
 \value{
-Returns a data.table with the size of objects in the given
+Returns a \code{data.table} with the size of objects in the given
 environment
 }
 \description{
-Creates a sorted data.table with the size of objects in a specified
+Creates a sorted \code{data.table} with the size of objects in a specified
 environment.
 }
 \examples{
 DT <- object_size_in_env(env = environment())
 
+}
+\author{
+Jakob Gepp
 }

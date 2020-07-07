@@ -1,0 +1,4 @@
+Name: Insert Hyphens (---)
+Description: Inserts `---` at the cursor position up to 80 characters.
+Binding: set_new_chapter
+Interactive: false

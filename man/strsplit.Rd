@@ -2,7 +2,7 @@
 % Please edit documentation in R/strsplit.R
 \name{strsplit}
 \alias{strsplit}
-\title{improved strsplit function}
+\title{Improved strsplit function}
 \usage{
 strsplit(x, split, type = "remove", perl = FALSE, ...)
 }
@@ -11,10 +11,10 @@ strsplit(x, split, type = "remove", perl = FALSE, ...)
 inputs, including a factor, will give an error.}
 
 \item{split}{character vector (or object which can be coerced to such)
-containing regular expression(s) (unless fixed = TRUE) to use for
-splitting. If empty matches occur, in particular if split has length 0, x
-is split into single characters. If split has length greater than 1, it is
-re-cycled along x.}
+containing regular expression(s) (unless \code{fixed = TRUE}) to use for
+splitting. If empty matches occur, in particular if \code{split} has length
+0, \code{x} is split into single characters. If \code{split} has length
+greater than 1, it is recycled along \code{x}.}
 
 \item{type}{a charachter. Either to \code{"remove"} or keep the delimiter
 \code{"before"}, \code{"between"} or \code{"remove"} the split.}
@@ -22,19 +22,16 @@ re-cycled along x.}
 \item{perl}{logical. Should Perl-compatible regexps be used? Is \code{TRUE}
 for all but \code{"remove"}.}
 
-\item{...}{other inputs for base::strsplit}
+\item{...}{other inputs passed along to \code{\link[base]{strsplit}}}
 }
 \value{
-A list of the same length as x, the i-th element of which contains
-  the vector of splits of x[i].
+A list of the same length as \code{x}, the i-th element of which contains
+  the vector of splits of \code{x[i]}.
 }
 \description{
 This functions uses \code{\link[base]{strsplit}} and adds the
 possibility to split and keep the delimiter after or before the given split.
-Or you can split between to given splits and keep both.
-}
-\note{
-TODO see issues for further advancements
+Or you can split between two given splits and keep both.
 }
 \examples{
 x <- c("3D/MON&SUN")

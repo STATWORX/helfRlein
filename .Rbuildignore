@@ -6,3 +6,5 @@
 ^.Rhistory
 ^README.md
 ^\.circleci
+^\.github$
+^\.lintr$

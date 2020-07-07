@@ -2,25 +2,18 @@
 % Please edit documentation in R/to_na.R
 \name{to_na}
 \alias{to_na}
-\title{replace NaN and Inf with NA}
+\title{Replace NaN and Inf with NA}
 \usage{
 to_na(x)
 }
 \arguments{
-\item{x}{vector}
+\item{x}{a vector}
 }
 \value{
-Returns vector with with replaced \code{NA}values.
+Returns vector with replaced \code{NA} values.
 }
 \description{
 Takes out \code{NaN} and \code{Inf} and replaces them with \code{NA}
-}
-\note{
---- Idea for improvement
-
-Add args to flexible select which scenarios should be set NA
-
-  - nan, infinite, other defined values
 }
 \examples{
 test <- list(a = c("a", "b", NA),

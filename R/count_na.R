@@ -1,11 +1,12 @@
-#' @title counts NA values in a vector
+#' @title Count NA values in a vector
 #'
 #' @param x a vector with data
-#' @param mean a boolean, if \code{TRUE} instead of the sum the mean of NA's
+#' @param mean a boolean, if \code{TRUE} instead of the sum the mean of \code{NA}s
 #'  is calculated.
 #'
 #' @return returns either the sum or the mean of NA values.
 #' @export
+#' @author Jakob Gepp
 #'
 #' @examples
 #' x <- c(NA, NA, 1, NaN, 0)

@@ -1,6 +1,6 @@
-#'  Palette for STATWORX Corporate Identity
+#' Palette for STATWORX Corporate Identity
 #'
-#' @description Palette for Statworx's Corporate Identity colors.
+#' @description Palette for STATWORX Corporate Identity colors.
 #'
 #' @details
 #' The \code{plot} function gives an example of the colors.
@@ -13,6 +13,7 @@
 #' @export
 #'
 #' @examples
+#' # Plotting the true underlying effects
 #' plot(sci_palette())
 #'
 sci_palette <- function() {

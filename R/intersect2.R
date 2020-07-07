@@ -1,4 +1,4 @@
-#' @title intersect for multiple input vectors or lists
+#' @title 'intersect' for multiple input vectors or lists
 #'
 #' @description
 #'  Function to check the intersect within multiple vectors or lists.
@@ -39,4 +39,3 @@ intersect2 <- function(...) {
     intersect(intersect2(args[[1]]), intersect2(args[-1]))
   }
 }
-

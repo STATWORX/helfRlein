@@ -2,30 +2,33 @@
 % Please edit documentation in R/read_files.R
 \name{read_files}
 \alias{read_files}
-\title{read multiple files into one data.table}
+\title{Read multiple files into one \code{data.table}}
 \usage{
-read_files(files, FUN = readLines, ...)
+read_files(files, fun = readLines, ...)
 }
 \arguments{
-\item{files}{pathes to files to be read in}
+\item{files}{paths to files to be read in}
 
-\item{FUN}{function to load files in}
+\item{fun}{function to load files in}
 
-\item{...}{additional arguments to be passed to \code{FUN}}
+\item{...}{additional arguments to be passed to \code{fun}}
 }
 \value{
-combined data.table of the input files
+combined \code{data.table} of the input files
 }
 \description{
-read multiple files into one data.table
+This function reads multiple files into one \code{data.table}
 }
 \examples{
 
 \dontrun{
 # this needs files
-read_files(files, FUN = readRDS)
-read_files(files, FUN = readLines)
-read_files(files, FUN = read.csv, sep = ";")
+read_files(files, fun = readRDS)
+read_files(files, fun = readLines)
+read_files(files, fun = read.csv, sep = ";")
 }
 
+}
+\author{
+Jakob Gepp
 }

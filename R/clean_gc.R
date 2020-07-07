@@ -10,7 +10,7 @@
 #' @param num_gc a numeric that indicates the maximum number of iterations.
 #' @param threshold a numeric with the percentage difference. If the change
 #'        in memory size falls below the threshold, the function stops.
-#' @param verbose a boolean. If \code{TRUE} information about the run are
+#' @param verbose a boolean. If \code{TRUE}, information about the run is
 #'        printed.
 #'
 #' @export
@@ -26,7 +26,6 @@ clean_gc <- function(num_gc    = 100,
                      verbose   = FALSE) {
   mb_size <- c()
   for (i_gc in c(1:num_gc)) {
-    # i_gc <- 1
     tmp_gc <- gc()
     mb_size[i_gc] <- tmp_gc[2, 4]
     if (i_gc != 1) {
@@ -59,5 +58,3 @@ clean_gc <- function(num_gc    = 100,
   # removing used variables
   rm(num_gc, mb_size, tmp_gc, i_gc)
 }
-
-

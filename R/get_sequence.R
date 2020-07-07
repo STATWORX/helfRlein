@@ -1,7 +1,7 @@
-#' @title get start and end indices of sequences of patterns
+#' @title Get start and end indices of sequences of patterns
 #'
 #' @description
-#'   Given a vector \code{x} and a \code{pattern}, the functions returns the
+#'   Given a vector \code{x} and a \code{pattern}, the function returns the
 #'   start and end indices of the sequences with at least \code{minsize}
 #'   repetitions of the \code{pattern}.
 #'
@@ -59,10 +59,11 @@ get_sequence <- function(x,
     split_pattern <- lapply(split(seq_index, y), function(x) x0[x])
 
     # add one, which was lost because of diff()
-    split_pattern <- lapply(split_pattern, function(x) c(x, max(x)+1))
+    split_pattern <- lapply(split_pattern, function(x) c(x, max(x) + 1))
 
     # keep only those respect to the minsize
-    split_pattern <- split_pattern[sapply(split_pattern, function(x) length(x) >= minsize)]
+    split_pattern <-
+      split_pattern[sapply(split_pattern, function(x) length(x) >= minsize)]
 
     # check length of y
     if (length(split_pattern) == 0) {
@@ -77,7 +78,11 @@ get_sequence <- function(x,
     # find first pattern
     idx <- which(x == pattern[1])
     # check following patterns
-    start <- idx[sapply(idx, function(i) all(x[i:(i+(length(pattern) - 1))] == pattern))]
+    start <-
+      idx[sapply(idx, function(i) {
+        all(x[i:(i + (length(pattern) - 1))] == pattern)
+        }
+      )]
     start <- start[!is.na(start)]
     end <- start + length(pattern) - 1
 
@@ -86,7 +91,8 @@ get_sequence <- function(x,
     out <- matrix(c(start[c(TRUE, used)], end[c(used, TRUE)]), ncol = 2)
 
     # check minsize
-    idx <- apply(X = out, MARGIN = 1, FUN = diff) >= minsize * length(pattern) - 1
+    idx <- apply(X = out, MARGIN = 1, FUN = diff) >=
+      minsize * length(pattern) - 1
     out <- out[idx, , drop = FALSE]
 
     # check length of y

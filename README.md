@@ -1,17 +1,21 @@
 # helfRlein <img src="img/helfRlein.png" width=170 align="right" />
-[![CircleCI](https://circleci.com/gh/STATWORX/helfRlein.svg?style=svg)](https://circleci.com/gh/STATWORX/helfRlein)
+
+| branch        | master | dev  |
+| ------------- | ------ | ---- |
+| R CMD check   | ![master-branch](https://github.com/STATWORX/helfRlein/workflows/R-CMD-check/badge.svg?branch=master) | [![dev-branch](https://github.com/STATWORX/helfRlein/workflows/R-CMD-check/badge.svg?branch=dev)](https://github.com/STATWORX/helfRlein/actions?query=workflow%3AR-CMD-check) |
+| test coverage | [![master-test-coverage](https://img.shields.io/codecov/c/github/STATWORX/helfRlein/master.svg)](https://codecov.io/gh/STATWORX/helfRlein/branch/master) | [![dev-test-coverage](https://img.shields.io/codecov/c/github/STATWORX/helfRlein/dev.svg)](https://codecov.io/gh/STATWORX/helfRlein/branch/dev) |
+| lints         | ![master-lints](https://github.com/STATWORX/helfRlein/workflows/lints/badge.svg?branch=master) | [![dev-lints](https://github.com/STATWORX/helfRlein/workflows/lints/badge.svg?branch=dev)](https://github.com/STATWORX/helfRlein/actions?query=workflow%3Alints) |
+
 ----
 
 ## Overview
 
-This package contains a collection of R helper functions. There are three main topics:
-
-- independent and stand alone functions (eg. [burglr](https://www.statworx.com/de/blog/burglr-stealing-code-from-the-web/) or [dive](http://www.statworx.com/de/blog/dive-the-debugging-function-you-deserve/))
+This package contains a collection of R helper functions. There are two main topics:
 
 - general helper functions that ease our programing life
-
 - functions that ease our daily work and projects
 
+With version 1.0.0. stand alone functions like [burglr](https://www.statworx.com/de/blog/burglr-stealing-code-from-the-web/) and [dive](http://www.statworx.com/de/blog/dive-the-debugging-function-you-deserve/) have been removed. See the [NEWS](NEWS.md) for more details.
 
 
 ## Installation
@@ -25,17 +29,11 @@ devtools::install_github("STATWORX/helfRlein")
 
 ## List of functions
 
-### stand alone functions
-
-- `burglr()` 
-  A functions to source code from the web. You can find a detailed introduction to this function [here](https://www.statworx.com/de/blog/burglr-stealing-code-from-the-web/).
-
-- `dive()`
-  A debugging function for that will sort out the parameters for you. You can use it for example with Sublime. You can find a detailed introduction to this function [here](https://www.statworx.com/de/blog/dive-the-debugging-function-you-deserve/).
-
-
 
 ### general helper functions
+
+- `char_replace()`
+  A function that replaces special characters within strings.
 
 - `checkdir()`
   Combines `file.exists()` and `dir.create()`.
@@ -45,7 +43,7 @@ devtools::install_github("STATWORX/helfRlein")
 
 - `count_na()`
   A functions that returns the number of missing values.
-
+  
 - `evenstrings()`
   This function reduces and cuts a given string into parts with a fixed length.
 
@@ -66,20 +64,21 @@ devtools::install_github("STATWORX/helfRlein")
 
 - `read_files()`
   Reads in a list of files and combines them into one *data.table*.
+  
+- `save_rds_archive()`
+  Archives existing identically named `.RDS` files (with a time stamp) instead of silently overwriting them.
 
 - `statusbar()`
   A progress bar for for-loops.
 
 - `strsplit()`
-  This functions uses adds the possibility to keep the delimiter after, before or between a given split.
+  This functions adds the possibility to keep the delimiter after, before or between a given split.
 
 - `to_na()`
   Takes out `NaN` and `Inf` values and replaces them with `NA`.
 
 - `trim()`
-  Removes leading and or trailing whitespaces.
-
-  ​
+  Removes leading and / or trailing whitespaces.
 
 ### project functions
 
@@ -93,6 +92,8 @@ devtools::install_github("STATWORX/helfRlein")
   This function prints the folder and file structure of a given path.
 - `sci_palette()`
   A functions that shows STATWORX's CI colours. 
+- `set_new_chapter()`
+  An addin to insert dashes from the courser position up to 80 characters.
 - `statworx_palette()`
   This functions creates a colour palette based on our CI colours.
 

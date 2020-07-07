@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_sequence.R
 \name{get_sequence}
 \alias{get_sequence}
-\title{get start and end indices of sequences of patterns}
+\title{Get start and end indices of sequences of patterns}
 \usage{
 get_sequence(x, pattern, minsize = 2L)
 }
@@ -19,7 +19,7 @@ Returns a matrix with the range of the sequence. Each row representes a
   sequence.
 }
 \description{
-Given a vector \code{x} and a \code{pattern}, the functions returns the
+Given a vector \code{x} and a \code{pattern}, the function returns the
   start and end indices of the sequences with at least \code{minsize}
   repetitions of the \code{pattern}.
 }

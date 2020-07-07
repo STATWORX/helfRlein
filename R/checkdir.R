@@ -7,7 +7,7 @@
 #' @param path a character vector containing a single path name.
 #' @param recursive a logical. Should elements of the path other than the
 #'  last be created?
-#' @param verbose a boolean if TRUE a warning is shown when the folder already
+#' @param verbose a logical. If \code{TRUE} a warning is shown when the folder already
 #'   exists.
 #' @param ... additional options for \link[base]{dir.create}.
 #'
@@ -15,7 +15,7 @@
 #'  Internaly the function \link[base]{dir.create} is called.
 #'
 #' @return returns TRUE if a new folder is created, FALSE if not
-#'
+#' @author Jakob Gepp
 #' @export
 #'
 #' @examples
@@ -26,7 +26,7 @@
 checkdir <- function(path, recursive = TRUE, verbose = FALSE, ...) {
 
   # check if dir exists, if not, create it
-  if (!file.exists(path)) {
+  if (!file.exists(file.path(path))) {
     dir.create(path = path, recursive = recursive, ...)
     out <- TRUE
   } else {
