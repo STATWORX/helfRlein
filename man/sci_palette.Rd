@@ -15,7 +15,7 @@ sci_palette()
 \item{...}{arguments to be passed to method}
 }
 \description{
-Palette for Statworx's Corporate Identity colors.
+Palette for STATWORX Corporate Identity colors.
 }
 \details{
 The \code{plot} function gives an example of the colors.
@@ -24,13 +24,7 @@ The \code{plot} function gives an example of the colors.
 # Plotting the true underlying effects
 plot(sci_palette())
 
-plot(sci_palette())
-
 }
 \author{
-Jakob Gepp
-
 Martin Albers, Jakob Gepp
-
-Jakob Gepp
 }

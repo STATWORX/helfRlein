@@ -1,4 +1,4 @@
-#' @title splits a string into multiple string with a given maximum length
+#' @title Split a string into multiple strings with a given maximum length
 #'
 #' @description
 #'   The function shortens and cuts a given vector to a predefined length.
@@ -9,11 +9,11 @@
 #'
 #' @param x a string
 #' @param split a pattern with the splitting symbol. The default is " ".
-#' @param char a numeric with the maximal length of the result.
+#' @param char a numeric with the maximum length of the result.
 #' @param newlines a boolean that indicates if the output is seperated by a
 #'   newline operator or split into multiple parts.
 #'
-#' @return returns a vector with the shortend and cutted input string
+#' @return returns a vector with the shortened and cut input string
 #' @export
 #' @author Jakob Gepp
 #'
@@ -22,7 +22,6 @@
 #' evenstrings(x, split = ",", char = 30, newlines = FALSE)
 #' # [1] "Hello world,"              " this is a test sequence."
 #'
-#' @author Jakob Gepp
 #'
 evenstrings <- function(x = c(),
                         split = " ",

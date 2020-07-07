@@ -2,7 +2,7 @@
 % Please edit documentation in R/evenstrings.R
 \name{evenstrings}
 \alias{evenstrings}
-\title{splits a string into multiple string with a given maximum length}
+\title{Split a string into multiple strings with a given maximum length}
 \usage{
 evenstrings(x = c(), split = " ", char = 80, newlines = FALSE)
 }
@@ -11,13 +11,13 @@ evenstrings(x = c(), split = " ", char = 80, newlines = FALSE)
 
 \item{split}{a pattern with the splitting symbol. The default is " ".}
 
-\item{char}{a numeric with the maximal length of the result.}
+\item{char}{a numeric with the maximum length of the result.}
 
 \item{newlines}{a boolean that indicates if the output is seperated by a
 newline operator or split into multiple parts.}
 }
 \value{
-returns a vector with the shortend and cutted input string
+returns a vector with the shortened and cut input string
 }
 \description{
 The function shortens and cuts a given vector to a predefined length.
@@ -31,9 +31,8 @@ x <- "Hello world, this is a test sequence."
 evenstrings(x, split = ",", char = 30, newlines = FALSE)
 # [1] "Hello world,"              " this is a test sequence."
 
+
 }
 \author{
-Jakob Gepp
-
 Jakob Gepp
 }

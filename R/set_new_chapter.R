@@ -1,8 +1,13 @@
-#' Insert dashes from courser position up to 80 characters
+#' @title Insert dashes from current cursor position up to 80 characters
+#'
+#' @description This function inserts dashes from the current cursor position up
+#'   to 80 characters. It can be used for chapter headings for easier
+#'   structuring of your code. You can also assign a shortcut to this function
+#'   in RStudio: Go to "Tools" --> "Modify Keyboard Shortcuts..." and search for
+#'   "Insert Hyphens (---)".
 #'
 #' @importFrom rstudioapi getActiveDocumentContext insertText
 #' @return Hyphens inside RStudio
-#' @examples ## NOT RUN
 #' @author Matthias Nistler
 #'
 set_new_chapter <- function() {

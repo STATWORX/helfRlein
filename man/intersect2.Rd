@@ -2,7 +2,7 @@
 % Please edit documentation in R/intersect2.R
 \name{intersect2}
 \alias{intersect2}
-\title{intersect for multiple input vectors or lists}
+\title{'intersect' for multiple input vectors or lists}
 \usage{
 intersect2(...)
 }

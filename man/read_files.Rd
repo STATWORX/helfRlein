@@ -2,22 +2,22 @@
 % Please edit documentation in R/read_files.R
 \name{read_files}
 \alias{read_files}
-\title{read multiple files into one data.table}
+\title{Read multiple files into one \code{data.table}}
 \usage{
 read_files(files, fun = readLines, ...)
 }
 \arguments{
-\item{files}{pathes to files to be read in}
+\item{files}{paths to files to be read in}
 
 \item{fun}{function to load files in}
 
 \item{...}{additional arguments to be passed to \code{fun}}
 }
 \value{
-combined data.table of the input files
+combined \code{data.table} of the input files
 }
 \description{
-read multiple files into one data.table
+This function reads multiple files into one \code{data.table}
 }
 \examples{
 

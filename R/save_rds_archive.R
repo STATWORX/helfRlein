@@ -26,7 +26,7 @@
 #'   archiving and modification date. Set to \code{TRUE} if you want to keep
 #'   several versions of files archived on a single day. See details.
 #' @param archive_dir_path Character - if desired, path to a dedicated archive
-#'   (sub-)directory (relative to the directory of \code{file}) where the
+#'   (sub-)directory (\emph{relative} to the directory of \code{file}!) where the
 #'   archived file will be saved. Will be created if it does not yet exist.
 #'   Defaults to \code{NULL}.
 #' @param ... Additional arguments passed along to \code{\link[base]{saveRDS}}
@@ -51,20 +51,20 @@
 #' z <- 20
 #'
 #' ## save to RDS
-#' saveRDS(x, "./test.RDS")
-#' saveRDS(y, "./test.RDS")
+#' saveRDS(x, "temp.RDS")
+#' saveRDS(y, "temp.RDS")
 #'
-#' ## "test.RDS" is silently overwritten with y
+#' ## "temp.RDS" is silently overwritten with y
 #' ## previous version is lost
-#' readRDS("./test.RDS")
+#' readRDS("temp.RDS")
 #' #> [1] 10
 #'
-#' save_rds_archive(z, "./test.RDS")
-#' readRDS("./test.RDS")
+#' save_rds_archive(z, "temp.RDS")
+#' readRDS("temp.RDS")
 #' #> [1] 20
 #'
 #' ## previous version is archived
-#' readRDS("./test_ARCHIVED_on_2020-03-30.RDS")
+#' readRDS("temp_ARCHIVED_on_2020-03-30.RDS")
 #' #> [1] 10
 #'
 #' }
@@ -128,17 +128,21 @@ save_rds_archive <- function(object,
 
         # copy (rather than rename) file
         # rename sometimes does not work if the directory itself is changed
-        # save return value of the file.copy function
-        # set "overwrite" to TRUE so an existing copy is overwritten
-        # (see details)
+        # save return value of the file.copy function and wrap in tryCatch
+        # set "overwrite" to T so an existing copy is overwritten (see details)
 
         if (file.exists(archived_file)) {
           warning("Archived copy already exists - will overwrite!")
         }
 
-        temp <- file.copy(from = file,
-                          to = archived_file,
-                          overwrite = TRUE)
+        temp <- tryCatch({
+          file.copy(from = file,
+                    to = archived_file,
+                    overwrite = TRUE)
+        },
+        warning = function(e) {
+          stop(e)
+        })
 
       } else {
 
@@ -148,9 +152,14 @@ save_rds_archive <- function(object,
 
         # rename existing file with the new name
         # save return value of the file.rename function
-        # (returns TRUE if successful)
-        temp <- file.rename(from = file,
-                            to = archived_file)
+        # (returns TRUE if successful) and wrap in tryCatch
+        temp <- tryCatch({
+          file.rename(from = file,
+                      to = archived_file)
+        },
+        warning = function(e) {
+          stop(e)
+        })
 
       }
 
@@ -163,7 +172,7 @@ save_rds_archive <- function(object,
 
     } else {
 
-      warning("Nothing to overwrite - will use regular saveRDS() behavior. ",
+      warning("Nothing to overwrite - will use default saveRDS() behavior. ",
               "Additional arguments will be ignored!")
 
       # if file does not exist (but archive is set to TRUE anyways),
@@ -176,7 +185,7 @@ save_rds_archive <- function(object,
 
     # OTHERWISE USE DEFAULT RDS -----------------------------------------------
 
-    warning("Nothing to overwrite - will use regular saveRDS() behavior. ",
+    warning("'archive' is set to FALSE - will use default saveRDS() behavior. ",
             "Additional arguments will be ignored!")
 
     saveRDS(object = object, file = file, ...)

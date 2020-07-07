@@ -39,6 +39,6 @@ get_files <- function(dir, pattern = "") {
     vapply(readr::read_file, "character") %>%
     grepl(pattern = pattern)
 
-  files[is_found]
+  return(files[is_found])
 
 }

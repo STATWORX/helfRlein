@@ -2,7 +2,7 @@
 % Please edit documentation in R/create_archived_file.R
 \name{create_archived_file}
 \alias{create_archived_file}
-\title{Create File Name of Archived File}
+\title{[Internal: Create File Name of Archived File]}
 \usage{
 create_archived_file(file, last_modified, with_time)
 }
@@ -14,8 +14,12 @@ create_archived_file(file, last_modified, with_time)
 \item{with_time}{Logical - passed from parent function}
 }
 \description{
-This is an internal helper function to create and return the
-  archived file name depending on the parameters chosen by the user
+This is an internal helper function of
+  \code{\link[helfRlein]{save_rds_archive}} to create and return the archived
+  file name depending on the parameters chosen by the user
+}
+\seealso{
+\code{\link[helfRlein]{save_rds_archive}}
 }
 \author{
 Lukas Feick

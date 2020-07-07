@@ -1,4 +1,4 @@
-#' @title trim leading or trailing whitespaces
+#' @title Trim leading or trailing whitespaces
 #'
 #' @param x a character vector
 #' @param lead a boolean. If \code{TRUE} leading whitespaces will be trimed

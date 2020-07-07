@@ -33,7 +33,7 @@ archiving and modification date. Set to \code{TRUE} if you want to keep
 several versions of files archived on a single day. See details.}
 
 \item{archive_dir_path}{Character - if desired, path to a dedicated archive
-(sub-)directory (relative to the directory of \code{file}) where the
+(sub-)directory (\emph{relative} to the directory of \code{file}!) where the
 archived file will be saved. Will be created if it does not yet exist.
 Defaults to \code{NULL}.}
 
@@ -73,20 +73,20 @@ y <- 10
 z <- 20
 
 ## save to RDS
-saveRDS(x, "./test.RDS")
-saveRDS(y, "./test.RDS")
+saveRDS(x, "temp.RDS")
+saveRDS(y, "temp.RDS")
 
-## "test.RDS" is silently overwritten with y
+## "temp.RDS" is silently overwritten with y
 ## previous version is lost
-readRDS("./test.RDS")
+readRDS("temp.RDS")
 #> [1] 10
 
-save_rds_archive(z, "./test.RDS")
-readRDS("./test.RDS")
+save_rds_archive(z, "temp.RDS")
+readRDS("temp.RDS")
 #> [1] 20
 
 ## previous version is archived
-readRDS("./test_ARCHIVED_on_2020-03-30.RDS")
+readRDS("temp_ARCHIVED_on_2020-03-30.RDS")
 #> [1] 10
 
 }

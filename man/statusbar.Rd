@@ -2,28 +2,28 @@
 % Please edit documentation in R/statusbar.R
 \name{statusbar}
 \alias{statusbar}
-\title{a statusbar for for loops}
+\title{A statusbar for for loops}
 \usage{
 statusbar(run, max.run, width = 20L, info = run)
 }
 \arguments{
-\item{run}{the iterator of the for loop or an integer with the current
+\item{run}{the iterator of the \code{for} loop or an integer with the current
 loop number.}
 
-\item{max.run}{either an integer with the maximum number of loops if run is
-also a number or a vector with all possible iterations in the right order.}
+\item{max.run}{either an integer with the maximum number of loops if \code{run} is
+also a number, or a vector with all possible iterations in the correct order.}
 
 \item{width}{an integer that indicates how wide the progress
 bar is printed.}
 
-\item{info}{a string with additionaly information to be printed at
+\item{info}{a string with additional information to be printed at
 the end of the line. The default is \code{run}.}
 }
 \value{
 Has no return value, but prints the progress to the console.
 }
 \description{
-This functions prints a progess of a for loop at the console.
+This functions prints the progess of a \code{for} loop to the console.
 }
 \examples{
 
