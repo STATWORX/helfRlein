@@ -16,28 +16,24 @@ jobs:
         run: |
           install.packages('remotes')
           remotes::install_github("Dschaykib/newsmd")
-          saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
         shell: Rscript {0}
 
-      - name: Cache R packages
-        uses: actions/cache@v1
-        with:
-          path: ${{ env.R_LIBS_USER }}
-          key: macOS-r-4.0-1-${{ hashFiles('.github/depends.Rds') }}
-          restore-keys: macOS-r-4.0-1-
+      #- name: Cache R packages
+      #  uses: actions/cache@v1
+      #  with:
+      #    path: ${{ env.R_LIBS_USER }}
+      #    key: macOS-r-4.0-1-${{ hashFiles('.github/depends.Rds') }}
+      #    restore-keys: macOS-r-4.0-1-
 
       - name: Install dependencies
         run: |
-          install.packages(c("remotes"))
-          remotes::install_github("Dschaykib/newsmd")
           remotes::install_deps(dependencies = TRUE)
           remotes::install_cran("lintr")
         shell: Rscript {0}
 
       - name: Lint
         run: |
-          lintr::lint_package()
-          #lint_check <- lintr::lint_package()
-          #print(lint_check)
-          #if (length(lint_check) > 0) stop("There are still lints present")
+          lint_check <- lintr::lint_package()
+          print(lint_check)
+          if (length(lint_check) > 0) stop("There are still lints present")
         shell: Rscript {0}

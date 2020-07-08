@@ -38,16 +38,16 @@ jobs:
         run: |
           install.packages('remotes')
           remotes::install_github("Dschaykib/newsmd")
-          saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
+          remotes::install_cran("rcmdcheck")
         shell: Rscript {0}
 
-      - name: Cache R packages
-        if: runner.os != 'Windows'
-        uses: actions/cache@v1
-        with:
-          path: ${{ env.R_LIBS_USER }}
-          key: ${{ runner.os }}-r-${{ matrix.config.r }}-1-${{ hashFiles('.github/depends.Rds') }}
-          restore-keys: ${{ runner.os }}-r-${{ matrix.config.r }}-1-
+      #- name: Cache R packages
+      #  if: runner.os != 'Windows'
+      #  uses: actions/cache@v1
+      #  with:
+      #    path: ${{ env.R_LIBS_USER }}
+      #    key: ${{ runner.os }}-r-${{ matrix.config.r }}-1-${{ hashFiles('.github/depends.Rds') }}
+      #    restore-keys: ${{ runner.os }}-r-${{ matrix.config.r }}-1-
 
       - name: Install system dependencies
         if: runner.os == 'Linux'
@@ -60,10 +60,7 @@ jobs:
 
       - name: Install dependencies
         if: runner.os != 'Windows'
-        run: |
-          remotes::install_github("Dschaykib/newsmd")
-          remotes::install_deps(dependencies = TRUE)
-          remotes::install_cran("rcmdcheck")
+        run: remotes::install_deps(dependencies = TRUE)
         shell: Rscript {0}
 
       # newer source versions are available for some packages,
@@ -71,10 +68,7 @@ jobs:
       # therefore, force installation of binaries for *all* packages on Windows.
       - name: Install only binaries on Windows (RTools missing)
         if: runner.os == 'Windows'
-        run: |
-          remotes::install_github("Dschaykib/newsmd")
-          remotes::install_deps(dependencies = TRUE, type = 'binary')
-          remotes::install_cran("rcmdcheck")
+        run: remotes::install_deps(dependencies = TRUE, type = 'binary')
         shell: Rscript {0}
 
       - name: Fix stringi and igraph source installation in ubuntu
