@@ -31,6 +31,14 @@ jobs:
           remotes::install_cran("lintr")
         shell: Rscript {0}
 
+
+      - name: Session info
+        run: |
+          options(width = 100)
+          pkgs <- installed.packages()[, "Package"]
+          sessioninfo::session_info(pkgs, include_base = TRUE)
+        shell: Rscript {0}
+
       - name: Lint
         run: |
           lint_check <- lintr::lint_package()
