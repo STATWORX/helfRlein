@@ -41,7 +41,7 @@ evenstrings <- function(x = c(),
   }
 
   # splitting
-  x1 <- helfRlein::strsplit(x, split, type = "after")[[1]]
+  x1 <- strsplit(x, split, type = "after")[[1]]
 
   # get number of character
   charsum <- nchar(x1)
