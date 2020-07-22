@@ -1,3 +1,14 @@
+## version 1.0.1
+
+---
+
+
+### internal test setup changes
+
+- removing ubuntu with R version 4.0 in the test setup
+- changing lintr options
+
+
 ## version 1.0.0
 
 ---
