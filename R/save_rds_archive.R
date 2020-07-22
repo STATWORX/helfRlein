@@ -2,7 +2,7 @@
 #'
 #' @description This wrapper around base R \code{saveRDS()} checks if the file
 #'   you attempt to save already exists. If it does, the existing file is
-#'   renamed / archived (with a time stamp), and the "udpated" file will be
+#'   renamed / archived (with a time stamp), and the "updated" file will be
 #'   saved under the specified name. This means that existing code which depends
 #'   on the file name remaining constant (e.g., \code{readRDS()} calls in other
 #'   scripts) will continue to work while an archived copy of the - otherwise
@@ -60,6 +60,8 @@
 #' #> [1] 10
 #'
 #' save_rds_archive(z, "temp.RDS")
+#'
+#' ## current version is updated
 #' readRDS("temp.RDS")
 #' #> [1] 20
 #'

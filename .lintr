@@ -1,4 +1,5 @@
 linters: with_defaults(
   line_length_linter(90),
-  cyclocomp_linter(complexity_limit = 30))
+  cyclocomp_linter(complexity_limit = 30),
+  object_usage_linter=NULL)
 exclusions: list("tests/testthat/test-get_network.R")

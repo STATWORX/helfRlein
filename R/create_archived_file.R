@@ -10,6 +10,8 @@
 #'
 #' @seealso \code{\link[helfRlein]{save_rds_archive}}
 #'
+#' @keywords internal
+#'
 #' @author Lukas Feick
 
 create_archived_file <- function(file, last_modified, with_time) {

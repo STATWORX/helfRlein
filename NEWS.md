@@ -1,3 +1,14 @@
+## version 1.0.1
+
+---
+
+
+### internal test setup changes
+
+- removing ubuntu with R version 4.0 in the test setup
+- changing lintr options
+
+
 ## version 1.0.0
 
 ---
@@ -15,9 +26,9 @@
 
 ### internal changes
 
-- including github actions
-- removing other CI
-- adjusting tests for windows
+- including GitHub Actions
+- removing other CI services
+- adjusting tests for Windows
 - adjusting needed R version
 
 

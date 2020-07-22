@@ -24,3 +24,4 @@ This is an internal helper function of
 \author{
 Lukas Feick
 }
+\keyword{internal}
