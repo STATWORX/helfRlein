@@ -1,3 +1,13 @@
+## version 1.0.2
+
+---
+
+
+### Bugfixes
+
+- fixing backwards compability
+
+
 ## version 1.0.1
 
 ---

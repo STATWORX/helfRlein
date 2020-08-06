@@ -328,6 +328,14 @@ my_news$add_subtitle("internal test setup changes")
 my_news$add_bullet(c("removing ubuntu with R version 4.0 in the test setup",
                      "changing lintr options"))
 
+
+# adjusting test setup ----------------------------------------------------
+
+my_desc$bump_version("patch")
+my_news$add_version(my_desc$get_version())
+my_news$add_subtitle("Bugfixes")
+my_news$add_bullet(c("fixing backwards compability"))
+
 # save everything ---------------------------------------------------------
 
 my_desc$set("Date", Sys.Date())

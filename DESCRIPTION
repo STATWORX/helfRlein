@@ -1,6 +1,6 @@
 Package: helfRlein
 Title: R Helper Functions
-Version: 1.0.1
+Version: 1.0.2
 Authors@R: 
     c(person(given = "Jakob",
              family = "Gepp",
@@ -62,4 +62,4 @@ Imports:
     grDevices,
     graphics,
     rstudioapi
-Date: 2020-07-22
+Date: 2020-08-06

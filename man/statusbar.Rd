@@ -4,7 +4,7 @@
 \alias{statusbar}
 \title{A statusbar for for loops}
 \usage{
-statusbar(run, max.run, width = 20L, info = run)
+statusbar(run, max.run, width = 20L, info = run, percent.max = width)
 }
 \arguments{
 \item{run}{the iterator of the \code{for} loop or an integer with the current
@@ -18,6 +18,8 @@ bar is printed.}
 
 \item{info}{a string with additional information to be printed at
 the end of the line. The default is \code{run}.}
+
+\item{percent.max}{is deprecated, use width instead.}
 }
 \value{
 Has no return value, but prints the progress to the console.
