@@ -34,10 +34,7 @@ jobs:
       - uses: s-weigand/setup-conda@v1
 
       - name: Session info
-        run: |
-          options(width = 100)
-          pkgs <- installed.packages()[, "Package"]
-          sessioninfo::session_info(pkgs, include_base = TRUE)
+        run: version
         shell: Rscript {0}
 
       - name: Query dependencies
