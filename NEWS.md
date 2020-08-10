@@ -1,3 +1,12 @@
+## version 1.1.0
+
+---
+
+
+### removing dependencies
+
+
+
 ## version 1.0.2
 
 ---

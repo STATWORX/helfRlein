@@ -90,11 +90,10 @@ jobs:
         run: version
         shell: Rscript {0}
 
-      - name: Fix stringi and igraph source installation in ubuntu
+      - name: Fix igraph source installation in ubuntu
         if: (runner.os == 'Linux')
         run: |
-          Rscript -e "remove.packages(c('stringi', 'igraph'))"
-          conda install -c r r-stringi
+          Rscript -e "remove.packages(c(igraph'))"
           conda install -c r r-igraph
 
       - name: Session info
