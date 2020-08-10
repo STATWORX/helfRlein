@@ -11,12 +11,12 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          #- {os: windows-latest, r: '3.5'}
-          #- {os: windows-latest, r: 'oldrel'}
-          #- {os: windows-latest, r: 'release'}
-          #- {os: macOS-latest, r: '3.5'}
-          #- {os: macOS-latest, r: 'oldrel'}
-          #- {os: macOS-latest, r: 'release'}
+          - {os: windows-latest, r: '3.5'}
+          - {os: windows-latest, r: 'oldrel'}
+          - {os: windows-latest, r: 'release'}
+          - {os: macOS-latest, r: '3.5'}
+          - {os: macOS-latest, r: 'oldrel'}
+          - {os: macOS-latest, r: 'release'}
           - {os: ubuntu-latest, r: '3.5', rspm: "https://packagemanager.rstudio.com/cran/__linux__/xenial/latest"}
           - {os: ubuntu-latest, r: 'oldrel', rspm: "https://packagemanager.rstudio.com/cran/__linux__/xenial/latest"}
           #- {os: ubuntu-latest, r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/xenial/latest"}
@@ -93,7 +93,7 @@ jobs:
       - name: Fix igraph source installation in ubuntu
         if: (runner.os == 'Linux')
         run: |
-          Rscript -e "remove.packages(c(igraph'))"
+          Rscript -e "remove.packages(c('igraph'))"
           conda install -c r r-igraph
 
       - name: Session info

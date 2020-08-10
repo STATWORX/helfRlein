@@ -52,9 +52,9 @@ print_fs <- function(path = ".",
 
   # create main path
   if (prefix == "") {
-    this_dir <-paste0(prefix, basename(path))
+    this_dir <- paste0(prefix, basename(path))
   } else {
-    this_dir <-paste0(prefix, "--", basename(path))
+    this_dir <- paste0(prefix, "--", basename(path))
   }
 
   if (depth <= level) {
@@ -73,7 +73,7 @@ print_fs <- function(path = ".",
                           sub_dirs)
 
     # change last file sign
-    this_files <- paste0(prefix, " |--",basename(this_files))
+    this_files <- paste0(prefix, " |--", basename(this_files))
     this_files[length(this_files)] <- gsub("|--", "o--",
                                            this_files[length(this_files)],
                                            fixed = TRUE)
@@ -106,4 +106,3 @@ print_fs <- function(path = ".",
   }
 
 }
-
