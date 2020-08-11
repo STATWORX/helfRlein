@@ -5,8 +5,9 @@
 #'
 #' @param run the iterator of the \code{for} loop or an integer with the current
 #'   loop number.
-#' @param max.run either an integer with the maximum number of loops if \code{run} is
-#'   also a number, or a vector with all possible iterations in the correct order.
+#' @param max.run either an integer with the maximum number of loops if
+#'   \code{run} is also a number, or a vector with all possible iterations in
+#'   the correct order.
 #' @param width an integer that indicates how wide the progress
 #'   bar is printed.
 #' @param percent.max is deprecated, use width instead.

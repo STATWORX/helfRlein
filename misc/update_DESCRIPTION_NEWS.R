@@ -342,6 +342,8 @@ my_news$add_bullet(c("fixing backwards compability"))
 
 my_desc$bump_version("minor")
 my_news$add_version(my_desc$get_version())
+my_news$add_subtitle("Bugfixes")
+my_news$add_bullet(c("adding lint exceptions"))
 my_news$add_subtitle("removing dependencies")
 my_news$add_bullet(c("data.tree",
                      "restructering print_fs"))

@@ -10,8 +10,9 @@ statusbar(run, max.run, width = 20L, info = run, percent.max = width)
 \item{run}{the iterator of the \code{for} loop or an integer with the current
 loop number.}
 
-\item{max.run}{either an integer with the maximum number of loops if \code{run} is
-also a number, or a vector with all possible iterations in the correct order.}
+\item{max.run}{either an integer with the maximum number of loops if
+\code{run} is also a number, or a vector with all possible iterations in
+the correct order.}
 
 \item{width}{an integer that indicates how wide the progress
 bar is printed.}

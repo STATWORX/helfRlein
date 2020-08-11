@@ -9,6 +9,11 @@
 - restructering print_fs
 
 
+### Bugfixes
+
+- adding lint exceptions
+
+
 ## version 1.0.2
 
 ---
