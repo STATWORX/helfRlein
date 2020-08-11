@@ -328,6 +328,28 @@ my_news$add_subtitle("internal test setup changes")
 my_news$add_bullet(c("removing ubuntu with R version 4.0 in the test setup",
                      "changing lintr options"))
 
+
+# adjusting test setup ----------------------------------------------------
+
+my_desc$bump_version("patch")
+my_news$add_version(my_desc$get_version())
+my_news$add_subtitle("Bugfixes")
+my_news$add_bullet(c("fixing backwards compability"))
+
+
+
+# rebuilding print_fs -----------------------------------------------------
+
+my_desc$bump_version("minor")
+my_news$add_version(my_desc$get_version())
+my_news$add_subtitle("Bugfixes")
+my_news$add_bullet(c("adding lint exceptions"))
+my_news$add_subtitle("removing dependencies")
+my_news$add_bullet(c("data.tree",
+                     "restructering print_fs"))
+my_desc$del_dep("data.tree", type = desc::dep_types[1])
+
+
 # save everything ---------------------------------------------------------
 
 my_desc$set("Date", Sys.Date())

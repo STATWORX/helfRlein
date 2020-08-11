@@ -1,3 +1,29 @@
+## version 1.1.0
+
+---
+
+
+### removing dependencies
+
+- data.tree
+- restructering print_fs
+
+
+### Bugfixes
+
+- adding lint exceptions
+
+
+## version 1.0.2
+
+---
+
+
+### Bugfixes
+
+- fixing backwards compability
+
+
 ## version 1.0.1
 
 ---

@@ -33,12 +33,19 @@ jobs:
       - uses: r-lib/actions/setup-pandoc@master
       - uses: s-weigand/setup-conda@v1
 
+      - name: Session info
+        run: version
+        shell: Rscript {0}
 
       - name: Query dependencies
         run: |
           install.packages('remotes')
           remotes::install_github("Dschaykib/newsmd")
           remotes::install_cran("rcmdcheck")
+        shell: Rscript {0}
+
+      - name: Session info
+        run: version
         shell: Rscript {0}
 
       #- name: Cache R packages
@@ -58,9 +65,17 @@ jobs:
           sysreqs=$(Rscript -e "cat(sysreqs::sysreq_commands('DESCRIPTION'))")
           sudo -s eval "$sysreqs"
 
+      - name: Session info
+        run: version
+        shell: Rscript {0}
+
       - name: Install dependencies
         if: runner.os != 'Windows'
         run: remotes::install_deps(dependencies = TRUE)
+        shell: Rscript {0}
+
+      - name: Session info
+        run: version
         shell: Rscript {0}
 
       # newer source versions are available for some packages,
@@ -71,12 +86,19 @@ jobs:
         run: remotes::install_deps(dependencies = TRUE, type = 'binary')
         shell: Rscript {0}
 
-      - name: Fix stringi and igraph source installation in ubuntu
+      - name: Session info
+        run: version
+        shell: Rscript {0}
+
+      - name: Fix igraph source installation in ubuntu
         if: (runner.os == 'Linux')
         run: |
-          Rscript -e "remove.packages(c('stringi', 'igraph'))"
-          conda install -c r r-stringi
+          Rscript -e "remove.packages(c('igraph'))"
           conda install -c r r-igraph
+
+      - name: Session info
+        run: version
+        shell: Rscript {0}
 
       - name: Session info
         run: |

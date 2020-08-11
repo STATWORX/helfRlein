@@ -5,10 +5,12 @@
 #'
 #' @param run the iterator of the \code{for} loop or an integer with the current
 #'   loop number.
-#' @param max.run either an integer with the maximum number of loops if \code{run} is
-#'   also a number, or a vector with all possible iterations in the correct order.
+#' @param max.run either an integer with the maximum number of loops if
+#'   \code{run} is also a number, or a vector with all possible iterations in
+#'   the correct order.
 #' @param width an integer that indicates how wide the progress
 #'   bar is printed.
+#' @param percent.max is deprecated, use width instead.
 #' @param info a string with additional information to be printed at
 #'   the end of the line. The default is \code{run}.
 #'
@@ -34,7 +36,14 @@
 statusbar <- function(run,
                       max.run,
                       width = 20L,
-                      info = run) {
+                      info = run,
+                      percent.max = width) {
+  # check for old parameter
+  if ("percent.max" %in% names(match.call())) {
+    warning("'percent.max' is deprecated, please use 'width' instead")
+    width <- percent.max
+  }
+
   # check run
   if (length(run) > 1) {
     stop("run needs to be of length one!")

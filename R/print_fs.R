@@ -4,18 +4,27 @@
 #'
 #' @param path a folder path.
 #' @param depth a positive integer with the depth of the folder structure.
+#' @param print a boolean if TRUE (default), the file structure will be printed
+#' @param return a boolean if TRUE, the file structure is returned as a vector.
+#'   If FALSE the return is NULL. The default value is FALSE.
+#' @param prefix internal character to indicate the indention of depth.
+#' @param level internal numeric to indicate the current depth.
 #'
 #' @export
 #'
-#' @return Either the file structure gets printed or returned.
+#' @return Either the file structure or NULL
 #'
-#' @importFrom data.tree Prune as.Node
 #' @author Jakob Gepp
 #' @examples
 #'
 #' print_fs(path = ".")
 #'
-print_fs <- function(path = ".", depth = 2L) {
+print_fs <- function(path = ".",
+                     depth = 2L,
+                     print = TRUE,
+                     return = FALSE,
+                     prefix = "",
+                     level = 0) {
 
   # check path
   if (length(path) != 1) {
@@ -41,19 +50,59 @@ print_fs <- function(path = ".", depth = 2L) {
   }
 
 
-  # get files
-  files <- list.files(path = path,
-                      recursive = TRUE,
-                      include.dirs = FALSE)
+  # create main path
+  if (prefix == "") {
+    this_dir <- paste0(prefix, basename(path))
+  } else {
+    this_dir <- paste0(prefix, "--", basename(path))
+  }
 
-  # transform to data.tree
-  df <- data.frame(filename = paste0(basename(path), "/", files))
-  file_structure <- data.tree::as.Node(df, pathName = "filename")
+  if (depth <= level) {
+    sub_dirs <- this_files <- character(0)
+  } else {
+    # get subfolders
+    sub_dirs <- list.dirs(path = path,
+                          recursive = FALSE,
+                          full.names = TRUE)
 
-  # pruning
-  file_structure$Do(function(node) node$depths <- min(node$Get("level")))
-  data.tree::Prune(file_structure, function(node)  node$depths <= depth)
+    # get files in the current path
+    this_files <- setdiff(list.files(path = path,
+                                     recursive = FALSE,
+                                     include.dirs = FALSE,
+                                     full.names = TRUE),
+                          sub_dirs)
 
-  # return value
-  return(file_structure)
+    # change last file sign
+    this_files <- paste0(prefix, " |--", basename(this_files))
+    this_files[length(this_files)] <- gsub("|--", "o--",
+                                           this_files[length(this_files)],
+                                           fixed = TRUE)
+
+    # create sub folder structure
+    new_prefix <- paste0(prefix, " |")
+    sub_dirs <- sapply(sub_dirs,
+                       print_fs,
+                       depth = depth,
+                       return = TRUE,
+                       level = level + 1,
+                       prefix = new_prefix)
+  }
+
+  # combining folders and files
+  file_structure <- unlist(c(this_dir, sub_dirs, this_files), recursive = TRUE)
+
+  if (level == 0) {
+    file_structure <- paste0(file_structure, "\n")
+  }
+
+  if (print & level == 0) {
+    cat(file_structure)
+  }
+
+  if (return) {
+    return(file_structure)
+  } else {
+    return(NULL)
+  }
+
 }
