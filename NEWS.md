@@ -5,6 +5,8 @@
 
 ### removing dependencies
 
+- data.tree
+- restructering print_fs
 
 
 ## version 1.0.2

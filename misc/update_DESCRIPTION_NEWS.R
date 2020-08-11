@@ -343,8 +343,8 @@ my_news$add_bullet(c("fixing backwards compability"))
 my_desc$bump_version("minor")
 my_news$add_version(my_desc$get_version())
 my_news$add_subtitle("removing dependencies")
-my_news$add_bullet("data.tree",
-                   "restructering print_fs")
+my_news$add_bullet(c("data.tree",
+                     "restructering print_fs"))
 my_desc$del_dep("data.tree", type = desc::dep_types[1])
 
 
