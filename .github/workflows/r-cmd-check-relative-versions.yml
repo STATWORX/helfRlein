@@ -1,5 +1,5 @@
 on: [push, pull_request]
-name: R-CMD-check
+name: realtive-versions-R-CMD-check
 
 jobs:
   R-CMD-check:
@@ -11,15 +11,15 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - {os: windows-latest, r: '3.5'}
-          - {os: windows-latest, r: '3.6'}
-          - {os: windows-latest, r: '4.0'}
-          - {os: macOS-latest, r: '3.5'}
-          - {os: macOS-latest, r: '3.6'}
-          - {os: macOS-latest, r: '4.0'}
-          - {os: ubuntu-latest, r: '3.5', rspm: "https://packagemanager.rstudio.com/cran/__linux__/xenial/latest"}
-          - {os: ubuntu-latest, r: '3.6', rspm: "https://packagemanager.rstudio.com/cran/__linux__/xenial/latest"}
-          - {os: ubuntu-latest, r: '4.0', rspm: "https://packagemanager.rstudio.com/cran/__linux__/xenial/latest"}
+          - {os: windows-latest, r: 'oldrel'}
+          - {os: windows-latest, r: 'release'}
+          - {os: windows-latest, r: 'devel'}
+          - {os: macOS-latest, r: 'devel'}
+          - {os: macOS-latest, r: 'oldrel'}
+          - {os: macOS-latest, r: 'release'}
+          - {os: ubuntu-latest, r: 'oldrel', rspm: "https://packagemanager.rstudio.com/cran/__linux__/xenial/latest"}
+          - {os: ubuntu-latest, r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/xenial/latest"}
+          - {os: ubuntu-latest, r: 'devel', rspm: "https://packagemanager.rstudio.com/cran/__linux__/xenial/latest"}
 
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
