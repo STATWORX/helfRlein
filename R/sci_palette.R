@@ -9,7 +9,6 @@
 #'
 #' @author Martin Albers, Jakob Gepp
 #'
-#' @exportClass sci
 #' @export
 #'
 #' @examples
