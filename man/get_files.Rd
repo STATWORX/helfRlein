@@ -4,7 +4,7 @@
 \alias{get_files}
 \title{Finding Pattern in R Files}
 \usage{
-get_files(dir, pattern = "")
+get_files(dir, pattern = "", suffix = ".R$")
 }
 \arguments{
 \item{dir}{A character string that defines the root directory within which
@@ -12,6 +12,9 @@ all R files will be analysed}
 
 \item{pattern}{A character string containing a regular expression to be
 matched in all R files found in the specified directory}
+
+\item{suffix}{A string with a pattern to filter the searched file endings.
+The default is ".R$" to only look for R-files. Use "." to search all files.}
 }
 \value{
 Returns a character vector containing all files that match the

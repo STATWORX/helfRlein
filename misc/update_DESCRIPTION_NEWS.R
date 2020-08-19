@@ -350,6 +350,15 @@ my_news$add_bullet(c("data.tree",
 my_desc$del_dep("data.tree", type = desc::dep_types[1])
 
 
+# rebuilding print_fs -----------------------------------------------------
+
+my_desc$bump_version("patch")
+my_news$add_version(my_desc$get_version())
+my_news$add_subtitle("removing dependencies")
+my_news$add_bullet(c("readr", "magrittr"))
+my_desc$del_dep("readr", type = desc::dep_types[1])
+my_desc$del_dep("magrittr", type = desc::dep_types[1])
+
 # save everything ---------------------------------------------------------
 
 my_desc$set("Date", Sys.Date())

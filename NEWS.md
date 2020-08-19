@@ -1,3 +1,14 @@
+## version 1.1.1
+
+---
+
+
+### removing dependencies
+
+- readr
+- magrittr
+
+
 ## version 1.1.0
 
 ---

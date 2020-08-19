@@ -1,6 +1,6 @@
 Package: helfRlein
 Title: R Helper Functions
-Version: 1.1.0
+Version: 1.1.1
 Authors@R: 
     c(person(given = "Jakob",
              family = "Gepp",
@@ -56,9 +56,7 @@ Suggests:
 Imports: 
     data.table (>= 1.9),
     igraph (>= 1.1.2),
-    readr (>= 1.1.1),
-    magrittr (>= 1.1.1),
     grDevices,
     graphics,
     rstudioapi
-Date: 2020-08-11
+Date: 2020-08-19

@@ -40,7 +40,9 @@ test_that("output is correct", {
              " | | o--file_222.txt\n",
              " | o--file_2.txt\n",
              " |--folder_3\n",
-             " | o--file_3.txt\n",
+             " | |--file_31.txt\n",
+             " | |--file_32.R.txt\n",
+             " | o--file_33.R\n",
              " o--file_0.txt\n")
   expect_equal(print_fs(path = datapath,
                         return = TRUE,
