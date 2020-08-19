@@ -3,7 +3,13 @@
 ---
 
 
-### removing dependencies
+### adding dependencies
+
+- utils
+- grid
+
+
+### removing direct dependencies
 
 - readr
 - magrittr
