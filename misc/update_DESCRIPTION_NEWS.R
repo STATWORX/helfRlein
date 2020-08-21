@@ -357,6 +357,9 @@ my_desc$del_dep("data.tree", type = desc::dep_types[1])
 
 my_desc$bump_version("patch")
 my_news$add_version(my_desc$get_version())
+my_news$add_subtitle("")
+my_news$add_bullet(c("changing test setup to fix and relative R versions",
+                     "setting Ubuntu test setup to 16.04 instead of latest"))
 my_news$add_subtitle("removing direct dependencies")
 my_news$add_bullet(c("readr", "magrittr"))
 my_desc$del_dep("readr", type = desc::dep_types[1])

@@ -15,6 +15,12 @@
 - magrittr
 
 
+### 
+
+- changing test setup to fix and relative R versions
+- setting Ubuntu test setup to 16.04 instead of latest
+
+
 ## version 1.1.0
 
 ---
