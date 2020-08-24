@@ -2,6 +2,12 @@ context("check checkdir")
 
 test_that("NA, NULL is handeld right", {
 
+  old_lang <- Sys.getenv("LANG")
+
+  Sys.setenv(LANG = "en")
+
+  on.exit(Sys.setenv(LANG = old_lang))
+
   expect_error(checkdir(path = NA, recursive = FALSE),
                "invalid 'path' argument")
   expect_error(checkdir(path = NULL, recursive = FALSE),
