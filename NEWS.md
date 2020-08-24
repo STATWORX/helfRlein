@@ -3,19 +3,15 @@
 ---
 
 
-### adding dependencies
+### dependencies
 
-- utils
-- grid
-
-
-### removing direct dependencies
-
-- readr
-- magrittr
+- adding utils
+- adding grid
+- removing readr
+- removing magrittr
 
 
-### 
+### internal test setup changes
 
 - changing test setup to fix and relative R versions
 - setting Ubuntu test setup to 16.04 instead of latest
