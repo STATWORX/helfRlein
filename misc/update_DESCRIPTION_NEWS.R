@@ -369,6 +369,9 @@ my_news$add_bullet(c("adding utils",
 my_desc$set_dep("utils", type = desc::dep_types[1])
 my_desc$set_dep("grid", type = desc::dep_types[1])
 
+my_news$add_subtitle("Bugfixes")
+my_news$add_bullet(c("changing error messages"))
+
 
 # save everything ---------------------------------------------------------
 

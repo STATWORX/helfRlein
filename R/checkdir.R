@@ -25,6 +25,11 @@
 #'
 checkdir <- function(path, recursive = TRUE, verbose = FALSE, ...) {
 
+  # check input
+  if (is.null(path) || is.na(path)) {
+    stop("path is NA or NULL")
+  }
+
   # check if dir exists, if not, create it
   if (!file.exists(file.path(path))) {
     dir.create(path = path, recursive = recursive, ...)
