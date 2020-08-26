@@ -30,7 +30,7 @@ This functions prints the progess of a \code{for} loop to the console.
 }
 \examples{
 
-for (i in 1:20) {
+for (i in 1:200) {
   Sys.sleep(0.1)
   statusbar(run = i, max.run = 200, width = 60L)
 }
