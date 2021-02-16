@@ -9,7 +9,7 @@
 #' @importFrom rstudioapi getActiveDocumentContext insertText
 #' @return Hyphens inside RStudio
 #' @author Matthias Nistler
-#'
+#' @export
 set_new_chapter <- function() {
   nchars <- 81
 

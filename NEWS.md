@@ -1,3 +1,13 @@
+## version 1.1.2
+
+---
+
+
+### Bugfixes
+
+- fixing plugin for coment line setting
+
+
 ## version 1.1.1
 
 ---
