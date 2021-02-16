@@ -23,6 +23,10 @@ With version 1.0.0. stand alone functions like [burglr](https://www.statworx.com
 ``` r
 # install.packages("devtools")
 devtools::install_github("STATWORX/helfRlein")
+
+# installing the dev version
+devtools::install_github("STATWORX/helfRlein", ref = "dev")
+
 ```
 
 
@@ -34,49 +38,34 @@ devtools::install_github("STATWORX/helfRlein")
 
 - `char_replace()`
   A function that replaces special characters within strings.
-
 - `checkdir()`
   Combines `file.exists()` and `dir.create()`.
-
 - `clean_gc()`
   A function that calls `gc()` numerous times.
-
 - `count_na()`
   A functions that returns the number of missing values.
-  
 - `evenstrings()`
   This function reduces and cuts a given string into parts with a fixed length.
-
 - `get_sequence()`
   A function that returns start and end indices that indicates where a given pattern occurs.
-
 - `intersect2()`
   This function returns the intersect between multiple vectors.
-
 - `multiplot()`
   A function to combine different ggplots into one plot.
-
 - `na_omitlist()`
   A function to remove missing values from a list.
-
 - `%nin%`
   A *not in* operator.
-
 - `read_files()`
   Reads in a list of files and combines them into one *data.table*.
-  
 - `save_rds_archive()`
   Archives existing identically named `.RDS` files (with a time stamp) instead of silently overwriting them.
-
 - `statusbar()`
   A progress bar for for-loops.
-
 - `strsplit()`
   This functions adds the possibility to keep the delimiter after, before or between a given split.
-
 - `to_na()`
   Takes out `NaN` and `Inf` values and replaces them with `NA`.
-
 - `trim()`
   Removes leading and / or trailing whitespaces.
 
