@@ -381,6 +381,14 @@ my_news$add_subtitle("Bugfixes")
 my_news$add_bullet(c("fixed plugin for coment line setting",
                      "fixed FUN argument error in read_files"))
 
+
+# adding renv -------------------------------------------------------------
+
+my_desc$bump_version("patch")
+my_news$add_version(my_desc$get_version())
+my_news$add_subtitle("internal handling of packages")
+my_news$add_bullet(c("add renv structure"))
+
 # save everything ---------------------------------------------------------
 
 my_desc$set("Date", Sys.Date())

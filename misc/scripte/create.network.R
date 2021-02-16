@@ -11,17 +11,19 @@
 rm(list = ls())
 #  settings ---------------------------------------------------------------
 
+# used, but comments for renv
+'
 library(ggplot2)
-#library(stringr)
-
-library(GGally)
 library(network)
-#library(sna)
 library(threejs)
 library(htmlwidgets)
 library(igraph)
+'
+# not used
+#library(stringr)
+#library(GGally)
+#library(sna)
 #library(visNetwork)
-
 #library(networkD3)
 #library(ndtv)
 
