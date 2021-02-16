@@ -17,8 +17,10 @@ test_that("path is positive numeric or integer", {
                "depth must be a positive integer")
   expect_error(print_fs(path = ".", depth = NULL),
                "depth must be a positive integer")
-  expect_warning(print_fs(path = ".", depth = -2),
+  out1 <- capture_output(
+    expect_warning(print_fs(path = ".", depth = -2),
                  "depth was negative, set to 2")
+  )
 })
 
 test_that("output is correct", {
@@ -26,7 +28,7 @@ test_that("output is correct", {
   datapath <- system.file("test_filestructure", package = "helfRlein")
 
   # null value
-  expect_null(print_fs(path = datapath))
+  out2 <- capture_output(expect_null(print_fs(path = datapath)))
   # string vector
   res_1 <- c("test_filestructure\n",
              " |--folder_1\n",
