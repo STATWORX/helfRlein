@@ -4,6 +4,7 @@
 #'
 #' @param files paths to files to be read in
 #' @param fun function to load files in
+#' @param FUN deprecated, use \code{fun} instead.
 #' @param ... additional arguments to be passed to \code{fun}
 #'
 #' @return combined \code{data.table} of the input files
@@ -20,7 +21,13 @@
 #' read_files(files, fun = read.csv, sep = ";")
 #' }
 #'
-read_files <- function(files, fun = readLines, ...) {
+read_files <- function(files, fun = readLines, FUN = fun, ...) {
+  # check arguments
+  if (!isTRUE(all.equal(FUN, fun))) {
+    warning(paste0("'FUN' has priority over 'fun' wihtin lapply.",
+                   " It is deprecated, use fun instead"))
+    fun <- FUN
+  }
 
   # load files
   out <- lapply(files, FUN = fun, ... = ...)

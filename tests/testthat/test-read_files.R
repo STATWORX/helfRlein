@@ -30,3 +30,16 @@ test_that("examples works for .csv, .rds and .txt", {
   expect_equal(tmp3, res3)
 
 })
+
+test_that("deprecated arguments work", {
+  datapath <- system.file("testdata", package = "helfRlein")
+
+  # .csv
+  testfiles <- list.files(datapath, pattern = ".csv", full.names = TRUE)
+
+  tmp1 <- read_files(testfiles, fun = read.csv2, stringsAsFactors = FALSE)
+  expect_warning(
+    read_files(testfiles, FUN = read.csv2, stringsAsFactors = FALSE))
+
+
+})

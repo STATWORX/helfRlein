@@ -5,7 +5,8 @@
 
 ### Bugfixes
 
-- fixing plugin for coment line setting
+- fixed plugin for coment line setting
+- fixed FUN argument error in read_files
 
 
 ## version 1.1.1

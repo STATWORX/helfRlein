@@ -4,12 +4,14 @@
 \alias{read_files}
 \title{Read multiple files into one \code{data.table}}
 \usage{
-read_files(files, fun = readLines, ...)
+read_files(files, fun = readLines, FUN = fun, ...)
 }
 \arguments{
 \item{files}{paths to files to be read in}
 
 \item{fun}{function to load files in}
+
+\item{FUN}{deprecated, use \code{fun} instead.}
 
 \item{...}{additional arguments to be passed to \code{fun}}
 }
