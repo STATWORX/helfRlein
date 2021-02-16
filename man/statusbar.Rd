@@ -31,7 +31,7 @@ This functions prints the progess of a \code{for} loop to the console.
 \examples{
 
 for (i in 1:200) {
-  Sys.sleep(0.1)
+  Sys.sleep(0.01)
   statusbar(run = i, max.run = 200, width = 60L)
 }
 
@@ -39,6 +39,7 @@ for (i in letters[1:16]) {
   Sys.sleep(0.1)
   statusbar(run = i, max.run = letters[1:16], width = 60L)
 }
+
 }
 \author{
 Jakob Gepp
