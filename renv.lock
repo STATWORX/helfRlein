@@ -200,10 +200,15 @@
     },
     "newsmd": {
       "Package": "newsmd",
-      "Version": "0.2.0",
-      "Source": "Repository",
-      "Repository": "MRAN",
-      "Hash": "be523a109b4a3f330a75650eafd7ce3c"
+      "Version": "0.3.0",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteUsername": "Dschaykib",
+      "RemoteRepo": "newsmd",
+      "RemoteRef": "master",
+      "RemoteSha": "aca738d5df825c95014fb950b18aae4e0d7849ae",
+      "Hash": "4fdba764dae1ce4b9f1cf32946edbc8a"
     },
     "pillar": {
       "Package": "pillar",
