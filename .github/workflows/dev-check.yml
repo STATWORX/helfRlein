@@ -45,12 +45,12 @@ jobs:
 
 
       - name: Cache R packages
-       if: runner.os != 'Windows'
-       uses: actions/cache@v1
-       with:
-         path: ${{ env.R_LIBS_USER }}
-         key: ${{ runner.os }}-r-${{ matrix.config.r }}-1-${{ hashFiles('.github/depends.Rds') }}
-         restore-keys: ${{ runner.os }}-r-${{ matrix.config.r }}-1-
+        if: runner.os != 'Windows'
+        uses: actions/cache@v1
+        with:
+          path: ${{ env.R_LIBS_USER }}
+          key: ${{ runner.os }}-r-${{ matrix.config.r }}-1-${{ hashFiles('.github/depends.Rds') }}
+          restore-keys: ${{ runner.os }}-r-${{ matrix.config.r }}-1-
 
       - name: Install system dependencies
         if: runner.os == 'Linux'
