@@ -1,12 +1,16 @@
-name: dev-check
 on:
   push:
-    branches: [ dev, master ]
+    branches:
+      - dev
+      - master
   pull_request:
-    branches: [ dev ]
+    branches:
+      - dev
+
+name: dev-check
 
 jobs:
-  R-CMD-check-fix:
+  dev-check:
     runs-on: ${{ matrix.config.os }}
     name: ${{ matrix.config.os }} (${{ matrix.config.r }})
     #if: "!contains(github.event.head_commit.message, 'skip ci')"
@@ -24,66 +28,29 @@ jobs:
       RSPM: ${{ matrix.config.rspm }}
 
     steps:
-
     # setup renv for different OS
       - uses: actions/cache@v2
-        if: startsWith(runner.os, 'Linux')
-        with:
-          path: ~/.local/share/renv
-          key: ${{ runner.os }}-renv-${{ hashFiles('**/renv.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-renv-
-
-      - uses: actions/cache@v2
-        if: startsWith(runner.os, 'macOS')
-        with:
-          path: ~/Library/Application Support/renv
-          key: ${{ runner.os }}-renv-${{ hashFiles('**/renv.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-renv-
-
-      - uses: actions/cache@v2
-        if: startsWith(runner.os, 'Windows')
-        with:
-          path: ~\AppData\Local\renv
-          key: ${{ runner.os }}-renv-${{ hashFiles('**/renv.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-renv-
 
       - uses: r-lib/actions/setup-r@master
         with:
           r-version: ${{ matrix.config.r }}
       - uses: r-lib/actions/setup-pandoc@master
-      #- uses: s-weigand/setup-conda@v1
-
-      - name: Session info
-        run: version
-        shell: Rscript {0}
-
-      - name: Restore packages
-        shell: Rscript {0}
-        run: |
-          if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv")
-          renv::restore()
 
       - name: Query dependencies
         run: |
           install.packages('remotes')
-          remotes::install_github("Dschaykib/newsmd")
-          remotes::install_cran("rcmdcheck")
+          saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
+          writeLines(sprintf("R-%i.%i", getRversion()$major, getRversion()$minor), ".github/R-version")
         shell: Rscript {0}
 
-      - name: Session info
-        run: version
-        shell: Rscript {0}
 
-      #- name: Cache R packages
-      #  if: runner.os != 'Windows'
-      #  uses: actions/cache@v1
-      #  with:
-      #    path: ${{ env.R_LIBS_USER }}
-      #    key: ${{ runner.os }}-r-${{ matrix.config.r }}-1-${{ hashFiles('.github/depends.Rds') }}
-      #    restore-keys: ${{ runner.os }}-r-${{ matrix.config.r }}-1-
+      - name: Cache R packages
+       if: runner.os != 'Windows'
+       uses: actions/cache@v1
+       with:
+         path: ${{ env.R_LIBS_USER }}
+         key: ${{ runner.os }}-r-${{ matrix.config.r }}-1-${{ hashFiles('.github/depends.Rds') }}
+         restore-keys: ${{ runner.os }}-r-${{ matrix.config.r }}-1-
 
       - name: Install system dependencies
         if: runner.os == 'Linux'
@@ -95,24 +62,26 @@ jobs:
 
 
       - name: Install dependencies
-        if: runner.os != 'Windows'
-        run: remotes::install_deps(dependencies = TRUE)
+        #if: runner.os != 'Windows'
+        run: |
+          remotes::install_deps(dependencies = TRUE)
+          remotes::install_github("Dschaykib/newsmd")
+          remotes::install_cran("rcmdcheck")
         shell: Rscript {0}
 
       # newer source versions are available for some packages,
       # but compilation fails on Windows machines (RTools is missing).
       # therefore, force installation of binaries for *all* packages on Windows.
-      - name: Install only binaries on Windows (RTools missing)
-        if: runner.os == 'Windows'
-        run: remotes::install_deps(dependencies = TRUE, type = 'binary')
-        shell: Rscript {0}
+      # - name: Install only binaries on Windows (RTools missing)
+      #   if: runner.os == 'Windows'
+      #   run: remotes::install_deps(dependencies = TRUE, type = 'binary')
+      #   shell: Rscript {0}
 
 
       - name: Session info
         run: |
           options(width = 100)
-          pkgs <- installed.packages()[, "Package"]
-          sessioninfo::session_info(pkgs, include_base = TRUE)
+          installed.packages()[,c("Version","Built")]
         shell: Rscript {0}
 
       - name: Check
