@@ -26,7 +26,6 @@ jobs:
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
       RSPM: ${{ matrix.config.rspm }}
-      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
       - uses: actions/checkout@v2
@@ -63,6 +62,7 @@ jobs:
 
       - name: Install dependencies
         run: |
+          print(Sys.getenv("R_LIBS_USER"))
           remotes::install_deps(dependencies = TRUE)
           remotes::install_github("Dschaykib/newsmd")
           remotes::install_cran("rcmdcheck")
