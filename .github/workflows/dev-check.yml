@@ -28,8 +28,7 @@ jobs:
       RSPM: ${{ matrix.config.rspm }}
 
     steps:
-    # setup renv for different OS
-      - uses: actions/cache@v2
+      - uses: actions/checkout@v2
 
       - uses: r-lib/actions/setup-r@master
         with:
