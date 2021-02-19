@@ -23,8 +23,8 @@
 #'
 #' @examples
 #'
-#' for (i in 1:20) {
-#'   Sys.sleep(0.1)
+#' for (i in 1:200) {
+#'   Sys.sleep(0.01)
 #'   statusbar(run = i, max.run = 200, width = 60L)
 #' }
 #'
@@ -32,6 +32,7 @@
 #'   Sys.sleep(0.1)
 #'   statusbar(run = i, max.run = letters[1:16], width = 60L)
 #' }
+#'
 
 statusbar <- function(run,
                       max.run,

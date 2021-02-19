@@ -4,6 +4,7 @@
 # devtools::install_github("Dschaykib/newsmd")
 # install.packages("desc")
 library(newsmd)
+library(desc)
 
 # update roxygen
 roxygen2::roxygenise()
@@ -329,7 +330,8 @@ my_news$add_bullet(c("removing ubuntu with R version 4.0 in the test setup",
                      "changing lintr options"))
 
 
-# adjusting test setup ----------------------------------------------------
+
+# backwards compability ---------------------------------------------------
 
 my_desc$bump_version("patch")
 my_news$add_version(my_desc$get_version())
@@ -350,10 +352,57 @@ my_news$add_bullet(c("data.tree",
 my_desc$del_dep("data.tree", type = desc::dep_types[1])
 
 
+
+# removing dependencies ---------------------------------------------------
+
+my_desc$bump_version("patch")
+my_news$add_version(my_desc$get_version())
+my_news$add_subtitle("internal test setup changes")
+my_news$add_bullet(c("changing test setup to fix and relative R versions",
+                     "setting Ubuntu test setup to 16.04 instead of latest"))
+my_news$add_subtitle("dependencies")
+my_news$add_bullet(c("removing readr", "removing magrittr"))
+my_desc$del_dep("readr", type = desc::dep_types[1])
+my_desc$del_dep("magrittr", type = desc::dep_types[1])
+my_news$add_bullet(c("adding utils",
+                     "adding grid"))
+my_desc$set_dep("utils", type = desc::dep_types[1])
+my_desc$set_dep("grid", type = desc::dep_types[1])
+
+my_news$add_subtitle("Bugfixes")
+my_news$add_bullet(c("changing error messages"))
+
+
+# fixing plugin -----------------------------------------------------------
+
+my_desc$bump_version("patch")
+my_news$add_version(my_desc$get_version())
+my_news$add_subtitle("Bugfixes")
+my_news$add_bullet(c("fixed plugin for coment line setting",
+                     "fixed FUN argument error in read_files"))
+
+
+# adding renv -------------------------------------------------------------
+
+my_desc$bump_version("patch")
+my_news$add_version(my_desc$get_version())
+my_news$add_subtitle("internal changes")
+my_news$add_bullet(c("add renv structure",
+                     "change test setup, more detail can be found [here](.github/README.md)",
+                     "include remotes, rcmdcheck, desc and lintr to 'Suggests'"))
+
+my_desc$set_dep("desc", type = desc::dep_types[3], version = "*")
+my_desc$set_dep("lintr", type = desc::dep_types[3], version = "*")
+my_desc$set_dep("remotes", type = desc::dep_types[3], version = "*")
+my_desc$set_dep("rcmdcheck", type = desc::dep_types[3], version = "*")
+
+
 # save everything ---------------------------------------------------------
 
 my_desc$set("Date", Sys.Date())
 my_desc$write(file = "DESCRIPTION")
 my_news$write(file = "NEWS.md")
 
+# update renv files
+renv::snapshot()
 

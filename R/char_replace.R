@@ -21,7 +21,6 @@
 #'   standard counterparts
 #' @export
 #' @author Oliver Guggenbuehl
-#' @importFrom magrittr %>%
 #'
 #' @examples
 #' x <- "Élizàldë-González Strasse"
@@ -149,8 +148,7 @@ char_replace <- function(x,
 
 
   if (trim == TRUE) {
-    input_processed <- input_processed %>%
-      trim()
+    input_processed <- trim(input_processed)
   }
 
   if (to_lower == TRUE) {

@@ -16,3 +16,23 @@ test_that("Handles wrong Inputs", {
                "'dir' must be a character string")
 
 })
+
+test_that("output example", {
+
+  # Directory must exist
+  dir <- system.file("test_filestructure", package = "helfRlein")
+  # match R files
+  expect_equal(get_files(dir = dir, pattern = "get_files"),
+               "/folder_3/file_33.R")
+  # match txt files
+  expect_equal(get_files(dir = dir, pattern = "get_files", suffix = ".txt$"),
+               "/folder_3/file_32.R.txt")
+  # match all files
+  expect_equal(get_files(dir = dir, pattern = "get_files", suffix = "."),
+               c("/folder_3/file_32.R.txt", "/folder_3/file_33.R"))
+
+  # match no file
+  expect_equal(get_files(dir = dir, pattern = "not included"),
+               character(0))
+
+})

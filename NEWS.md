@@ -1,3 +1,50 @@
+## version 1.1.3
+
+---
+
+
+### internal changes
+
+- add renv structure
+- change test setup, more detail can be found [here](.github/README.md)
+- include remotes, rcmdcheck, desc and lintr to 'Suggests'
+
+
+## version 1.1.2
+
+---
+
+
+### Bugfixes
+
+- fixed plugin for coment line setting
+- fixed FUN argument error in read_files
+
+
+## version 1.1.1
+
+---
+
+
+### Bugfixes
+
+- changing error messages
+
+
+### dependencies
+
+- adding utils
+- adding grid
+- removing readr
+- removing magrittr
+
+
+### internal test setup changes
+
+- changing test setup to fix and relative R versions
+- setting Ubuntu test setup to 16.04 instead of latest
+
+
 ## version 1.1.0
 
 ---

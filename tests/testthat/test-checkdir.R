@@ -3,9 +3,9 @@ context("check checkdir")
 test_that("NA, NULL is handeld right", {
 
   expect_error(checkdir(path = NA, recursive = FALSE),
-               "invalid 'path' argument")
+               "path is NA or NULL")
   expect_error(checkdir(path = NULL, recursive = FALSE),
-               "argument is of length zero")
+               "path is NA or NULL")
 
 })
 
