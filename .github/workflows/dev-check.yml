@@ -80,7 +80,8 @@ jobs:
       - name: Restore packages
         run: |
           if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv")
-          renv::restore()
+          #renv::restore()
+          renv::clean(prompt = FALSE)
           remotes::install_deps(dependencies = TRUE)
           if (!requireNamespace("newsmd", quietly = TRUE)) remotes::install_github("Dschaykib/newsmd")
           remotes::install_cran("rcmdcheck")
