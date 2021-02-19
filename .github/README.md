@@ -10,5 +10,5 @@ The test setup consists of three workflows for different scenarios. Next to thes
   For the dev branch a lighter and quicker test setup was chosen. Here only R version 4.0 is tested on Windows, Linux and Mac. Also here the used pacakges are loaded via cache and with the [`renv` package](https://github.com/rstudio/renv).
 
 
-Ubuntu is tested on version 16.04, where for Mac and Windows the latest available build is used. An overview of the specific version on GitHub can be found [here](https://docs.github.com/en/actions/reference/specifications-for-github-hosted-runners#supported-runners-and-hardware-resources).
+Ubuntu is tested on version 18.04, where for Mac and Windows the latest available build is used. An overview of the specific version on GitHub can be found [here](https://docs.github.com/en/actions/reference/specifications-for-github-hosted-runners#supported-runners-and-hardware-resources).
 

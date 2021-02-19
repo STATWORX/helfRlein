@@ -19,8 +19,8 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          #- {os: windows-latest, r: '4.0'}
-          #- {os: macOS-latest, r: '4.0'}
+          - {os: windows-latest, r: '4.0'}
+          - {os: macOS-latest, r: '4.0'}
           - {os: ubuntu-18.04, r: '3.5', rspm: "https://packagemanager.rstudio.com/cran/__linux__/xenial/latest"}
 
     env:
@@ -80,8 +80,7 @@ jobs:
       - name: Restore packages
         run: |
           if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv")
-          #renv::restore()
-          renv::clean(prompt = FALSE)
+          renv::restore()
           remotes::install_deps(dependencies = TRUE)
           if (!requireNamespace("newsmd", quietly = TRUE)) remotes::install_github("Dschaykib/newsmd")
           remotes::install_cran("rcmdcheck")
