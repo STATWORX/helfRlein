@@ -13,7 +13,7 @@ jobs:
   dev-check:
     runs-on: ${{ matrix.config.os }}
     name: ${{ matrix.config.os }} (${{ matrix.config.r }})
-    #if: "!contains(github.event.head_commit.message, 'skip ci')"
+    if: "!contains(github.event.head_commit.message, 'skip ci')"
 
     strategy:
       fail-fast: false
@@ -67,13 +67,6 @@ jobs:
           key: ${{ runner.os }}-renv-${{ hashFiles('**/renv.lock') }}
           restore-keys: ${{ runner.os }}-renv-
 
-
-        # if: runner.os != 'Windows'
-        # uses: actions/cache@v2
-        # with:
-        #   path: ${{ env.R_LIBS_USER }}
-        #   key: ${{ runner.os }}-r-${{ matrix.config.r }}-1-${{ hashFiles('.github/depends.Rds') }}
-        #   restore-keys: ${{ runner.os }}-r-${{ matrix.config.r }}-1-
 
       - name: Install system dependencies
         if: runner.os == 'Linux'
