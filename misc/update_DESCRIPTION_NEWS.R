@@ -386,8 +386,16 @@ my_news$add_bullet(c("fixed plugin for coment line setting",
 
 my_desc$bump_version("patch")
 my_news$add_version(my_desc$get_version())
-my_news$add_subtitle("internal handling of packages")
-my_news$add_bullet(c("add renv structure"))
+my_news$add_subtitle("internal changes")
+my_news$add_bullet(c("add renv structure",
+                     "change test setup, more detail can be found [here](.github/README.md)",
+                     "include remotes, rcmdcheck, desc and lintr to 'Suggests'"))
+
+my_desc$set_dep("desc", type = desc::dep_types[3], version = "*")
+my_desc$set_dep("lintr", type = desc::dep_types[3], version = "*")
+my_desc$set_dep("remotes", type = desc::dep_types[3], version = "*")
+my_desc$set_dep("rcmdcheck", type = desc::dep_types[3], version = "*")
+
 
 # save everything ---------------------------------------------------------
 
@@ -395,4 +403,6 @@ my_desc$set("Date", Sys.Date())
 my_desc$write(file = "DESCRIPTION")
 my_news$write(file = "NEWS.md")
 
+# update renv files
+renv::snapshot()
 

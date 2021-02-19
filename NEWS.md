@@ -3,9 +3,11 @@
 ---
 
 
-### internal handling of packages
+### internal changes
 
 - add renv structure
+- change test setup, more detail can be found [here](.github/README.md)
+- include remotes, rcmdcheck, desc and lintr to 'Suggests'
 
 
 ## version 1.1.2

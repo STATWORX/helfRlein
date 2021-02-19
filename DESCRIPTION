@@ -52,7 +52,11 @@ Depends:
     R (>= 3.5)
 Suggests: 
     testthat,
-    newsmd
+    newsmd,
+    desc,
+    lintr,
+    remotes,
+    rcmdcheck
 Imports: 
     data.table (>= 1.9),
     igraph (>= 1.1.2),
@@ -61,4 +65,4 @@ Imports:
     rstudioapi,
     utils,
     grid
-Date: 2021-02-16
+Date: 2021-02-19
