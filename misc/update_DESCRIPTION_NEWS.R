@@ -397,6 +397,14 @@ my_desc$set_dep("remotes", type = desc::dep_types[3], version = "*")
 my_desc$set_dep("rcmdcheck", type = desc::dep_types[3], version = "*")
 
 
+# update statusbar---------------------------------------------------------
+
+my_desc$bump_version("patch")
+my_news$add_version(my_desc$get_version())
+my_news$add_subtitle("Bugfixes")
+my_news$add_bullet(c("add line break after last step in statusbar"))
+
+
 # save everything ---------------------------------------------------------
 
 my_desc$set("Date", Sys.Date())

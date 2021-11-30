@@ -1,3 +1,13 @@
+## version 1.1.4
+
+---
+
+
+### Bugfixes
+
+- add line break after last step in statusbar
+
+
 ## version 1.1.3
 
 ---

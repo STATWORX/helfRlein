@@ -69,6 +69,7 @@ statusbar <- function(run,
                       sprintf("%7.2f", percent * 100, 2),
                       "% - ",
                       info)
-  cat("\r", progress)
+  last_step <- ifelse(run == max.run[length(max.run)], "\n", "")
+  cat("\r", progress, last_step)
   flush.console()
 }
