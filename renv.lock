@@ -249,15 +249,10 @@
     },
     "newsmd": {
       "Package": "newsmd",
-      "Version": "0.3.0",
-      "Source": "GitHub",
-      "RemoteType": "github",
-      "RemoteHost": "api.github.com",
-      "RemoteUsername": "Dschaykib",
-      "RemoteRepo": "newsmd",
-      "RemoteRef": "master",
-      "RemoteSha": "aca738d5df825c95014fb950b18aae4e0d7849ae",
-      "Hash": "4fdba764dae1ce4b9f1cf32946edbc8a"
+      "Version": "0.3.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "63efe8b0dd7bb4185f2f3157d57743ae"
     },
     "openssl": {
       "Package": "openssl",

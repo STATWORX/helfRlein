@@ -1,7 +1,7 @@
 # script to create the DESCRIPTION file
 
 # get news class
-# devtools::install_github("Dschaykib/newsmd")
+# install.packages("newsmd")
 # install.packages("desc")
 library(newsmd)
 library(desc)

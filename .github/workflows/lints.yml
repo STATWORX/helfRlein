@@ -15,7 +15,6 @@ jobs:
       - name: Query dependencies
         run: |
           install.packages('remotes')
-          remotes::install_github("Dschaykib/newsmd")
         shell: Rscript {0}
 
       #- name: Cache R packages

@@ -43,7 +43,6 @@ jobs:
       - name: Query dependencies
         run: |
           install.packages('remotes')
-          remotes::install_github("Dschaykib/newsmd")
           remotes::install_cran("rcmdcheck")
         shell: Rscript {0}
 

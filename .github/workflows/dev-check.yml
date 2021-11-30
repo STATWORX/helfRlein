@@ -82,7 +82,6 @@ jobs:
           if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv")
           renv::restore()
           remotes::install_deps(dependencies = TRUE)
-          if (!requireNamespace("newsmd", quietly = TRUE)) remotes::install_github("Dschaykib/newsmd")
           remotes::install_cran("rcmdcheck")
         shell: Rscript {0}
 
