@@ -38,9 +38,9 @@ sci_palette <- function(scheme = "old") {
              special = grDevices::rgb(198, 47, 75, maxColorValue = 255))
 
   } else if (scheme == "new") {
-    out <- c('Tech Blue' = "#0000FF",
-             'Deep Black' = "#000000",
-             'Super White' = "#FFFFFF",
+    out <- c("Tech Blue" = "#0000FF",
+             "Deep Black" = "#000000",
+             "Super White" = "#FFFFFF",
              grey_1 = "#283440",
              grey_2 = "#6C7D8C",
              grey_3 = "#B6BDCC",
