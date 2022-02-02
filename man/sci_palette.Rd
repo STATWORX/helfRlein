@@ -7,12 +7,15 @@
 \usage{
 \method{plot}{sci}(x, ...)
 
-sci_palette()
+sci_palette(scheme = "old")
 }
 \arguments{
 \item{x}{an object of class \code{sci}.}
 
 \item{...}{arguments to be passed to method}
+
+\item{scheme}{a string that indicates if the "new" or the "old" STATWORX CI is
+used. The default is still "old" to not break existing code.}
 }
 \description{
 Palette for STATWORX Corporate Identity colors.

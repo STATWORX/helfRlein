@@ -21,9 +21,16 @@ test_that("input has right format", {
 
 test_that("default values", {
 
+  # old scheme
   basecolors <- c(1, 2, 3, 5, 10)
   res_colors <- as.character(sci_palette()[basecolors])
   expect_equal(statworx_palette(), res_colors)
+
+  # new scheme
+  basecolors <- c(1, 2, 3, 5, 10)
+  res_colors <- as.character(sci_palette(scheme = "new")[basecolors])
+  expect_equal(statworx_palette(scheme = "new"), res_colors)
+
 
   # test length of output
   expect_equal(length(statworx_palette(20)), 20)

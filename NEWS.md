@@ -1,3 +1,13 @@
+## version 1.2.0
+
+---
+
+
+### update function
+
+- Add new STATWORX colour scheme to sci_palette and statworx_pallete
+
+
 ## version 1.1.4
 
 ---
