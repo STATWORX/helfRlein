@@ -39,15 +39,15 @@ sci_palette <- function(scheme = "old") {
 
   } else if (scheme == "new") {
     out <- c("Tech Blue" = "#0000FF",
-             "Deep Black" = "#000000",
-             "Super White" = "#FFFFFF",
-             grey_1 = "#283440",
-             grey_2 = "#6C7D8C",
-             grey_3 = "#B6BDCC",
-             grey_4 = "#EBF0F2",
-             accent_1 = "#FFFF00",
-             accent_2 = "#FE0D6C",
-             accent_3 = "#00C800")
+             "Black" = "#000000",
+             "White" = "#FFFFFF",
+             "Light Grey" = "#EBF0F2",
+             "Accent 1" = "#283440",
+             "Accent 2" = "#6C7D8C",
+             "Accent 3" = "#B6BDCC",
+             "Highlight 1" = "#00C800",
+             "Highlight 2" = "#FFFF00",
+             "Highlight 3" = "#FE0D6C")
 
   } else {
     stop("'scheme' must be either 'old' or 'new'")

@@ -1,3 +1,13 @@
+## version 1.3.0
+
+---
+
+
+### Bugfixes
+
+- fix naming and order for statworx pallete
+
+
 ## version 1.2.0
 
 ---

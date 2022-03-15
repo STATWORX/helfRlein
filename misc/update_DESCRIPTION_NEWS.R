@@ -412,6 +412,12 @@ my_news$add_version(my_desc$get_version())
 my_news$add_subtitle("update function")
 my_news$add_bullet(c("Add new STATWORX colour scheme to sci_palette and statworx_pallete"))
 
+my_desc$bump_version("minor")
+my_news$add_version(my_desc$get_version())
+my_news$add_subtitle("Bugfixes")
+my_news$add_bullet(c("fix naming and order for statworx pallete"))
+
+
 # save everything ---------------------------------------------------------
 
 my_desc$set("Date", Sys.Date())
