@@ -1,7 +1,8 @@
-linters: with_defaults(
+linters: linters_with_defaults(
   line_length_linter(90),
   cyclocomp_linter(complexity_limit = 30),
-  object_usage_linter=NULL)
+  object_usage_linter=NULL,
+  object_name_linter=NULL)
 exclusions: list(
   "tests/testthat/test-get_network.R",
   "R/statusbar.R" = 41,
