@@ -1,39 +1,39 @@
-context("check char_replace")
+testthat::context("check char_replace")
 
-test_that("example right output", {
+testthat::test_that("example right output", {
   x <- " Élizàldë-González Strasse  "
 
-  expect_equal(char_replace(x,
+  testthat::expect_equal(char_replace(x,
                         to_lower = FALSE,
                         rm_space = FALSE,
                         rm_dash = FALSE,
                         to_underscore = FALSE),
                "Elizalde-Gonzalez Strasse")
-  expect_equal(char_replace(x,
+  testthat::expect_equal(char_replace(x,
                         to_lower = TRUE,
                         rm_space = FALSE,
                         rm_dash = FALSE,
                         to_underscore = FALSE),
                "elizalde-gonzalez strasse")
-  expect_equal(char_replace(x,
+  testthat::expect_equal(char_replace(x,
                         to_lower = FALSE,
                         rm_space = TRUE,
                         rm_dash = FALSE,
                         to_underscore = FALSE),
                "Elizalde-GonzalezStrasse")
-  expect_equal(char_replace(x,
+  testthat::expect_equal(char_replace(x,
                         to_lower = FALSE,
                         rm_space = FALSE,
                         rm_dash = TRUE,
                         to_underscore = FALSE),
                "ElizaldeGonzalez Strasse")
-  expect_equal(char_replace(x,
+  testthat::expect_equal(char_replace(x,
                         to_lower = FALSE,
                         rm_space = FALSE,
                         rm_dash = FALSE,
                         to_underscore = TRUE),
                "Elizalde_Gonzalez_Strasse")
-  expect_equal(char_replace(x,
+  testthat::expect_equal(char_replace(x,
                         to_lower = TRUE,
                         rm_space = TRUE,
                         rm_dash = TRUE,
@@ -41,12 +41,12 @@ test_that("example right output", {
                "elizaldegonzalezstrasse")
 })
 
-test_that("existing warning", {
+testthat::test_that("existing warning", {
 
   x <- " Élizàldë-González Strasse "
 
   # Wanring for leading whitespaces
-  expect_warning(char_replace(x,
+  testthat::expect_warning(char_replace(x,
                               to_lower = FALSE,
                               trim = FALSE,
                               rm_space = FALSE,
@@ -59,7 +59,7 @@ test_that("existing warning", {
                    )
                  )
 
-  expect_warning(char_replace(x,
+  testthat::expect_warning(char_replace(x,
                               to_lower = FALSE,
                               trim = FALSE,
                               rm_space = TRUE,

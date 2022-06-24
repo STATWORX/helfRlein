@@ -1,10 +1,17 @@
 # script to create the DESCRIPTION file
 
 # get news class
-# install.packages("newsmd")
-# install.packages("desc")
+# renv::install("newsmd")
+# renv::install("desc")
 library(newsmd)
 library(desc)
+library(devtools)
+library(testthat)
+library(origin)
+library(lintr)
+
+# check pkg::func syntax
+origin::originize_pkg(ask_before_applying_changes = FALSE)
 
 # update roxygen
 roxygen2::roxygenise()
@@ -18,7 +25,7 @@ unlink("NEWS.md")
 
 # Create a new description object
 my_desc <- desc::description$new("!new")
-my_news <- newsmd()
+my_news <- newsmd::newsmd()
 
 # Set your package name
 my_desc$set("Package", "helfRlein")
@@ -424,11 +431,20 @@ my_desc$set("Date", Sys.Date())
 my_desc$write(file = "DESCRIPTION")
 my_news$write(file = "NEWS.md")
 
-# update renv files
-renv::snapshot()
-
 # set version number in README
 my_readme <- readLines("README.md")
 my_readme[1] <- paste0("# helfRlein - ", my_desc$get_version(),
                        " <img src=\"img/helfRlein.png\" width=170 align=\"right\" />")
 writeLines(my_readme, "README.md")
+
+
+
+# pkg maintanance ---------------------------------------------------------
+
+# update renv files
+renv::snapshot(prompt = FALSE)
+
+devtools::test()
+#Sys.unsetenv("R_PROFILE_USER")
+devtools::check()
+

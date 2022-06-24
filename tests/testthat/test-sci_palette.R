@@ -1,24 +1,24 @@
-context("check sci_palette.R")
+testthat::context("check sci_palette.R")
 
 # test structure ----------------------------------------------------------
 
-test_that("output class is 'sci'", {
+testthat::test_that("output class is 'sci'", {
   res_old <- sci_palette(scheme = "old")
-  expect_equal(class(res_old), "sci")
+  testthat::expect_equal(class(res_old), "sci")
 
   res_new <- sci_palette(scheme = "new")
-  expect_equal(class(res_new), "sci")
+  testthat::expect_equal(class(res_new), "sci")
 
 })
 
-test_that("input values are strings", {
+testthat::test_that("input values are strings", {
   msg <- "'scheme' must be either 'old' or 'new'"
-  expect_error(sci_palette(scheme = 1), msg)
-  expect_error(sci_palette(scheme = 1.3), msg)
-  expect_error(sci_palette(scheme = "not old"), msg)
-  expect_error(sci_palette(scheme = TRUE), msg)
-  expect_error(sci_palette(scheme = NULL), msg)
-  expect_error(sci_palette(scheme = NA), msg)
-  expect_error(sci_palette(scheme = NA_character_), msg)
+  testthat::expect_error(sci_palette(scheme = 1), msg)
+  testthat::expect_error(sci_palette(scheme = 1.3), msg)
+  testthat::expect_error(sci_palette(scheme = "not old"), msg)
+  testthat::expect_error(sci_palette(scheme = TRUE), msg)
+  testthat::expect_error(sci_palette(scheme = NULL), msg)
+  testthat::expect_error(sci_palette(scheme = NA), msg)
+  testthat::expect_error(sci_palette(scheme = NA_character_), msg)
 
 })

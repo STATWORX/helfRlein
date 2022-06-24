@@ -1,16 +1,16 @@
-context("check statworx_palette.R")
+testthat::context("check statworx_palette.R")
 
 
 # test error --------------------------------------------------------------
 
-test_that("input has right format", {
+testthat::test_that("input has right format", {
 
-  expect_error(statworx_palette("a"),
+  testthat::expect_error(statworx_palette("a"),
                "number needs to be numeric")
-  expect_error(statworx_palette(reorder = 2),
+  testthat::expect_error(statworx_palette(reorder = 2),
                "reorder needs to be logical")
 
-  expect_warning(statworx_palette(as.numeric(NA)),
+  testthat::expect_warning(statworx_palette(as.numeric(NA)),
                  "number was NA - set to default (4)",
                  fixed = TRUE)
 
@@ -19,28 +19,28 @@ test_that("input has right format", {
 
 # test output -------------------------------------------------------------
 
-test_that("default values", {
+testthat::test_that("default values", {
 
   # old scheme
   basecolors <- c(1, 2, 3, 5, 10)
   res_colors <- as.character(sci_palette()[basecolors])
-  expect_equal(statworx_palette(), res_colors)
+  testthat::expect_equal(statworx_palette(), res_colors)
 
   # new scheme
   basecolors <- c(1, 2, 3, 5, 10)
   res_colors <- as.character(sci_palette(scheme = "new")[basecolors])
-  expect_equal(statworx_palette(scheme = "new"), res_colors)
+  testthat::expect_equal(statworx_palette(scheme = "new"), res_colors)
 
 
   # test length of output
-  expect_equal(length(statworx_palette(20)), 20)
+  testthat::expect_equal(length(statworx_palette(20)), 20)
 })
 
 
 # test structure ----------------------------------------------------------
 
-test_that("output class is 'character'", {
+testthat::test_that("output class is 'character'", {
   res <- statworx_palette()
-  expect_equal(class(res), "character")
+  testthat::expect_equal(class(res), "character")
 
 })
