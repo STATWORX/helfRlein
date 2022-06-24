@@ -81,7 +81,7 @@ save_rds_archive <- function(object,
                              archive_dir_path = NULL,
                              ...) {
 
-  if (file == "" | !"character" %in% class(file)) {
+  if (file == "" || !"character" %in% class(file)) {
     stop("'file' must be a non-empty character string")
   }
 
@@ -166,7 +166,7 @@ save_rds_archive <- function(object,
       }
 
       # check return value and if archived file exists
-      if (temp & file.exists(archived_file)) {
+      if (temp && file.exists(archived_file)) {
         # then save new file under specified name
         saveRDS(object = object, file = file, ...)
       }

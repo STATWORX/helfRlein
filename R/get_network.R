@@ -135,12 +135,12 @@ get_network <- function(dir = NULL,
   # split before { and }
   all_scripts <-
     lapply(all_scripts,
-    function(x) unlist(strsplit(x = x, split = "[\\{\\}]", type = "before")))
+           function(x) unlist(strsplit(x = x, split = "[\\{\\}]", type = "before")))
 
   # split after { and }
   all_scripts <-
     lapply(all_scripts,
-    function(x) unlist(strsplit(x = x, split = "[\\{\\}]", type = "after")))
+           function(x) unlist(strsplit(x = x, split = "[\\{\\}]", type = "after")))
 
   # remove leading spaces again
   all_scripts <- lapply(all_scripts, function(x)  sub("^\\s+", "", x))
@@ -161,10 +161,12 @@ get_network <- function(dir = NULL,
                           variations) {
     def_function_index <-
       lapply(funlist,
-             function(x) sort(unique(unlist(
-               lapply(variations,
-                      function(y) which(grepl(pattern = y, x))))
-             ))
+             function(x) {
+               sort(unique(unlist(
+                 lapply(variations,
+                        function(y) which(grepl(pattern = y, x))))
+               ))
+             }
       )
 
     # get internal functions
@@ -177,7 +179,7 @@ get_network <- function(dir = NULL,
     close <- lapply(internal, function(x) as.numeric(grepl("\\}", x)))
     both <- mapply(function(x, y) cumsum(x - y), open, close, SIMPLIFY = FALSE)
 
-    sub_index_end <- mapply(function(x, z)
+    sub_index_end <- mapply(function(x, z) {
       sapply(z, function(y) {
         tmp <- which(x == x[y])
         tmp <- tmp[tmp > y]
@@ -190,15 +192,14 @@ get_network <- function(dir = NULL,
             suppressWarnings(min(tmp[c(diff(c(y, tmp)) > 1)], na.rm = TRUE))
           }
         }
-      }),
+      })},
       both, def_internal, SIMPLIFY = FALSE)
 
 
     # set Inf to max length
     max_length <- lapply(internal, length)
-    sub_index_end <- mapply(function(x, y)
-      ifelse(x == Inf, y, x),
-      sub_index_end, max_length, SIMPLIFY = FALSE)
+    sub_index_end <- mapply(function(x, y) ifelse(x == Inf, y, x),
+                            sub_index_end, max_length, SIMPLIFY = FALSE)
 
     sub_index <- mapply(function(x, y) cbind(x, y),
                         def_internal, sub_index_end, SIMPLIFY = FALSE)
@@ -221,9 +222,10 @@ get_network <- function(dir = NULL,
   internal  <- tmp$internal
 
   sub_functions <-
-    mapply(function(i, s) lapply(seq_len(nrow(s)),
-                                 function(t) i[s[t, 1]:s[t, 2]]),
-           internal, sub_index, SIMPLIFY = FALSE)
+    mapply(function(i, s) {
+      lapply(seq_len(nrow(s)), function(t) i[s[t, 1]:s[t, 2]])
+    },
+    internal, sub_index, SIMPLIFY = FALSE)
   sub_functions <- do.call("c", sub_functions)
 
   # folder for sub_functions
@@ -298,11 +300,14 @@ get_network <- function(dir = NULL,
 
   # update function definition
   def_function_index <-
-    lapply(all_files,
-           function(x) unique(unlist(
-             lapply(variations,
-                    function(y) which(grepl(pattern = y, x))))
-           )
+    lapply(
+      all_files,
+      function(x) {
+        unique(unlist(
+          lapply(variations,
+                 function(y) which(grepl(pattern = y, x))))
+        )
+      }
     )
 
   def_functions <-
@@ -331,13 +336,18 @@ get_network <- function(dir = NULL,
 
   def_functions2 <-
     lapply(def_functions2,
-           function(x) gsub(" ", "", sapply(base::strsplit(x, "<-"), "[[", 1)))
+           function(x) {
+             gsub(" ", "", sapply(base::strsplit(x, "<-"), "[[", 1))
+           }
+    )
 
   def_functions2 <-
     lapply(seq_along(def_functions2),
-           function(x) ifelse(length(def_functions2[[x]]) == 0,
-                              names(all_files)[x],
-                              def_functions2[[x]])
+           function(x) {
+             ifelse(length(def_functions2[[x]]) == 0,
+                    names(all_files)[x],
+                    def_functions2[[x]])
+           }
     )
 
   # remove function definition
@@ -388,9 +398,12 @@ get_network <- function(dir = NULL,
   lines <- c(lines, rep(0, length(new_rows)))
   names(lines) <- c(old_names, new_rows)
 
-  tmp_index <- sapply(new_rows,
-                      function(y) which(lapply(def_functions2,
-                                               function(x) x == y) == TRUE))
+  tmp_index <- sapply(
+    new_rows,
+    function(y) {
+      which(lapply(def_functions2, function(x) x == y) == TRUE)
+    }
+  )
   if (length(tmp_index) == 0) {
     tmp_index <- NULL
   }

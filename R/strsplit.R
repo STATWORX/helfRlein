@@ -55,10 +55,10 @@ strsplit <- function(x,
     stop("type must be remove, after, before or between!")
   }
 
-  if (type == "between" & length(split) != 2) {
+  if (type == "between" && length(split) != 2) {
     stop("split need no have length two!")
   }
-  if (length(split) != 1 & type != "between") {
+  if (length(split) != 1 && type != "between") {
     split <- split[1]
     warning("there are multiple splits - taking only the first one")
   }
@@ -90,8 +90,8 @@ strsplit <- function(x,
     index <- lapply(out, endsWith, suffix = paste0(split, collapse = ""))
     index <- lapply(index, function(i) which(i == TRUE) + 1)
     # end with -> gusb ab with a
-    out <- lapply(out, function(i) gsub(paste0(split, collapse = ""),
-                                        split[1], i))
+    out <- lapply(out, function(i) {
+      gsub(paste0(split, collapse = ""), split[1], i)})
 
     # next after endwith add b
     out <- mapply(FUN = function(o, i) {

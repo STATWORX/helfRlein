@@ -54,7 +54,7 @@ statusbar <- function(run,
     stop("max.run has length 0")
   }
 
-  if (length(max.run) > 1 | is.character(max.run)) {
+  if (length(max.run) > 1 || is.character(max.run)) {
     percent <- which(run == max.run) / length(max.run)
   } else {
     percent <- run / max.run

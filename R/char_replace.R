@@ -36,12 +36,11 @@ char_replace <- function(x,
                          rm_dash = FALSE,
                          to_underscore = FALSE) {
 
-
-  if (trim == FALSE & rm_space == TRUE) {
+  if (trim == FALSE && rm_space == TRUE) {
     warning("trim = FALSE is ignored because of rm_sapce = TRUE")
   }
 
-  if (trim == FALSE & to_underscore == TRUE) {
+  if (trim == FALSE && to_underscore == TRUE) {
     warning(
       paste(
       "Trimming is strongly recommended when using to_underscore.",

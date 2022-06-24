@@ -95,7 +95,7 @@ print_fs <- function(path = ".",
     file_structure <- paste0(file_structure, "\n")
   }
 
-  if (print & level == 0) {
+  if (print && level == 0) {
     cat(file_structure)
   }
 

@@ -443,8 +443,10 @@ writeLines(my_readme, "README.md")
 
 # update renv files
 renv::snapshot(prompt = FALSE)
+renv::clean(prompt = FALSE)
 
 devtools::test()
+lintr::lint_package()
 #Sys.unsetenv("R_PROFILE_USER")
 devtools::check()
 
