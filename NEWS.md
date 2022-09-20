@@ -1,3 +1,18 @@
+## version 1.4.0
+
+---
+
+
+### Bugfixes
+
+- fix warning in statusbar
+
+
+### update function
+
+- Add uniqueness to read_files
+
+
 ## version 1.3.0
 
 ---
@@ -6,6 +21,7 @@
 ### Bugfixes
 
 - fix naming and order for statworx pallete
+- fix default value for read_files to avoid 'close to the limit' error
 
 
 ## version 1.2.0

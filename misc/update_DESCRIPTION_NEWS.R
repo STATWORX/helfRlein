@@ -422,7 +422,18 @@ my_news$add_bullet(c("Add new STATWORX colour scheme to sci_palette and statworx
 my_desc$bump_version("minor")
 my_news$add_version(my_desc$get_version())
 my_news$add_subtitle("Bugfixes")
-my_news$add_bullet(c("fix naming and order for statworx pallete"))
+my_news$add_bullet(c("fix naming and order for statworx pallete",
+                     "fix default value for read_files to avoid 'close to the limit' error"))
+
+# update read_files ----------------------------------------------------
+
+my_desc$bump_version("minor")
+my_news$add_version(my_desc$get_version())
+my_news$add_subtitle("update function")
+my_news$add_bullet(c("Add uniqueness to read_files"))
+my_news$add_subtitle("Bugfixes")
+my_news$add_bullet(c("fix warning in statusbar"))
+
 
 
 # save everything ---------------------------------------------------------

@@ -4,6 +4,7 @@
 #'
 #' @param files paths to files to be read in
 #' @param fun function to load files in
+#' @param unique a boolean, that indicates if the result table is made unique
 #' @param FUN deprecated, use \code{fun} instead.
 #' @param ... additional arguments to be passed to \code{fun}
 #'
@@ -21,13 +22,20 @@
 #' read_files(files, fun = read.csv, sep = ";")
 #' }
 #'
-read_files <- function(files, fun = readLines, FUN = fun, ...) {
+read_files <- function(files,
+                       fun = readLines,
+                       FUN = readLines,
+                       unique = FALSE, ...) {
   # check arguments
-  if (!isTRUE(all.equal(FUN, fun))) {
+  this_param <- as.list(match.call(expand.dots = FALSE))
+
+  if (!is.null(this_param$FUN) &&
+      as.character(this_param$FUN) != "readLines") {
     warning(paste0("'FUN' has priority over 'fun' wihtin lapply.",
                    " It is deprecated, use fun instead"))
     fun <- FUN
   }
+
 
   # load files
   out <- lapply(files, FUN = fun, ... = ...)
@@ -35,6 +43,10 @@ read_files <- function(files, fun = readLines, FUN = fun, ...) {
   out <- lapply(out, data.table::as.data.table)
   # combine into one data.table
   out <- data.table::rbindlist(out, use.names = TRUE, fill = TRUE)
+  # make unique
+  if (unique == TRUE) {
+    out <- unique(out)
+  }
 
   return(out)
 }

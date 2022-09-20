@@ -66,7 +66,7 @@ statusbar <- function(run,
                       paste0(rep(" ", width - percent_step),
                              collapse = ""),
                       "] ",
-                      sprintf("%7.2f", percent * 100, 2),
+                      sprintf("%7.2f", percent * 100),
                       "% - ",
                       info)
   last_step <- ifelse(run == max.run[length(max.run)], "\n", "")

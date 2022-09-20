@@ -4,7 +4,7 @@
 \alias{read_files}
 \title{Read multiple files into one \code{data.table}}
 \usage{
-read_files(files, fun = readLines, FUN = fun, ...)
+read_files(files, fun = readLines, FUN = readLines, unique = FALSE, ...)
 }
 \arguments{
 \item{files}{paths to files to be read in}
@@ -12,6 +12,8 @@ read_files(files, fun = readLines, FUN = fun, ...)
 \item{fun}{function to load files in}
 
 \item{FUN}{deprecated, use \code{fun} instead.}
+
+\item{unique}{a boolean, that indicates if the result table is made unique}
 
 \item{...}{additional arguments to be passed to \code{fun}}
 }
