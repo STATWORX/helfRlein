@@ -398,12 +398,12 @@ get_network <- function(dir = NULL,
   lines <- c(lines, rep(0, length(new_rows)))
   names(lines) <- c(old_names, new_rows)
 
-  tmp_index <- sapply(
+  tmp_index <- unlist(lapply(
     new_rows,
     function(y) {
       which(lapply(def_functions2, function(x) x == y) == TRUE)
     }
-  )
+  ))
   if (length(tmp_index) == 0) {
     tmp_index <- NULL
   }

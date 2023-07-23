@@ -1,3 +1,14 @@
+## version 1.4.1
+
+---
+
+
+### Bugfixes
+
+- get_network can now handle files with only comments
+- fix get_network internal list handling
+
+
 ## version 1.4.0
 
 ---

@@ -23,8 +23,32 @@ testthat::test_that("length of split is right", {
 })
 
 
+
 # examples ----------------------------------------------------------------
 
+# has the same behavior as base::strsplit, needs more thinking, if this is ok.
+# testthat::test_that("empty inputs are handeled", {
+#   # check x is "", NA
+#
+#   testthat::expect_equal(strsplit(x, split = "a", type = "before"),
+#                          list(x))
+#   testthat::expect_equal(strsplit(x, split = "a", type = "after"),
+#                          list(x))
+#   testthat::expect_equal(strsplit(x, split = c("a", "b"), type = "between"),
+#                          list(x))
+#
+#
+#   # check x is NULL
+#
+#   testthat::expect_equal(strsplit(x, split = "a", type = "before"),
+#                          list(x))
+#   testthat::expect_equal(strsplit(x, split = "a", type = "after"),
+#                          list(x))
+#   testthat::expect_equal(strsplit(x, split = c("a", "b"), type = "between"),
+#                          list(x))
+#
+#
+# })
 
 testthat::test_that("examples give correct output with type", {
   x <- c("3D/MON&SUN")
