@@ -1,4 +1,4 @@
-# helfRlein - 1.4.1 <img src="img/helfRlein.png" width=170 align="right" />
+# helfRlein - 1.4.2 <img src="img/helfRlein.png" width=170 align="right" />
 
 | branch        | master | dev  |
 | ------------- | ------ | ---- |

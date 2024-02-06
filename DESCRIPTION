@@ -1,6 +1,6 @@
 Package: helfRlein
 Title: R Helper Functions
-Version: 1.4.1
+Version: 1.4.2
 Authors@R: c(
     person("Jakob", "Gepp", , "jakob.gepp@statworx.com", role = c("cre", "aut")),
     person("Daniel", "Luettgau", , "daniel.luettgau@statworx.com", role = "aut"),
@@ -35,4 +35,4 @@ Imports:
     igraph (>= 1.1.2),
     rstudioapi,
     utils
-Date: 2023-07-23
+Date: 2024-02-06

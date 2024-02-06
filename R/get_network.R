@@ -18,6 +18,7 @@
 #' @param exclude a vector with folder's or function's names, that are excluded
 #'   from the network creation. This is done by a regex, so it will remove
 #'   everything that contains these words.
+#' @param verbose a boolean setting the debugging prints.
 #'
 #' @return
 #'   Returns an object with the adjacency matrix \code{$matrix} and
@@ -36,6 +37,7 @@
 #'
 #' TODO: maybe return plot
 #'
+#'
 #' @examples
 #' \dontrun{
 #' net <- get_network(dir = "R/", simplify = TRUE)
@@ -53,10 +55,11 @@ get_network <- function(dir = NULL,
                         simplify = FALSE,
                         all_scripts = NULL,
                         use_internals = TRUE,
-                        exclude = NULL) {
+                        exclude = NULL,
+                        verbose = FALSE) {
 
   # check if dir exists
-  if (!is.null(dir) && !dir.exists(dir)) {
+  if (!is.null(dir) && all(!dir.exists(dir))) {
     stop(paste0(dir, " does not exists"))
   }
 
@@ -68,7 +71,7 @@ get_network <- function(dir = NULL,
                              full.names = TRUE)
 
 
-    # removing files with exlude input
+    # removing files with exclude input
     if (!is.null(exclude)) {
       keep <- !grepl(pattern = paste0("(",
                                       paste0(exclude, collapse = ")|("),
@@ -81,7 +84,31 @@ get_network <- function(dir = NULL,
       stop("no files with the given pattern")
     }
 
-    folder <- dirname(gsub(paste0(dir, "/"), "", files_path))
+    common_base_path <- function(paths) {
+      # Split each path into its components
+      split_paths <- strsplit(paths, "/")
+
+      # Find the common path
+      common_path <- Reduce(function(x, y) {
+        # Get the length of the shorter vector
+        min_length <- min(length(x), length(y))
+        # Only compare the elements up to the length of the shorter vector
+        common <- x[seq_len(min_length)] == y[seq_len(min_length)]
+        # If there's a FALSE in common, only keep the elements before it
+        if (any(!common)) x[seq_len(which(!common)[1] - 1)]
+        else x
+      }, split_paths)
+
+      # Combine the common path components back into a single string
+      common_path <- paste(common_path, collapse = "/")
+
+      return(common_path)
+    }
+
+    dir_base <- common_base_path(paths = dir)
+
+
+    folder <- dirname(gsub(paste0(dir_base, "/"), "", files_path))
 
     # get all scripts
     all_scripts <- lapply(files_path, readLines, warn = FALSE)
@@ -98,7 +125,12 @@ get_network <- function(dir = NULL,
     folder <- rep(".", length(all_scripts))
   }
 
-  # check for emtpy scripts
+  if (verbose) {
+    print(paste0("found ", length(all_scripts), " scripts"))
+    print("length of folder: ", length(folder))
+  }
+
+  # check for empty scripts
   indx <- sapply(all_scripts, length) == 0
   if (any(indx)) {
     warning(paste0("removing empty scritps: ",
@@ -115,8 +147,12 @@ get_network <- function(dir = NULL,
   }
 
   # remove method / functions that start with [
-  # otherwise the regex will be messed up later
+  # otherwise the regular expression will be messed up later
   keep <- !startsWith(names(all_scripts), "[")
+  if (verbose) {
+    print(paste0("remove method / functions that start with [: ",
+                 sum(!keep)))
+  }
   all_scripts <- all_scripts[keep]
   folder <- folder[keep]
 
@@ -155,6 +191,17 @@ get_network <- function(dir = NULL,
   scripts         <- all_scripts[-index_functions]
   folder_scripts  <- folder[-index_functions]
 
+  if (verbose) {
+    print(c(
+      paste0("found ", length(index_functions),
+             " scripts containing: '",
+             paste0(variations, collapse = "', '"), "'"),
+      paste0("main_functions: ", length(main_functions),
+             " in folder_main: ", length(folder_main)),
+      paste0("scripts: ", length(scripts),
+             " in folder_scripts: ", length(folder_scripts))
+    ))
+  }
 
   # get subfunctions
   getsubindex <- function(funlist,
@@ -221,6 +268,7 @@ get_network <- function(dir = NULL,
   sub_index <- tmp$sub_index
   internal  <- tmp$internal
 
+
   sub_functions <-
     mapply(function(i, s) {
       lapply(seq_len(nrow(s)), function(t) i[s[t, 1]:s[t, 2]])
@@ -229,8 +277,16 @@ get_network <- function(dir = NULL,
   sub_functions <- do.call("c", sub_functions)
 
   # folder for sub_functions
-  folder_index <- which(names(sub_index) %in% names(main_functions))
+  folder_index <- which(names(main_functions) %in% names(sub_index))
   folder_sub <- rep(folder_main[folder_index], sapply(sub_index, nrow))
+
+  if (verbose) {
+    print(paste0(
+      "check length: ", length(sub_functions), " sub-functions in ",
+      length(folder_sub), " folders"
+
+    ))
+  }
 
   def_sub_functions <-
     unlist(lapply(seq_along(sub_functions),
@@ -253,11 +309,21 @@ get_network <- function(dir = NULL,
     all_folder    <- folder_main
   }
 
+  if (verbose) {
+    print(paste0(
+      "check length: ", length(all_functions), " all_functions in ",
+      length(all_folder), " all_folder"
+    ))
+  }
+
 
   # remove duplicates
   index <- !duplicated(all_functions)
   all_functions <- all_functions[index]
   all_folder    <-  all_folder[index]
+  if (verbose) {
+    print(paste0("number of duplicated functions: ", sum(!index)))
+  }
 
   dup_names <- duplicated(names(all_functions))
   if (any(dup_names)) {
@@ -288,6 +354,13 @@ get_network <- function(dir = NULL,
   # combine sub to all functions
   all_files  <- c(all_functions, scripts)
   all_folder <- c(all_folder, folder_scripts)
+
+  if (verbose) {
+    print(paste0(
+      "check length: ", length(all_files), " all_files in ",
+      length(all_folder), " all_folder"
+    ))
+  }
 
   # check if there are functions
   if (length(all_files) == 0) {
@@ -362,6 +435,13 @@ get_network <- function(dir = NULL,
            function(x) clean_functions[[x]][keep_lines[[x]]])
   names(clean_functions) <- names(all_files)
 
+  if (verbose) {
+    print(paste0(
+      "check length: ", length(clean_functions), " clean_functions in ",
+      length(all_folder), " all_folder"
+    ))
+  }
+
   # remove duplicated names
   dub_rows <- !duplicated(names(clean_functions))
   if (!all(dub_rows)) {
@@ -383,25 +463,53 @@ get_network <- function(dir = NULL,
 
   network <- as.data.frame(do.call(rbind, network))
 
+  if (verbose) {
+    print(paste0(
+      "initial network has ", nrow(network), " rows and ",
+      ncol(network), " cols"
+    ))
+  }
+
   # adjust networks rows and columns
   names(network) <- gsub("\\\\\\(", "", names(network))
-  new_collumns <- rownames(network)[
+  new_columns <- rownames(network)[
     which(!rownames(network) %in% colnames(network))]
   new_rows <- colnames(network)[
     which(!colnames(network) %in% rownames(network))]
-  network[, new_collumns] <- 0
+  network[, new_columns] <- 0
   network[new_rows, ] <- 0
   network <- network[rownames(network)]
+  if (verbose) {
+    print(c(
+      paste0("adding ", length(new_rows), " new rows"),
+      paste0("adding ", length(new_columns), " new cols"),
+      paste0("adjusted network has ", nrow(network), " rows and ",
+             ncol(network), " cols")
+    ))
+  }
+
+
 
   # adjust lines, folders
   old_names <- names(lines)
   lines <- c(lines, rep(0, length(new_rows)))
   names(lines) <- c(old_names, new_rows)
+  if (verbose) {
+    print(paste0("check length: ", length(lines), " lines"))
+  }
+
+
+  # remove duplicated functions within def_functions2
+  if (sum(duplicated(def_functions2)) > 0 && verbose) {
+    print(paste0("There are ", sum(duplicated(def_functions2)),
+                 " inner functions with the same name.",
+                 " Keeping only the first"))
+  }
 
   tmp_index <- unlist(lapply(
     new_rows,
     function(y) {
-      which(lapply(def_functions2, function(x) x == y) == TRUE)
+      which(lapply(def_functions2, function(x) x == y) == TRUE)[1]
     }
   ))
   if (length(tmp_index) == 0) {
@@ -409,6 +517,9 @@ get_network <- function(dir = NULL,
   }
 
   all_folder <- c(all_folder, all_folder[tmp_index])
+  if (verbose) {
+    print(paste0("check length: ", length(all_folder), " all_folder"))
+  }
 
   # simplify - removing functions with no connections
   if (simplify) {

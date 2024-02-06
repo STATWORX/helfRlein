@@ -1,3 +1,13 @@
+## version 1.4.2
+
+---
+
+
+### Bugfixes
+
+- fix error in get_network with duplicated inner functions names
+
+
 ## version 1.4.1
 
 ---

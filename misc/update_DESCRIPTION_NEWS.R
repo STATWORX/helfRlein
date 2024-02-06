@@ -445,6 +445,14 @@ my_news$add_bullet(c("get_network can now handle files with only comments",
                      "fix get_network internal list handling"))
 
 
+# bugfix in get_network ---------------------------------------------------
+
+my_desc$bump_version("patch")
+my_news$add_version(my_desc$get_version())
+my_news$add_subtitle("Bugfixes")
+my_news$add_bullet(c("fix error in get_network with duplicated inner functions names"))
+
+
 
 # save everything ---------------------------------------------------------
 
