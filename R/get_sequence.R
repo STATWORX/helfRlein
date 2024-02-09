@@ -30,7 +30,8 @@ get_sequence <- function(x,
                          pattern,
                          minsize = 2L) {
   # check minsize
-  if (length(pattern) == 1 & (minsize < 2 | !is.numeric(minsize))) {
+
+  if (length(pattern) == 1 && (minsize < 2 || !is.numeric(minsize))) {
     stop("minsize must be an integer >= 2")
   }
   if (!is.integer(minsize) && (ceiling(minsize) - minsize != 0)) {

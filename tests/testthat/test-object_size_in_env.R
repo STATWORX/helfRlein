@@ -1,6 +1,6 @@
-context("check object_size_in_env")
+testthat::context("check object_size_in_env")
 
-test_that("example output is right", {
+testthat::test_that("example output is right", {
 
   # setup an test environment
   this_env <- new.env()
@@ -13,6 +13,6 @@ test_that("example output is right", {
                                 SIZE = c(8104, 4048, 56),
                                 UNIT = "B")
 
-  expect_equal(tmp, res)
+  testthat::expect_equal(tmp, res)
 
 })

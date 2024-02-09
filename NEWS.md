@@ -1,3 +1,85 @@
+## version 1.5.0
+
+---
+
+
+### Feature
+
+- get_network now also creates an interactive plot
+
+
+### Bugfixes
+
+- added error handling wihtin get_network
+
+
+## version 1.4.2
+
+---
+
+
+### Bugfixes
+
+- fix error in get_network with duplicated inner functions names
+
+
+## version 1.4.1
+
+---
+
+
+### Bugfixes
+
+- get_network can now handle files with only comments
+- fix get_network internal list handling
+
+
+## version 1.4.0
+
+---
+
+
+### Bugfixes
+
+- fix warning in statusbar
+
+
+### update function
+
+- Add uniqueness to read_files
+
+
+## version 1.3.0
+
+---
+
+
+### Bugfixes
+
+- fix naming and order for statworx pallete
+- fix default value for read_files to avoid 'close to the limit' error
+
+
+## version 1.2.0
+
+---
+
+
+### update function
+
+- Add new STATWORX colour scheme to sci_palette and statworx_pallete
+
+
+## version 1.1.4
+
+---
+
+
+### Bugfixes
+
+- add line break after last step in statusbar
+
+
 ## version 1.1.3
 
 ---

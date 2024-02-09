@@ -9,6 +9,8 @@
 #'  which can make groups next to each other a little bit more separable.
 #' @param basecolors a numeric vector with the used color indices of
 #' \code{\link{sci_palette}}.
+#' @param scheme a string that indicates if the "new" or the "old" STATWORX CI is
+#'  used. The default is still "old" to not break existing code.
 #'
 #' @importFrom grDevices rgb colorRampPalette
 #'
@@ -24,7 +26,8 @@
 #'
 statworx_palette <- function(number = length(basecolors),
                              reorder = FALSE,
-                             basecolors = c(1, 2, 3, 5, 10)) {
+                             basecolors = c(1, 2, 3, 5, 10),
+                             scheme = "old") {
   # check input format
   if (!is.numeric(number)) {
     stop("number needs to be numeric")
@@ -44,7 +47,7 @@ statworx_palette <- function(number = length(basecolors),
   }
 
   getpalette <-
-    grDevices::colorRampPalette(as.vector(sci_palette())[basecolors])
+    grDevices::colorRampPalette(as.vector(sci_palette(scheme = scheme))[basecolors])
 
   out <- getpalette(number)
 

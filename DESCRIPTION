@@ -1,68 +1,39 @@
 Package: helfRlein
 Title: R Helper Functions
-Version: 1.1.3
-Authors@R: 
-    c(person(given = "Jakob",
-             family = "Gepp",
-             role = c("cre", "aut"),
-             email = "jakob.gepp@statworx.com"),
-      person(given = "Daniel",
-             family = "Luettgau",
-             role = "aut",
-             email = "daniel.luettgau@statworx.com"),
-      person(given = "Andre",
-             family = "Bleier",
-             role = "aut",
-             email = "andre.bleier@statworx.com"),
-      person(given = "Markus",
-             family = "Berroth",
-             role = "ctb",
-             email = "markus.berroth@statworx.com"),
-      person(given = "Tobias",
-             family = "Krabel",
-             role = "aut",
-             email = "tobias.krabel@statworx.com"),
-      person(given = "Martin",
-             family = "Albers",
-             role = "aut",
-             email = "martin.albers@statworx.com"),
-      person(given = "Robin",
-             family = "Kraft",
-             role = "ctb",
-             email = "robin.kraft@statworx.com"),
-      person(given = "David",
-             family = "Schlepps",
-             role = "ctb",
-             email = "david.schlepps@statworx.com"),
-      person(given = "Oliver",
-             family = "Guggenbuehl",
-             role = "ctb",
-             email = "oliver.guggenbuehl@statworx.com"),
-      person(given = "Lukas",
-             family = "Feick",
-             role = "aut",
-             email = "lukas.feick@statworx.com"))
+Version: 1.5.0
+Authors@R: c(
+    person("Jakob", "Gepp", , "jakob.gepp@statworx.com", role = c("cre", "aut")),
+    person("Daniel", "Luettgau", , "daniel.luettgau@statworx.com", role = "aut"),
+    person("Andre", "Bleier", , "andre.bleier@statworx.com", role = "aut"),
+    person("Markus", "Berroth", , "markus.berroth@statworx.com", role = "ctb"),
+    person("Tobias", "Krabel", , "tobias.krabel@statworx.com", role = "aut"),
+    person("Martin", "Albers", , "martin.albers@statworx.com", role = "aut"),
+    person("Robin", "Kraft", , "robin.kraft@statworx.com", role = "ctb"),
+    person("David", "Schlepps", , "david.schlepps@statworx.com", role = "ctb"),
+    person("Oliver", "Guggenbuehl", , "oliver.guggenbuehl@statworx.com", role = "ctb"),
+    person("Lukas", "Feick", , "lukas.feick@statworx.com", role = "aut")
+  )
 Description: A useful collection of R helper functions.
 License: MIT + file LICENSE
-LazyData: true
 URL: https://github.com/STATWORX/helfRlein
 BugReports: https://github.com/STATWORX/helfRlein/issues
 Encoding: UTF-8
 Depends: 
     R (>= 3.5)
 Suggests: 
-    testthat,
-    newsmd,
     desc,
     lintr,
+    networkD3,
+    newsmd,
+    rcmdcheck,
     remotes,
-    rcmdcheck
+    testthat
 Imports: 
     data.table (>= 1.9),
-    igraph (>= 1.1.2),
-    grDevices,
     graphics,
+    grDevices,
+    grid,
+    igraph (>= 1.1.2),
     rstudioapi,
-    utils,
-    grid
-Date: 2021-02-19
+    utils
+Date: 2024-02-09

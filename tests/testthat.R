@@ -1,4 +1,4 @@
 library(testthat)
 library(helfRlein)
 
-test_check("helfRlein")
+testthat::test_check("helfRlein")

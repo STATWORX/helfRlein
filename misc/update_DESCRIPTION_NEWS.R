@@ -1,10 +1,17 @@
 # script to create the DESCRIPTION file
 
 # get news class
-# devtools::install_github("Dschaykib/newsmd")
-# install.packages("desc")
+# renv::install("newsmd")
+# renv::install("desc")
 library(newsmd)
 library(desc)
+library(devtools)
+library(testthat)
+library(origin)
+library(lintr)
+
+# check pkg::func syntax
+origin::originize_pkg(ask_before_applying_changes = FALSE)
 
 # update roxygen
 roxygen2::roxygenise()
@@ -18,7 +25,7 @@ unlink("NEWS.md")
 
 # Create a new description object
 my_desc <- desc::description$new("!new")
-my_news <- newsmd()
+my_news <- newsmd::newsmd()
 
 # Set your package name
 my_desc$set("Package", "helfRlein")
@@ -397,12 +404,87 @@ my_desc$set_dep("remotes", type = desc::dep_types[3], version = "*")
 my_desc$set_dep("rcmdcheck", type = desc::dep_types[3], version = "*")
 
 
+# update statusbar---------------------------------------------------------
+
+my_desc$bump_version("patch")
+my_news$add_version(my_desc$get_version())
+my_news$add_subtitle("Bugfixes")
+my_news$add_bullet(c("add line break after last step in statusbar"))
+
+
+# update colour scheme ----------------------------------------------------
+
+my_desc$bump_version("minor")
+my_news$add_version(my_desc$get_version())
+my_news$add_subtitle("update function")
+my_news$add_bullet(c("Add new STATWORX colour scheme to sci_palette and statworx_pallete"))
+
+my_desc$bump_version("minor")
+my_news$add_version(my_desc$get_version())
+my_news$add_subtitle("Bugfixes")
+my_news$add_bullet(c("fix naming and order for statworx pallete",
+                     "fix default value for read_files to avoid 'close to the limit' error"))
+
+# update read_files ----------------------------------------------------
+
+my_desc$bump_version("minor")
+my_news$add_version(my_desc$get_version())
+my_news$add_subtitle("update function")
+my_news$add_bullet(c("Add uniqueness to read_files"))
+my_news$add_subtitle("Bugfixes")
+my_news$add_bullet(c("fix warning in statusbar"))
+
+
+
+# bugfix in get_network ---------------------------------------------------
+
+my_desc$bump_version("patch")
+my_news$add_version(my_desc$get_version())
+my_news$add_subtitle("Bugfixes")
+my_news$add_bullet(c("get_network can now handle files with only comments",
+                     "fix get_network internal list handling"))
+
+
+# bugfix in get_network ---------------------------------------------------
+
+my_desc$bump_version("patch")
+my_news$add_version(my_desc$get_version())
+my_news$add_subtitle("Bugfixes")
+my_news$add_bullet(c("fix error in get_network with duplicated inner functions names"))
+
+# bugfix in get_network ---------------------------------------------------
+
+my_desc$bump_version("minor")
+my_news$add_version(my_desc$get_version())
+my_news$add_subtitle("Bugfixes")
+my_news$add_bullet(c("added error handling wihtin get_network"))
+my_news$add_subtitle("Feature")
+my_news$add_bullet(c("get_network now also creates an interactive plot"))
+my_desc$set_dep("networkD3", type = desc::dep_types[3], version = "*")
+
+
 # save everything ---------------------------------------------------------
 
 my_desc$set("Date", Sys.Date())
 my_desc$write(file = "DESCRIPTION")
 my_news$write(file = "NEWS.md")
 
+# set version number in README
+my_readme <- readLines("README.md")
+my_readme[1] <- paste0("# helfRlein - ", my_desc$get_version(),
+                       " <img src=\"img/helfRlein.png\" width=170 align=\"right\" />")
+writeLines(my_readme, "README.md")
+
+
+
+# pkg maintenance ---------------------------------------------------------
+
 # update renv files
-renv::snapshot()
+renv::snapshot(prompt = FALSE)
+renv::clean(prompt = FALSE)
+
+devtools::test()
+lintr::lint_package()
+#Sys.unsetenv("R_PROFILE_USER")
+devtools::check()
 

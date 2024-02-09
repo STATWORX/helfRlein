@@ -7,7 +7,8 @@
 statworx_palette(
   number = length(basecolors),
   reorder = FALSE,
-  basecolors = c(1, 2, 3, 5, 10)
+  basecolors = c(1, 2, 3, 5, 10),
+  scheme = "old"
 )
 }
 \arguments{
@@ -19,6 +20,9 @@ which can make groups next to each other a little bit more separable.}
 
 \item{basecolors}{a numeric vector with the used color indices of
 \code{\link{sci_palette}}.}
+
+\item{scheme}{a string that indicates if the "new" or the "old" STATWORX CI is
+used. The default is still "old" to not break existing code.}
 }
 \description{
 A palette based on STATWORX's CI colors.

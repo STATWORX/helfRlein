@@ -54,7 +54,7 @@ statusbar <- function(run,
     stop("max.run has length 0")
   }
 
-  if (length(max.run) > 1 | is.character(max.run)) {
+  if (length(max.run) > 1 || is.character(max.run)) {
     percent <- which(run == max.run) / length(max.run)
   } else {
     percent <- run / max.run
@@ -66,9 +66,10 @@ statusbar <- function(run,
                       paste0(rep(" ", width - percent_step),
                              collapse = ""),
                       "] ",
-                      sprintf("%7.2f", percent * 100, 2),
+                      sprintf("%7.2f", percent * 100),
                       "% - ",
                       info)
-  cat("\r", progress)
+  last_step <- ifelse(run == max.run[length(max.run)], "\n", "")
+  cat("\r", progress, last_step)
   flush.console()
 }
