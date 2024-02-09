@@ -40,8 +40,10 @@ everything that contains these words.}
 \item{verbose}{a boolean setting the debugging prints.}
 }
 \value{
-Returns an object with the adjacency matrix \code{$matrix} and
-  and igraph object \code{$igraph}.
+Returns an object with the adjacency matrix \code{$matrix},
+  an igraph object \code{$igraph}, a table for the edges \code{$edge_dt},
+  a table for the nodes \code{$node_dt} and
+  a networkD3 plot \code{$networkD3}.
 }
 \description{
 With this function a network plot of the connections of the functions

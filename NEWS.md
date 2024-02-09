@@ -1,3 +1,18 @@
+## version 1.5.0
+
+---
+
+
+### Feature
+
+- get_network now also creates an interactive plot
+
+
+### Bugfixes
+
+- added error handling wihtin get_network
+
+
 ## version 1.4.2
 
 ---

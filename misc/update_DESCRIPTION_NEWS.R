@@ -452,6 +452,15 @@ my_news$add_version(my_desc$get_version())
 my_news$add_subtitle("Bugfixes")
 my_news$add_bullet(c("fix error in get_network with duplicated inner functions names"))
 
+# bugfix in get_network ---------------------------------------------------
+
+my_desc$bump_version("minor")
+my_news$add_version(my_desc$get_version())
+my_news$add_subtitle("Bugfixes")
+my_news$add_bullet(c("added error handling wihtin get_network"))
+my_news$add_subtitle("Feature")
+my_news$add_bullet(c("get_network now also creates an interactive plot"))
+my_desc$set_dep("networkD3", type = desc::dep_types[3], version = "*")
 
 
 # save everything ---------------------------------------------------------
@@ -468,7 +477,7 @@ writeLines(my_readme, "README.md")
 
 
 
-# pkg maintanance ---------------------------------------------------------
+# pkg maintenance ---------------------------------------------------------
 
 # update renv files
 renv::snapshot(prompt = FALSE)

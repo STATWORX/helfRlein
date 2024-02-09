@@ -21,8 +21,10 @@
 #' @param verbose a boolean setting the debugging prints.
 #'
 #' @return
-#'   Returns an object with the adjacency matrix \code{$matrix} and
-#'   and igraph object \code{$igraph}.
+#'   Returns an object with the adjacency matrix \code{$matrix},
+#'   an igraph object \code{$igraph}, a table for the edges \code{$edge_dt},
+#'   a table for the nodes \code{$node_dt} and
+#'   a networkD3 plot \code{$networkD3}.
 #'
 #' @seealso For more information check out
 #' \href{https://www.statworx.com/de/blog/flowcharts-of-functions/}{our blog}.
@@ -127,7 +129,7 @@ get_network <- function(dir = NULL,
 
   if (verbose) {
     print(paste0("found ", length(all_scripts), " scripts"))
-    print("length of folder: ", length(folder))
+    print(paste0("length of folder: ", length(folder)))
   }
 
   # check for empty scripts
@@ -149,7 +151,7 @@ get_network <- function(dir = NULL,
   # remove method / functions that start with [
   # otherwise the regular expression will be messed up later
   keep <- !startsWith(names(all_scripts), "[")
-  if (verbose) {
+  if (verbose && any(!keep)) {
     print(paste0("remove method / functions that start with [: ",
                  sum(!keep)))
   }
@@ -167,6 +169,14 @@ get_network <- function(dir = NULL,
   # remove comments #
   all_scripts <- lapply(all_scripts, function(x) subset(x, !startsWith(x, "#")))
 
+  # check for empty scripts
+  indx <- sapply(all_scripts, length) == 0
+  if (any(indx)) {
+    warning(paste0("removing empty scritps: ",
+                   paste0(names(all_scripts)[indx], collapse = ", ")))
+    all_scripts <- all_scripts[!indx]
+    folder <- folder[!indx]
+  }
 
   # split before { and }
   all_scripts <-
@@ -183,6 +193,15 @@ get_network <- function(dir = NULL,
 
   # remove empty lines
   all_scripts <- lapply(all_scripts, function(x) x[x != ""])
+
+  # check for empty scripts
+  indx <- sapply(all_scripts, length) == 0
+  if (any(indx)) {
+    warning(paste0("removing empty scritps: ",
+                   paste0(names(all_scripts)[indx], collapse = ", ")))
+    all_scripts <- all_scripts[!indx]
+    folder <- folder[!indx]
+  }
 
   # filter only those with functions (variations) in it
   index_functions <- unique(unlist(sapply(variations, grep, all_scripts)))
@@ -383,13 +402,33 @@ get_network <- function(dir = NULL,
       }
     )
 
-  def_functions <-
-    unlist(lapply(seq_along(all_files),
-                  function(x) all_files[[x]][def_function_index[[x]]]))
+  def_functions <- lapply(
+    seq_along(all_files),
+    function(x) all_files[[x]][def_function_index[[x]]]
+    )
+  tmp_def_idx <- sapply(def_functions, function(x) length(x) == 0)
+  def_functions[tmp_def_idx] <- ""
 
-  def_functions <-
-    unique(unlist(gsub(" ", "",
-                       lapply(base::strsplit(def_functions, "<-"), "[[", 1))))
+
+  def_functions[!tmp_def_idx] <- gsub(
+    pattern = " ",
+    replacement = "",
+    lapply(base::strsplit(unlist(def_functions[!tmp_def_idx]), "<-"), "[[", 1))
+
+  tmp_def_idx2 <- def_functions == "" & !tmp_def_idx
+  # check for empty entries
+  if (any(tmp_def_idx2)) {
+    warning(paste0("Missing function name. ",
+                   "This would have led to missleading plots. ",
+                   "Removed from script(s): '",
+                   paste0(names(all_files)[tmp_def_idx2],
+                          collapse = "', '"), "'"))
+  }
+  def_functions <- unique(unlist(
+    def_functions[def_functions != "" & !tmp_def_idx]
+    ))
+
+
 
   # used for later adjustments of the network matrix
   def_functions2 <-
@@ -544,10 +583,62 @@ get_network <- function(dir = NULL,
   igraph::V(g1)$folder <- all_folder
   igraph::V(g1)$color  <- as.numeric(as.factor(all_folder))
 
+  # add interative plot with networkD3 package
+
+  edge_dt <- data.frame(
+    target = rep(rownames(network), each = ncol(network)),
+    source = rep(colnames(network), times = nrow(network)),
+    value = unlist(network),
+    stringsAsFactors = FALSE,
+    row.names = NULL
+  )
+  edge_dt <- edge_dt[edge_dt$value != 0, ]
+
+  # needs to start with 0 index instead of 1
+  edge_dt$source <- match(edge_dt$source, rownames(network)) - 1
+  edge_dt$target <- match(edge_dt$target, rownames(network)) - 1
+
+  node_dt <- data.frame(
+    "label" = factor(x = names(lines), levels = rownames(network)),
+    "size" = 10 * lines / max(lines),
+    "folder" = all_folder,
+    "color" = as.numeric(as.factor(all_folder)),
+    row.names = NULL,
+    stringsAsFactors = FALSE)
+
+if (nrow(edge_dt) == 0 || nrow(node_dt) == 0) {
+  print("No relations could be found!")
+  net_plot <- NULL
+} else {
+  net_plot <- networkD3::forceNetwork(
+    Links = edge_dt, # data.frame with source, target, value
+    Nodes = node_dt, # data.frame with node infos
+    Source = "source",
+    Target = "target",
+    Value = "value",
+    NodeID = "label",
+    Nodesize = "size",
+    #radiusCalculation = "Math.sqrt(d.nodesize)+6",
+    # linkDistance = networkD3::JS("function(d) { return 50*d.value; }"),
+    linkDistance = 100,
+    fontSize = 10,
+    Group = "folder",
+    opacity = 0.8,
+    opacityNoHover = 0.5,
+    legend = TRUE,
+    zoom = TRUE,
+    arrows = TRUE)
+}
+
+
   # output
-  out <- list()
-  out$matrix <- network
-  out$igraph <- g1
+  out <- list(
+  "matrix" = network,
+  "igraph" = g1,
+  "node_dt" = node_dt,
+  "edge_dt" = edge_dt,
+  "networkD3" = net_plot
+  )
 
   return(out)
 }

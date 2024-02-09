@@ -76,10 +76,12 @@ testthat::test_that("special cases work", {
   # empty scripts
   test_scripts <- list(
     foo_01 = c("foo_01 <- function(){}"),
-    foo_02 = c()
+    foo_02 = c("# no function"),
+    foo_03 = c("  ")
   )
   testthat::expect_warning(get_network(all_scripts = test_scripts),
-                 "removing empty scritps: foo_02")
+                           "removing empty scritps: foo_02, foo_03")
+
   # no functions
   test_scripts <- list(
     foo_01 = c("print(\"over 100\")"),

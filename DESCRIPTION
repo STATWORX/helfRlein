@@ -1,6 +1,6 @@
 Package: helfRlein
 Title: R Helper Functions
-Version: 1.4.2
+Version: 1.5.0
 Authors@R: c(
     person("Jakob", "Gepp", , "jakob.gepp@statworx.com", role = c("cre", "aut")),
     person("Daniel", "Luettgau", , "daniel.luettgau@statworx.com", role = "aut"),
@@ -23,6 +23,7 @@ Depends:
 Suggests: 
     desc,
     lintr,
+    networkD3,
     newsmd,
     rcmdcheck,
     remotes,
@@ -35,4 +36,4 @@ Imports:
     igraph (>= 1.1.2),
     rstudioapi,
     utils
-Date: 2024-02-06
+Date: 2024-02-09
